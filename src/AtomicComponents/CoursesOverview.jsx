@@ -21,7 +21,7 @@ const CoursesOverview = () => {
     ]
   return (
     <div>
-        <div className='flex justify-between my-10'>
+        <div className='flex justify-between mt-10 mb-3'>
             <p className='font-[700] text-black'>Continue Course</p>
 
             <Link href="/" className='text-gray-500'>
@@ -37,7 +37,7 @@ const CoursesOverview = () => {
                             <p className='text-primary3 text-[0.8em] font-[500]'>{course.category}</p>
                             <p className='text-black font-[800]'>{course.title}</p>
                             <p className='text-gray-500 text-[0.8em] mt-3'>Overall Progress</p>
-                            <div className='flex gap-3 items-center mt-1'>
+                            <div className='flex gap-3 items-center mt-'>
                                 <div className='w-full h-2 bg-gray-200 rounded-3xl'>
                                     <div style={{ width: course.progress }} className={`${getProgressBarClass(course.progress)} h-2 bg-red-500 rounded-3xl`}></div>
                                 </div>

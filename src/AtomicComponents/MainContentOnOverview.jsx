@@ -1,7 +1,8 @@
 import React from 'react'
-import { BsFire, BsTrophy } from 'react-icons/bs'
+import { BsBadgeSd, BsFire, BsTrophy } from 'react-icons/bs'
 import { GiGraduateCap } from 'react-icons/gi'
 import CoursesOverview from './CoursesOverview'
+import LeaderBoardOverview from './LeaderBoardOverview'
 
 const MainContentOnOverview = () => {
   return (
@@ -49,16 +50,18 @@ const MainContentOnOverview = () => {
 
                 <div className="streak bg-primary4 p-[20px] rounded-3xl w-[25%]">
                     <div className='flex gap-[10px] items-center'>
-                        <span className='p-[10px] bg-white rounded-md text-primary1'><BsFire size={24}/> </span>
+                        <span className='p-[10px] bg-white rounded-md text-primary4'><BsBadgeSd size={24}/> </span>
                         <p className='text-[3em] font-[900]'>
-                            20
+                            50
                         </p>
                     </div>
-                    <p className='pt-[6px]'>Your Streak</p>
+                    <p className='pt-[6px]'>Victory Badges</p>
                 </div>
             </div>
 
             <CoursesOverview />
+
+            <LeaderBoardOverview suppressHydrationWarning={true}/>
         </div>
     </>
   )

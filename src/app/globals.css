@@ -9,3 +9,7 @@
 img, video{
   object-fit: cover;
 }
+
+.tHead > div, .tRow > div{
+  /* width: 20% */
+}
