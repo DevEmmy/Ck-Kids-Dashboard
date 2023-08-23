@@ -7,10 +7,10 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    spacing:{
-      xPadding: "5%"
-    },
     extend: {
+      spacing:{
+        xPadding: "5%"
+      },
       gridTemplateColumns: {
         "3to1": "3fr 1fr",
       },

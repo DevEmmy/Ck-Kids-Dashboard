@@ -1,12 +1,14 @@
 import React from 'react'
 import { BsFire, BsTrophy } from 'react-icons/bs'
 import { GiGraduateCap } from 'react-icons/gi'
+import CoursesOverview from './CoursesOverview'
 
 const MainContentOnOverview = () => {
   return (
     <>
-        <div className='mx-xPadding mt-[60px] text-white'>
+        <div className=' text-white'>
             <p className='text-black py-[10px] font-[600]'>Overview</p>
+
             <div className='flex gap-[10px]'>
 
                 <div className="streak bg-primary1 p-[20px] rounded-3xl w-[25%]">
@@ -55,6 +57,8 @@ const MainContentOnOverview = () => {
                     <p className='pt-[6px]'>Your Streak</p>
                 </div>
             </div>
+
+            <CoursesOverview />
         </div>
     </>
   )
