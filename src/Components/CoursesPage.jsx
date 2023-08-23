@@ -2,11 +2,12 @@ import Nav from "@/AtomicComponents/Nav";
 import React from "react";
 import { ChevronUp, SearchOutline } from "heroicons-react";
 import GetStarted from "./GetStarted";
+import GemView from "@/AtomicComponents/GemView";
 
 const CoursesPage = () => {
   return (
     <>
-      <Nav />
+      <Nav active={1}/>
       <div className="w-full flexbs gap-[1em] py-[2em] px-[5%]">
         <div className="w-[70%] cflexss gap-[1em] font-[400] text-[0.9rem]">
             <div className="flexmm gap-[2em]">
@@ -23,7 +24,7 @@ const CoursesPage = () => {
             <GetStarted />
         </div>
         <div className="w-[30%] cflexmm gap-[1em]">
-
+          <GemView />
         </div>
       </div>
     </>
