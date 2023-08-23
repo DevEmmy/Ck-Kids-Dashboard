@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ImageStacked from "./ImageStacked";
 
-const VideoCard = ({ image, title, heading, content, author, images, enrolled }) => {
+const CourseCard = ({ image, title, heading, content, author, images, enrolled }) => {
   return (
     <>
       <Link href="/" className="sm:flex-grow">
@@ -31,4 +31,4 @@ const VideoCard = ({ image, title, heading, content, author, images, enrolled })
   );
 };
 
-export default VideoCard;
+export default CourseCard;

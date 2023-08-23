@@ -1,6 +1,7 @@
 import Nav from "@/AtomicComponents/Nav";
 import React from "react";
-import { ChevronUp } from "heroicons-react";
+import { ChevronUp, SearchOutline } from "heroicons-react";
+import GetStarted from "./GetStarted";
 
 const CoursesPage = () => {
   return (
@@ -13,7 +14,13 @@ const CoursesPage = () => {
                     <p>Categories</p>
                     <ChevronUp />
                 </div>
+                <div className="flexmm p-[1em] border-[2px] gap-[1em] rounded-xl">
+                    <SearchOutline size="20px" color="#D8D8D8" style={{cursor:"pointer"}}/>
+                    <input type="text" className="w-[25em] outline-none"/>
+                </div>
             </div>
+
+            <GetStarted />
         </div>
         <div className="w-[30%] cflexmm gap-[1em]">
 

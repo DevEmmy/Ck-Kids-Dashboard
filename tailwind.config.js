@@ -24,6 +24,7 @@ module.exports = {
         primary2: "#00AC76",
         primary3: "#8D67CE",
         primary4: "#FE5972",
+        primary5: "#D8D8D8",
       },
     },
   },
