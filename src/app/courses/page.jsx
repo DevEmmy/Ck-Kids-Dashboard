@@ -1,11 +1,11 @@
 'use client'
 
-import MainPage from '@/Components/MainPage'
+import CoursesPage from '@/Components/CoursesPage'
 
 export default function Home() {
   return (
    <>
-    <MainPage />
+    <CoursesPage />
    </>
   )
 }
