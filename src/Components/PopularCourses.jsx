@@ -30,7 +30,7 @@ const PopularCourses = () => {
   ];
   return (
     <>
-      <div className="cflexss gap-[1em] sm:px-[1.5rem] font-[400]">
+      <div className="w-full cflexss gap-[1em] sm:px-[1.5rem] font-[400]">
         <h1 className="font-[800] text-[#012B1D] text-[1rem]">
           Most Popular courses
         </h1>

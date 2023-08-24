@@ -69,11 +69,11 @@ const TopCategories = () => {
         <h1 className="font-[800] text-[#012B1D] text-[1rem]">
           Top categories recommended for you
         </h1>
-        <div className="w-full flexsm gap-[0.5em] flex-wrap">
+        <div className="w-full flexsm sm:justify-center gap-[0.5em] flex-wrap">
           {Categories.map((category) => {
             return (
               <>
-                <Link href={category.link} className="w-[10em]">
+                <Link href={category.link} className="w-[10em] sm:w-full">
                   <div
                     className={`py-[1.5em] font-[400] text-[0.8rem] w-full rounded-xl flexmm bg-[${category.background}] text-${category.color}`}
                   >
