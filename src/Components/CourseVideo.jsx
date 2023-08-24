@@ -2,7 +2,7 @@ import Nav from "@/AtomicComponents/Nav";
 import Image from "next/image";
 import Link from "next/link";
 import SubTopic from "@/AtomicComponents/SubTopic";
-import { ArrowLeftOutline } from "heroicons-react";
+import { ArrowLeftOutline, HeartOutline } from "heroicons-react";
 import Recommended from "@/AtomicComponents/Recommended";
 import { useState } from "react";
 
@@ -136,7 +136,99 @@ const CourseVideo = () => {
           </div>
         </div>
         <div className="w-full cflexss gap-[1em]">
+          {selected === "about" && (
+            <>
+              <h1>ABOUT THIS COURSE</h1>
+            </>
+          )}
+          {selected === "transcript" && (
+            <>
+              <h1>COURSE TRANSCRIPT</h1>
+            </>
+          )}
+          {selected === "question" && (
+            <>
+              <div className="w-full cflexsm gap-[1em] overflow-y-auto h-[80vh] px-[2em]">
+                <div className="flexbs w-full flex-wrap font-[400] text-[0.7rem]">
+                  <div className="flexss gap-[1em]">
+                    <div className="flexmm w-[5em]">
+                      <Image
+                        src="/kid1.svg"
+                        width={100}
+                        height={100}
+                        alt="jacob jones"
+                      />
+                    </div>
+                    <div className="w-full cflexss gap-[1em]">
+                      <div className="w-full cflexss">
+                        <p className="font-[800]">Jacob Jones</p>
+                        <p className="text-[#808080]">@jjones12</p>
+                      </div>
+                      <p>
+                        Can I use my own art supplies, or do I need to purchase
+                        the materials recommended in the course?
+                      </p>
+                      <p className="text-primary2 cursor-pointer">Answer</p>
+                    </div>
+                  </div>
+                  <div className="cflexss gap-[1em]">
+                    <p className="text-[#808080]">10 days ago</p>
+                    <HeartOutline
+                      color="#00AC76"
+                      style={{ cursor: "pointer" }}
+                    />
+                  </div>
+                </div>
 
+                <div className="flexbs w-full flex-wrap font-[400] text-[0.7rem]">
+                  <div className="flexss gap-[1em]">
+                    <div className="flexmm w-[5em]">
+                      <Image
+                        src="/kid2.svg"
+                        width={100}
+                        height={100}
+                        alt="jacob jones"
+                      />
+                    </div>
+                    <div className="w-full cflexss gap-[1em]">
+                      <div className="w-full cflexss">
+                        <p className="font-[800]">Annette Black</p>
+                        <p className="text-[#808080]">@black.anne</p>
+                      </div>
+                      <p>
+                        I'm not very confident in my artistic abilities. Will I
+                        be able to keep up with the course?
+                      </p>
+                      <p className="text-primary2 cursor-pointer">Answer</p>
+                    </div>
+                  </div>
+                  <div className="cflexss gap-[1em]">
+                    <p className="text-[#808080]">2 days ago</p>
+                    <HeartOutline
+                      color="#00AC76"
+                      style={{ cursor: "pointer" }}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="w-full flexmm">
+                <div className="w-[60em] flex-shrink p-[2em] cflexms gap-[1em] bg-[#CCEEE4] rounded-[0.5em] font-[400] text-[0.7rem]">
+                  <p className="text-primary2 font-[600]">Response</p>
+                  <textarea
+                    type="text"
+                    name="response"
+                    className="p-[1.5em] w-full rounded-[0.5em] outline-none resize-none"
+                    placeholder="Type your response here..."
+                  />
+                  <div className="w-full flexem">
+                    <button className="py-[1.5em] px-[2em] bg-primary2 text-white rounded-full">
+                      Send response
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
       <div className="w-full px-[5%] flexmm">
