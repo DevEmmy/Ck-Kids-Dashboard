@@ -11,7 +11,7 @@ const GetStarted = () => {
       enrolled: "43+ Kids enrolled",
     },
     {
-      image: "creative",
+      image: "arts",
       title: "Arts and Craft",
       heading: "Arts and Crafts: Unleashing Imagination",
       content: "24 Lessons | 44 hours",
