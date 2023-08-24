@@ -32,7 +32,7 @@ const CoursesPage = () => {
           <TopCategories />
           <Recommended />
         </div>
-        <div className="sticky top-0 right-0 w-[28%] sm:w-full cflexmm gap-[1em]">
+        <div className="sticky top-[1em] right-0 w-[28%] sm:w-full cflexmm gap-[1em]">
             <GemView />
         </div>
       </div>
