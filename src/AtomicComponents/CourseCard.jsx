@@ -2,11 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import ImageStacked from "./ImageStacked";
 
-const CourseCard = ({ image, title, heading, content, images, enrolled }) => {
+const CourseCard = ({ image, title, heading, content, images, enrolled, link }) => {
   return (
     <>
-      <Link href="/courses/videos" className="sm:flex-grow">
-        <div className="border border-[1px] border-[#E6E6E6] cflexbs gap-[0.5em] p-[0.5em] max-w-[17em] min-h-[20em] rounded-xl cursor-pointer shadow-md">
+      <Link href={link} className="sm:flex-grow">
+        <div className="border border-[1px] border-[#E6E6E6] cflexbs gap-[0.5em] p-[0.5em] w-[17em] sm:w-full min-h-[20em] rounded-xl cursor-pointer shadow-md">
           <div className="w-full flexmm">
             <Image
               src={`${image}.svg`}

@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import SubTopic from "@/AtomicComponents/SubTopic";
 import { ArrowLeftOutline } from "heroicons-react";
+import Recommended from "@/AtomicComponents/Recommended";
+import { useState } from "react";
 
 const CourseVideo = () => {
   const Topic = [
@@ -50,6 +52,7 @@ const CourseVideo = () => {
       ],
     },
   ];
+  const [selected, setSelected] = useState("about");
   return (
     <>
       <Nav />
@@ -93,7 +96,52 @@ const CourseVideo = () => {
         </div>
       </div>
 
-      <div className="w-full px-[5%] cflexss py-[2em]"></div>
+      <div className="w-full px-[5%] cflexss gap-[3em] py-[2em]">
+        <div className="w-full flexsm gap-[1em]">
+          <div
+            className={
+              selected === "about"
+                ? "text-[400] text-[0.7rem] rounded-full py-[1.5em] w-[15em] flex-shrink flexmm bg-primary2 text-white cursor-pointer"
+                : "text-[400] text-[0.7rem] cursor-pointer py-[1.5em] w-[15em] flex-shrink flexmm"
+            }
+            onClick={() => {
+              setSelected("about");
+            }}
+          >
+            <p> About this course</p>
+          </div>
+          <div
+            className={
+              selected === "transcript"
+                ? "text-[400] text-[0.7rem] rounded-full py-[1.5em] w-[15em] flex-shrink flexmm bg-primary2 text-white cursor-pointer"
+                : "text-[400] text-[0.7rem] cursor-pointer py-[1.5em] w-[15em] flex-shrink flexmm"
+            }
+            onClick={() => {
+              setSelected("transcript");
+            }}
+          >
+            <p> Transcript</p>
+          </div>
+          <div
+            className={
+              selected === "question"
+                ? "text-[400] text-[0.7rem] rounded-full py-[1.5em] w-[15em] flex-shrink flexmm bg-primary2 text-white cursor-pointer"
+                : "text-[400] text-[0.7rem] cursor-pointer py-[1.5em] w-[15em] flex-shrink flexmm"
+            }
+            onClick={() => {
+              setSelected("question");
+            }}
+          >
+            <p> Ask question</p>
+          </div>
+        </div>
+        <div className="w-full cflexss gap-[1em]">
+
+        </div>
+      </div>
+      <div className="w-full px-[5%] flexmm">
+        <Recommended />
+      </div>
     </>
   );
 };

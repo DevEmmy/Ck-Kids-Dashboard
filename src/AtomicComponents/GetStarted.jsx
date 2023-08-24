@@ -9,6 +9,7 @@ const GetStarted = () => {
       content: "24 Lessons | 48 hours",
       images: ["kid1", "kid2", "kid3", "kid4"],
       enrolled: "43+ Kids enrolled",
+      link:""
     },
     {
       image: "arts",
@@ -17,16 +18,16 @@ const GetStarted = () => {
       content: "24 Lessons | 44 hours",
       images: ["kid1", "kid2", "kid3", "kid4"],
       enrolled: "59+ Kids enrolled",
+      link:"/courses/videos"
     },
     {
       image: "imagination",
       title: "Drawing and Painting",
       heading: "Unleashing Creative Expression",
-      content:
-        "13 Lessons | 26 hours",
-
+      content: "13 Lessons | 26 hours",
       images: ["kid1", "kid2", "kid3", "kid4"],
       enrolled: "430+ Kids enrolled",
+      link:""
     },
   ];
   return (
@@ -35,7 +36,7 @@ const GetStarted = () => {
         <h1 className="font-[800] text-[#012B1D] text-[1rem]">
           Courses to get you started
         </h1>
-        <div className="w-full flexbs gap-[0.5em] flex-wrap">
+        <div className="w-full flexbs gap-[0.5em] overflow-x-auto sm:flex-wrap">
           {Videos.map((video, i) => {
             return (
               <>
