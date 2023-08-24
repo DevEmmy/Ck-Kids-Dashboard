@@ -5,6 +5,51 @@ import SubTopic from "@/AtomicComponents/SubTopic";
 import { ArrowLeftOutline } from "heroicons-react";
 
 const CourseVideo = () => {
+  const Topic = [
+    {
+      topic: "Introduction to Arts and Crafts",
+      contents: [
+        {
+          track: "Discover the importance of creativity and self-expression.",
+          completed: true,
+        },
+        {
+          track:
+            "Explore various art forms and techniques, setting the stage for your artistic journey.",
+          completed: true,
+        },
+      ],
+    },
+    {
+      topic: "Getting Started with Basic Materials",
+      contents: [
+        {
+          track:
+            "Learn about essential supplies for successful arts and crafts projects.",
+          completed: true,
+        },
+        {
+          track:
+            "Set up your own creative workspace for a comfortable and inspiring environment.",
+          completed: false,
+        },
+      ],
+    },
+    {
+      topic: "Exploring Colors and Textures",
+      contents: [
+        {
+          track: "Discover the importance of creativity and self-expression.",
+          completed: true,
+        },
+        {
+          track:
+            "Explore various art forms and techniques, setting the stage for your artistic journey.",
+          completed: false,
+        },
+      ],
+    },
+  ];
   return (
     <>
       <Nav />
@@ -31,10 +76,20 @@ const CourseVideo = () => {
               height={100}
               alt="course video"
             />
+            {/* <div>
+              <div className="image">
+                <video width="300px" height="300px" controls>
+                  <source src={video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div> */}
           </div>
         </div>
-        <div className="w-[28%] sm:w-full cflexss gap-[1em] border-[0.2em] rounded-xl min-h-[32em] overflow-y-auto">
-
+        <div className="w-[28%] sm:w-full cflexss gap-[1em] border-[0.2em] rounded-xl h-[31em] p-[1em] overflow-y-auto">
+          {Topic.map((topic, i) => {
+            return <SubTopic {...topic} key={i} />;
+          })}
         </div>
       </div>
 
