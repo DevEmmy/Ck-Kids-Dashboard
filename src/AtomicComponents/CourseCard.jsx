@@ -26,7 +26,7 @@ const CourseCard = ({ image, title, heading, content, images, enrolled }) => {
           <p className="text-[0.7rem] text-[#667085]">
             {content}
           </p>
-          <div className="flexsm gap-[0.5em] pb-[1em]">
+          <div className="flexsm gap-[0.5em] pb-[0.5em]">
             <ImageStacked images={images} />
             <p className="text-[0.7rem] pl-[5.6em] sm:pl-[4.6em]">
               {enrolled}
