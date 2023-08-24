@@ -93,6 +93,9 @@ video {
   object-fit: cover;
 }
 
+.tHead > div, .tRow > div{
+  /* width: 20% */
+}
 img {
   width: 100%;
   height: auto;
