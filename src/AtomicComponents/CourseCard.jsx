@@ -6,7 +6,7 @@ const CourseCard = ({ image, title, heading, content, images, enrolled, link }) 
   return (
     <>
       <Link href={link} className="sm:flex-grow">
-        <div className="border border-[1px] border-[#E6E6E6] cflexbs gap-[0.5em] p-[0.5em] w-[17em] sm:w-full min-h-[20em] rounded-xl cursor-pointer shadow-md">
+        <div className="border border-[#E6E6E6] cflexbs gap-[0.5em] p-[0.5em] w-[17em] sm:w-full min-h-[20em] rounded-xl cursor-pointer shadow-md">
           <div className="w-full flexmm">
             <Image
               src={`${image}.svg`}

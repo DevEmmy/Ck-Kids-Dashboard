@@ -6,6 +6,7 @@ import PopularCourses from "@/AtomicComponents/PopularCourses";
 import TopCategories from "@/AtomicComponents/TopCategories";
 import Recommended from "@/AtomicComponents/Recommended";
 import GemView from "@/AtomicComponents/GemView";
+import GemView from "@/AtomicComponents/GemView";
 
 const CoursesPage = () => {
   return (
