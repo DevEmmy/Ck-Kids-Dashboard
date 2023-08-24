@@ -1,10 +1,10 @@
 import Nav from "@/AtomicComponents/Nav";
 import React from "react";
 import { ChevronUp, SearchOutline } from "heroicons-react";
-import GetStarted from "./GetStarted";
-import PopularCourses from "./PopularCourses";
-import TopCategories from "./TopCategories";
-import Recommended from "./Recommended";
+import GetStarted from "@/AtomicComponents/GetStarted";
+import PopularCourses from "@/AtomicComponents/PopularCourses";
+import TopCategories from "@/AtomicComponents/TopCategories";
+import Recommended from "@/AtomicComponents/Recommended";
 import GemView from "@/AtomicComponents/GemView";
 
 const CoursesPage = () => {
