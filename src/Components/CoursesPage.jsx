@@ -10,9 +10,10 @@ import GemView from "@/AtomicComponents/GemView";
 const CoursesPage = () => {
   return (
     <>
-      <Nav />
-      <div className="w-full flexbs py-[2em] px-[5%] flex-wrap">
-        <div className="w-[68%] sm:w-full cflexss gap-[2em] font-[400] text-[0.9rem]">
+      <Nav active={1}/>
+      <div className="w-full flexbs py-[2em] px-xPadding flex-wrap">
+        
+        <div className="w-[70%] sm:w-full cflexss gap-[2em] font-[400] text-[0.9rem]">
           <div className="flexmm gap-[2em]">
             <div className="flexmm p-[1em] border-[2px] gap-[1em] rounded-xl cursor-pointer">
               <p>Categories</p>
@@ -32,7 +33,8 @@ const CoursesPage = () => {
           <TopCategories />
           <Recommended />
         </div>
-        <div className="sticky top-[1em] right-0 w-[28%] sm:w-full cflexmm gap-[1em]">
+
+        <div className="sticky top-[1em] right-0 w-[25%] sm:w-full cflexmm gap-[1em]">
             <GemView />
         </div>
       </div>

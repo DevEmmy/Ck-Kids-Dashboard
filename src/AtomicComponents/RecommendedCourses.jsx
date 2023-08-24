@@ -40,7 +40,7 @@ const RecommendedCourses = () => {
         <h1 className="font-[800] text-black text-[1rem]">
           Recommended Courses
         </h1>
-        <div className="w-full flexbs gap-[0.5em] flex-wrap">
+        <div className="w-full flexbs gap-2 overflow-x-auto sm:flex-wrap">
           {Videos.map((video, i) => {
             return (
               <>

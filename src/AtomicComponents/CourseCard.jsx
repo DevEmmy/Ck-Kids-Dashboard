@@ -2,11 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import ImageStacked from "./ImageStacked";
 
-const CourseCard = ({ image, title, heading, content, images, enrolled, link }) => {
+const CourseCard = ({ image, title, heading, content, images, enrolled, link, size }) => {
   return (
     <>
       <Link href={link} className="sm:flex-grow">
-        <div className="border border-[#E6E6E6] cflexbs gap-[0.5em] p-[0.5em] w-[17em] sm:w-full min-h-[20em] rounded-xl cursor-pointer shadow-md">
+        <div style={{width: size || "100%"}} className="border border-[#E6E6E6] cflexbs gap-[0.5em] p-[0.5em] w-[100%] sm:w-full min-h-[20em] rounded-xl cursor-pointer shadow-md">
           <div className="w-full flexmm">
             <Image
               src={`${image}.svg`}
@@ -20,7 +20,7 @@ const CourseCard = ({ image, title, heading, content, images, enrolled, link }) 
               {title}
             </p>
           </div>
-          <p className="text-[0.7rem] font-[800] text-[#101828]">
+          <p className="text-[0.7rem] font-[800] text-[#101828] line-clamp-1">
             {heading}
           </p>
           <p className="text-[0.7rem] text-[#667085]">

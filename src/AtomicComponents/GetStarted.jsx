@@ -36,7 +36,7 @@ const GetStarted = () => {
         <h1 className="font-[800] text-[#012B1D] text-[1rem]">
           Courses to get you started
         </h1>
-        <div className="w-full flexbs gap-[0.5em] overflow-x-auto sm:flex-wrap">
+        <div className="w-full flexbs gap-2 overflow-x-auto sm:flex-wrap">
           {Videos.map((video, i) => {
             return (
               <>

@@ -45,11 +45,11 @@ const Recommended = () => {
         <h1 className="font-[800] text-[#012B1D] text-[1rem]">
           Recommended Courses
         </h1>
-        <div className="w-full flexbs gap-[0.5em] overflow-x-auto sm:flex-wrap">
+        <div className="w-full min-w-full max-w-[auto] flexbs gap-2 overflow-x-auto sm:flex-wrap">
           {Videos.map((video, i) => {
             return (
               <>
-                <CourseCard key={i} {...video} />
+                <CourseCard key={i} {...video} size="20em"/>
               </>
             );
           })}
