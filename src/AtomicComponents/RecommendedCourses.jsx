@@ -10,6 +10,7 @@ const RecommendedCourses = () => {
           content: "24 Lessons | 48 hours",
           images: ["kid1", "kid2", "kid3", "kid4"],
           enrolled: "43+ Kids enrolled",
+          link: ""
         },
         {
           image: "creative",
@@ -18,6 +19,7 @@ const RecommendedCourses = () => {
           content: "24 Lessons | 44 hours",
           images: ["kid1", "kid2", "kid3", "kid4"],
           enrolled: "59+ Kids enrolled",
+          link:""
         },
         {
           image: "imagination",
@@ -28,6 +30,7 @@ const RecommendedCourses = () => {
     
           images: ["kid1", "kid2", "kid3", "kid4"],
           enrolled: "430+ Kids enrolled",
+          link:""
         },
       ];
 

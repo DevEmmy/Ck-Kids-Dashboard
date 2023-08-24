@@ -52,7 +52,7 @@ const CourseVideo = () => {
       ],
     },
   ];
-  const [selected, setSelected] = useState("about");
+  const [selected, setSelected] = useState("question");
   return (
     <>
       <Nav />
@@ -231,7 +231,7 @@ const CourseVideo = () => {
           )}
         </div>
       </div>
-      <div className="w-full px-[5%] flexmm">
+      <div className="w-full px-[5%] flexsm">
         <Recommended />
       </div>
     </>
