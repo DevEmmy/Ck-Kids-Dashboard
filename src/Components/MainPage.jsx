@@ -8,7 +8,7 @@ const MainPage = () => {
     <div>
         <Nav />
         <div className="main flexbs flex-wrap mx-xPadding  mt-[60px] gap-6 ">
-            <div className='w-[70%] sm:w-full cflexss'>
+            <div className='w-[72%] sm:w-full cflexss'>
                <MainContentOnOverview/>
             </div>
            

@@ -3,10 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import SubTopic from "@/AtomicComponents/SubTopic";
 import { ArrowLeftOutline, HeartOutline } from "heroicons-react";
+import CourseCard from "@/AtomicComponents/CourseCard";
 import Recommended from "@/AtomicComponents/Recommended";
 import { useState } from "react";
 
-const CourseVideo = () => {
+const CourseVideo = () => {  
   const Topic = [
     {
       topic: "Introduction to Arts and Crafts",
@@ -55,7 +56,7 @@ const CourseVideo = () => {
   const [selected, setSelected] = useState("question");
   return (
     <>
-      <Nav />
+      <Nav active={1}/>
       <div className="w-full flexss gap-[1em] pt-[2em] px-[5%]">
         <Link href="/courses" className="flexmm">
           <div className="flexss bg-primary2 rounded-[0.5em] p-[0.4em] cursor-pointer">

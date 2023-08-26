@@ -9,7 +9,7 @@ const CourseCard = ({ image, title, heading, content, images, enrolled, link, si
         <div style={{width: size || "100%"}} className="border border-[#E6E6E6] cflexbs gap-[0.5em] p-[0.5em] w-[100%] sm:w-full min-h-[20em] rounded-xl cursor-pointer shadow-md">
           <div className="w-full flexmm">
             <Image
-              src={`${image}.svg`}
+              src={`/${image}.svg`}
               width={100}
               height={100}
               alt={`${image}`}
