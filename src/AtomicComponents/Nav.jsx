@@ -63,8 +63,9 @@ const Nav = ({active = 0}) => {
                 <FiBell />
             </div>
 
-            <div className='flex gap-[7px] items-center cursor-pointer'>
+            <div className='flex gap-[7px] items-center cursor-pointer text-[0.8rem]'>
                 <img src="https://www.looper.com/img/gallery/inosukes-powers-from-demon-slayer-explained/intro-1620465501.jpg" className='w-10 h-10 object-cover rounded-md'/>
+                <p>Chinwe Eze</p>
                 <FiChevronDown />
             </div>
         </div>
