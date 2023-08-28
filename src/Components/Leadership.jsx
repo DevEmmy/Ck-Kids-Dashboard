@@ -6,7 +6,7 @@ import Achievement from "@/AtomicComponents/Achievement";
 import { Mission1, Mission2, Mission3 } from "./AchievementData";
 
 const Leadership = () => {
-  const [level, setLevel] = useState(3);  
+  const [level, setLevel] = useState(3);
   const MasteryLevel = [
     {
       img1: "/masteryLevel/fmst1.png",
@@ -64,7 +64,7 @@ const Leadership = () => {
         <div className="w-full cflexss gap-[1em] text-[0.9rem] font-[600]">
           <p>Mastery Stage</p>
           <div className="flexmm pt-[0.1em] pr-[0.1em] pl-[0.1em] pb-[0.4em] w-full h-[15em] bg-primary2 rounded-xl">
-            <div className="flexbm w-full bg-white rounded-xl h-full py-[1em] px-[5%]">
+            <div className="flexbm w-full bg-white rounded-xl h-full py-[1em] px-[5%] sm:overflow-x-auto">
               {MasteryLevel.map((item) => {
                 return (
                   <>
@@ -92,15 +92,18 @@ const Leadership = () => {
 
         <LeaderBoardOverview />
 
-        <div className="w-full flexss gap-[2em]">
-          <div className="flexmm w-[25em]">
-            <Achievement missions={Mission1} />
-          </div>
-          <div className="flexmm w-[25em]">
-            <Achievement missions={Mission2} />
-          </div>
-          <div className="flexmm w-[25em]">
-            <Achievement missions={Mission3} />
+        <div className="w-full cflexss gap-[1em]">
+          <p>ALL ACHIEVEMENTS</p>
+          <div className="w-full flexss gap-[2em]">
+            <div className="flexmm w-[25em]">
+              <Achievement missions={Mission1} />
+            </div>
+            <div className="flexmm w-[25em]">
+              <Achievement missions={Mission2} />
+            </div>
+            <div className="flexmm w-[25em]">
+              <Achievement missions={Mission3} />
+            </div>
           </div>
         </div>
       </div>

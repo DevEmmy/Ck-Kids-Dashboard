@@ -4,7 +4,7 @@ import { IoDiamondOutline } from "react-icons/io5";
 const Achievement = ({missions}) => {  
   return (
     <div className="w-full">
-      <div className="mt-10">        
+      <div className="flexmm">        
         <div className="border rounded-2xl p-3 flex flex-col gap-3">
           {missions.map((mission, i) => {
             return (
