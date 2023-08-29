@@ -10,9 +10,11 @@ import {
   LogoutOutline,
 } from "heroicons-react";
 import Link from "next/link";
+import Profile from "./Profile";
 
 const Nav = ({ active = 0 }) => {
   const [profMenu, setProfMenu] = useState(false);
+  const [profile, setProfile] = useState(false);
   const navItems = [
     {
       name: "Overview",
@@ -116,7 +118,14 @@ const Nav = ({ active = 0 }) => {
                     <>
                       {item.name !== "Support" ? (
                         <>
-                          <div className="flex w-full items-center gap-[1em] p-[10px] rounded-lg hover:bg-primary2 cursor-pointer hover:text-white transition-all duration-500">
+                          <div
+                            className="flex w-full items-center gap-[1em] p-[10px] rounded-lg hover:bg-primary2 cursor-pointer hover:text-white transition-all duration-500"
+                            onClick={() => {
+                              if (item.name === "Profile") {
+                                setProfile(true);
+                              }
+                            }}
+                          >
                             <span className={`flexmm`}>{item.icon}</span>
                             <p className="text-[0.9em]">{item.name}</p>
                           </div>
@@ -140,6 +149,7 @@ const Nav = ({ active = 0 }) => {
           )}
         </div>
       </div>
+      {profile && <Profile setProfile={setProfile} />}
     </div>
   );
 };

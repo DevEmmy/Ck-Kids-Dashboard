@@ -15,7 +15,7 @@ import { motion, transform } from "framer-motion";
 
 const Appear = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.5 } },
+  visible: { opacity: 1, transition: { duration: 0.2 } },
 };
 
 const CoursesPage = () => {
@@ -79,7 +79,7 @@ const CoursesPage = () => {
                     return (
                       <div
                         key={i}
-                        className="flexbm w-full px-[1em] py-[0.5em] rounded-xl hover:bg-primary2 hover:text-white transition-all duration-500"
+                        className="flexbm w-full px-[1em] py-[0.5em] rounded-xl hover:bg-primary2 hover:text-white transition-all duration-400"
                       >
                         <p>{item.category}</p>
                         <ChevronRight />
