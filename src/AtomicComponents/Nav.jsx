@@ -47,18 +47,22 @@ const Nav = ({ active = 0 }) => {
   const profMenuItems = [
     {
       name: "Profile",
+      link: "/profile",
       icon: <UserCircleOutline color="black" size={20} />,
     },
     {
       name: "Settings",
+      link: "/settings",
       icon: <CogOutline color="black" size={20} />,
     },
     {
       name: "Support",
+      link: "/support",
       icon: <QuestionMarkCircleOutline color="black" size={20} />,
     },
     {
       name: "Log Out",
+      link: "/logout",
       icon: <LogoutOutline color="black" size={20} />,
     },
   ];
@@ -110,28 +114,16 @@ const Nav = ({ active = 0 }) => {
           <FiChevronDown />
           {profMenu && (
             <>
-              <div className="absolute cflexss gap-[0.5em] top-[7em] left-[-10em] w-[14em] bg-white rounded-xl shadow-md border-2 p-[0.5em] z-50">
+              <div className="absolute cflexss gap-[0.5em] top-[4em] right-xPadding w-[14em] bg-white rounded-xl shadow-md border-2 p-[0.5em] z-50">
                 {profMenuItems.map((item, i) => {
                   return (
-                    <>
-                      {item.name !== "Support" ? (
-                        <>
+                    <>                   
+                        <Link href={item.link} className="w-full">
                           <div className="flex w-full items-center gap-[1em] p-[10px] rounded-lg hover:bg-primary2 cursor-pointer hover:text-white transition-all duration-500">
-                            <span className={`flexmm`}>{item.icon}</span>
-                            <p className="text-[0.9em]">{item.name}</p>
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          {" "}
-                          <Link href="/support" className="w-full">
-                            <div className="flex w-full items-center gap-[1em] p-[10px] rounded-lg hover:bg-primary2 cursor-pointer hover:text-white transition-all duration-500">
-                              <span className={`flexmm`}>{item.icon}</span>
-                              <p className="text-[0.9em]">{item.name}</p>
-                            </div>
-                          </Link>
-                        </>
-                      )}
+                          <span className={`flexmm hover:text-white`}>{item.icon}</span>
+                          <p className="text-[0.9em]">{item.name}</p>
+                        </div>
+                      </Link>
                     </>
                   );
                 })}

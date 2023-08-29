@@ -149,7 +149,7 @@ const CourseVideo = () => {
           )}
           {selected === "question" && (
             <>
-              <div className="w-full cflexsm gap-[1em] overflow-y-auto h-[80vh] px-[2em]">
+              <div className="w-full cflexsm gap-[1em] overflow-y-auto h-auto px-[2em]">
                 <div className="flexbs w-full flex-wrap font-[400] text-[0.7rem]">
                   <div className="flexss gap-[1em]">
                     <div className="flexmm w-[5em]">
