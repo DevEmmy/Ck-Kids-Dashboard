@@ -6,7 +6,7 @@ import Achievement from "@/AtomicComponents/Achievement";
 import { Mission1, Mission2, Mission3 } from "./AchievementData";
 
 const Leadership = () => {
-  const [level, setLevel] = useState(3);
+  const [level, setLevel] = useState(6);
   const MasteryLevel = [
     {
       img1: "/masteryLevel/fmst1.png",
@@ -28,31 +28,31 @@ const Leadership = () => {
     },
     {
       img1: "/masteryLevel/fmst4.png",
-      img2: "/masteryLevel/mst4.png",
+      img2: "/masteryLevel/mst4.svg",
       level: 4,
       title: "trophy4",
     },
     {
       img1: "/masteryLevel/fmst5.png",
-      img2: "/masteryLevel/mst5.png",
+      img2: "/masteryLevel/mst5.svg",
       level: 5,
       title: "trophy5",
     },
     {
       img1: "/masteryLevel/fmst6.png",
-      img2: "/masteryLevel/mst6.png",
+      img2: "/masteryLevel/mst6.svg",
       level: 6,
       title: "trophy6",
     },
     {
       img1: "/masteryLevel/fmst7.png",
-      img2: "/masteryLevel/mst7.png",
+      img2: "/masteryLevel/mst7.svg",
       level: 7,
       title: "trophy7",
     },
     {
       img1: "/masteryLevel/fmst8.png",
-      img2: "/masteryLevel/mst8.png",
+      img2: "/masteryLevel/mst8.svg",
       level: 8,
       title: "trophy8",
     },

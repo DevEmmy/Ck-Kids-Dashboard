@@ -79,7 +79,7 @@ const CoursesPage = () => {
                     return (
                       <div
                         key={i}
-                        className="flexbm w-full px-[1em] py-[0.5em] rounded-xl hover:bg-primary2 transition-all duration-700"
+                        className="flexbm w-full px-[1em] py-[0.5em] rounded-xl hover:bg-primary2 hover:text-white transition-all duration-500"
                       >
                         <p>{item.category}</p>
                         <ChevronRight />
