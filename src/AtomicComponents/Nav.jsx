@@ -110,7 +110,7 @@ const Nav = ({ active = 0 }) => {
           <FiChevronDown />
           {profMenu && (
             <>
-              <div className="cflexss gap-[0.5em] absolute top-[7em] left-[-10em] w-[14em] bg-white rounded-xl shadow-md border-2 p-[0.5em] z-50">
+              <div className="absolute cflexss gap-[0.5em] top-[7em] left-[-10em] w-[14em] bg-white rounded-xl shadow-md border-2 p-[0.5em] z-50">
                 {profMenuItems.map((item, i) => {
                   return (
                     <>

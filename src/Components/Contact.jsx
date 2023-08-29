@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Nav from "@/AtomicComponents/Nav";
+import { ArrowLeftOutline } from "heroicons-react";
 
 const Contact = () => {
   const EMAIL_REGEX = /^(\w+)([\.\-]?\w+)*\@(\w+)([\.\-]?\w+)*(\.[a-z|A-Z]+)$/;
@@ -12,19 +13,19 @@ const Contact = () => {
     firstName: "",
     lastName: "",
     email: "",
-    message: "",    
-  });
+    message: "",
+  });  
 
   useEffect(() => {
     if (
       userDetails["firstName"].trim().length > 0 &&
       !emailError &&
       userDetails["lastName"].trim().length > 0 &&
-      userDetails["message"].trim().length > 0 && 
+      userDetails["message"].trim().length > 0 &&
       agreement
-    ) {      
+    ) {
       setValid(true);
-    } else {      
+    } else {
       setValid(false);
     }
     if (
@@ -64,17 +65,17 @@ const Contact = () => {
     }
   };
 
-  const handleSubmit = (e) => {    
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (valid) {      
+    if (valid) {
       setUserDetails({
         firstName: "",
         lastName: "",
         email: "",
         message: "",
       });
-      setAgreement(false)
-      setValid(false)
+      setAgreement(false);
+      setValid(false);
 
       // ENDPOINT FOR SUBMITTING USER MESSAGE
     }
@@ -86,7 +87,19 @@ const Contact = () => {
       <div className="flexms px-xpadding sm:px-[1.5em] py-[4em] sm1:pb-[2em] sm1:pt-[0em] bg-primary6 h-full flex-wrap">
         <div className="flex flex-col justify-between items-start h-[100%] w-[40em] flex-shrink py-[4em] sm1:pt-0 sm1:pb-[2em] text-[0.8rem] sm1:text-[1.1rem] sm1:flex-grow">
           <div className="w-full cflexss gap-[1em]">
-            <h1 className="font-[700] text-[1.7rem]">Contact Us</h1>
+            <div
+              onClick={() => {
+                window.history.back()
+              }}
+              className="flexmm gap-[1em] font-[900] text-[0.9rem]"
+            >
+              <div className="flexss bg-primary2 rounded-[0.5em] p-[0.4em] cursor-pointer">
+                <div className="w-[1.2em] h-[1.2em] rounded-full bg-white flexmm">
+                  <ArrowLeftOutline size="12px" color="#00AC76" />
+                </div>
+              </div>
+              <p>Contact Support</p>
+            </div>
             <p className="w-[90%] sm:w-full">
               We'd love to hear from you! If you have any questions, inquiries,
               or feedback, please fill out the form below, and our team will get
@@ -97,13 +110,17 @@ const Contact = () => {
           <div className="w-full cflexss gap-[2em] pt-[18em] sm:pt-[1em]">
             <div className="w-full flexbm flex-wrap sm:gap-[1em]">
               <div className="cfledxdmm gap-[0.5em] w-[70%] sm:w-full">
-                <p className="font-[700] text-[1rem] sm:text-[1.1rem] sm:pb-[1em]">Business Hours:</p>
+                <p className="font-[700] text-[1rem] sm:text-[1.1rem] sm:pb-[1em]">
+                  Business Hours:
+                </p>
                 <p>Monday to Friday: 9:00 AM - 6:00 PM (WAT)</p>
                 <p>Saturday and Sunday: Closed</p>
               </div>
 
               <div className="cfledxdmm gap-[0.5em] w-[30%] sm:w-full">
-                <p className="font-[700] text-[1rem] sm:text-[1.1rem] sm:pb-[1em]">Headquaters:</p>
+                <p className="font-[700] text-[1rem] sm:text-[1.1rem] sm:pb-[1em]">
+                  Headquaters:
+                </p>
                 <p>23 Majekodunmi St,</p>
                 <p>Alagbado 102213, Lagos</p>
               </div>
@@ -111,12 +128,16 @@ const Contact = () => {
 
             <div className="w-full flexbm flex-wrap sm:gap-[1em]">
               <div className="cfledxdmm gap-[0.5em] w-[70%] sm:w-full">
-                <p className="font-[700] text-[1rem] sm:text-[1.1rem] sm:pb-[1em]">Email:</p>
+                <p className="font-[700] text-[1rem] sm:text-[1.1rem] sm:pb-[1em]">
+                  Email:
+                </p>
                 <p>support@curiouskidz.com.ng</p>
               </div>
 
               <div className="cfledxdmm gap-[0.5em] w-[30%] sm:w-full">
-                <p className="font-[700] text-[1rem] sm:text-[1.1rem] sm:pb-[1em]">Phone:</p>
+                <p className="font-[700] text-[1rem] sm:text-[1.1rem] sm:pb-[1em]">
+                  Phone:
+                </p>
                 <p>+234 805 988 7668</p>
               </div>
             </div>
@@ -198,12 +219,19 @@ const Contact = () => {
                 )}
               </div>
               <div className="flexsm w-full gap-[1em] text-[0.7rem] text-[#AAAAAA] font-[400]">
-                <input type="checkbox" checked={agreement} onClick={(e)=>{
-                    setAgreement(e.target.checked)
-                    setChanging(!changing)
-                }}/>
+                <input
+                  type="checkbox"
+                  checked={agreement}
+                  onClick={(e) => {
+                    setAgreement(e.target.checked);
+                    setChanging(!changing);
+                  }}
+                />
                 <p>
-                  you agree to our friendly <span className="underline cursor-pointer">privacy policy.</span>
+                  you agree to our friendly{" "}
+                  <span className="underline cursor-pointer">
+                    privacy policy.
+                  </span>
                 </p>
               </div>
               <button
@@ -216,7 +244,7 @@ const Contact = () => {
             </form>
           </div>
         </div>
-      </div>      
+      </div>
     </>
   );
 };
