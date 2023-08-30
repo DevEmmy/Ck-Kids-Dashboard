@@ -49,18 +49,22 @@ const Nav = ({ active = 0 }) => {
   const profMenuItems = [
     {
       name: "Profile",
+      link: "/profile",
       icon: <UserCircleOutline color="black" size={20} />,
     },
     {
       name: "Settings",
+      link: "/settings",
       icon: <CogOutline color="black" size={20} />,
     },
     {
       name: "Support",
+      link: "/support",
       icon: <QuestionMarkCircleOutline color="black" size={20} />,
     },
     {
       name: "Log Out",
+      link: "/logout",
       icon: <LogoutOutline color="black" size={20} />,
     },
   ];
@@ -112,7 +116,7 @@ const Nav = ({ active = 0 }) => {
           <FiChevronDown />
           {profMenu && (
             <>
-              <div className="absolute cflexss gap-[0.5em] top-[7em] left-[-10em] w-[14em] bg-white rounded-xl shadow-md border-2 p-[0.5em] z-50">
+              <div className="absolute cflexss gap-[0.5em] top-[4em] right-xPadding w-[14em] bg-white rounded-xl shadow-md border-2 p-[0.5em] z-50">
                 {profMenuItems.map((item, i) => {
                   return (
                     <>
