@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ImageStacked from "./ImageStacked";
 
-const CourseCard = ({ image, title, heading, content, images, enrolled, link, size }) => {
+const CourseCard = ({ image, title, heading, content, images, enrolled, link="/", size }) => {
   return (
     <>
       <Link href={link} className="sm:flex-grow">

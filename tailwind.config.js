@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       spacing: {
         xPadding: "5%",
+        xpadding: "6.94%",
       },
       gridTemplateColumns: {
         "3to1": "3fr 1fr",
@@ -27,6 +28,13 @@ module.exports = {
         primary5: "#D8D8D8",
         purplePrime: "#6941C6",
         secondary1: "rgba(0, 0, 0, 0.5)",
+        sec1: "#00AC76",
+        sec2: "#FFF",
+        sec3: "#090914",
+        sec4: "#52525B",
+        sec5: "#222",
+        sec6: "#FDEFD2",
+        sec7: "#000",
       },
       fontFamily: {
         sans: ["Poppins", "sans-serif"],

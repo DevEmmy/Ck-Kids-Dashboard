@@ -21,35 +21,35 @@ const Nav = ({ active = 0 }) => {
       icon: <FiGrid color="white" size={15} />,
       baseColor: "bg-[#F5AE1E]",
       color: "bg-[#FAD68E]",
-      link: "/",
+      link: "/kids-dashboard",
     },
     {
       name: "Courses",
       icon: <GiGraduateCap color="white" size={15} />,
       baseColor: "bg-[#00AC76]",
       color: "bg-[#80D5BA]",
-      link: "/courses",
+      link: "/kids-dashboard/courses",
     },
     {
       name: "Messages",
       icon: <BsChatSquareText color="white" size={15} />,
       baseColor: "bg-[#8D67CE]",
       color: "bg-[#C6B3E6]",
-      link: "/messages",
+      link: "/kids-dashboard/messages",
     },
     {
       name: "Leadership",
       icon: <GiTrophy color="white" size={15} />,
       baseColor: "bg-[#FE5972]",
       color: "bg-[#FEACB8]",
-      link: "/leadership-board",
+      link: "/kids-dashboard/leadership-board",
     },
   ];
 
   const profMenuItems = [
     {
-      name: "Profile",
-      link: "/profile",
+      name: "Profile",      
+      // link: "/profile",
       icon: <UserCircleOutline color="black" size={20} />,
     },
     {
@@ -70,8 +70,8 @@ const Nav = ({ active = 0 }) => {
   ];
   return (
     <div className="flex px-xPadding items-center justify-between mt-[10px] border-b-gray-300 border-b pb-[20px]">
-      <Image
-        src="/logo.svg"
+      <img
+        src="/logo.png"
         width={0}
         height={0}
         alt="logo"
@@ -120,7 +120,7 @@ const Nav = ({ active = 0 }) => {
                 {profMenuItems.map((item, i) => {
                   return (
                     <>
-                      {item.name !== "Support" ? (
+                      {item.name === "Profile" ? (
                         <>
                           <div
                             className="flex w-full items-center gap-[1em] p-[10px] rounded-lg hover:bg-primary2 cursor-pointer hover:text-white transition-all duration-500"
@@ -137,7 +137,7 @@ const Nav = ({ active = 0 }) => {
                       ) : (
                         <>
                           {" "}
-                          <Link href="/support" className="w-full">
+                          <Link href={item.link} className="w-full">
                             <div className="flex w-full items-center gap-[1em] p-[10px] rounded-lg hover:bg-primary2 cursor-pointer hover:text-white transition-all duration-500">
                               <span className={`flexmm`}>{item.icon}</span>
                               <p className="text-[0.9em]">{item.name}</p>
