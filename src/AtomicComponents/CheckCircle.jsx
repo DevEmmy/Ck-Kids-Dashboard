@@ -5,7 +5,7 @@ const CheckCircle = ({className, size}) => {
   return (
     <>
       <div className={className}>
-        <Check size={size} className="text-primary6" />        
+        <Check size={size} className="text-sec6" />        
       </div>
     </>
   );
