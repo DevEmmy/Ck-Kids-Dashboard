@@ -51,11 +51,11 @@ const Footer = () => {
   return (
     <>
       <div className="px-xpadding py-[80px] sm:py-[30px] bg-sec1 text-white flex flex-col gap-5 sm:gap-3">
-        <div className="flexbs sm:gap-6 font-[400]">
+        <div className="flexbs sm:gap-6 font-[400] sm:flex-wrap">
           <div className="flex w-[297px] sm:w-full flex-col gap-[30px] sm:gap-[15px]">
-            <Link href={"/"} className="w-[171px] sm:w-[12em]">
-              <Image src={"logo.svg"} alt="logo" width={"0"} height={"0"} />
-            </Link>
+            <a href={"/"} className="w-[175px] sm:w-[12em]">
+              <img src={"logo.svg"} alt="logo" />
+            </a>
 
             <div className="text-white flex flex-col gap-6 sm:gap-[2em] text-[16px] sm:text-[20px]">
               <p>
@@ -74,13 +74,13 @@ const Footer = () => {
           <div className="flex gap-[30px] sm:gap-[1em] sm:flex-col">
             {nav.map((item, i) => {
               return (
-                <Link
+                <a
                   href={item.link}
                   key={i}
                   className="text-[16px] font-[600] sm:text-[20px]"
                 >
                   {item.title}
-                </Link>
+                </a>
               );
             })}
           </div>
@@ -89,9 +89,9 @@ const Footer = () => {
             <div className="flex gap-[12px]">
               {socials.map((social, i) => {
                 return (
-                  <Link key={i} href={social.link}>
+                  <a key={i} href={social.link}>
                     {social.icon}
-                  </Link>
+                  </a>
                 );
               })}
             </div>

@@ -112,16 +112,16 @@ const Testimonials = () => {
           </div>
         </div>
         <div className="flexss sm1:justify-center gap-[1em] font-[600] text-[19px] lg:text-[15px] flex-wrap sm1:w-full">
-          <Link href="/price" className="sm:flex flex-grow">
+          <a href="/price" className="sm:flex flex-grow">
             <Button className="border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] rounded-full sm:w-full">
               <p>Enroll now</p> <ArrowRightOutline size="1em" />
             </Button>
-          </Link>
-          <Link href="/" className="sm:flex flex-grow">
+          </a>
+          <a href="/" className="sm:flex flex-grow">
             <Button className="border-[1px] border-sec1 text-sec1 flexmm px-[52px] py-[20px] rounded-full sm:w-full">
               <p>Login as a guest</p>
             </Button>
-          </Link>
+          </a>
         </div>
       </div>
     </>
@@ -152,16 +152,14 @@ const Reviews = (props) => {
         className="cflexss gap-[20px] w-[45%] md:w-full font-[600] text-[#090914] text-[16px] sm:text-[20px] leading-[28px] sm:min-h-[25em]"
       >
         <div className="flexmm w-[130px] sm:w-[140px]">
-          <Image src={`${star}.svg`} width={100} height={100} alt={`${star}`} />
+          <img src={`${star}.svg`} alt={`${star}`} />
         </div>
         <p>"{content1}</p>
         <p>{content2}"</p>
         <div className="flexsm gap-[0.5em] w-full">
           <div className="w-[44px]">
-            <Image
-              src={`${image}.svg`}
-              width={100}
-              height={100}
+            <img
+              src={`${image}.svg`}              
               alt={`${image}`}
             />
           </div>

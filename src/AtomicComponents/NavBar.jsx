@@ -5,20 +5,8 @@ import Button from "./Button";
 import React, { useState } from "react";
 import { RiMenuFill } from "react-icons/ri";
 import { HiX } from "react-icons/hi";
-import { useEffect } from "react";
 
 const NavBar = ({ active = 0, background }) => {
-  // const [size, setSize] = useState(window.innerWidth);
-  // useEffect(() => {
-  //   window.addEventListener("resize", () => {
-  //     setSize(window.innerWidth);
-  //   });
-
-  //   window.removeEventListener("resize", () => {
-  //     setSize(window.innerWidth);
-  //   });
-  //   console.log(size);
-  // }, [size]);
   const nav = [
     {
       title: "Home",
@@ -42,7 +30,7 @@ const NavBar = ({ active = 0, background }) => {
 
   return (
     <>
-      <nav
+      <div
         className={`bg-${
           background ? background : "sec6"
         } w-full flex justify-between items-center py-[20px] px-xpadding ${
@@ -50,10 +38,10 @@ const NavBar = ({ active = 0, background }) => {
         }`}
       >
         <a href="/" className="w-[14em] sm:w-[11em]">
-          <Image src="/homeLogo.svg" width={100} height={100} alt="CSkidz" />
+          <img src="/homeLogo.svg" alt="CSkidz" />
         </a>
 
-        <div className="flex gap-[60px] sm:hidden">
+        <div className="flexmm gap-[60px] sm1:hidden">
           {nav.map((item, i) => {
             return (
               <a
@@ -71,7 +59,7 @@ const NavBar = ({ active = 0, background }) => {
           })}
         </div>
 
-        <div className="w-fit flex gap-6 sm:hidden">
+        <div className="w-fit flex gap-6 sm1:hidden">
           <a href={"/signup"}>
             <Button className="rounded-full border-2 border-sec1 bg-transparent px-[52px] py-[20px] text-[19px] lg:px-[42px] lg:text-[15px] ls:px-[35px] ls:py-[18px] text-sec1 font-[600]">
               Create Free Account
@@ -85,7 +73,7 @@ const NavBar = ({ active = 0, background }) => {
           </a>
         </div>
 
-        <div className="hidden sm:block">
+        <div className="hidden sm1:block">
           {showNav ? (
             <HiX
               size={24}
@@ -104,7 +92,7 @@ const NavBar = ({ active = 0, background }) => {
         </div>
 
         <div
-          className={`fixed top-[70px] sm:top-[60px] w-full md:hidden bg-sec6 h-full p-xpadding ${
+          className={`fixed top-[70px] sm:top-[60px] w-full bg-sec6 h-full p-xpadding ${
             showNav ? "left-0" : "left-[100%]"
           } transition-all z-[999]`}
         >
@@ -140,7 +128,7 @@ const NavBar = ({ active = 0, background }) => {
             </a>
           </div>
         </div>
-      </nav>
+      </div>
     </>
   );
 };

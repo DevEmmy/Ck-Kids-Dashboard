@@ -22,46 +22,37 @@ const About = () => {
         }
         imageFirst={true}
       >
-        <div className="flex flex-col gap-[1em] sm:gap-[0.5em] leading-[1.7em] sm:text-[#333]">
-          <p className="text-[1em] font-[600]">About Us</p>
+        <div className="flex flex-col font-[400] gap-[32px] sm:gap-[0.5em] leading-[1.7em] text-[20px] lg:text-[17px] ls:text-[16px] text-[#333]">
+          <p className="text-[24px] sm:font-[700] sm:text-[17px]  ">About Us</p>
 
-          <h3 className="text-[1.6em] sm:text-[1.8rem] font-[700] sm:font-[800] text-sec1 sm:leading-[1.5em]">
+          <h3 className="text-[40px] lg:text-[35px] ls:text-[30px] sm:text-[28px] leading-[150%] font-[700] sm:font-[800] text-sec1 sm:leading-[1.5em]">
             Unleashing Curiosity and Empowering Young Minds
           </h3>
 
-          <p className="text-[1.0em] pt-[1em]">
+          <p>
             Welcome to CuriousKidz, an innovative educational method that
             bridges the gap between conventional education and the exciting
             world of STEAM (Science, Technology, Engineering, Arts, and
             Mathematics).
           </p>
 
-          <p className="text-[1.0em] pt-[1em]">
+          <p>
             At CuriousKidz, we believe that every young mind holds boundless
             potential, waiting to be unleashed through curiosity, creativity,
             and problem-solving skills.
           </p>
 
-          <div className="flexsm gap-3 text-[0.8em] font-[700] sm:items-start pt-[1em] sm:w-full flex-wrap">
-            <Link href="/price" className="flex-grow">
-              <Button
-                className={
-                  "flex items-center gap-1 rounded-full px-[2.5em] py-[1em] text-white bg-sec1 w-full justify-center"
-                }
-              >
-                Enroll now <FaArrowRight />
+          <div className="flexss sm1:justify-center gap-[10px] font-[600] text-[19px] lg:text-[15px] ls:text-[14px] flex-wrap sm:pt-[1em] sm1:w-full">
+            <a href="/price" className="sm:flex-grow">
+              <Button className="w-full border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
+                <p>Enroll now</p> <FaArrowRight size="1em" />
               </Button>
-            </Link>
-
-            <Link href="" className="flex-grow">
-              <Button
-                className={
-                  "flex items-center gap-1 rounded-full px-[2.5em] py-[0.9em] text-sec1 bg-transparent border-sec1 border-2 w-full justify-center"
-                }
-              >
-                Login as a guest
+            </a>
+            <a href="/" className="sm:flex-grow">
+              <Button className="w-full border-[1px] border-sec1 text-sec1 flexmm px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
+                <p>Login as a guest</p>
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </PictureTextDivider>
@@ -71,15 +62,17 @@ const About = () => {
         bgColor={"bg-transparent"}
         imageFirst={false}
       >
-        <div className="flex flex-col gap-[1.5em] leading-[1.7em] sm:text-[#333] sm:pt-[2em]">
-          <h3 className="text-sec1 font-[700] text-[1.6em]">Our Vision</h3>
+        <div className="flex flex-col font-[400] gap-[32px] sm:gap-[0.5em] leading-[1.7em] text-[20px] lg:text-[17px] ls:text-[16px] text-[#333] sm:pt-[2em]">
+          <h3 className="text-[36px] lg:text-[32px] ls:text-[30px] sm:text-[28px] leading-[150%] font-[700] sm:font-[800] text-sec1 sm:leading-[1.5em]">
+            Our Vision
+          </h3>
 
-          <p className="text-0.9em">
+          <p>
             Our vision is to empower young learners in Nigeria and beyond with
             the tools they need to excel in rare and high-paying disciplines.
           </p>
 
-          <p className="text-0.9em">
+          <p>
             The STEAM program at CuriousKidz is meticulously designed to engage
             young minds in conventional education settings, while simultaneously
             igniting a passion for innovation and exploration.
@@ -93,12 +86,12 @@ const About = () => {
           bgColor={"bg-transparent"}
           imageFirst={true}
         >
-          <div className="flex flex-col gap-[1.5em] leading-[1.7em] sm:text-[#333] pt-[2em]">
-            <h3 className="text-sec1 font-[700] text-[1.6em]">
+          <div className="flex flex-col font-[400] gap-[32px] sm:gap-[0.5em] leading-[1.7em] pt-[2em] text-[20px] lg:text-[17px] ls:text-[16px] text-[#333]">
+            <h3 className="text-[36px] lg:text-[32px] ls:text-[30px] sm:text-[28px] leading-[150%] font-[700] sm:font-[800] text-sec1 sm:leading-[1.5em]">
               Overcoming Chalenges
             </h3>
 
-            <p className="text-0.9em">
+            <p>
               In Nigeria, we recognize two major factors that hinder the
               progress of the STEM/STEAM program: cost and limited engaging
               environments. Creating enriching experiences like acoustically
@@ -106,7 +99,7 @@ const About = () => {
               printers can be expensive.
             </p>
 
-            <p className="text-0.9em">
+            <p>
               These resources are often readily available in developed
               societies, making it easier for children in those regions to
               explore fields like aerospace, astronomy, robotics, computer
@@ -115,10 +108,10 @@ const About = () => {
             <Link href="/price" className="flex-grow">
               <Button
                 className={
-                  "flex items-center w-fit gap-1 rounded-full px-[2.5em] py-[1em] text-white bg-sec1 sm:w-full sm:justify-center"
+                  "flex items-center w-fit gap-[10px] rounded-full px-[2.5em] py-[1em] text-white bg-sec1 sm:w-full sm:justify-center"
                 }
               >
-                Enroll now <FaArrowRight />
+                <p>Enroll now</p> <FaArrowRight />
               </Button>
             </Link>
           </div>
@@ -130,19 +123,19 @@ const About = () => {
         bgColor={"bg-transparent"}
         imageFirst={false}
       >
-        <div className="flex flex-col gap-[1.5em] leading-[1.7em] sm:text-[#333] pt-[2em]">
-          <h3 className="text-sec1 font-[700] text-[1.6em] leading-[1.5em]">
+        <div className="flex flex-col font-[400] gap-[32px] sm:gap-[0.5em] leading-[1.7em] text-[20px] lg:text-[17px] ls:text-[16px] text-[#333] pt-[2em]">
+          <h3 className="text-[36px] lg:text-[32px] ls:text-[30px] sm:text-[28px] leading-[150%] font-[700] sm:font-[800] text-sec1 sm:leading-[1.5em]">
             Feeling Curiousity, Curbing Boredom
           </h3>
 
-          <p className="text-0.9em">
+          <p>
             We understand that traditional instructional methods can leave young
             minds feeling bored and disconnected from their studies. To address
             this, CuriousKidz leverages mediums like TV, movies, and the
             internet – platforms that naturally captivate children's attention.
           </p>
 
-          <p className="text-0.9em">
+          <p>
             We firmly believe that by incorporating these mediums into the
             learning process, we can create an engaging, research-based,
             peer-to-peer learning environment.
@@ -152,8 +145,8 @@ const About = () => {
 
       <div className="bg-[#FAFAFA]">
         <PictureTextDivider imageUrl={"/about-5.png"} imageFirst={true}>
-          <div className="flex flex-col gap-[1.5em] leading-[1.7em] sm:text-[#333] pt-[2em]">
-            <h3 className="text-sec1 font-[700] text-[1.6em] leading-[1.5em]">
+          <div className="flex flex-col font-[400] gap-[32px] sm:gap-[0.5em] leading-[1.7em] text-[20px] lg:text-[17px] ls:text-[16px] text-[#333] pt-[2em]">
+            <h3 className="text-[36px] lg:text-[32px] ls:text-[30px] sm:text-[28px] leading-[150%] font-[700] sm:font-[800] text-sec1 sm:leading-[1.5em]">
               Nuturing a Passion for Knowledge
             </h3>
 
@@ -173,8 +166,8 @@ const About = () => {
         </PictureTextDivider>
 
         <PictureTextDivider imageUrl={"/about-6.png"} imageFirst={false}>
-          <div className="flex flex-col gap-[1.5em] leading-[1.7em] sm:text-[#333] pt-[2em]">
-            <h3 className="text-sec1 font-[700] text-[1.6em]">
+          <div className="flex flex-col font-[400] gap-[32px] sm:gap-[0.5em] leading-[1.7em] text-[20px] lg:text-[17px] ls:text-[16px] text-[#333] pt-[2em]">
+            <h3 className="text-[36px] lg:text-[32px] ls:text-[30px] sm:text-[28px] leading-[150%] font-[700] sm:font-[800] text-sec1 sm:leading-[1.5em]">
               Our Committment
             </h3>
 
@@ -192,49 +185,31 @@ const About = () => {
               nurturing curious minds that will shape the future of our world.
             </p>
             <div className=" block flexsm gap-3 text-[0.8em] font-[700] sm:items-start pt-[1em] sm:w-full flex-wrap sm:hidden">
-              <Link href="/price" className="flex-grow">
-                <Button
-                  className={
-                    "flex items-center gap-1 rounded-full px-[2.5em] py-[1em] text-white bg-sec1 w-full justify-center"
-                  }
-                >
-                  Enroll now <FaArrowRight />
+              <a href="/price" className="flex-grow">
+                <Button className="w-full border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
+                  <p>Enroll now</p> <FaArrowRight size="1em" />
                 </Button>
-              </Link>
-
-              <Link href="" className="flex-grow">
-                <Button
-                  className={
-                    "flex items-center gap-1 rounded-full px-[2.5em] py-[0.9em] text-sec1 bg-transparent border-sec1 border-2 w-full justify-center"
-                  }
-                >
-                  Login as a guest
+              </a>
+              <a href="/" className="flex-grow">
+                <Button className="w-full border-[1px] border-sec1 text-sec1 flexmm px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
+                  <p>Login as a guest</p>
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </PictureTextDivider>
         <div className="hidden sm:block w-full sm:px-xpadding">
-          <div className="flexsm gap-3 text-[0.8em] font-[700] sm:items-start pt-[1em] sm:w-full flex-wrap bg-[#FAFAFA] pb-[5em]">
-            <Link href="/price" className="flex-grow">
-              <Button
-                className={
-                  "flex items-center gap-1 rounded-full px-[2.5em] py-[1em] text-white bg-sec1 w-full justify-center"
-                }
-              >
-                Enroll now <FaArrowRight />
+          <div className="flexss sm1:justify-center gap-[10px] font-[600] text-[19px] lg:text-[15px] ls:text-[14px] flex-wrap bg-[#FAFAFA] pb-[5em] sm1:w-full">
+            <a href="/price" className="flex-grow">
+              <Button className="w-full border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
+                <p>Enroll now</p> <FaArrowRight size="1em" />
               </Button>
-            </Link>
-
-            <Link href="" className="flex-grow">
-              <Button
-                className={
-                  "flex items-center gap-1 rounded-full px-[2.5em] py-[0.9em] text-sec1 bg-transparent border-sec1 w-full border-2 justify-center"
-                }
-              >
-                Login as a guest
+            </a>
+            <a href="/" className="flex-grow">
+              <Button className="w-full border-[1px] border-sec1 text-sec1 flexmm px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
+                <p>Login as a guest</p>
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </div>

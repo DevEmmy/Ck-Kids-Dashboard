@@ -38,7 +38,7 @@ const LandingPage = () => {
   return (
     <>
       <NavBar active={0} />
-      <div className="flexbm px-xpadding bg-sec6 py-[5em] text-[20px] ls:text-[15px] lg:text-[17px] lg:py-[4em] sm:px-[1.5em] sm1:pb-[2em] sm:pt-[0em] flex-wrap">
+      <div className="flexbm px-xpadding bg-sec6 py-[5em] text-[20px] ls:text-[15px] lg:text-[17px] lg:py-[4em] sm1:pt-[0em] sm1:pb-[2em] sm:px-[1.5em] flex-wrap">
         <div className="cflexms font-[600] gap-[32px] text-sec5 md:gap-[1em] w-[35em] flex-grow pb-[2em]">
           <h1 className="font-[800] text-[52px] lg:text-[45px] ls:text-[35px] sm:text-[1.7rem]">
             Unlock Your Child's Potential through{" "}
@@ -51,16 +51,16 @@ const LandingPage = () => {
             to explore the wonders of the world.
           </p>
           <div className="flexss sm1:justify-center gap-[1em] font-[600] text-[19px] lg:text-[15px] ls:text-[13px] flex-wrap sm1:w-full">
-            <Link href="/price" className="sm:flex flex-grow">
+            <a href="/price" className="sm:flex flex-grow">
               <Button className="border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
                 <p>Enroll now</p> <ArrowRightOutline size="1em" />
               </Button>
-            </Link>
-            <Link href="/" className="sm:flex flex-grow">
+            </a>
+            <a href="/" className="sm:flex flex-grow">
               <Button className="border-[1px] border-sec1 text-sec1 flexmm px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
                 <p>Login as a guest</p>
               </Button>
-            </Link>
+            </a>
           </div>
           <div className="flexsm gap-[1em] flex-wrap sm:text-[1.1rem]">
             <div className="flexsm gap-[0.5em]">
@@ -89,29 +89,19 @@ const LandingPage = () => {
 
         <div className="flexes w-[37em] md1:w-full md1:justify-center flex-shrink">
           <div className="flexmm w-[85%] sm:w-[100%]">
-            <Image
-              src="/boyImage.svg"
-              width={100}
-              height={100}
-              alt="boyImage"
-            />
+            <img src="/boyImage.svg" alt="boyImage" />
           </div>
         </div>
       </div>
 
-      <div className="flexbm px-xpadding bg-[#FAFAFA] py-[6em] text-[20px] lg:text-[17px] lg:py-[5em] ls:text-[15px] sm:px-[1.5em] sm1:pb-[2em] sm:pt-[0em] flex-wrap">
+      <div className="flexbm px-xpadding bg-[#FAFAFA] py-[6em] text-[20px] lg:text-[17px] lg:py-[5em] ls:text-[15px] sm:px-[1.5em] sm1:pb-[2em] sm:pt-[0em] sm:gap-[2em] flex-wrap">
         <div className="cflexms gap-[24px] w-[35em] pt-[2em] flex-grow">
           <h1 className="font-[800] text-[36px] ls:text-[32px] sm:text-[1.7rem] sm:w-[10em]">
             Why Choose CuriousKidz?
           </h1>
           <div className="flexss gap-[0.5em]">
             <div className="flexmm w-[5em] sm:w-[10em]">
-              <Image
-                src="innovative.svg"
-                width={100}
-                height={100}
-                alt="innovative"
-              />
+              <img src="innovative.svg" alt="innovative" />
             </div>
             <p>
               <span className="font-[800] leading-[34px]">
@@ -125,7 +115,7 @@ const LandingPage = () => {
           </div>
           <div className="flexss gap-[0.5em] leading-[34px]">
             <div className="flexmm w-[6em]  sm:w-[10em]">
-              <Image src="steam.svg" width={100} height={100} alt="steam" />
+              <img src="steam.svg" alt="steam" />
             </div>
             <p>
               <span className="font-[800]">STEAM Enthusiasm: </span> Our
@@ -137,12 +127,7 @@ const LandingPage = () => {
           </div>
           <div className="flexss gap-[0.5em] leading-[34px]">
             <div className="flexmm w-[5em] sm:w-[10em]">
-              <Image
-                src="educators.svg"
-                width={100}
-                height={100}
-                alt="educators"
-              />
+              <img src="educators.svg" alt="educators" />
             </div>
             <p>
               <span className="font-[800]">Qualified Educators: </span>Qualified
@@ -153,22 +138,17 @@ const LandingPage = () => {
             </p>
           </div>
           <div className="flexss sm1:justify-center font-[600] text-[19px] lg:text-[15px] ls:text-[13px] flex-wrap sm1:w-full">
-            <Link href="/price" className="sm:flex flex-grow">
+            <a href="/price" className="sm:flex flex-grow">
               <Button className="border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
                 <p>Enroll now</p> <ArrowRightOutline size="1em" />
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
 
         <div className="flexes w-[35em] md1:w-full md1:justify-center flex-shrink">
           <div className="flexmm w-[82%] sm:w-[100%]">
-            <Image
-              src="/girlImage.svg"
-              width={100}
-              height={100}
-              alt="girlImage"
-            />
+            <img src="/girlImage.svg" alt="girlImage" />
           </div>
         </div>
       </div>

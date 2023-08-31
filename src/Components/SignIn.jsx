@@ -64,9 +64,9 @@ const SignIn = () => {
       <div className="h-[100vh] w-full flexss flex-wrap">
         <div className="w-[45%] h-full bg-sec1 pt-[4em] sm:py-[2em] pb-[6em] px-[5em] text-sec2 sm:px-[1.5em] md1:w-full">
           <div className="cflexss gap-[1.5em]">
-            <Link href="/" className="w-[15em] sm:w-[12em]">
-              <Image src="logo.svg" width={100} height={100} alt="CSkidz" />
-            </Link>
+            <a href="/" className="w-[15em] sm:w-[12em]">
+              <img src="logo.svg" alt="CSkidz" />
+            </a>
             <div>
               <h1 className="text-[2.3rem] sm:text-[1.8rem] font-[800]">
                 Welcome back to CuriousKidz!

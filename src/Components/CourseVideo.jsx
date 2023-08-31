@@ -58,13 +58,13 @@ const CourseVideo = () => {
     <>
       <Nav active={1}/>
       <div className="w-full flexss gap-[1em] pt-[2em] px-[5%]">
-        <Link href="/courses" className="flexmm">
+        <a href="/courses" className="flexmm">
           <div className="flexss bg-primary2 rounded-[0.5em] p-[0.4em] cursor-pointer">
             <div className="w-[1.2em] h-[1.2em] rounded-full bg-white flexmm">
               <ArrowLeftOutline size="12px" color="#00AC76" />
             </div>
           </div>
-        </Link>
+        </a>
         <div className="cflexss gap-[1em]">
           <p className="font-[700]">Arts and Crafts: Unleashing Imagination</p>
           <p>22 Lessons</p>

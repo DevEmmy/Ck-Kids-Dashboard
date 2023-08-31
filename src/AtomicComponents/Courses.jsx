@@ -9,10 +9,8 @@ const CourseCard = ({ background, image, text }) => {
         style={{ background }}
       >
         <div className="flexmm w-[3em]">
-          <Image
-            src={`${image}.svg`}
-            width={100}
-            height={100}
+          <img
+            src={`${image}.svg`}           
             alt={`${image}`}
           />
         </div>
