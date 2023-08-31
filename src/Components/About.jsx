@@ -18,7 +18,7 @@ const About = () => {
           "w-[100%] rounded-[1.5em] margin-auto object-cover h-[100%]"
         }
         imageContainerClassNames={
-          "h-[674px] sm:h-[500px] p-[10px] bg-white rounded-[1.8em]"
+          "h-[674px] lg:h-[650px] ls:h-[620px] sm:h-[500px] p-[10px] bg-white rounded-[1.8em]"
         }
         imageFirst={true}
       >
@@ -121,6 +121,12 @@ const About = () => {
       <PictureTextDivider
         imageUrl={"/about-4.png"}
         bgColor={"bg-transparent"}
+        imageClassNames={
+          "w-[100%] rounded-[1.5em] margin-auto object-cover h-[100%]"
+        }
+        imageContainerClassNames={
+          "h-[680px] lg:h-[640px] ls:h-[600px] sm:h-[500px] p-[10px] bg-white rounded-[1.8em]"
+        }        
         imageFirst={false}
       >
         <div className="flex flex-col font-[400] gap-[32px] sm:gap-[0.5em] leading-[1.7em] text-[20px] lg:text-[17px] ls:text-[16px] text-[#333] pt-[2em]">

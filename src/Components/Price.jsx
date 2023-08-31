@@ -15,10 +15,10 @@ const Price = () => {
   return (
     <>
       <NavBar active={3} background={"sec2"} />
-      <div className="cflexss w-full px-xpadding pt-[5em] pb-[3em] text-[0.9rem] font-[400]">
-        <div className="w-full cflexsm gap-[1em] text-center pb-[6em]">
+      <div className="cflexss w-full px-xpadding pt-[5em] pb-[3em] text-[24px] lg:text-[20px] ls:text-[18px] font-[400]">
+        <div className="w-full cflexsm gap-[24px] text-center pb-[6em]">
           <p>Pricing That Supports Learning Adventures</p>
-          <h1 className="font-[700] text-[1.5rem] max-w-[25em]">
+          <h1 className="font-[700] text-[40px] lg:text-[35px] ls:text-[32px] max-w-[25em]">
             Welcome to Curious Kids' Pricing Page! We believe in making quality
             education and engaging content accessible to all young minds.
           </h1>
@@ -27,7 +27,7 @@ const Price = () => {
             learners and educational institutions, ensuring that the journey of
             curiosity and learning is open to everyone.
           </p>
-          <div className="flexss sm1:justify-center gap-[1em] font-[700] text-[0.8rem] flex-wrap sm1:w-full mt-[2em] p-[0.5em] bg-white rounded-full shadow-md sm:shadow-none">
+          <div className="flexss sm1:justify-center gap-[1em] font-[700] text-[19px] ls:text-[17px] flex-wrap sm1:w-full mt-[2em] p-[0.5em] bg-white rounded-full shadow-md sm:shadow-none">
             <div
               className="sm:flex flex-grow"
               onClick={() => {
@@ -37,11 +37,11 @@ const Price = () => {
               <Button
                 className={
                   plan === "term"
-                    ? "border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[0.5em] px-[2.5em] py-[1em] rounded-full sm:w-full transition duration-500 ease-in-out"
-                    : "border-[0.2em] border-sec1 text-sec1 flexmm gap-[0.5em] px-[2.5em] py-[1em] rounded-full sm:w-full transition duration-500 ease-in-out"
+                    ? "border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[0.5em] px-[52px] py-[20px] rounded-full sm:w-full transition duration-500 ease-in-out"
+                    : "border-[0.2em] border-sec1 text-sec1 flexmm gap-[0.5em] px-[52px] py-[20px] rounded-full sm:w-full transition duration-500 ease-in-out"
                 }
               >
-                <p>Cost per term N</p>
+                <p>Cost per term ₦</p>
               </Button>
             </div>
             <div
@@ -53,17 +53,17 @@ const Price = () => {
               <Button
                 className={
                   plan === "term"
-                    ? "border border-[0.2em] border-sec1 text-sec1 flexmm gap-[0.5em] px-[2.5em] py-[1em] rounded-full sm:w-full transition duration-500 ease-in-out"
+                    ? "border-[0.2em] border-sec1 text-sec1 flexmm gap-[0.5em] px-[2.5em] py-[1em] rounded-full sm:w-full transition duration-500 ease-in-out"
                     : "border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[0.5em] px-[2.5em] py-[1em] rounded-full sm:w-full transition duration-500 ease-in-out"
                 }
               >
-                <p>Cost per annum N</p>
+                <p>Cost per annum ₦</p>
               </Button>
             </div>
           </div>
         </div>
 
-        <div className="w-full cflexmm gap-[3em]">
+        <div className="w-full cflexmm gap-[40px]">
           <div className="w-[80%] sm:w-full cflexmm">
             <Range
               step={1}
@@ -105,7 +105,7 @@ const Price = () => {
           </div>
           {plan === "term" ? (
             <>
-              <div className="cflexmm gap-[2em] w-[25em] sm:w-full">
+              <div className="cflexmm gap-[40px] text-[24px] lg:text-[20px] ls:text-[18px] font-[400] w-[40%] sm:w-full">
                 <div
                   className={
                     selected === "individual"
@@ -124,7 +124,7 @@ const Price = () => {
                     }
                   />
                   <div>
-                    <h3 className="font-[700] text-[1.1rem]">
+                    <h3 className="font-[700] text-[28px] lg:text-[24px] ls:text-[22px]">
                       ₦ 2000/per term
                     </h3>
                     <p>For Individual Learners</p>
@@ -149,7 +149,7 @@ const Price = () => {
                       }
                     />
                     <div>
-                      <h3 className="font-[700] text-[1.1rem]">
+                      <h3 className="font-[700] text-[28px] lg:text-[24px] ls:text-[22px]">
                         ₦ 60,000/per term
                       </h3>
                       <p>For Schools and Institutions</p>
@@ -158,8 +158,8 @@ const Price = () => {
                   <div
                     className={
                       selected === "individual"
-                        ? "bg-[#AAAAAA] p-[0.3em] px-[1em] rounded-full text-white"
-                        : "bg-sec1 p-[0.3em] px-[1em] rounded-full text-white"
+                        ? "bg-[#AAAAAA] p-[0.3em] font-[600] text-[20px] lg:text-[18px] ls:text-[17px] px-[1em] rounded-full text-white"
+                        : "bg-sec1 p-[0.3em] px-[1em] font-[600] text-[20px] lg:text-[18px] ls:text-[17px] rounded-full text-white"
                     }
                   >
                     <p>1 - {values[0]}</p>
@@ -169,7 +169,7 @@ const Price = () => {
             </>
           ) : (
             <>
-              <div className="cflexmm gap-[2em] w-[25em] sm:w-full">
+              <div className="cflexmm gap-[40px] text-[24px] lg:text-[20px] ls:text-[18px] font-[400] w-[40%] sm:w-full">
                 <div
                   className={
                     selected === "individual"
@@ -188,7 +188,7 @@ const Price = () => {
                     }
                   />
                   <div>
-                    <h3 className="font-[700] text-[1.1rem]">
+                    <h3 className="font-[700] text-[28px] lg:text-[24px] ls:text-[22px]">
                       ₦ 5000/per annum
                     </h3>
                     <p>For Individual Learners</p>
@@ -213,7 +213,7 @@ const Price = () => {
                       }
                     />
                     <div>
-                      <h3 className="font-[700] text-[1.1rem]">
+                      <h3 className="font-[700] text-[28px] lg:text-[24px] ls:text-[22px]">
                         ₦ 180,000/per annum
                       </h3>
                       <p>For Schools and Institutions</p>
@@ -222,8 +222,8 @@ const Price = () => {
                   <div
                     className={
                       selected === "individual"
-                        ? "bg-[#AAAAAA] p-[0.3em] px-[1em] rounded-full text-white"
-                        : "bg-sec1 p-[0.3em] px-[1em] rounded-full text-white"
+                        ? "bg-[#AAAAAA] p-[0.3em] text-[20px] lg:text-[18px] ls:text-[17px] font-[600] px-[1em] rounded-full text-white"
+                        : "bg-sec1 p-[0.3em] px-[1em] text-[20px] lg:text-[18px] ls:text-[17px] font-[600] rounded-full text-white"
                     }
                   >
                     <p>1 - {values[0]}</p>
