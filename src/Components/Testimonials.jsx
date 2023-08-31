@@ -63,7 +63,7 @@ const Testimonials = () => {
   return (
     <>
       <div className="bg-[#FAFAFA] w-full cflexsm gap-[3em] sm:gap-[2em] sm1:pb-[2em] sm:pt-[0em] flex-wrap px-xpadding py-[4em] sm:px-[1.5em] sm:py-[2em]">
-        <div className="w-[40em] md:w-full text-center cflexsm sm:items-start gap-[16px] font-[400] text-[20px] lg:text-[17px] sm:text-[1.1rem]">
+        <div className="w-[40em] md:w-full text-center cflexsm sm:items-start gap-[16px] font-[400] text-[20px] lg:text-[17px] ls:text-[15px] sm:text-[1.1rem]">
           <p className="font-[800] sm:text-[30px] text-[30px] lg:text-[28px] text-[#012B1D]">
             Parent Testimonials
           </p>

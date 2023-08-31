@@ -38,9 +38,9 @@ const LandingPage = () => {
   return (
     <>
       <NavBar active={0} />
-      <div className="flexbm px-xpadding bg-sec6 py-[5em] text-[20px] lg:text-[17px] lg:py-[4em] sm:px-[1.5em] sm1:pb-[2em] sm:pt-[0em] flex-wrap">
+      <div className="flexbm px-xpadding bg-sec6 py-[5em] text-[20px] ls:text-[15px] lg:text-[17px] lg:py-[4em] sm:px-[1.5em] sm1:pb-[2em] sm:pt-[0em] flex-wrap">
         <div className="cflexms font-[600] gap-[32px] text-sec5 md:gap-[1em] w-[35em] flex-grow pb-[2em]">
-          <h1 className="font-[800] text-[52px] lg:text-[45px] sm:text-[1.7rem]">
+          <h1 className="font-[800] text-[52px] lg:text-[45px] ls:text-[35px] sm:text-[1.7rem]">
             Unlock Your Child's Potential through{" "}
             <span className="text-sec1">Innovative Education</span>
           </h1>
@@ -50,14 +50,14 @@ const LandingPage = () => {
             that sparks curiosity, fosters creativity, and inspires young minds
             to explore the wonders of the world.
           </p>
-          <div className="flexss sm1:justify-center gap-[1em] font-[600] text-[19px] lg:text-[15px] flex-wrap sm1:w-full">
+          <div className="flexss sm1:justify-center gap-[1em] font-[600] text-[19px] lg:text-[15px] ls:text-[13px] flex-wrap sm1:w-full">
             <Link href="/price" className="sm:flex flex-grow">
-              <Button className="border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] rounded-full sm:w-full">
+              <Button className="border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
                 <p>Enroll now</p> <ArrowRightOutline size="1em" />
               </Button>
             </Link>
             <Link href="/" className="sm:flex flex-grow">
-              <Button className="border-[1px] border-sec1 text-sec1 flexmm px-[52px] py-[20px] rounded-full sm:w-full">
+              <Button className="border-[1px] border-sec1 text-sec1 flexmm px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
                 <p>Login as a guest</p>
               </Button>
             </Link>
@@ -99,9 +99,9 @@ const LandingPage = () => {
         </div>
       </div>
 
-      <div className="flexbm px-xpadding bg-[#FAFAFA] py-[6em] text-[20px] lg:text-[17px] lg:py-[5em] sm:px-[1.5em] sm1:pb-[2em] sm:pt-[0em] flex-wrap">
+      <div className="flexbm px-xpadding bg-[#FAFAFA] py-[6em] text-[20px] lg:text-[17px] lg:py-[5em] ls:text-[15px] sm:px-[1.5em] sm1:pb-[2em] sm:pt-[0em] flex-wrap">
         <div className="cflexms gap-[24px] w-[35em] pt-[2em] flex-grow">
-          <h1 className="font-[800] text-[36px] sm:text-[1.7rem] sm:w-[10em]">
+          <h1 className="font-[800] text-[36px] ls:text-[32px] sm:text-[1.7rem] sm:w-[10em]">
             Why Choose CuriousKidz?
           </h1>
           <div className="flexss gap-[0.5em]">
@@ -114,11 +114,13 @@ const LandingPage = () => {
               />
             </div>
             <p>
-              <span className="font-[800] leading-[34px]">Innovative Learning: </span>We blend
-              education with entertainment, making learning a fun and exciting
-              adventure. Through interactive lessons and hands-on experiences,
-              we ensure that every child stays engaged and enthusiastic about
-              exploring new concepts.
+              <span className="font-[800] leading-[34px]">
+                Innovative Learning:{" "}
+              </span>
+              We blend education with entertainment, making learning a fun and
+              exciting adventure. Through interactive lessons and hands-on
+              experiences, we ensure that every child stays engaged and
+              enthusiastic about exploring new concepts.
             </p>
           </div>
           <div className="flexss gap-[0.5em] leading-[34px]">
@@ -150,13 +152,13 @@ const LandingPage = () => {
               and develop critical thinking skills.
             </p>
           </div>
-          <div className="flexss sm1:justify-center font-[600] text-[19px] lg:text-[15px] flex-wrap sm1:w-full">
+          <div className="flexss sm1:justify-center font-[600] text-[19px] lg:text-[15px] ls:text-[13px] flex-wrap sm1:w-full">
             <Link href="/price" className="sm:flex flex-grow">
-              <Button className="border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] rounded-full sm:w-full">
+              <Button className="border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
                 <p>Enroll now</p> <ArrowRightOutline size="1em" />
               </Button>
-            </Link>           
-          </div>          
+            </Link>
+          </div>
         </div>
 
         <div className="flexes w-[35em] md1:w-full md1:justify-center flex-shrink">
@@ -172,7 +174,7 @@ const LandingPage = () => {
       </div>
 
       <div className="bg-white cflexss gap-[4em] sm:gap-[1.5em] px-xpadding py-[6em] text-[20px] lg:text-[17px] lg:py-[5em] sm:px-[1.5em] sm1:pb-[2em]">
-        <h1 className="align-center sm:justify-start w-full flexmm font-[800] text-[36px]">
+        <h1 className="align-center sm:justify-start w-full flexmm font-[800] text-[36px] ls:text-[32px]">
           What We Offer:
         </h1>
         <div className="flexbm w-full sm:flex-wrap font-[600]">

@@ -73,13 +73,13 @@ const NavBar = ({ active = 0, background }) => {
 
         <div className="w-fit flex gap-6 sm:hidden">
           <a href={"/signup"}>
-            <Button className="rounded-full border-2 border-sec1 bg-transparent px-[52px] py-[20px] text-[19px] lg:px-[42px] lg:text-[15px] text-sec1 font-[600]">
+            <Button className="rounded-full border-2 border-sec1 bg-transparent px-[52px] py-[20px] text-[19px] lg:px-[42px] lg:text-[15px] ls:px-[35px] ls:py-[18px] text-sec1 font-[600]">
               Create Free Account
             </Button>
           </a>
 
           <a href="/signin">
-            <Button className="rounded-full bg-sec1 px-[52px] py-[20px] text-[19px] lg:px-[42px] lg:text-[15px] font-[600] text-white">
+            <Button className="rounded-full bg-sec1 px-[52px] py-[20px] text-[19px] lg:px-[42px] lg:text-[15px] font-[600] ls:px-[35px] ls:py-[18px] text-white">
               Login
             </Button>
           </a>
