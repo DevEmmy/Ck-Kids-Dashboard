@@ -41,7 +41,7 @@ const NavBar = ({ active = 0, background }) => {
           <img src="/homeLogo.svg" alt="CSkidz" />
         </a>
 
-        <div className="flexmm gap-[60px] sm1:hidden">
+        <div className="flexmm gap-[60px] lf:hidden">
           {nav.map((item, i) => {
             return (
               <a
@@ -59,7 +59,7 @@ const NavBar = ({ active = 0, background }) => {
           })}
         </div>
 
-        <div className="w-fit flex gap-6 sm1:hidden">
+        <div className="w-fit flex gap-6 lf:hidden">
           <a href={"/signup"}>
             <Button className="rounded-full border-2 border-sec1 bg-transparent px-[52px] py-[20px] text-[19px] lg:px-[42px] lg:text-[15px] ls:px-[35px] ls:py-[18px] text-sec1 font-[600]">
               Create Free Account
@@ -73,7 +73,7 @@ const NavBar = ({ active = 0, background }) => {
           </a>
         </div>
 
-        <div className="hidden sm1:block">
+        <div className="hidden lf:block">
           {showNav ? (
             <HiX
               size={24}

@@ -8,10 +8,10 @@
   @apply flex flex-col justify-start items-start gap-[0.5em] font-[600] text-[0.8rem] sm:text-[1.1rem] min-w-[90%];
 }
 .inputCont {
-  @apply flex border border-[1px] border-[#AAA] rounded-[0.5rem] justify-center items-center p-[1em] w-full;
+  @apply flex border-[1px] border-[#AAA] rounded-[8px] justify-center items-center p-[1em] w-full;
 }
 .inputCont2 {
-  @apply flex border border-[1px] border-[#AAA] rounded-[0.5rem] justify-center items-center p-[0.5em] w-full;
+  @apply flex border-[1px] border-[#AAA] rounded-[8px] justify-center items-center px-[16px] py-[12px] w-full;
 }
 .input{
   @apply border border-none outline-none font-[400] w-full pl-[0.5em];
