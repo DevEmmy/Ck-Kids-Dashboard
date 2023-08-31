@@ -45,7 +45,7 @@ const NavBar = ({ active = 0, background }) => {
       <nav
         className={`bg-${
           background ? background : "sec6"
-        } w-full flex justify-between items-center py-[40px] px-xpadding ${
+        } w-full flex justify-between items-center py-[20px] px-xpadding ${
           showNav && "fixed"
         }`}
       >

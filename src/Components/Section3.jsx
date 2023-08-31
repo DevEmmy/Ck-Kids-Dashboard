@@ -48,10 +48,10 @@ const Section3 = () => {
   ];
   return (
     <>
-      <div className="cflexss gap-[1em] py-[2em] px-xpadding sm:px-[1.5rem] font-[400]">
-        <div className="w-full flexbm text-[0.9rem] sm:text-[1.1rem] gap-[1em] flex-wrap">
-          <div className="w-[40em] cflexss gap-[0.7em] text-[#333]">
-            <h1 className="font-[800] text-[#012B1D] text-[1.5rem] sm:text-[1.6rem]">
+      <div className="cflexss gap-[16px] py-[2em] px-xpadding text-[20px] lg:text-[17px] sm:px-[1.5em] font-[400]">
+        <div className="w-full flexbm sm:text-[1.1rem] gap-[1em] flex-wrap">
+          <div className="w-[40em] cflexss gap-[16px] text-[#333]">
+            <h1 className="font-[800] text-[#012B1D] text-[30px] lg:text-[28px] leading-[150%] sm:text-[1.6rem]">
               Recommended Videos for Kids Ages 15-18:
             </h1>
             <p>
@@ -66,7 +66,7 @@ const Section3 = () => {
             </Button>
           </Link>
         </div>
-        <div className="w-full flexbm gap-[0.5em] flex-wrap">
+        <div className="w-full flexss gap-[20px] xl:flex-wrap overflow-x-auto">
           {Videos.map((video, i) => {
             return (
               <>

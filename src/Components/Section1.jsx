@@ -48,10 +48,10 @@ const Section1 = () => {
   ];
   return (
     <>
-      <div className="cflexss gap-[1em] py-[2em] px-xpadding sm:px-[1.5rem] font-[400]">
-        <div className="w-full flexbm text-[0.9rem] sm:text-[1.1rem] gap-[1em] flex-wrap">
-          <div className="w-[40em] cflexss gap-[0.7em] text-[#333]">
-            <h1 className="font-[800] text-[#012B1D] text-[1.5rem] sm:text-[1.6rem]">
+      <div className="cflexss gap-[16px] py-[2em] pt-[4em] px-xpadding text-[20px] lg:text-[17px] sm:px-[1.5em] font-[400]">
+        <div className="w-full flexbm sm:text-[1.1rem] gap-[16px] flex-wrap">
+          <div className="w-[40em] cflexss gap-[16px] text-[#333]">
+            <h1 className="font-[800] text-[#012B1D] text-[30px] lg:text-[28px] leading-[150%] sm:text-[1.6rem]">
               Recommended Videos for Kids Ages 6-9:
             </h1>
             <p>
@@ -60,13 +60,15 @@ const Section1 = () => {
               to increase focus and drive motivation.
             </p>
           </div>
-          <Link href="/">
-            <Button className="bg-sec1 text-white flexmm gap-[0.5em] px-[2.5em] py-[1em] rounded-full font-[700] sm:font-[400]">
-              <p>See more</p> <ArrowRightOutline size="1em" />
-            </Button>
-          </Link>
+          <div className="flexss sm1:justify-center font-[600] text-[19px] lg:text-[15px] flex-wrap sm1:w-full">
+            <Link href="/price" className="sm:flex flex-grow">
+              <Button className="border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] rounded-full sm:w-full">
+                <p>See more</p> <ArrowRightOutline size="1em" />
+              </Button>
+            </Link>
+          </div>          
         </div>
-        <div className="w-full flexbm gap-[0.5em] flex-wrap">
+        <div className="w-full flexss gap-[20px] xl:flex-wrap overflow-x-auto">
           {Videos.map((video, i) => {
             return (
               <>

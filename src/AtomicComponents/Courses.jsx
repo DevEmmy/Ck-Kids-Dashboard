@@ -16,7 +16,7 @@ const CourseCard = ({ background, image, text }) => {
             alt={`${image}`}
           />
         </div>
-        <p className="font-[700] text-[1rem] text-sec2">{text}</p>
+        <p className="font-[700] text-[24px] lg:text-[20px] text-sec2">{text}</p>
       </div>
     </>
   );

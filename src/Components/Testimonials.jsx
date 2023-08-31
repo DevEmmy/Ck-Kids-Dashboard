@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/AtomicComponents/Button";
@@ -46,30 +46,28 @@ const ParentRiviews = [
 const Testimonials = () => {
   const [id, setId] = useState(0);
   const [next, setNext] = useState(false);
-  const [prev, setPrev] = useState(false);  
+  const [prev, setPrev] = useState(false);
 
   useEffect(() => {
-    if(id === 0){
-      setNext(true)
-      setPrev(false)
-    }
-    else if(id === ParentRiviews.length-1){
-      setNext(false)
-      setPrev(true)
-    }
-    else{
-      setNext(true)
-      setPrev(true)
+    if (id === 0) {
+      setNext(true);
+      setPrev(false);
+    } else if (id === ParentRiviews.length - 1) {
+      setNext(false);
+      setPrev(true);
+    } else {
+      setNext(true);
+      setPrev(true);
     }
   }, [id]);
   return (
     <>
-      <div className="bg-[#FAFAFA] w-full cflexsm gap-[3em] sm:gap-[2em] px-xpadding py-[4em] sm:px-[1.5em] sm:py-[2em]">
-        <div className="w-full cflexsm sm:items-start gap-[0.5em] font-[400] text-[0.9rem] sm:text-[1.1rem]">
-          <p className="font-[700] sm:font-[800] sm:text-[1.7rem] text-[1.5rem] text-[#012B1D]">
+      <div className="bg-[#FAFAFA] w-full cflexsm gap-[3em] sm:gap-[2em] sm1:pb-[2em] sm:pt-[0em] flex-wrap px-xpadding py-[4em] sm:px-[1.5em] sm:py-[2em]">
+        <div className="w-[40em] md:w-full text-center cflexsm sm:items-start gap-[16px] font-[400] text-[20px] lg:text-[17px] sm:text-[1.1rem]">
+          <p className="font-[800] sm:text-[30px] text-[30px] lg:text-[28px] text-[#012B1D]">
             Parent Testimonials
           </p>
-          <p className="text-[#333]">
+          <p className="text-[#333] font-[600]">
             Hear from parents whose children have experienced the magic of
             CuriousKidz. See the impact on their confidence and academic growth.
           </p>
@@ -84,7 +82,7 @@ const Testimonials = () => {
           })}
         </div>
         <div className="hidden sm:block w-full">
-          <div className="flexbs gap-[4em] w-full flex-wrap">
+          <div className="flexbs gap-[4em] w-full md:flex-wrap">
             {ParentRiviews.map((review, i) => {
               return <>{i == id && <Reviews {...review} key={i} />}</>;
             })}
@@ -95,8 +93,8 @@ const Testimonials = () => {
             <ChevronLeft
               onClick={() => {
                 if (id !== 0) {
-                  setId(id - 1);                  
-                } 
+                  setId(id - 1);
+                }
               }}
               color={prev ? "black" : "gray"}
               className="cursor-pointer"
@@ -104,23 +102,23 @@ const Testimonials = () => {
 
             <ChevronRight
               onClick={() => {
-                if (id !== ParentRiviews.length-1) {
-                  setId(id + 1);                  
-                } 
+                if (id !== ParentRiviews.length - 1) {
+                  setId(id + 1);
+                }
               }}
               color={next ? "black" : "gray"}
               className="cursor-pointer"
             />
           </div>
         </div>
-        <div className="flexss sm1:justify-center gap-[1em] font-[700] text-[0.8rem] flex-wrap sm1:w-full">
+        <div className="flexss sm1:justify-center gap-[1em] font-[600] text-[19px] lg:text-[15px] flex-wrap sm1:w-full">
           <Link href="/price" className="sm:flex flex-grow">
-            <Button className="border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[0.5em] px-[2.5em] py-[1em] rounded-full sm:w-full">
+            <Button className="border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] rounded-full sm:w-full">
               <p>Enroll now</p> <ArrowRightOutline size="1em" />
             </Button>
           </Link>
           <Link href="/" className="sm:flex flex-grow">
-            <Button className="border-[0.2em] border-sec1 text-sec1 flexmm gap-[0.5em] px-[2.5em] py-[1em] rounded-full sm:w-full">
+            <Button className="border-[1px] border-sec1 text-sec1 flexmm px-[52px] py-[20px] rounded-full sm:w-full">
               <p>Login as a guest</p>
             </Button>
           </Link>
@@ -132,8 +130,8 @@ const Testimonials = () => {
 
 export default Testimonials;
 
-const Reviews = (props) => {  
-  const { star, content1, content2, image, name } = props;  
+const Reviews = (props) => {
+  const { star, content1, content2, image, name } = props;
   const graduallyAppear = {
     hidden: {
       opacity: 0,
@@ -147,18 +145,19 @@ const Reviews = (props) => {
   };
   return (
     <>
-      <motion.div 
+      <motion.div
         variants={graduallyAppear}
         initial="hidden"
-        animate="visible" 
-        className="cflexss gap-[1em] w-[30em] flex-grow font-[600] text-[#090914] text-[0.8rem] sm:text-[1rem] leading-[1.7rem] sm:min-h-[25em]">
-        <div className="flexmm w-[7em] sm:w-[10em]">
+        animate="visible"
+        className="cflexss gap-[20px] w-[45%] md:w-full font-[600] text-[#090914] text-[16px] sm:text-[20px] leading-[28px] sm:min-h-[25em]"
+      >
+        <div className="flexmm w-[130px] sm:w-[140px]">
           <Image src={`${star}.svg`} width={100} height={100} alt={`${star}`} />
         </div>
         <p>"{content1}</p>
         <p>{content2}"</p>
         <div className="flexsm gap-[0.5em] w-full">
-          <div className="w-[3em]">
+          <div className="w-[44px]">
             <Image
               src={`${image}.svg`}
               width={100}

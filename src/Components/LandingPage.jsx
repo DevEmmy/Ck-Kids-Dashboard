@@ -38,7 +38,7 @@ const LandingPage = () => {
   return (
     <>
       <NavBar active={0} />
-      <div className="flexbm px-xpadding bg-sec6 py-[6em] text-[20px] lg:text-[17px] lg:py-[5em] sm:px-[1.5em] sm1:pb-[2em] sm:pt-[0em] flex-wrap">
+      <div className="flexbm px-xpadding bg-sec6 py-[5em] text-[20px] lg:text-[17px] lg:py-[4em] sm:px-[1.5em] sm1:pb-[2em] sm:pt-[0em] flex-wrap">
         <div className="cflexms font-[600] gap-[32px] text-sec5 md:gap-[1em] w-[35em] flex-grow pb-[2em]">
           <h1 className="font-[800] text-[52px] lg:text-[45px] sm:text-[1.7rem]">
             Unlock Your Child's Potential through{" "}
@@ -175,7 +175,7 @@ const LandingPage = () => {
         <h1 className="align-center sm:justify-start w-full flexmm font-[800] text-[36px]">
           What We Offer:
         </h1>
-        <div className="flexbm w-full sm:flex-wrap font-[400]">
+        <div className="flexbm w-full sm:flex-wrap font-[600]">
           <div className="border-r-2 cflexss gap-[22px] w-[33%] px-[2em] sm:w-full sm:px-0 md1:border-0">
             <div className="flexmm text-white bg-sec1 w-[35px] h-[35px] rounded-[10px] font-[800] text-[16px]">
               1
@@ -211,9 +211,9 @@ const LandingPage = () => {
         </div>
       </div>
 
-      <div className="bg-[#FAFAFA] cflexss gap-[5em] sm:gap-[2em] py-[5em] px-xpadding sm:px-[1.5em] sm:py-[2em] text-[0.8rem]">
-        <div className="w-full cflexmm gap-[1em] font-[400] text-[0.9rem] sm:text-[1.1rem]">
-          <h1 className="w-full flexmm sm:justify-start font-[800] text-[1.5rem] text-[#012B1D]">
+      <div className="bg-[#FAFAFA] cflexss gap-[4em] sm:gap-[1.5em] px-xpadding py-[6em] text-[20px] lg:text-[17px] lg:py-[5em] sm:px-[1.1em]">
+        <div className="w-full cflexmm gap-[1em] font-[400]">
+          <h1 className="w-full flexmm sm:justify-start font-[800] text-[30px] text-[#012B1D]">
             Explore Our Programs:
           </h1>
           <p className="max-w-[40em] flex-shrink text-center sm:text-start">
@@ -235,7 +235,7 @@ const LandingPage = () => {
               </>
             );
           })}
-          <div className="cflexss sm1:flex-row gap-[0.5em] text-[1rem] cursor-pointer">
+          <div className="cflexss sm1:flex-row gap-[0.5em] cursor-pointer">
             <div className="bg-sec7 w-[1.5em] h-[1.5em] rounded-full flexmm">
               <ArrowRightOutline size="1em" color="white" />
             </div>
