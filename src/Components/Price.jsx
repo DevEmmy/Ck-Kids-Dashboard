@@ -150,7 +150,7 @@ const Price = () => {
                     />
                     <div>
                       <h3 className="font-[700] text-[28px] lg:text-[24px] ls:text-[22px]">
-                        ₦ 60,000/per term
+                        ₦ {60000*values[0]}/per term
                       </h3>
                       <p>For Schools and Institutions</p>
                     </div>
@@ -214,7 +214,7 @@ const Price = () => {
                     />
                     <div>
                       <h3 className="font-[700] text-[28px] lg:text-[24px] ls:text-[22px]">
-                        ₦ 180,000/per annum
+                        ₦ {180000*values[0]}/per annum
                       </h3>
                       <p>For Schools and Institutions</p>
                     </div>
