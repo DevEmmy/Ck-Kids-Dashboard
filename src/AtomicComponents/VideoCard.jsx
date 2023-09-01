@@ -24,7 +24,7 @@ const VideoCard = ({
           <p className="text-[20px] sm:text-[25px] font-[700] text-[#101828]">
             {heading}
           </p>
-          <p className="text-[16px] sm:text-[19px] font-[400] text-[#667085]">
+          <p className="text-[16px] sm:text-[19px] font-[400] text-[#667085] line-clamp-3">
             {content}
           </p>
           <p className="text-[14px] sm:text-[16px] text-purplePrime font-[600]">
