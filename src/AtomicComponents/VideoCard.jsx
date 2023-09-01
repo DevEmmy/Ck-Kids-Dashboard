@@ -15,8 +15,8 @@ const VideoCard = ({
     <>
       <a href="/" className="w-[350px] flex-shrink sm:w-full">
         <div className="w-full border-[1px] border-[#E6E6E6] cflexbs gap-[12px] min-h-[25em] lg:min-h-[29em] p-[10px] rounded-xl cursor-pointer">
-          <div className="w-full flexmm">
-            <img src={`${image}.svg`} alt={`${image}`} />
+          <div className="w-full flexmm h-[158px]">
+            <img src={`${image}.svg`} alt={`${image}`} className="h-[100%] object-cover rounded-lg" />
           </div>
           <div className="py-[2px] px-[10px] bg-[#F9F5FF] text-purplePrime text-[14px] sm:text-[16px] rounded-full font-[400]">
             {title}
