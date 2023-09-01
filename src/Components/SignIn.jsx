@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react";
-import { EyeOutline, EyeOffOutline, ArrowRightOutline } from "heroicons-react";
+import { EyeOutline, EyeOffOutline, ArrowRightOutline, ArrowLeftOutline } from "heroicons-react";
 import Link from "next/link";
 import Image from "next/image";
 import { studentLogin } from "@/services/request";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import Loader from "@/AtomicComponents/Loader";
 import { useRouter } from "next/navigation";
 
@@ -13,7 +13,7 @@ const SignIn = () => {
   const [changing, setChanging] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [hide, setHide] = useState(true);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [loginDetails, setLoginDetails] = useState({
     email: "",
     password: "",
@@ -43,42 +43,45 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true)
+    setLoading(true);
     if (valid) {
       // setLoginDetails({
       //   email: "",
       //   password: "",
       // });
 
-      // ENDPOINT FOR SUBMITTING LOGIN DETAILS      
-      await studentLogin(loginDetails.email, loginDetails.password)
-      .then(resp => {
-        router.push("/kids-dashboard")
-      })
-      setLoading(false)
-      
+      // ENDPOINT FOR SUBMITTING LOGIN DETAILS
+      await studentLogin(loginDetails.email, loginDetails.password).then(
+        (resp) => {
+          router.push("/kids-dashboard");
+        }
+      );
+      setLoading(false);
     }
-  };  
+  };
   return (
     <>
-      <div className="h-[100vh] w-full flexss flex-wrap">
+      <div className="h-full w-full flexss flex-wrap">
         <div className="w-[45%] h-full bg-sec1 pt-[4em] sm:py-[2em] pb-[6em] px-[5em] text-sec2 sm:px-[1.5em] md1:w-full">
           <div className="cflexss gap-[1.5em]">
-            <a href="/" className="w-[15em] sm:w-[12em]">
+            <a
+              href="/"
+              className="w-[320px] lg:w-[300px] ls:w-[280px] sm:w-[280px]"
+            >
               <img src="logo.svg" alt="CSkidz" />
             </a>
             <div>
-              <h1 className="text-[2.3rem] sm:text-[1.8rem] font-[800]">
-                Welcome back to CuriousKidz!
+              <h1 className="text-[60px] lg:text-[55px] ls:text-[52px] sm:text-[1.8rem] font-[800]">
+                Welcome to CuriousKidz!
               </h1>
-              <p className="text-sm sm:text-[1rem] font-[400] pt-[0.5em] leading-[1.7em]">
-                We're thrilled to have you back with CuriousKidz! Rediscover the
-                joy of learning with our innovative courses and foster
-                creativity, critical thinking, and problem-solving skills. Let's
-                make learning an exciting adventure
+              <p className="text-[18px] lg:text-[17px] ls:text-[16px] sm:text-[20px] font-[400] pt-[0.5em] leading-[1.7em]">
+                By creating an account, you gain access to a diverse range of
+                engaging courses, interactive lessons, and hands-on projects
+                designed to inspire young minds. Let's nurture curiosity and
+                ignite a passion for learning together!
               </p>
             </div>
-            <div className="cflexss gap-[1.3em] pt-[7em] sm:pt-[2em] text-sm sm:text-[1rem] font[600] leading-[1.7em]">
+            <div className="cflexss gap-[20px] text-[18px] lg:text-[17px] ls:text-[16px] sm:text-[20px] font[600] pt-[160px] leading-[1.7em]">
               <div className="w-[7em] sm:w-[8em]">
                 <Image src="Review.svg" width={100} height={100} alt="review" />
               </div>
@@ -108,16 +111,26 @@ const SignIn = () => {
           </div>
         </div>
 
-        <div className="w-[55%] h-full bg-white py-[4em] sm:py-[2em] pl-[6em] pr-[7em] sm:px-[1.5em] md1:w-full">
-          <div className="cflexss w-full gap-[0.7em]">
+        <div className="w-[50%] h-full bg-white py-[6em] sm:py-[2em] pl-[6em] pr-[7em] sm:px-[1.5em] md1:w-full">
+          <div className="cflexss w-full gap-[28px]">
+            <div
+              className="flexss bg-sec1 rounded-[0.5em] p-[0.4em] cursor-pointer"
+              onClick={() => {
+                window.history.back()
+              }}
+            >
+              <div className="w-[1.2em] h-[1.2em] rounded-full bg-white flexmm">
+                <ArrowLeftOutline size="12px" color="#00AC76" />
+              </div>
+            </div>
             <h1 className="text-[1.7rem] font-[700] sm:font-[800] text-sec3">
               Sign In
             </h1>
-            <p className="text-sm sm:text-[1.1rem] font-400 text-[#52525B] leading-[1.5em]">
+            <p className="text-[18px] lg:text-[16px] ls:text-[14px] sm:text-[20px] font-400 text-[#52525B] leading-[1.5em]">
               Sign in to continue your learning journey and explore a world of
               endless possibilities.
             </p>
-            <form className="cflexss gap-[1em] w-full" action="POST">
+            <form className="cflexss gap-[1em] w-full">
               <div className="sect">
                 <p>Email address</p>
                 <div className="inputCont">
@@ -169,8 +182,8 @@ const SignIn = () => {
                 </div>
               )}
 
-              <div className="flexbm w-[93%] text-[0.8rem] sm:text-[1rem]">
-                <div className="flexmm gap-[0.5em]">
+              <div className="flexbm w-full text-[16px] lg:text-[14px] sm:text-[20px]">
+                <div className="flexmm gap-[12px]">
                   <input type="checkbox" />
                   <p>Remember me</p>
                 </div>
@@ -179,30 +192,31 @@ const SignIn = () => {
 
               <button
                 type="submit"
-                className="flexmm gap-[0.5em] rounded-[2em] bg-sec1 px-[2.5em] py-[1em] text-white text-[0.8em] sm:text-[1rem] font-[600] sm:font-[400]"
+                className="flexmm gap-[0.5em] rounded-[2em] bg-sec1 px-[2.5em] py-[1em] text-white text-[18px] sm:text-[1rem] font-[600] sm:font-[400]"
                 onClick={handleSubmit}
-                disabled = {loading && true}
+                disabled={loading && true}
               >
-                {
-                  loading ? <Loader /> :
+                {loading ? (
+                  <Loader />
+                ) : (
                   <>
                     <p>Sign In</p>
                     <ArrowRightOutline size="12px" />
                   </>
-                }
+                )}
               </button>
             </form>
-            <div className="text-[0.7rem] sm:text-[0.9rem] font-[400]">
+            <div className="text-[16px] lg:text-[14px] sm:text-[18rem] font-[400]">
               <p>
                 Don't have an account?{" "}
-                <Link href="/signup">
+                <a href="/signup">
                   <span className="text-sec1 font-[700] cursor-pointer">
                     Create free account
                   </span>
-                </Link>
+                </a>
               </p>
             </div>
-            <div className="flexsm flex-wrap gap-[0.5em] font-[400] text-[0.8rem] sm:text-[1rem] text-[#344054] w-[93%]">
+            <div className="flexsm flex-wrap gap-[12px] font-[400] text-[16px] sm:text-[1rem] text-[#344054] w-full">
               <div className="box">
                 <div className="w-[1.5em] sm:w-[1.2em]">
                   <Image

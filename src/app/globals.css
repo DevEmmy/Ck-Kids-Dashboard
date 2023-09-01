@@ -5,7 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 .sect {
-  @apply flex flex-col justify-start items-start gap-[0.5em] font-[600] text-[0.8rem] sm:text-[1.1rem] min-w-[90%];
+  @apply flex flex-col justify-start items-start gap-[12px] font-[600] text-[18px] lg:text-[16px] ls:text-[14px] sm:text-[20px] w-full;
 }
 .inputCont {
   @apply flex border-[1px] border-[#AAA] rounded-[8px] justify-center items-center p-[1em] w-full;
@@ -20,7 +20,7 @@
   @apply text-red-500 text-[0.7rem] sm:text-[0.9rem] font-[400];
 }
 .box{
-  @apply flex justify-center items-center gap-[0.5em] px-[1.5em] py-[1em] sm:py-[0.5em] w-[100%] border border-[1px] mt-[1em] border-[#AAA] rounded-[0.5em] cursor-pointer;
+  @apply flex justify-center items-center gap-[0.5em] px-[1.5em] py-[1em] sm:py-[0.5em] w-[100%] border-[1px] mt-[1em] border-[#AAA] rounded-[8px] cursor-pointer shadow-md;
 }
 .flexbm {
   @apply flex justify-between items-center;

@@ -21,7 +21,7 @@ const StudentAccount = ({ setAccountType }) => {
   const [exceedChar, setExceedChar] = useState(false);
   const [passError, setPassError] = useState(false);
   const [hide, setHide] = useState(true);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [userDetails, setUserDetails] = useState({
     fullName: "",
     email: "",
@@ -96,8 +96,13 @@ const StudentAccount = ({ setAccountType }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true)
-    await studentRegister(userDetails.fullName, userDetails.email, userDetails.productKey, userDetails.password)
+    setLoading(true);
+    await studentRegister(
+      userDetails.fullName,
+      userDetails.email,
+      userDetails.productKey,
+      userDetails.password
+    );
     if (valid) {
       // setUserDetails({
       //   fullName: "",
@@ -106,15 +111,15 @@ const StudentAccount = ({ setAccountType }) => {
       //   password: "",
       //   country: "",
       // });
-      
+
       // ENDPOINT FOR SUBMITTING USER DETAILS
-      console.log(userDetails)
+      console.log(userDetails);
     }
-    setLoading(false)
+    setLoading(false);
   };
   return (
     <>
-      <div className="cflexss w-full gap-[0.7em] pt-[2em] h-full">
+      <div className="cflexms w-full gap-[12px] h-full">
         <div
           className="flexss bg-sec1 rounded-[0.5em] p-[0.4em] cursor-pointer"
           onClick={() => {
@@ -125,15 +130,15 @@ const StudentAccount = ({ setAccountType }) => {
             <ArrowLeftOutline size="12px" color="#00AC76" />
           </div>
         </div>
-        <h1 className="text-[1.7rem] font-[700] sm:font-[800] text-sec3">
+        <h1 className="text-[36px] lg:text-[30px] ls:text-[28px] font-[700] sm:font-[800] text-sec3">
           Create an Account
         </h1>
-        <p className="text-sm sm:text-[1.1rem] font-400 text-[#52525B] leading-[1.5em]">
+        <p className="text-[18px] lg:text-[16px] ls:text-[14px] sm:text-[20px] font-400 text-[#52525B] leading-[1.5em]">
           Join the CuriousKidz community and embark on an exciting journey of
           discovery and learning! Sign up today to unlock a world of educational
           adventures for your child.
         </p>
-        <form className="cflexss gap-[1em] w-full">
+        <form className="cflexss gap-[1em] text-[18px] w-full">
           <div className="sect">
             <p>Full name</p>
             <div className="inputCont">
@@ -213,7 +218,7 @@ const StudentAccount = ({ setAccountType }) => {
               )}
             </div>
             {passError && (
-              <p className="text-sec1 text-[0.7rem] sm:text-[0.9rem] font-[400] flex flex-wrap w-[30em] sm:w-full">
+              <p className="text-sec1 text-[14px] lg:text-[12 px] sm:text-[19px] font-[400] flex flex-wrap w-[30em] sm:w-full">
                 * Password should be at least 8 characters long and must contain
                 at least one character
               </p>
@@ -226,8 +231,8 @@ const StudentAccount = ({ setAccountType }) => {
             </div>
           )}
 
-          <div className="flexbm text-[0.8rem] sm:text-[1rem]">
-            <div className="flexmm gap-[0.5em]">
+          <div className="flexbm text-[18px] lg:text-[16px] ls:text-[14px] sm:text-[20px]">
+            <div className="flexmm gap-[12px]">
               <input type="checkbox" />
               <p>Remember me</p>
             </div>
@@ -235,27 +240,28 @@ const StudentAccount = ({ setAccountType }) => {
 
           <button
             type="submit"
-            className="flexmm gap-[0.5em] rounded-[2em] bg-sec1 px-[2.5em] py-[1em] text-white text-[0.8em] sm:text-[1rem] font-[600] sm:font-[400]"
+            className="flexmm gap-[0.5em] rounded-[2em] bg-sec1 px-[2.5em] py-[1em] text-white text-[18px] sm:text-[1rem] font-[600] sm:font-[400]"
             onClick={handleSubmit}
-            disabled = {loading && true}
+            disabled={loading && true}
           >
-            {
-                  loading ? <Loader /> :
-                  <>
-                    <p>Create account</p>
-                    <ArrowRightOutline size="12px" />
-                  </>
-            }
+            {loading ? (
+              <Loader />
+            ) : (
+              <>
+                <p>Create account</p>
+                <ArrowRightOutline size="12px" />
+              </>
+            )}
           </button>
         </form>
-        <div className="text-[0.7rem] sm:text-[0.9rem] font-[400]">
+        <div className="text-[14px] lg:text-[12px] sm:text-[16px] font-[400]">
           <p>
             Already have an account?{" "}
-            <Link href="/signin">
+            <a href="/signin">
               <span className="text-sec1 font-[700] cursor-pointer">
                 Log In
               </span>
-            </Link>
+            </a>
           </p>
         </div>
       </div>

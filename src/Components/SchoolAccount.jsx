@@ -9,6 +9,7 @@ import {
 } from "heroicons-react";
 import Link from "next/link";
 import Image from "next/image";
+import Loader from "@/AtomicComponents/Loader";
 import { schoolRegister } from "@/services/request";
 
 const SchoolAccount = ({ setAccountType }) => {
@@ -20,10 +21,11 @@ const SchoolAccount = ({ setAccountType }) => {
   const [exceedChar, setExceedChar] = useState(false);
   const [passError, setPassError] = useState(false);
   const [hide, setHide] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [userDetails, setUserDetails] = useState({
     schoolName: "",
-    email: "",    
-    password: ""    
+    email: "",
+    password: "",
   });
 
   // useEffect(() => {
@@ -33,7 +35,7 @@ const SchoolAccount = ({ setAccountType }) => {
   useEffect(() => {
     if (
       userDetails["schoolName"].trim().length > 0 &&
-      !emailError &&      
+      !emailError &&
       !passError &&
       userDetails["password"].length >= 8
     ) {
@@ -92,21 +94,25 @@ const SchoolAccount = ({ setAccountType }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await schoolRegister(userDetails.schoolName, userDetails.email, userDetails.password)
+    setLoading(true);
+    await schoolRegister(
+      userDetails.schoolName,
+      userDetails.email,
+      userDetails.password
+    );
     if (valid) {
       // setUserDetails({
       //   schoolName: "",
-      //   email: "",        
-      //   password: ""        
+      //   email: "",
+      //   password: ""
       // });
-
       // ENDPOINT FOR SUBMITTING USER DETAILS
-      
     }
+    setLoading(false);
   };
   return (
     <>
-      <div className="cflexss w-full gap-[0.7em] pt-[2em]">
+      <div className="cflexms w-full gap-[12px] h-full">
         <div
           className="flexss bg-purplePrime rounded-[0.5em] p-[0.4em] cursor-pointer"
           onClick={() => {
@@ -114,13 +120,13 @@ const SchoolAccount = ({ setAccountType }) => {
           }}
         >
           <div className="w-[1.2em] h-[1.2em] rounded-full bg-white flexmm">
-            <ArrowLeftOutline size="12px" color="#8D67CE" />
+            <ArrowLeftOutline size="12px" color="#6941C6" />
           </div>
         </div>
-        <h1 className="text-[1.7rem] font-[700] sm:font-[800] text-sec3">
+        <h1 className="text-[36px] lg:text-[30px] ls:text-[28px] font-[700] sm:font-[800] text-sec3">
           Create an Account
         </h1>
-        <p className="text-sm sm:text-[1.1rem] font-400 text-[#52525B] leading-[1.5em]">
+        <p className="text-[18px] lg:text-[16px] ls:text-[14px] sm:text-[20px] font-400 text-[#52525B] leading-[1.5em]">
           Join the CuriousKidz community and embark on an exciting journey of
           discovery and learning! Sign up today to unlock a world of educational
           adventures for your child.
@@ -159,7 +165,7 @@ const SchoolAccount = ({ setAccountType }) => {
             {emailError && (
               <p className="err">* Fill in a valid email address</p>
             )}
-          </div>          
+          </div>
           <div className="sect">
             <p>Password</p>
             <div className="inputCont">
@@ -188,7 +194,7 @@ const SchoolAccount = ({ setAccountType }) => {
               )}
             </div>
             {passError && (
-              <p className="text-sec1 text-[0.7rem] sm:text-[0.9rem] font-[400] flex flex-wrap w-[30em] sm:w-full">
+              <p className="text-sec1 text-[14px] lg:text-[12 px] sm:text-[19px] font-[400] flex flex-wrap w-[30em] sm:w-full">
                 * Password should be at least 8 characters long and must contain
                 at least one character
               </p>
@@ -201,8 +207,8 @@ const SchoolAccount = ({ setAccountType }) => {
             </div>
           )}
 
-          <div className="flexbm text-[0.8rem] sm:text-[1rem]">
-            <div className="flexmm gap-[0.5em]">
+          <div className="flexbm text-[18px] lg:text-[16px] ls:text-[14px] sm:text-[20px]">
+            <div className="flexmm gap-[12px]">
               <input type="checkbox" />
               <p>Remember me</p>
             </div>
@@ -210,21 +216,28 @@ const SchoolAccount = ({ setAccountType }) => {
 
           <button
             type="submit"
-            className="flexmm gap-[0.5em] rounded-[2em] bg-purplePrime w-[90%] px-[2.5em] py-[1em] text-white text-[0.8em] sm:text-[1rem] font-[600] sm:font-[400]"
+            className="flexmm gap-[0.5em] rounded-[2em] bg-purplePrime px-[2.5em] py-[1em] text-white text-[18px] sm:text-[1rem] font-[600] sm:font-[400]"
             onClick={handleSubmit}
+            disabled={loading && true}
           >
-            <p>Create account</p>
-            <ArrowRightOutline size="12px" />
+            {loading ? (
+              <Loader />
+            ) : (
+              <>
+                <p>Create account</p>
+                <ArrowRightOutline size="12px" />
+              </>
+            )}
           </button>
         </form>
-        <div className="text-[0.7rem] sm:text-[0.9rem] font-[400]">
+        <div className="text-[14px] lg:text-[12px] sm:text-[16px] font-[400]">
           <p>
             Already have an account?{" "}
-            <Link href="/signin">
+            <a href="/signin">
               <span className="text-purplePrime font-[700] cursor-pointer">
                 Log In
               </span>
-            </Link>
+            </a>
           </p>
         </div>
       </div>
