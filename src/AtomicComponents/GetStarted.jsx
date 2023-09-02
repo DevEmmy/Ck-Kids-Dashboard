@@ -18,7 +18,7 @@ const GetStarted = () => {
       content: "24 Lessons | 44 hours",
       images: ["kid1", "kid2", "kid3", "kid4"],
       enrolled: "59+ Kids enrolled",
-      link:"/courses/videos"
+      link:"/kids-dashboard/courses/videos"
     },
     {
       image: "imagination",

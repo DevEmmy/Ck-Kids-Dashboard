@@ -22,26 +22,26 @@ const CoursesOverview = () => {
   return (
     <div>
       <div className="flex justify-between mt-10 mb-3">
-        <p className="font-[700] text-black">Continue Course</p>
+        <p className="font-[600] text-[20px] text-black">Continue Course</p>
 
-        <Link href="/" className="text-gray-500">
+        <Link href="/" className="text-gray-500 font-[400] text-[20px]">
           View all
         </Link>
       </div>
 
-      <div className="flex gap-8">
+      <div className="flex gap-[20px]">
         {courses.map((course, index) => {
           return (
-            <div className="border rounded-xl p-5" key={index}>
-              <p className="text-primary3 text-[0.8em] font-[500]">
+            <div className="border rounded-[12px] p-5" key={index}>
+              <p className="text-primary3 text-[14px] font-[700]">
                 {course.category}
               </p>
-              <p className="text-black font-[800]">{course.title}</p>
-              <p className="text-gray-500 text-[0.8em] mt-3">
+              <p className="text-black font-[700] text-[20px]">{course.title}</p>
+              <p className="text-gray-500 text-[17px] font-[700] mt-3">
                 Overall Progress
               </p>
               <div className="flex gap-3 items-center mt-">
-                <div className="w-full h-2 bg-gray-200 rounded-3xl">
+                <div className="w-full h-[8px] bg-gray-200 rounded-3xl">
                   <div
                     style={{ width: course.progress }}
                     className={`${getProgressBarClass(
@@ -49,7 +49,7 @@ const CoursesOverview = () => {
                     )} h-2 bg-red-500 rounded-3xl`}
                   ></div>
                 </div>
-                <p className="text-black font-[600]">{course.progress}</p>
+                <p className="text-black text-[17px] font-[700]">{course.progress}</p>
               </div>
             </div>
           );
