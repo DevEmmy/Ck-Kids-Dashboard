@@ -17,7 +17,7 @@ const MainContentOnOverview = ({student}) => {
               <span className="p-[12px] bg-white rounded-[8px] text-primary1">
                 <BsFire size="24px" />{" "}
               </span>
-              <h1 className="text-[48px] lg:text-[44px] ls:text-[40px] font-[800]">{student.streak}</h1>
+              <h1 className="text-[48px] lg:text-[44px] ls:text-[40px] font-[800]">{student?.streak}</h1>
             </div>
             <p>Your Streak</p>
           </div>
@@ -27,7 +27,7 @@ const MainContentOnOverview = ({student}) => {
               <span className="p-[12px] bg-white rounded-[8px] text-primary2">
                 <GiGraduateCap size="24px" />{" "}
               </span>
-              <h1 className="text-[48px] lg:text-[44px] ls:text-[40px] font-[800]">{student.courses.length}</h1>
+              <h1 className="text-[48px] lg:text-[44px] ls:text-[40px] font-[800]">{student?.courses.length}</h1>
             </div>
             <p>Completed Courses</p>
           </div>
