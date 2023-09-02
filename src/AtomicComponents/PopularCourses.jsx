@@ -33,7 +33,7 @@ const PopularCourses = () => {
   return (
     <>
       <div className="w-full cflexss gap-[20px] sm:px-[1.5rem] font-[400]">
-        <h1 className="font-[800] text-[#012B1D] text-[20px] lg:text-[18px] ls:text-[16px]">
+        <h1 className="font-[700] text-[#012B1D] text-[24px] lg:text-[18px] ls:text-[16px]">
           Most Popular courses
         </h1>
         <div className="w-full flexss gap-[20px] overflow-x-auto sm:flex-wrap">
