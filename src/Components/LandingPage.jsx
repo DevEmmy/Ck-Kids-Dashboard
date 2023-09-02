@@ -40,7 +40,7 @@ const LandingPage = () => {
       <NavBar active={0} />
       <div className="flexbm px-xpadding bg-sec6 py-[5em] text-[20px] ls:text-[15px] lg:text-[17px] lg:py-[4em] sm1:pt-[0em] sm1:pb-[2em] sm:px-[1.5em] flex-wrap">
         <div className="cflexms font-[600] gap-[32px] text-sec5 md:gap-[1em] w-[35em] flex-grow pb-[2em]">
-          <h1 className="font-[800] text-[52px] lg:text-[45px] ls:text-[35px] sm:text-[1.7rem]">
+          <h1 className="font-[1000] text-[52px] lg:text-[45px] ls:text-[35px] sm:text-[1.7rem]">
             Unlock Your Child's Potential through{" "}
             <span className="text-sec1">Innovative Education</span>
           </h1>
