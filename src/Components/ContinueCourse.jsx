@@ -1,7 +1,25 @@
 import Nav from "@/AtomicComponents/Nav";
 import { ArrowLeftOutline } from "heroicons-react";
+import GemView from "@/AtomicComponents/GemView";
 
 const ContinueCourse = () => {
+  const courses = [
+    {
+      category: "Music-Dance",
+      title: "Music and Movement: Express Yourself",
+      progress: "79%",
+    },
+    {
+      category: "Gardening",
+      title: "Miniature Fairy Gardens: A Magical Adventure",
+      progress: "24%",
+    },
+    {
+      category: "Arts and Crafts",
+      title: "Creative Collages: Mixed Media Art for Kids",
+      progress: "19%",
+    },
+  ];
   return (
     <>
       <Nav active={1} />
@@ -11,16 +29,19 @@ const ContinueCourse = () => {
             onClick={() => {
               window.history.back();
             }}
-            className="flexmm gap-[20px]"
+            className="flexmm gap-[12   px]"
           >
             <div className="flexss bg-primary2 rounded-[0.5em] p-[0.4em] cursor-pointer">
               <div className="w-[1.2em] h-[1.2em] rounded-full bg-white flexmm">
                 <ArrowLeftOutline size="12px" color="#00AC76" />
               </div>
             </div>
-            <h1 className="font-[900] text-[40px] lg:text-[37px] ls:text-[34px] sm:text-[30px]">
-              Contact Support
+            <h1 className="font-[600] text-[20px] lg:text-[18px] ls:text-[16px] sm:text-[18px]">
+              Continue Course
             </h1>
+          </div>
+          <div className="w-full flexmm gap-[15px]">
+
           </div>
         </div>
         <div className="sticky top-[1em] right-0 w-[25%] sm:w-full cflexmm gap-[1em]">

@@ -37,7 +37,7 @@ module.exports = {
         sec7: "#000",
       },
       fontFamily: {
-        sans: ["Poppins", "sans-serif"],
+        sans: ["Open Sans", "sans"],
       },
       screens: {
         lt: { max: "500px" },
