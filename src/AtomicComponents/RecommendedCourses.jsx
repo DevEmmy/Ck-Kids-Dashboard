@@ -36,11 +36,11 @@ const RecommendedCourses = () => {
 
   return (
     <>
-      <div className="cflexss gap-[1em] py-[2em] sm:px-[1.5rem] font-[400]">
+      <div className="cflexss gap-[20px] py-[2em] sm:px-[1.5rem] font-[400]">
         <h1 className="font-[800] text-black text-[1rem]">
           Recommended Courses
         </h1>
-        <div className="w-full flexbs gap-2 overflow-x-auto sm:flex-wrap">
+        <div className="w-full flexss gap-[20px] overflow-x-auto sm:flex-wrap">
           {Videos.map((video, i) => {
             return (
               <>

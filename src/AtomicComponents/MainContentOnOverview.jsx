@@ -3,7 +3,7 @@ import { BsBadgeSd, BsFire, BsTrophy } from "react-icons/bs";
 import { GiGraduateCap } from "react-icons/gi";
 import CoursesOverview from "./CoursesOverview";
 import LeaderBoardOverview from "./LeaderBoardOverview";
-import Recommended from "./Recommended";
+import RecommendedCourses from "./RecommendedCourses";
 
 const MainContentOnOverview = () => {
   return (
@@ -58,7 +58,7 @@ const MainContentOnOverview = () => {
         <CoursesOverview />
 
         <LeaderBoardOverview />
-        <Recommended />
+        <RecommendedCourses />
       </div>
     </>
   );

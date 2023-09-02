@@ -49,7 +49,7 @@ const Recommended = () => {
           {Videos.map((video, i) => {
             return (
               <>
-                <CourseCard key={i} {...video} size="20em"/>
+                <CourseCard key={i} {...video}/>
               </>
             );
           })}
