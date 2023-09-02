@@ -29,7 +29,7 @@ const CoursesOverview = () => {
         </Link>
       </div>
 
-      <div className="flex gap-[20px]">
+      <div className="flex gap-[20px] md1:flex-wrap">
         {courses.map((course, index) => {
           return (
             <div className="border rounded-[12px] p-5" key={index}>

@@ -45,7 +45,7 @@ const Recommended = () => {
         <h1 className="font-[800] text-[#012B1D] text-[1rem]">
           Recommended Courses
         </h1>
-        <div className="w-full min-w-full max-w-[auto] flexbs gap-2 overflow-x-auto sm:flex-wrap">
+        <div className="w-full flexss gap-[20px] overflow-x-scroll sm:flex-wrap">
           {Videos.map((video, i) => {
             return (
               <>

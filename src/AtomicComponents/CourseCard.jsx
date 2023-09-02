@@ -18,7 +18,7 @@ const CourseCard = ({
         <div className="w-full border-[1px] border-[#E6E6E6] cflexbs gap-[12px] min-h-[22em] lg:min-h-[20em] p-[10px] rounded-xl cursor-pointer">
           <div className="w-full flexmm h-[218px] lg:h-[190px]">
             <img
-              src={`${image}.svg`}
+              src={`/${image}.svg`}
               alt={`${image}`}
               className="h-[100%] object-cover rounded-[24px]"
             />

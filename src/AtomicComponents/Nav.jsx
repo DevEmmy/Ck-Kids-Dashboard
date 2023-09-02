@@ -78,7 +78,7 @@ const Nav = ({ active = 0 }) => {
         className="w-[20%] h-[auto]"
       />
 
-      <div className="flex gap-[30px] w-[50%]">
+      <div className="flexbm gap-[30px]">
         {navItems.map((item, index) => {
           return (
             <a key={index} href={item.link}>
@@ -90,7 +90,7 @@ const Nav = ({ active = 0 }) => {
                 <span className={`p-[8px] rounded-[8px] ${item.baseColor}`}>
                   {item.icon}
                 </span>
-                <p className="text-[20px] font-[400]">{item.name}</p>
+                <p className="text-[20px] lg:text-[18px] ls:text-[16px] font-[400]">{item.name}</p>
               </div>
             </a>
           );
