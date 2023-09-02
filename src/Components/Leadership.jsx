@@ -92,7 +92,7 @@ const Leadership = () => {
 
         <LeaderBoardOverview />
 
-        <div className="w-full cflexss gap-[1em]">
+        <div className="w-full font-[400] text-[24px] font-[Permanent Marker] lg:text-[20px] ls:text-[18px] cflexss gap-[1em]">
           <p>ALL ACHIEVEMENTS</p>
           <div className="w-full flexss gap-[2em]">
             <div className="flexmm w-[25em]">
