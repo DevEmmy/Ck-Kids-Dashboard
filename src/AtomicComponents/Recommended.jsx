@@ -41,15 +41,15 @@ const Recommended = () => {
   ];
   return (
     <>
-      <div className="w-full cflexss gap-[1em] sm:px-[1.5rem] font-[400]">
-        <h1 className="font-[800] text-[#012B1D] text-[1rem]">
+      <div className="w-full cflexss gap-[20px] sm:px-[1.5rem] font-[400]">
+        <h1 className="font-[800] text-[#012B1D] text-[20px] lg:text-[18px] ls:text-[16px]">
           Recommended Courses
         </h1>
-        <div className="w-full min-w-full max-w-[auto] flexbs gap-2 overflow-x-auto sm:flex-wrap">
+        <div className="w-full flexss gap-[20px] overflow-x-auto sm:flex-wrap">
           {Videos.map((video, i) => {
             return (
               <>
-                <CourseCard key={i} {...video} size="20em"/>
+                <CourseCard key={i} {...video}/>
               </>
             );
           })}

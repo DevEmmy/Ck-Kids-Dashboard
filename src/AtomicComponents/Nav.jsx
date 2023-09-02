@@ -54,17 +54,17 @@ const Nav = ({ active = 0 }) => {
     },
     {
       name: "Settings",
-      link: "/settings",
+      link: "/kids-dashboard-settings",
       icon: <CogOutline color="black" size={20} />,
     },
     {
       name: "Support",
-      link: "/support",
+      link: "/kids-dashboard/support",
       icon: <QuestionMarkCircleOutline color="black" size={20} />,
     },
     {
       name: "Log Out",
-      link: "/logout",
+      link: "/kids-dashboard/logout",
       icon: <LogoutOutline color="black" size={20} />,
     },
   ];
@@ -78,39 +78,39 @@ const Nav = ({ active = 0 }) => {
         className="w-[20%] h-[auto]"
       />
 
-      <div className="flex gap-[30px] w-[50%]">
+      <div className="flexbm gap-[30px]">
         {navItems.map((item, index) => {
           return (
-            <Link key={index} href={item.link}>
+            <a key={index} href={item.link}>
               <div
-                className={`flex items-center gap-[5px] p-[10px] rounded-lg cursor-pointer ${
+                className={`flex items-center gap-[12px] py-[12px] px-[16px] rounded-[8px] cursor-pointer ${
                   active === index && item.color
                 }`}
               >
-                <span className={`p-[5px] rounded-md ${item.baseColor}`}>
+                <span className={`p-[8px] rounded-[8px] ${item.baseColor}`}>
                   {item.icon}
                 </span>
-                <p className="text-[0.8em]">{item.name}</p>
+                <p className="text-[20px] lg:text-[18px] ls:text-[16px] font-[400]">{item.name}</p>
               </div>
-            </Link>
+            </a>
           );
         })}
       </div>
 
       <div className="flex items-center gap-[20px]">
-        <div className="cursor-pointer border rounded-md p-2">
+        <div className="cursor-pointer border rounded-[8px] p-[8px]">
           <FiBell />
         </div>
 
         <div
-          className="relative flex gap-[7px] items-center cursor-pointer text-[0.8rem]"
+          className="relative flex gap-[7px] font-[600] items-center cursor-pointer text-[12px]"
           onClick={() => {
             setProfMenu(!profMenu);
           }}
         >
           <img
             src="https://www.looper.com/img/gallery/inosukes-powers-from-demon-slayer-explained/intro-1620465501.jpg"
-            className="w-10 h-10 object-cover rounded-md"
+            className="w-[32px] h-[32px] object-cover rounded-md"
           />
           <p>Chinwe Eze</p>
           <FiChevronDown />
