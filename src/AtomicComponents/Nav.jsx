@@ -110,10 +110,10 @@ const Nav = ({ active = 0, student }) => {
           }}
         >
           <img
-            src={student.profilePicture}
+            src={student?.profilePicture}
             className="w-[32px] h-[32px] object-cover rounded-md"
           />
-          <p>{student.fullName}</p>
+          <p>{student?.fullName}</p>
           <FiChevronDown />
           {profMenu && (
             <>

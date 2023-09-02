@@ -13,11 +13,11 @@ const MainPage = ({isAuthorized}) => {
   let student = getMyDetails()
   const router = useRouter();
 
-  useEffect(() => {
-    if (!isAuthorized) {
-      router.push('/signin'); // Redirect to the login page if not authorized
-    }
-  }, [isAuthorized]);
+  // useEffect(() => {
+  //   if (!isAuthorized) {
+  //     router.push('/signin'); // Redirect to the login page if not authorized
+  //   }
+  // }, [isAuthorized]);
 
   return (
     <div>
