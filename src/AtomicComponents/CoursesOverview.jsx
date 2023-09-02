@@ -24,9 +24,9 @@ const CoursesOverview = () => {
       <div className="flex justify-between mt-10 mb-3">
         <p className="font-[600] text-[20px] text-black">Continue Course</p>
 
-        <Link href="/" className="text-gray-500 font-[400] text-[20px]">
+        <a href="/kids-dashboard/continue-course" className="text-gray-500 font-[400] text-[20px] cursor-pointer">
           View all
-        </Link>
+        </a>
       </div>
 
       <div className="flex gap-[20px] md1:flex-wrap">
