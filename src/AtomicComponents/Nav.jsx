@@ -138,12 +138,12 @@ const Nav = ({ active = 0, student }) => {
                       ) : (
                         <>
                           {" "}
-                          <Link href={item.link} className="w-full" onClick={item.action && item.action}>
+                          <a href={item.link} className="w-full"  onClick={item.action && item.action}>
                             <div className="flex w-full items-center gap-[1em] p-[10px] rounded-lg hover:bg-primary2 cursor-pointer hover:text-white transition-all duration-500">
                               <span className={`flexmm`}>{item.icon}</span>
                               <p className="text-[0.9em]">{item.name}</p>
                             </div>
-                          </Link>
+                          </a>
                         </>
                       )}
                     </>

@@ -7,7 +7,7 @@ import CourseCard from "@/AtomicComponents/CourseCard";
 import Recommended from "@/AtomicComponents/Recommended";
 import { useState } from "react";
 
-const CourseVideo = () => {  
+const CourseVideo = () => {
   const Topic = [
     {
       topic: "Introduction to Arts and Crafts",
@@ -56,7 +56,7 @@ const CourseVideo = () => {
   const [selected, setSelected] = useState("question");
   return (
     <>
-      <Nav active={1}/>
+      <Nav active={1} />
       <div className="w-full flexss gap-[1em] pt-[2em] px-[5%]">
         <a href="/courses" className="flexmm">
           <div className="flexss bg-primary2 rounded-[0.5em] p-[0.4em] cursor-pointer">
@@ -65,8 +65,10 @@ const CourseVideo = () => {
             </div>
           </div>
         </a>
-        <div className="cflexss gap-[1em]">
-          <p className="font-[700]">Arts and Crafts: Unleashing Imagination</p>
+        <div className="cflexss font-[600] text-[20px] lg:text-[18px] ls:text-[16px] gap-[12px]">
+          <p className="text-[28px] lg:text-[24px] ls:text-[20px] font-[700]">
+            Arts and Crafts: Unleashing Imagination
+          </p>
           <p>22 Lessons</p>
         </div>
       </div>
@@ -90,7 +92,7 @@ const CourseVideo = () => {
             </div> */}
           </div>
         </div>
-        <div className="w-[28%] sm:w-full cflexss gap-[1em] border-[0.2em] rounded-xl h-[31em] p-[1em] overflow-y-auto">
+        <div className="w-[28%] sm:w-full cflexss gap-[16px] border-[0.2em] rounded-[8px] h-[670px] lg:h-[600px] ls:h-[550px] p-[20px] overflow-y-auto">
           {Topic.map((topic, i) => {
             return <SubTopic {...topic} key={i} />;
           })}
@@ -102,8 +104,8 @@ const CourseVideo = () => {
           <div
             className={
               selected === "about"
-                ? "text-[400] text-[0.7rem] rounded-full py-[1.5em] w-[15em] flex-shrink flexmm bg-primary2 text-white cursor-pointer"
-                : "text-[400] text-[0.7rem] cursor-pointer py-[1.5em] w-[15em] flex-shrink flexmm"
+                ? "text-[600] text-[19px] lg:text-[17px] ls:text-[15px] rounded-full py-[20px] px-[52px] flex-shrink flexmm bg-primary2 text-white cursor-pointer"
+                : "text-[600] text-[19px] lg:text-[17px] ls:text-[15px] cursor-pointer py-[20px] px-[52px] flex-shrink flexmm"
             }
             onClick={() => {
               setSelected("about");
@@ -114,8 +116,8 @@ const CourseVideo = () => {
           <div
             className={
               selected === "transcript"
-                ? "text-[400] text-[0.7rem] rounded-full py-[1.5em] w-[15em] flex-shrink flexmm bg-primary2 text-white cursor-pointer"
-                : "text-[400] text-[0.7rem] cursor-pointer py-[1.5em] w-[15em] flex-shrink flexmm"
+                ? "text-[600] text-[19px] lg:text-[17px] ls:text-[15px] rounded-full py-[20px] px-[52px] flex-shrink flexmm bg-primary2 text-white cursor-pointer"
+                : "text-[600] text-[19px] lg:text-[17px] ls:text-[15px] cursor-pointer py-[20px] px-[52px] flex-shrink flexmm"
             }
             onClick={() => {
               setSelected("transcript");
@@ -126,8 +128,8 @@ const CourseVideo = () => {
           <div
             className={
               selected === "question"
-                ? "text-[400] text-[0.7rem] rounded-full py-[1.5em] w-[15em] flex-shrink flexmm bg-primary2 text-white cursor-pointer"
-                : "text-[400] text-[0.7rem] cursor-pointer py-[1.5em] w-[15em] flex-shrink flexmm"
+                ? "text-[600] text-[19px] lg:text-[17px] ls:text-[15px] rounded-full py-[20px] px-[52px] flex-shrink flexmm bg-primary2 text-white cursor-pointer"
+                : "text-[600] text-[19px] lg:text-[17px] ls:text-[15px] cursor-pointer py-[20px] px-[52px] flex-shrink flexmm"
             }
             onClick={() => {
               setSelected("question");
@@ -150,19 +152,14 @@ const CourseVideo = () => {
           {selected === "question" && (
             <>
               <div className="w-full cflexsm gap-[1em] overflow-y-auto h-auto px-[2em]">
-                <div className="flexbs w-full flex-wrap font-[400] text-[0.7rem]">
-                  <div className="flexss gap-[1em]">
-                    <div className="flexmm w-[5em]">
-                      <Image
-                        src="/kid1.svg"
-                        width={100}
-                        height={100}
-                        alt="jacob jones"
-                      />
+                <div className="flexbs w-full flex-wrap font-[400] text-[20px] lg:text-[18px] ls:text-[16px]">
+                  <div className="flexss gap-[24px]">
+                    <div className="flexmm w-[60px] h-[60px]">
+                      <img src="/kid1.svg" alt="jacob jones" />
                     </div>
                     <div className="w-full cflexss gap-[1em]">
                       <div className="w-full cflexss">
-                        <p className="font-[800]">Jacob Jones</p>
+                        <p className="font-[700]">Jacob Jones</p>
                         <p className="text-[#808080]">@jjones12</p>
                       </div>
                       <p>
@@ -172,24 +169,20 @@ const CourseVideo = () => {
                       <p className="text-primary2 cursor-pointer">Answer</p>
                     </div>
                   </div>
-                  <div className="cflexss gap-[1em]">
+                  <div className="cflexss gap-[24px]">
                     <p className="text-[#808080]">10 days ago</p>
                     <HeartOutline
                       color="#00AC76"
                       style={{ cursor: "pointer" }}
+                      size="24px"
                     />
                   </div>
                 </div>
 
-                <div className="flexbs w-full flex-wrap font-[400] text-[0.7rem]">
-                  <div className="flexss gap-[1em]">
-                    <div className="flexmm w-[5em]">
-                      <Image
-                        src="/kid2.svg"
-                        width={100}
-                        height={100}
-                        alt="jacob jones"
-                      />
+                <div className="flexbs w-full flex-wrap font-[400] text-[20px] lg:text-[18px] ls:text-[16px]">
+                  <div className="flexss gap-[24px]">
+                    <div className="flexmm w-[60px] h-[60px]">
+                      <img src="/kid2.svg" alt="jacob jones" />
                     </div>
                     <div className="w-full cflexss gap-[1em]">
                       <div className="w-full cflexss">
@@ -203,26 +196,27 @@ const CourseVideo = () => {
                       <p className="text-primary2 cursor-pointer">Answer</p>
                     </div>
                   </div>
-                  <div className="cflexss gap-[1em]">
+                  <div className="cflexss gap-[24px]">
                     <p className="text-[#808080]">2 days ago</p>
                     <HeartOutline
                       color="#00AC76"
                       style={{ cursor: "pointer" }}
+                      size="24px"
                     />
                   </div>
                 </div>
               </div>
               <div className="w-full flexmm">
-                <div className="w-[60em] flex-shrink p-[2em] cflexms gap-[1em] bg-[#CCEEE4] rounded-[0.5em] font-[400] text-[0.7rem]">
-                  <p className="text-primary2 font-[600]">Response</p>
+                <div className="w-[70%] flex-shrink px-[40px] py-[35px] cflexms gap-[20px] bg-[#CCEEE4] rounded-[8px] font-[400] text-[20px] lg:text-[18px] ls:text-[16px]">
+                  <p className="text-primary2 font-[700]">Response</p>
                   <textarea
                     type="text"
                     name="response"
-                    className="p-[1.5em] w-full rounded-[0.5em] outline-none resize-none"
+                    className="p-[1.5em] h-[94px] w-full rounded-[8px] outline-none resize-none"
                     placeholder="Type your response here..."
                   />
                   <div className="w-full flexem">
-                    <button className="py-[1.5em] px-[2em] bg-primary2 text-white rounded-full">
+                    <button className="py-[20px] px-[52px] bg-primary2 text-white rounded-full">
                       Send response
                     </button>
                   </div>
