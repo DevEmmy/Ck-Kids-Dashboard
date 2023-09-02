@@ -137,12 +137,12 @@ const Nav = ({ active = 0 }) => {
                       ) : (
                         <>
                           {" "}
-                          <Link href={item.link} className="w-full">
+                          <a href={item.link} className="w-full">
                             <div className="flex w-full items-center gap-[1em] p-[10px] rounded-lg hover:bg-primary2 cursor-pointer hover:text-white transition-all duration-500">
                               <span className={`flexmm`}>{item.icon}</span>
                               <p className="text-[0.9em]">{item.name}</p>
                             </div>
-                          </Link>
+                          </a>
                         </>
                       )}
                     </>
