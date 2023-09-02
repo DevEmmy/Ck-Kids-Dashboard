@@ -14,8 +14,8 @@ const CourseCard = ({
 }) => {
   return (
     <>
-      <a href={link} className="w-[350px] sm:w-full sm:flex-grow">
-        <div className="w-full border-[1px] border-[#E6E6E6] cflexbs gap-[12px] min-h-[22em] lg:min-h-[20em] p-[10px] rounded-xl cursor-pointer">
+      <a href={link} className="min-w-[340px] lg:min-w-[300px] ls:min-w-[280px] sm:w-full sm:flex-grow">
+        <div className="w-full border-[1px] border-[#E6E6E6] cflexbs gap-[12px] min-h-[24em] lg:min-h-[20em] p-[10px] rounded-xl cursor-pointer">
           <div className="w-full flexmm h-[218px] lg:h-[190px]">
             <img
               src={`/${image}.svg`}

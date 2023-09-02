@@ -33,7 +33,7 @@ const GetStarted = () => {
   return (
     <>
       <div className="w-full cflexss gap-[1em] sm:px-[1.5rem] font-[400]">
-        <h1 className="font-[800] text-[#012B1D] text-[1rem]">
+        <h1 className="font-[800] text-[#012B1D] text-[20px] lg:text-[18px] ls:text-[16px]">
           Courses to get you started
         </h1>
         <div className="w-full flexbs gap-2 overflow-x-auto sm:flex-wrap">
