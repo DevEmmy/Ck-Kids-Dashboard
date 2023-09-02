@@ -1,7 +1,7 @@
 import React from "react";
 import { IoDiamondOutline } from "react-icons/io5";
 
-const GemView = () => {
+const GemView = ({student}) => {
   const missions = [
     {
       name: "Super Video Watcher",
@@ -38,7 +38,7 @@ const GemView = () => {
         <div className="">
           <p>Learning Gems</p>
 
-          <h2 className="text-[2.2em] font-[900]">7,000 LG</h2>
+          <h2 className="text-[2.2em] font-[900]">{student.gem} LG</h2>
         </div>
       </div>
 

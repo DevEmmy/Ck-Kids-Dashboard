@@ -51,14 +51,17 @@ const SignIn = () => {
       // });
 
       // ENDPOINT FOR SUBMITTING LOGIN DETAILS
-      await studentLogin(loginDetails.email, loginDetails.password).then(
+      await studentLogin(loginDetails.email, loginDetails.password, router).then(
         (resp) => {
-          router.push("/kids-dashboard");
+          console.log(resp)
         }
       );
       setLoading(false);
     }
   };
+
+  // localStorage.clear()
+
   return (
     <>
       <div className="h-full w-full flexss flex-wrap">

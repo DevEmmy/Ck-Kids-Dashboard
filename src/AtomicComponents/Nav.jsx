@@ -12,7 +12,7 @@ import {
 import Link from "next/link";
 import Profile from "./Profile";
 
-const Nav = ({ active = 0 }) => {
+const Nav = ({ active = 0, student }) => {
   const [profMenu, setProfMenu] = useState(false);
   const [profile, setProfile] = useState(false);
   const navItems = [
@@ -64,8 +64,9 @@ const Nav = ({ active = 0 }) => {
     },
     {
       name: "Log Out",
-      link: "/kids-dashboard/logout",
+      link: "/signin",
       icon: <LogoutOutline color="black" size={20} />,
+      action: ()=> {localStorage.clear()}
     },
   ];
   return (
@@ -109,10 +110,10 @@ const Nav = ({ active = 0 }) => {
           }}
         >
           <img
-            src="https://www.looper.com/img/gallery/inosukes-powers-from-demon-slayer-explained/intro-1620465501.jpg"
+            src={student.profilePicture}
             className="w-[32px] h-[32px] object-cover rounded-md"
           />
-          <p>Chinwe Eze</p>
+          <p>{student.fullName}</p>
           <FiChevronDown />
           {profMenu && (
             <>
@@ -137,7 +138,7 @@ const Nav = ({ active = 0 }) => {
                       ) : (
                         <>
                           {" "}
-                          <Link href={item.link} className="w-full">
+                          <Link href={item.link} className="w-full" onClick={item.action && item.action}>
                             <div className="flex w-full items-center gap-[1em] p-[10px] rounded-lg hover:bg-primary2 cursor-pointer hover:text-white transition-all duration-500">
                               <span className={`flexmm`}>{item.icon}</span>
                               <p className="text-[0.9em]">{item.name}</p>
