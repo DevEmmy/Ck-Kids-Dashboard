@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        
+      },
       spacing: {
         xPadding: "5%",
         xpadding: "6.94%",
@@ -15,6 +18,7 @@ module.exports = {
       gridTemplateColumns: {
         "3to1": "3fr 1fr",
       },
+      
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

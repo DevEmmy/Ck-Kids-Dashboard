@@ -49,7 +49,9 @@ export const studentRegister = async (fullName, email, productKey, password)=>{
     console.log(fullName)
     await axios.post(`${api}/student/sign-up`, {
         email, password, fullName, productKey
-    })
+    }, {
+        withCredentials: true,
+      })
     .then(response => {
         console.log(response.data)
         notify(response.data.message)
