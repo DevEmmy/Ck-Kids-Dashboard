@@ -68,7 +68,7 @@ const Section1 = () => {
             </a>
           </div>          
         </div>
-        <div className="w-full flexss gap-[20px] xl:flex-wrap overflow-x-auto">
+        <div className="grid grid-cols-4 md1:flex md1:flex-wrap w-full gap-[20px] overflow-x-auto">
           {Videos.map((video, i) => {
             return (
               <>
