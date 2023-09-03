@@ -1,5 +1,5 @@
 import Nav from "@/AtomicComponents/Nav";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   ChevronUp,
   ChevronDown,
@@ -12,6 +12,7 @@ import TopCategories from "@/AtomicComponents/TopCategories";
 import Recommended from "@/AtomicComponents/Recommended";
 import GemView from "@/AtomicComponents/GemView";
 import { motion, transform } from "framer-motion";
+import { getMyDetails } from "@/services/request";
 
 const Appear = {
   hidden: { opacity: 0 },
@@ -20,6 +21,11 @@ const Appear = {
 
 const CoursesPage = () => {
   const [cat, setCat] = useState(false);
+  const [student, setStudent] = useState("");
+  useEffect(() => {
+    let student = getMyDetails();
+    setStudent(student);
+  }, [student]);
   const Categories = [
     {
       category: "History",
@@ -56,7 +62,7 @@ const CoursesPage = () => {
   ];
   return (
     <>
-      <Nav active={1} />
+      <Nav active={1} student={student} />
       <div className="w-full flexbs py-[2em] px-xPadding flex-wrap">
         <div className="w-[70%] sm:w-full cflexss gap-[2em] font-[400] text-[20px] lg:text-[18px] ls:text-[16px]">
           <div className="flexmm gap-[2em]">

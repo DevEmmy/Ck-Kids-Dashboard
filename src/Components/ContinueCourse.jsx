@@ -1,8 +1,15 @@
 import Nav from "@/AtomicComponents/Nav";
 import { ArrowLeftOutline } from "heroicons-react";
 import GemView from "@/AtomicComponents/GemView";
+import { getMyDetails } from "@/services/request";
+import { useState, useEffect } from "react";
 
 const ContinueCourse = () => {
+  const [student, setStudent] = useState("");
+  useEffect(() => {
+    let student = getMyDetails();
+    setStudent(student);
+  }, [student]);
   const courses = [
     {
       category: "Music-Dance",
@@ -22,7 +29,7 @@ const ContinueCourse = () => {
   ];
   return (
     <>
-      <Nav active={1} />
+      <Nav active={1} student={student}/>
       <div className="w-full flexbs py-[2em] px-xPadding flex-wrap">
         <div className="w-[72%] sm:w-full cflexss">
           <div
@@ -40,9 +47,7 @@ const ContinueCourse = () => {
               Continue Course
             </h1>
           </div>
-          <div className="w-full flexmm gap-[15px]">
-
-          </div>
+          <div className="w-full flexmm gap-[15px]"></div>
         </div>
         <div className="sticky top-[1em] right-0 w-[25%] sm:w-full cflexmm gap-[1em]">
           <GemView />
