@@ -10,8 +10,10 @@ const MainPage = ({isAuthorized}) => {
   // useEffect(()=>{
   //   getMyDetails()
   // }, [])
-  let student = getMyDetails()
-  const router = useRouter();
+  
+  useEffect(()=>{
+    let student = getMyDetails()
+  }, [])
 
   // useEffect(() => {
   //   if (!isAuthorized) {

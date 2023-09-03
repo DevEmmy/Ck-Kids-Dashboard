@@ -38,7 +38,7 @@ const GemView = ({student}) => {
         <div className="font-[600] text-[19px] lg:text-[17px] ls:text-[15px]">
           <p>Learning Gems</p>
 
-          <h2 className="text-[48px] lg:text-[40px] ls:text-[38px] font-[900]">{student?.gem} LG</h2>
+          <h2 className="text-[48px] lg:text-[40px] ls:text-[38px] font-[900]">{student.gem || 0} LG</h2>
         </div>
       </div>
 
