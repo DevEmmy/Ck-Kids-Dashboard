@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 
 const ContinueCourse = () => {
   const [student, setStudent] = useState("");
+  
   useEffect(() => {
     let student = getMyDetails();
     setStudent(student);
@@ -36,7 +37,7 @@ const ContinueCourse = () => {
             onClick={() => {
               window.history.back();
             }}
-            className="flexmm gap-[12   px]"
+            className="flexmm gap-[12px]"
           >
             <div className="flexss bg-primary2 rounded-[0.5em] p-[0.4em] cursor-pointer">
               <div className="w-[1.2em] h-[1.2em] rounded-full bg-white flexmm">
