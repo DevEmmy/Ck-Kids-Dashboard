@@ -11,10 +11,12 @@ import {
 } from "heroicons-react";
 import Link from "next/link";
 import Profile from "./Profile";
+import Notification from "@/Components/Notification";
 
 const Nav = ({ active = 0, student }) => {
   const [profMenu, setProfMenu] = useState(false);
   const [profile, setProfile] = useState(false);
+  const [notification, setNotification] = useState(false)
   const navItems = [
     {
       name: "Overview",
@@ -99,7 +101,9 @@ const Nav = ({ active = 0, student }) => {
       </div>
 
       <div className="flex items-center gap-[20px]">
-        <div className="cursor-pointer border rounded-[8px] p-[8px]">
+        <div className="cursor-pointer border rounded-[8px] p-[8px]" onClick={()=> {
+          setNotification(true)
+        }}>
           <FiBell />
         </div>
 
@@ -152,6 +156,9 @@ const Nav = ({ active = 0, student }) => {
               </div>
             </>
           )}
+          {
+            notification && <Notification setNotification={setNotification}/>
+          }
         </div>
       </div>
       {profile && <Profile setProfile={setProfile} />}
