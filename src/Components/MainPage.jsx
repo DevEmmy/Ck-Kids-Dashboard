@@ -26,13 +26,13 @@ const MainPage = ({studentt}) => {
   return (
     <div>
         <Nav student={student}/>
-        <div className="main flexbs flex-wrap mx-xPadding  mt-[60px] gap-6 ">
-            <div className='w-[72%] sm:w-full cflexss'>
+        <div className="main flexbs lf:flex-wrap mx-xPadding mt-[60px] gap-6 ">
+            <div className='w-[72%] lf:w-full cflexss'>
                <MainContentOnOverview student={student}/>
             </div>
            
             
-            <div className="sticky top-[1em] right-0 sm:w-full w-[25%] cflexmm gap-[1em]">
+            <div className="sticky top-[1em] right-0 lf:w-full w-[25%] cflexmm gap-[1em]">
               <GemView student={student}/>
             </div>
         </div>
