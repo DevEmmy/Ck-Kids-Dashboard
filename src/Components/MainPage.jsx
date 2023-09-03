@@ -3,9 +3,10 @@ import MainContentOnOverview from '@/AtomicComponents/MainContentOnOverview'
 import Nav from '@/AtomicComponents/Nav'
 import { getMyDetails } from '@/services/request'
 import { useRouter } from 'next/navigation'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
-const MainPage = ({isAuthorized}) => {
+const MainPage = ({studentt}) => {
+  const [student, setStudent] = useState(studentt)                             
 
   // useEffect(()=>{
   //   getMyDetails()
@@ -13,7 +14,8 @@ const MainPage = ({isAuthorized}) => {
   
   useEffect(()=>{
     let student = getMyDetails()
-  }, [])
+    setStudent(student)
+  }, [student])
 
   // useEffect(() => {
   //   if (!isAuthorized) {
@@ -40,7 +42,7 @@ const MainPage = ({isAuthorized}) => {
 
 export async function getServerSideProps(context) {
   // Implement your condition check here, e.g., check if the user is authenticated
-  let student = getMyDetails()
+  let studentt = getMyDetails()
   let isAuthorized = false
   if(student){
     isAuthorized = true
@@ -49,6 +51,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       isAuthorized,
+      studentt
     },
   };
 }
