@@ -58,7 +58,7 @@ const CoursesPage = () => {
     <>
       <Nav active={1} />
       <div className="w-full flexbs py-[2em] px-xPadding flex-wrap">
-        <div className="w-[70%] sm:w-full cflexss gap-[2em] font-[400] text-[0.9rem]">
+        <div className="w-[70%] sm:w-full cflexss gap-[2em] font-[400] text-[20px] lg:text-[18px] ls:text-[16px]">
           <div className="flexmm gap-[2em]">
             <div
               className="relative flexmm p-[1em] border-[2px] gap-[1em] rounded-xl cursor-pointer"

@@ -38,13 +38,13 @@ const LandingPage = () => {
   return (
     <>
       <NavBar active={0} />
-      <div className="flexbm px-xpadding bg-sec6 py-[5em] text-[20px] ls:text-[15px] lg:text-[17px] lg:py-[4em] sm1:pt-[0em] sm1:pb-[2em] sm:px-[1.5em] flex-wrap">
-        <div className="cflexms font-[600] gap-[32px] text-sec5 md:gap-[1em] w-[35em] flex-grow pb-[2em]">
-          <h1 className="font-[1000] text-[52px] lg:text-[45px] ls:text-[35px] sm:text-[1.7rem]">
+      <div className="flexbm px-xpadding bg-sec6 py-[5em] text-[20px] gap-[20px] ls:text-[15px] lg:text-[17px] lg:py-[4em] sm1:pt-[0em] sm1:pb-[2em] sm:px-[1.5em] md1:flex-wrap">
+        <div className="cflexms font-[600] gap-[32px] text-sec5 md:gap-[1em] w-[50%] flex-grow pb-[2em]">
+          <h1 className="font-[1000] text-[52px] lg:text-[45px] ls:text-[28px]">
             Unlock Your Child's Potential through{" "}
             <span className="text-sec1">Innovative Education</span>
           </h1>
-          <p className="sm:text-[1rem] sm:text-justify leading-[150%]">
+          <p className="sm:text-[16px] sm:font-[400] sm:text-justify leading-[150%]">
             We believe that education should be exciting, engaging, and filled
             with boundless possibilities. We are a leading educational platform
             that sparks curiosity, fosters creativity, and inspires young minds
@@ -62,7 +62,7 @@ const LandingPage = () => {
               </Button>
             </a>
           </div>
-          <div className="flexsm gap-[1em] flex-wrap sm:text-[1.1rem]">
+          <div className="flexsm gap-[1em] flex-wrap sm:font-[400] sm:text-[17px]">
             <div className="flexsm gap-[0.5em]">
               <CheckCircle
                 className="flexmm w-[18px] h-[18px] rounded-full bg-sec1 "
@@ -87,15 +87,15 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <div className="flexes w-[37em] md1:w-full md1:justify-center flex-shrink">
+        <div className="flexes w-[50%] md1:w-full md1:justify-center flex-shrink">
           <div className="flexmm w-[85%] sm:w-[100%]">
             <img src="/boyImage.svg" alt="boyImage" />
           </div>
         </div>
       </div>
 
-      <div className="flexbm px-xpadding bg-[#FAFAFA] py-[6em] text-[20px] lg:text-[17px] lg:py-[5em] ls:text-[15px] sm:px-[1.5em] sm1:pb-[2em] sm:pt-[0em] sm:gap-[2em] flex-wrap">
-        <div className="cflexms gap-[24px] w-[35em] pt-[2em] flex-grow">
+      <div className="flexbm px-xpadding bg-[#FAFAFA] py-[6em] gap-[20px] text-[20px] lg:text-[17px] lg:py-[5em] ls:text-[15px] sm:px-[1.5em] sm1:pb-[2em] sm:pt-[0em] sm:gap-[2em] md1:flex-wrap">
+        <div className="cflexms gap-[24px] w-[50%] pt-[2em] flex-grow">
           <h1 className="font-[800] text-[36px] ls:text-[32px] sm:text-[1.7rem] sm:w-[10em]">
             Why Choose CuriousKidz?
           </h1>
@@ -146,19 +146,19 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <div className="flexes w-[35em] md1:w-full md1:justify-center flex-shrink">
+        <div className="flexes w-[50%] md1:w-full md1:justify-center flex-shrink">
           <div className="flexmm w-[82%] sm:w-[100%]">
             <img src="/girlImage.svg" alt="girlImage" />
           </div>
         </div>
       </div>
 
-      <div className="bg-white cflexss gap-[4em] sm:gap-[1.5em] px-xpadding py-[6em] text-[20px] lg:text-[17px] lg:py-[5em] sm:px-[1.5em] sm1:pb-[2em]">
+      <div className="bg-white cflexss gap-[4em] md1:gap-[1.5em] px-xpadding py-[6em] text-[20px] lg:text-[17px] lg:py-[5em] sm:px-[1.5em] sm1:pb-[2em]">
         <h1 className="align-center sm:justify-start w-full flexmm font-[800] text-[36px] ls:text-[32px]">
           What We Offer:
         </h1>
-        <div className="flexbm w-full sm:flex-wrap font-[600]">
-          <div className="border-r-2 cflexss gap-[22px] w-[33%] px-[2em] sm:w-full sm:px-0 md1:border-0">
+        <div className="flexbm w-full md1:gap-[2em] md1:flex-wrap font-[600]">
+          <div className="border-r-2 cflexss gap-[22px] w-[33%] px-[2em] md1:w-full sm:px-0 md1:border-0">
             <div className="flexmm text-white bg-sec1 w-[35px] h-[35px] rounded-[10px] font-[800] text-[16px]">
               1
             </div>
@@ -169,7 +169,7 @@ const LandingPage = () => {
               goes beyond the classroom.
             </p>
           </div>
-          <div className="border-r-2 cflexss gap-[22px] w-[33%] px-[2em] sm:w-full sm:px-0 md1:border-0">
+          <div className="border-r-2 cflexss gap-[22px] w-[33%] px-[2em] md1:w-full sm:px-0 md1:border-0">
             <div className="flexmm text-white bg-sec1 w-[35px] h-[35px] rounded-[10px] font-[800] text-[16px]">
               2
             </div>
@@ -180,7 +180,7 @@ const LandingPage = () => {
               learn.
             </p>
           </div>
-          <div className="cflexss gap-[22px] w-[33%] px-[2em] sm:w-full sm:px-0 md1:border-0">
+          <div className="cflexss gap-[22px] w-[33%] px-[2em] md1:w-full sm:px-0 md1:border-0">
             <div className="flexmm text-white bg-sec1 w-[35px] h-[35px] rounded-[10px] font-[800] text-[16px]">
               3
             </div>
@@ -204,7 +204,7 @@ const LandingPage = () => {
             there's something for every curious kid!
           </p>
         </div>
-        <div className="flexmm w-full sm:gap-[1em] gap-[2em] flex-wrap">
+        <div className="flexmm w-full md1:grid md1:grid-cols-2 gap-[32px] md1:gap-[18px]">
           {CoursesD.map((course, i) => {
             return (
               <>

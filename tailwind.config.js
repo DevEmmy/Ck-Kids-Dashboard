@@ -37,7 +37,7 @@ module.exports = {
         sec7: "#000",
       },
       fontFamily: {
-        sans: ["Poppins", "sans-serif"],
+        sans: ["Open Sans", "sans"],
       },
       screens: {
         lt: { max: "500px" },
@@ -48,8 +48,7 @@ module.exports = {
         lg: { max: "1707px" },
         ls: { max: "1370px" },
         xl: { max: "1250px" },
-        lf: { max: "1150px" },
-        "2xl": { max: "1536px" },
+        lf: { max: "1150px" },        
       },
     },
   },

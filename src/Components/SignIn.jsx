@@ -74,7 +74,7 @@ const SignIn = () => {
               <img src="logo.svg" alt="CSkidz" />
             </a>
             <div>
-              <h1 className="text-[60px] lg:text-[55px] ls:text-[52px] sm:text-[1.8rem] font-[800]">
+              <h1 className="text-[60px] lg:text-[55px] ls:text-[32px] font-[800]">
                 Welcome to CuriousKidz!
               </h1>
               <p className="text-[18px] lg:text-[17px] ls:text-[16px] sm:text-[20px] font-[400] pt-[0.5em] leading-[1.7em]">
