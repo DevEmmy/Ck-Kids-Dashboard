@@ -32,7 +32,7 @@ export const studentLogin = async (email, password, router)=>{
         method: "POST",
         headers: {'Content-Type': "application/json"},
         credentials: "include",
-        body: {email, password}
+        body: JSON.stringify({email, password})
     })
 
     // await router.push("/kids-dashboard")
