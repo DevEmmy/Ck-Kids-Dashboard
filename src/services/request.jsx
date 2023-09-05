@@ -10,32 +10,23 @@ const getCookie = ()=>{
 }
 
 export const studentLogin = async (email, password, router)=>{
-    // await axios.post(`${api}/student/sign-in`, {
-    //     email, password
-    // })
-    // .then(response => {
-    //     // console.log(document.cookie.includes('token'))
-    //     const {student} = response.data.payload;
-    //     localStorage.setItem("student", JSON.stringify(student))
-    //     console.log(student);
-    //     router.push("/kids-dashboard");
-
-    //     notify(response.data.message)
-    //     // window.location.href = "/kids-dashboard"
-    // })
-    // .catch(err => {
-    //     notifyError(err.response.data.message)
-    //     console.log(err)}
-    // )
-
-    await fetch(`${api}/student/sign-in`, {
-        method: "POST",
-        headers: {'Content-Type': "application/json"},
-        credentials: "include",
-        body: JSON.stringify({email, password})
+    await axios.post(`${api}/student/sign-in`, {
+        email, password
     })
+    .then(response => {
+        // console.log(document.cookie.includes('token'))
+        const {student} = response.data.payload;
+        localStorage.setItem("student", JSON.stringify(student))
+        console.log(student);
+        router.push("/kids-dashboard");
 
-    // await router.push("/kids-dashboard")
+        notify(response.data.message)
+        // window.location.href = "/kids-dashboard"
+    })
+    .catch(err => {
+        notifyError(err.response.data.message)
+        console.log(err)}
+    )
 }
 
 
