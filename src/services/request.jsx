@@ -12,6 +12,9 @@ const getCookie = ()=>{
 export const studentLogin = async (email, password, router)=>{
     await axios.post(`${api}/student/sign-in`, {
         email, password
+    }, 
+    {
+        withCredentials: true
     })
     .then(response => {
         // console.log(document.cookie.includes('token'))
