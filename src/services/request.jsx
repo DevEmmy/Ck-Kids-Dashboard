@@ -14,7 +14,9 @@ export const studentLogin = async (email, password, router)=>{
         email, password
     }, 
     {
-        withCredentials: true
+        withCredentials: true,
+        credentials: "include"
+
     })
     .then(response => {
         // console.log(document.cookie.includes('token'))
