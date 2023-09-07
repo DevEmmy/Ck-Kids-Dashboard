@@ -204,7 +204,7 @@ const LandingPage = () => {
             there's something for every curious kid!
           </p>
         </div>
-        <div className="flexmm w-full md1:grid md1:grid-cols-2 gap-[32px] md1:gap-[18px]">
+        <div className="flexmm w-full md1:grid md1:grid-cols-2 gap-[32px]">
           {CoursesD.map((course, i) => {
             return (
               <>
@@ -217,11 +217,13 @@ const LandingPage = () => {
               </>
             );
           })}
-          <div className="cflexss sm1:flex-row gap-[0.5em] cursor-pointer">
-            <div className="bg-sec7 w-[1.5em] h-[1.5em] rounded-full flexmm">
-              <ArrowRightOutline size="1em" color="white" />
+          <div className="md1:w-[100vw] flexmm">
+            <div className="cflexss sm1:flex-row gap-[0.5em] cursor-pointer">
+              <div className="bg-sec7 w-[1.5em] h-[1.5em] rounded-full flexmm">
+                <ArrowRightOutline size="1em" color="white" />
+              </div>
+              <p>See more</p>
             </div>
-            <p>See more</p>
           </div>
         </div>
       </div>

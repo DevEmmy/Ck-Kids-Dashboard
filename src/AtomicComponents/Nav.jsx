@@ -11,7 +11,7 @@ import {
 } from "heroicons-react";
 import Link from "next/link";
 import Profile from "./Profile";
-import Notification from "@/Components/Notification";
+import Notification from "@/Components/Kids-Dashboard/Notification";
 
 const Nav = ({ active = 0, student }) => {
   const [profMenu, setProfMenu] = useState(false);

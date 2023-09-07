@@ -94,21 +94,16 @@ const SchoolAccount = ({ setAccountType }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    await schoolRegister(
-      userDetails.schoolName,
-      userDetails.email,
-      userDetails.password
-    );
     if (valid) {
-      // setUserDetails({
-      //   schoolName: "",
-      //   email: "",
-      //   password: ""
-      // });
       // ENDPOINT FOR SUBMITTING USER DETAILS
+      setLoading(true);
+      await schoolRegister(
+        userDetails.schoolName,
+        userDetails.email,
+        userDetails.password
+      );
+      setLoading(false);
     }
-    setLoading(false);
   };
   return (
     <>

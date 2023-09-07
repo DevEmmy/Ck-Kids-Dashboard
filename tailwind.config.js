@@ -3,6 +3,8 @@ module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/Components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/Components/Kids-Dashboard**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/Components/Teachers-Dashboard**/*.{js,ts,jsx,tsx,mdx}",
     "./src/AtomicComponents/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],

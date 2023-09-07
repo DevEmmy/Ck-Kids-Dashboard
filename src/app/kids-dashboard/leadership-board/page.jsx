@@ -1,6 +1,6 @@
 'use client'
 
-import Leadership from "@/Components/Leadership"
+import Leadership from "@/Components/Kids-Dashboard/Leadership"
 
 export default function Home() {
   return (

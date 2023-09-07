@@ -1,6 +1,6 @@
 'use client'
 
-import Messages from "@/Components/Messages"
+import Messages from "@/Components/Kids-Dashboard/Messages"
 
 export default function Home() {
   return (

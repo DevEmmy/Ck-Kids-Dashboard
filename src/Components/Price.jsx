@@ -27,7 +27,7 @@ const Price = () => {
             learners and educational institutions, ensuring that the journey of
             curiosity and learning is open to everyone.
           </p>
-          <div className="flexss sm1:justify-center gap-[1em] font-[700] text-[19px] ls:text-[17px] flex-wrap sm1:w-full mt-[2em] p-[0.5em] bg-white rounded-full shadow-md sm:shadow-none">
+          <div className="flexss sm1:justify-center gap-[1em] font-[700] text-[19px] ls:text-[17px] flex-wrap sm1:w-full mt-[2em] p-[0.5em] bg-white rounded-full sm:rounded-[15px] shadow-md sm:shadow-md">
             <div
               className="sm:flex flex-grow"
               onClick={() => {
@@ -66,9 +66,9 @@ const Price = () => {
         <div className="w-full cflexmm gap-[40px]">
           <div className="w-[80%] sm:w-full cflexmm">
             <Range
-              step={1}
+              step={10}
               min={0}
-              max={700}
+              max={600}
               values={values}
               onChange={(newValues) => setValues(newValues)}
               disabled={false}
@@ -125,7 +125,7 @@ const Price = () => {
                   />
                   <div>
                     <h3 className="font-[700] text-[28px] lg:text-[24px] ls:text-[22px]">
-                      ₦ 2000/per term
+                      ₦ 1500/per term
                     </h3>
                     <p>For Individual Learners</p>
                   </div>
@@ -150,7 +150,7 @@ const Price = () => {
                     />
                     <div>
                       <h3 className="font-[700] text-[28px] lg:text-[24px] ls:text-[20px]">
-                        ₦ {60000*values[0]}/per term
+                        ₦ {1200*values[0]}/per term
                       </h3>
                       <p>For Schools and Institutions</p>
                     </div>
@@ -214,7 +214,7 @@ const Price = () => {
                     />
                     <div>
                       <h3 className="font-[700] text-[28px] lg:text-[24px] ls:text-[20px]">
-                        ₦ {180000*values[0]}/per annum
+                        ₦ {4000*values[0]}/per annum
                       </h3>
                       <p>For Schools and Institutions</p>
                     </div>
