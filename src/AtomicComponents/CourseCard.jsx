@@ -17,7 +17,7 @@ const CourseCard = ({
         href={link}
         className="min-w-[340px] lg:min-w-[300px] ls:min-w-[280px] sm:w-full sm:flex-grow"
       >
-        <div className="w-full hover:border-primary2 hover:border-[1px] border-[#E6E6E6] cflexss gap-[20px] p-[20px] rounded-[24px] cursor-pointer shadow-lg">
+        <div className="w-full hover:border-primary2 border-[1px] border-white cflexss gap-[20px] p-[20px] rounded-[24px] cursor-pointer shadow-lg">
           <div className="w-full flexmm h-[218px] lg:h-[190px]">
             <img
               src={`/${image}.svg`}
