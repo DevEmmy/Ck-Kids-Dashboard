@@ -71,11 +71,11 @@ const Dashboard = () => {
   return (
     <>
       <div className="w-full flexss">
-        <div className="w-[20%] pt-[61px] px-[25px] pb-[475px] border-r-[1px] border-b-[1px] cflexss gap-[37px] bg-white">
+        <div className="w-[23vw] pt-[61px] px-[25px] pb-[475px] border-r-[1px] border-b-[1px] cflexss gap-[37px] bg-white">
           <div className="w-[226px]">
             <img src="/logo.png" alt="curiouz-kidz-logo" />
           </div>
-          <div className="w-full cflexss gap-[32px] font-[400] text-[20px]">
+          <div className="w-full cflexss gap-[32px] font-[400] text-[20px] lg:text-[18px] ls:text-[16px]">
             {Nav.map((item, index) => {
               return (
                 <>
@@ -94,8 +94,8 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="w-[80%]">
-          <div className="w-full p-[30px] font-[700] text-[28px] bg-white flexbs border-b-[1px]">
+        <div className="w-[77vw]">
+          <div className="w-full p-[30px] font-[700] text-[28px] lg:text-[22px] ls:text-[18px] bg-white flexbs border-b-[1px]">
             <p>Teachers Dashboard Overview</p>
             <div className="flexsm gap-[20px]">
               <div
