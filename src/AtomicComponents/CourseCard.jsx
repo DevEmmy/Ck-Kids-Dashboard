@@ -9,8 +9,7 @@ const CourseCard = ({
   content,
   images,
   enrolled,
-  link = "/",
-  size,
+  link = "/",  
 }) => {
   return (
     <>
@@ -39,7 +38,7 @@ const CourseCard = ({
             <div className="flexsm gap-[16px] py-[10px]">
               <ImageStacked images={images} />
               <p className="text-[14px] sm:text-[16px] pl-[5.6em] font-[400] sm:pl-[4.6em]">
-                {enrolled} 'lsdkl'
+                {enrolled}
               </p>
             </div>
           </div>

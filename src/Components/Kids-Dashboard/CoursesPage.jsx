@@ -25,7 +25,7 @@ const CoursesPage = () => {
   useEffect(() => {
     let student = getMyDetails();
     setStudent(student);
-  }, [student]);
+  }, []);
   const Categories = [
     {
       category: "History",

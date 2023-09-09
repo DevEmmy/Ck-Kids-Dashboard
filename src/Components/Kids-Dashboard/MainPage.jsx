@@ -26,7 +26,7 @@ const MainPage = ({studentt}) => {
   return (
     <div>
         <Nav student={student}/>
-        <div className="main flexbs lf:flex-wrap mx-xPadding mt-[60px] gap-6 ">
+        <div className="flexbs lf:flex-wrap px-xPadding pt-[40px]">
             <div className='w-[72%] lf:w-full cflexss'>
                <MainContentOnOverview student={student}/>
             </div>
@@ -44,7 +44,7 @@ export async function getServerSideProps(context) {
   // Implement your condition check here, e.g., check if the user is authenticated
   let studentt = getMyDetails()
   let isAuthorized = false
-  if(student){
+  if(studentt){
     isAuthorized = true
   }
 

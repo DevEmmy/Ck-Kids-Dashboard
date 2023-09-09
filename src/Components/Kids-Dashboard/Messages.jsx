@@ -9,7 +9,7 @@ const Messages = () => {
   useEffect(() => {
     let student = getMyDetails();
     setStudent(student);
-  }, [student]);
+  }, []);
 
   const MessageNotification = [
     {

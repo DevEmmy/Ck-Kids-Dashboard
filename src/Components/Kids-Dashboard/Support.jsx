@@ -20,7 +20,7 @@ const Support = () => {
   useEffect(() => {
     let student = getMyDetails();
     setStudent(student);
-  }, [student]);
+  }, []);
 
   useEffect(() => {
     if (

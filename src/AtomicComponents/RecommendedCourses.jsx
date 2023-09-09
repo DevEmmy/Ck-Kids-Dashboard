@@ -1,37 +1,36 @@
-import React from 'react'
-import CourseCard from './CourseCard';
+import React from "react";
+import CourseCard from "./CourseCard";
 
 const RecommendedCourses = () => {
-    const Videos = [
-        {
-          image: "history",
-          title: "History",
-          heading: "History Adventures: Exploring the Past",
-          content: "24 Lessons | 48 hours",
-          images: ["kid1", "kid2", "kid3", "kid4"],
-          enrolled: "43+ Kids enrolled",
-          link: ""
-        },
-        {
-          image: "creative",
-          title: "Arts and Craft",
-          heading: "Arts and Crafts: Unleashing Imagination",
-          content: "24 Lessons | 44 hours",
-          images: ["kid1", "kid2", "kid3", "kid4"],
-          enrolled: "59+ Kids enrolled",
-          link:""
-        },
-        {
-          image: "imagination",
-          title: "Drawing and Painting",
-          heading: "Unleashing Creative Expression",
-          content:
-            "13 Lessons | 26 hours",
-          images: ["kid1", "kid2", "kid3", "kid4"],
-          enrolled: "430+ Kids enrolled",
-          link:""
-        },
-      ];
+  const Videos = [
+    {
+      image: "history",
+      title: "History",
+      heading: "History Adventures: Exploring the Past",
+      content: "24 Lessons | 48 hours",
+      images: ["kid1", "kid2", "kid3", "kid4"],
+      enrolled: "43+ Kids enrolled",
+      link: "",
+    },
+    {
+      image: "creative",
+      title: "Arts and Craft",
+      heading: "Arts and Crafts: Unleashing Imagination",
+      content: "24 Lessons | 44 hours",
+      images: ["kid1", "kid2", "kid3", "kid4"],
+      enrolled: "59+ Kids enrolled",
+      link: "",
+    },
+    {
+      image: "imagination",
+      title: "Drawing and Painting",
+      heading: "Unleashing Creative Expression",
+      content: "13 Lessons | 26 hours",
+      images: ["kid1", "kid2", "kid3", "kid4"],
+      enrolled: "430+ Kids enrolled",
+      link: "",
+    },
+  ];
 
   return (
     <>
@@ -50,7 +49,7 @@ const RecommendedCourses = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default RecommendedCourses
+export default RecommendedCourses;
