@@ -11,6 +11,7 @@ import {
 } from "heroicons-react";
 import Notification from "./Notification";
 const Dashboard = () => {
+  const [view, setView] = useState("Overview")
   const Nav = [
     {
       name: "Overview",
@@ -70,7 +71,7 @@ const Dashboard = () => {
   return (
     <>
       <div className="w-full flexss">
-        <div className="w-[20%] pt-[61px] px-[25px] pb-[475px] border-r-[1px] cflexss gap-[37px] bg-white">
+        <div className="w-[20%] pt-[61px] px-[25px] pb-[475px] border-r-[1px] border-b-[1px] cflexss gap-[37px] bg-white">
           <div className="w-[226px]">
             <img src="/logo.png" alt="curiouz-kidz-logo" />
           </div>
@@ -78,8 +79,10 @@ const Dashboard = () => {
             {Nav.map((item, index) => {
               return (
                 <>
-                  <div className="w-full px-[20px] py-[12px] flexbm cursor-pointer">
-                    <div className="flexmm gap-[10px]">
+                  <div className="w-full px-[20px] py-[12px] flexbm cursor-pointer" onClick={()=>{
+                    setView(item.name)
+                  }}>
+                    <div className={`flexmm gap-[10px] ${view === item.name ? "text-primary2" : "text-[#808080]" }`}>
                       {item.icon}
                       <p>{item.name}</p>
                     </div>
@@ -164,6 +167,11 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
+
+          {
+            view === "Overview" && <Overview />
+          }
+
         </div>
       </div>
     </>
