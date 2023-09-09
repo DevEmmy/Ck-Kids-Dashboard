@@ -72,7 +72,7 @@ const Nav = ({ active = 0, student }) => {
     },
   ];
   return (
-    <div className="flex px-xPadding items-center justify-between mt-[10px] border-b-gray-300 border-b pb-[20px]">
+    <div className="flex px-xPadding py-[20px] items-center justify-between mt-[10px] border-b-gray-300 border-b pb-[20px]">
       <img
         src="/logo.png"
         width={0}

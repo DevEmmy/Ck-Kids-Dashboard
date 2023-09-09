@@ -154,12 +154,12 @@ const Overview = () => {
         </div>
 
         <div className="w-full flexbs gap-[20px]">
-          <div className="cflexss gap-[10px] w-[419px] border-[1px] rounded-[24px] py-[40px] px-[32px] bg-white flex-shrink">
+          <div className="cflexss gap-[10px] h-[532px] w-[419px] border-[1px] rounded-[24px] py-[40px] px-[32px] bg-white flex-shrink">
             <div className="flexsm p-[12px] gap-[10px] rounded-[8px]">
               <p>Top Student</p>
               <ChevronDown size="16px" />
             </div>
-            <div className="w-full cflexss text-[17px] lg:text-[15px] ls:text-[13px] font-[400] gap-[10px]">
+            <div className="w-full cflexbs text-[17px] lg:text-[15px] ls:text-[13px] font-[400] gap-[20px]">
               <div className="w-full pl-[40px] py-[13px] flexbm text-[16px] lg:text-[14px] ls:text-[12px] font-[600]">
                 <p>Name</p>
                 <p>Learning Gem</p>
@@ -186,7 +186,7 @@ const Overview = () => {
               })}
             </div>
           </div>
-          <div className="cflexss gap-[16px] w-[859px] border-[1px] rounded-[24px] py-[40px] px-[25px] bg-white flex-shrink">
+          <div className="cflexss gap-[16px] w-[859px] h-[532px] border-[1px] rounded-[24px] py-[40px] px-[25px] bg-white flex-shrink">
             <div className="flexsm p-[12px] gap-[10px] rounded-[8px]">
               <p>Student Activities</p>
               <ChevronDown size="16px" />
@@ -195,35 +195,29 @@ const Overview = () => {
               {StudentActivities.map((activity) => {
                 return (
                   <>
-                    <div className="w-full py-[10px] flexbm text-[16px] font-[400]">
+                    <div className="w-full py-[10px] flexbm text-[16px] font-[400] text-[#222]">
                       <div className="flexsm gap-[27px]">
                         {activity.medal === "gold" && (
-                          <div
-                            className="p-[12px] flexmm rounded-[6px] bg-[#FDECBF]"
-                          >
+                          <div className="p-[12px] flexmm rounded-[6px] bg-[#FDECBF]">
                             <img src="/Gold.svg" alt="gold" />
                           </div>
                         )}
                         {activity.medal === "award" && (
-                          <div
-                            className="p-[12px] flexmm rounded-[6px] bg-[#FFDEE3]"
-                          >
+                          <div className="p-[12px] flexmm rounded-[6px] bg-[#FFDEE3]">
                             <img src="/award-fill.svg" alt="award" />
                           </div>
                         )}
                         {activity.medal === "gem" && (
-                          <div
-                            className="p-[12px] flexmm rounded-[6px] bg-[#E8E1F5]"
-                          >
+                          <div className="p-[12px] flexmm rounded-[6px] bg-[#E8E1F5]">
                             <img src="/gem.svg" alt="gem" />
                           </div>
                         )}
                         <div className="cflexss text-[16px] font-[400] gap-[8px]">
-                            <p className="font-[700]">{activity.title}</p>
-                            <p>{activity.content}</p>
-                        </div>                                              
+                          <p className="font-[700]">{activity.title}</p>
+                          <p>{activity.content}</p>
+                        </div>
                       </div>
-                      <p>{activity.time}</p>  
+                      <p>{activity.time}</p>
                     </div>
                   </>
                 );
@@ -232,10 +226,44 @@ const Overview = () => {
           </div>
         </div>
 
-        <div className="w-full border-[1px] rounded-[24px] py-[40px] px-[25px] bg-white flex-shrink">
-          <div>
-            <p>Teachers Recommendation</p>
-          </div>
+        <div className="w-full cflexss gap-[20px] border-[1px] rounded-[24px] py-[40px] px-[25px] bg-white flex-shrink">
+          <p>Teachers Recommendation</p>
+          <table className="w-full cflexss gap-[12px] px-[20px] text-[20px] font-[400]">
+            <tr className="w-full flexsm border-b-[1px] py-[12px]">
+              <th className="w-[25%] flexsm">Title</th>
+              <th className="w-[25%] flexsm">Category</th>
+              <th className="w-[25%] flexsm">Teacher Name</th>
+              <th className="w-[25%] flexsm">Views</th>
+              <th className="w-[25%] flexsm">Completed</th>
+            </tr>
+            <tr className="w-full flexsm text-[14px]">
+              <td className="w-[25%] flexsm text-[20px] font-[700]">
+                Exploring Classic Nursery Rhymes
+              </td>
+              <td className="w-[25%] flexsm text-primary3">Nursery Rhyme</td>
+              <td className="w-[25%] flexsm">Darlene Robertson</td>
+              <td className="w-[25%] flexsm">120</td>
+              <td className="w-[25%] flexsm">30</td>
+            </tr>
+            <tr className="w-full flexsm text-[14px]">
+              <td className="w-[25%] flexsm text-[20px] font-[700]">
+                Sweet Treats: Baking Delightful Desserts
+              </td>
+              <td className="w-[25%] flexsm text-primary1">Cooking</td>
+              <td className="w-[25%] flexsm">Eleanor Pena</td>
+              <td className="w-[25%] flexsm">80</td>
+              <td className="w-[25%] flexsm">50</td>
+            </tr>
+            <tr className="w-full flexsm text-[14px]">
+              <td className="w-[25%] flexsm text-[20px] font-[700]">
+                From Seed to Sprout: Understanding Plant Life Cycles
+              </td>
+              <td className="w-[25%] flexsm text-primary2">Gardening</td>
+              <td className="w-[25%] flexsm">Darrell Steward</td>
+              <td className="w-[25%] flexsm">102</td>
+              <td className="w-[25%] flexsm">43</td>
+            </tr>           
+          </table>
         </div>
       </div>
     </>

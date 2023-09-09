@@ -27,7 +27,6 @@ const RecommendedCourses = () => {
           heading: "Unleashing Creative Expression",
           content:
             "13 Lessons | 26 hours",
-    
           images: ["kid1", "kid2", "kid3", "kid4"],
           enrolled: "430+ Kids enrolled",
           link:""
@@ -40,7 +39,7 @@ const RecommendedCourses = () => {
         <h1 className="font-[700] text-black text-[24px] lg:text-[18px] ls:text-[16px]">
           Recommended Courses
         </h1>
-        <div className="w-full flexss gap-[20px] overflow-x-auto sm:flex-wrap">
+        <div className="w-full flexss gap-[20px] overflow-x-auto py-[10px] sm:flex-wrap">
           {Videos.map((video, i) => {
             return (
               <>
