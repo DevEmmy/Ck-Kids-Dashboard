@@ -70,7 +70,7 @@ const Dashboard = () => {
   const [notification, setNotification] = useState(false);
   return (
     <>
-      <div className="w-full flexss">
+      <div className="w-full flexss bg-[#F7F7F7]">
         <div className="w-[23vw] pt-[61px] px-[25px] pb-[475px] border-r-[1px] border-b-[1px] cflexss gap-[37px] bg-white">
           <div className="w-[226px]">
             <img src="/logo.png" alt="curiouz-kidz-logo" />
