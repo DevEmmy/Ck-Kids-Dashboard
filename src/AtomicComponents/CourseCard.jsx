@@ -29,7 +29,7 @@ const CourseCard = ({
             {title}
           </div>
           <div className="w-full cflexss gap-[12px">
-            <p className="text-[20px] h-[65px] lg:text-[18px] lf:text-[20px] font-[700] text-[#101828]">
+            <p className="text-[20px] lg:text-[18px] lf:text-[20px] font-[700] text-[#101828]">
               {heading}
             </p>
             <p className="text-[16px] font-[400] text-[#667085] line-clamp-3">

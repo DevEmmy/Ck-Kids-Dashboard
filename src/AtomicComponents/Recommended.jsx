@@ -41,7 +41,7 @@ const Recommended = () => {
   ];
   return (
     <>
-      <div className="w-full cflexss gap-[20px] sm:px-[1.5rem] font-[400]">
+      <div className="w-full cflexss gap-[20px] font-[400]">
         <h1 className="font-[700] text-[#012B1D] text-[24px] lg:text-[18px] ls:text-[16px]">
           Recommended Courses
         </h1>

@@ -12,7 +12,6 @@ import {
   X,
   SearchOutline
 } from "heroicons-react";
-import Link from "next/link";
 import Profile from "./Profile";
 import Notification from "@/Components/Kids-Dashboard/Notification";
 
@@ -78,7 +77,7 @@ const Nav = ({ active = 0, student }) => {
     },
   ];
   return (
-    <div className="fixed w-full top-0 left-0 flex font-sans px-xPadding py-[20px] bg-white items-center justify-between border-b-gray-300 border-b pb-[20px]">
+    <div className="fixed w-full z-50 top-0 left-0 flex font-sans px-xPadding py-[20px] bg-white items-center justify-between border-b-gray-300 border-b pb-[20px]">
       <img
         src="/logo.png"
         width={0}
@@ -88,7 +87,7 @@ const Nav = ({ active = 0, student }) => {
       />
 
       {menu && (
-        <div className="fixed w-full top-[80px] px-[20px] left-0">
+        <div className="fixed w-full top-[80px] z-50 px-[20px] left-0">
           <div className="w-full bg-white border py-[17px] px-[20px] flexbm gap-[29px] rounded-[8px] shadow-md">
             {navItems.map((item, index) => {
               return (
@@ -126,8 +125,12 @@ const Nav = ({ active = 0, student }) => {
       </div>
 
       <div className="flex items-center gap-[20px]">
-        {
-          active === 1 && <SearchOutline size="16px"/>
+        {          
+          active === 1 && (
+            <div className="hidden lf:block">
+              <SearchOutline size="16px"/>
+            </div>
+          )
         }
         <div
           className="cursor-pointer border lf:border-none rounded-[8px] p-[8px]"
