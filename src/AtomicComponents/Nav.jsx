@@ -10,6 +10,7 @@ import {
   QuestionMarkCircleOutline,
   LogoutOutline,
   X,
+  SearchOutline
 } from "heroicons-react";
 import Link from "next/link";
 import Profile from "./Profile";
@@ -125,6 +126,9 @@ const Nav = ({ active = 0, student }) => {
       </div>
 
       <div className="flex items-center gap-[20px]">
+        {
+          active === 1 && <SearchOutline size="16px"/>
+        }
         <div
           className="cursor-pointer border lf:border-none rounded-[8px] p-[8px]"
           onClick={() => {

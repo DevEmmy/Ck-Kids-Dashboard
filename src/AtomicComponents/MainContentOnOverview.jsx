@@ -5,6 +5,7 @@ import { GiGraduateCap } from "react-icons/gi";
 import CoursesOverview from "./CoursesOverview";
 import LeaderBoardOverview from "./LeaderBoardOverview";
 import RecommendedCourses from "./RecommendedCourses";
+import GemView from "./GemView";
 
 const MainContentOnOverview = ({ student }) => {
   return (
@@ -19,7 +20,7 @@ const MainContentOnOverview = ({ student }) => {
               <div className="font-[600] text-[10px]">
                 <p>Learning Gems</p>
 
-                <h2 className="text-[20px] font-marker font-[400]">
+                <h2 className="text-[20px] font-marker font-[800]">
                   {student?.gem || 0} LG
                 </h2>
               </div>
@@ -77,6 +78,9 @@ const MainContentOnOverview = ({ student }) => {
         </div>
 
         <CoursesOverview />
+        <div className="w-full hidden lf:block">
+          <GemView student={student}/>
+        </div>
 
         <LeaderBoardOverview />
         <RecommendedCourses />

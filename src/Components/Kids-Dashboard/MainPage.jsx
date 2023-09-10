@@ -32,7 +32,7 @@ const MainPage = ({studentt}) => {
             </div>
            
             
-            <div className="fixed lf:relative lf:top-auto top-[110px] lf:right-auto z-0 right-[4%] lf:w-full w-[25%] cflexmm gap-[1em]">
+            <div className="fixed lf:hidden top-[110px] z-0 right-[4%] w-[25%] cflexmm">
               <GemView student={student}/>
             </div>
         </div>

@@ -25,14 +25,14 @@ const CourseCard = ({
               className="h-[100%] object-cover rounded-[24px]"
             />
           </div>
-          <div className="py-[2px] px-[10px] bg-[#F9F5FF] text-purplePrime text-[14px] sm:text-[16px] rounded-full font-[400]">
+          <div className="py-[2px] px-[10px] bg-[#F9F5FF] text-purplePrime text-[14px] rounded-full font-[400]">
             {title}
           </div>
           <div className="w-full cflexss gap-[12px">
-            <p className="text-[20px] h-[65px] lg:text-[18px] sm:text-[25px] font-[700] text-[#101828]">
+            <p className="text-[20px] h-[65px] lg:text-[18px] lf:text-[20px] font-[700] text-[#101828]">
               {heading}
             </p>
-            <p className="text-[16px] sm:text-[19px] font-[400] text-[#667085] line-clamp-3">
+            <p className="text-[16px] font-[400] text-[#667085] line-clamp-3">
               {content}
             </p>
             <div className="flexsm gap-[16px] py-[10px]">
