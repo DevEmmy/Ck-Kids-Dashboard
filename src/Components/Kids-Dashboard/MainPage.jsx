@@ -26,13 +26,13 @@ const MainPage = ({studentt}) => {
   return (
     <div>
         <Nav student={student}/>
-        <div className="flexbs lf:flex-wrap font-sans px-xPadding pt-[40px]">
+        <div className="flexbs lf:flex-wrap font-sans px-xPadding mt-[120px]">
             <div className='w-[72%] lf:w-full cflexss'>
                <MainContentOnOverview student={student}/>
             </div>
            
             
-            <div className="sticky top-[1em] right-0 lf:w-full w-[25%] cflexmm gap-[1em]">
+            <div className="fixed top-[100px] right-[4%] lf:w-full w-[25%] cflexmm gap-[1em]">
               <GemView student={student}/>
             </div>
         </div>
