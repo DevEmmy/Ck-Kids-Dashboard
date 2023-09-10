@@ -36,7 +36,7 @@ const VideoCard = ({
             </p>
             <div className="flexsm gap-[16px] py-[10px]">
               <ImageStacked images={images} />
-              <p className="text-[14px] sm:text-[16px] font-[400] sm:pl-[4.6em]">
+              <p className="text-[14px] sm:text-[16px] font-[400]">
                 {enrolled}
               </p>
             </div>

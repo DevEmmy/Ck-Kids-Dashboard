@@ -43,7 +43,8 @@ module.exports = {
         sec7: "#000",
       },
       fontFamily: {
-        sans: ["Open Sans", "sans"],
+        body: ['"Open Sans"', "sans"],
+        marker: ['"Permanent Marker"', "cursive"],
       },
       screens: {
         lt: { max: "500px" },

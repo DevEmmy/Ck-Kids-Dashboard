@@ -26,7 +26,7 @@ const MainPage = ({studentt}) => {
   return (
     <div>
         <Nav student={student}/>
-        <div className="flexbs lf:flex-wrap px-xPadding pt-[40px]">
+        <div className="flexbs lf:flex-wrap font-sans px-xPadding pt-[40px]">
             <div className='w-[72%] lf:w-full cflexss'>
                <MainContentOnOverview student={student}/>
             </div>
