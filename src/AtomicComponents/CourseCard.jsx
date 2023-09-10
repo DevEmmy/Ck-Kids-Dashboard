@@ -15,7 +15,7 @@ const CourseCard = ({
     <>
       <a
         href={link}
-        className="min-w-[340px] lg:min-w-[300px] ls:min-w-[280px] sm:w-full sm:flex-grow"
+        className="min-w-[340px] lg:min-w-[300px] ls:min-w-[280px] lf:w-full"
       >
         <div className="w-full hover:border-primary2 border-[1px] border-white cflexss gap-[20px] p-[20px] rounded-[24px] cursor-pointer shadow-lg">
           <div className="w-full flexmm h-[218px] lg:h-[190px]">
@@ -37,7 +37,7 @@ const CourseCard = ({
             </p>
             <div className="flexsm gap-[16px] py-[10px]">
               <ImageStacked images={images} />
-              <p className="text-[14px] sm:text-[16px] pl-[5.6em] font-[400] sm:pl-[4.6em]">
+              <p className="text-[14px] sm:text-[16px] pl-[5.6em] text-[#222] font-[400] sm:pl-[4.6em]">
                 {enrolled}
               </p>
             </div>

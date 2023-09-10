@@ -6,7 +6,7 @@ const LeaderBoardOverview = () => {
   return (
     <>
         <>
-        <div className='flex justify-between mt-10 mb-3'>
+        <div className='flex justify-between mt-10 mb-3 lf:overflow-x-scroll'>
             <div className='flex gap-5'>
                 <p className='text-primary2 font-[600]'>
                     Class Leadership Board
