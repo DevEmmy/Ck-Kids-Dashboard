@@ -1,12 +1,18 @@
 import Nav from "@/AtomicComponents/Nav";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import LeaderBoardOverview from "@/AtomicComponents/LeaderBoardOverview";
 import Achievement from "@/AtomicComponents/Achievement";
 import { Mission1, Mission2, Mission3 } from "./AchievementData";
+import { getMyDetails } from "@/services/request";
 
 const Leadership = () => {
-  const [level, setLevel] = useState(6);
+  const [level, setLevel] = useState(3);
+  const [student, setStudent] = useState("");
+  useEffect(() => {
+    let student = getMyDetails("");
+    setStudent(student);
+  }, []);
   const MasteryLevel = [
     {
       img1: "/masteryLevel/fmst1.png",
@@ -59,9 +65,9 @@ const Leadership = () => {
   ];
   return (
     <>
-      <Nav active={3} />
+      <Nav active={3} student={student}/>
       <div className="w-full cflexss px-[5%] py-[2em] gap-[2em]">
-        <div className="w-full cflexss gap-[1em] text-[0.9rem] font-[600]">
+        <div className="w-full cflexss gap-[20px] text-[20px] lg:text-[18px] ls:text-[16px] font-[600]">
           <p>Mastery Stage</p>
           <div className="flexmm pt-[0.1em] pr-[0.1em] pl-[0.1em] pb-[0.4em] w-full h-[15em] bg-primary2 rounded-xl">
             <div className="flexbm w-full bg-white rounded-xl h-full py-[1em] px-[5%] sm:overflow-x-auto">
@@ -92,7 +98,7 @@ const Leadership = () => {
 
         <LeaderBoardOverview />
 
-        <div className="w-full cflexss gap-[1em]">
+        <div className="w-full font-[400] text-[24px] font-[Permanent Marker] lg:text-[20px] ls:text-[18px] cflexss gap-[1em]">
           <p>ALL ACHIEVEMENTS</p>
           <div className="w-full flexss gap-[2em]">
             <div className="flexmm w-[25em]">

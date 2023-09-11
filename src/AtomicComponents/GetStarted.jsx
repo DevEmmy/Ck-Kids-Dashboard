@@ -18,7 +18,7 @@ const GetStarted = () => {
       content: "24 Lessons | 44 hours",
       images: ["kid1", "kid2", "kid3", "kid4"],
       enrolled: "59+ Kids enrolled",
-      link:"/courses/videos"
+      link:"/kids-dashboard/courses/videos"
     },
     {
       image: "imagination",
@@ -32,11 +32,11 @@ const GetStarted = () => {
   ];
   return (
     <>
-      <div className="w-full cflexss gap-[1em] sm:px-[1.5rem] font-[400]">
-        <h1 className="font-[800] text-[#012B1D] text-[1rem]">
+      <div className="w-full cflexss gap-[1em] font-[400]">
+        <h1 className="font-[700] text-[#012B1D] text-[24px] lg:text-[18px] ls:text-[16px]">
           Courses to get you started
         </h1>
-        <div className="w-full flexbs gap-2 overflow-x-auto sm:flex-wrap">
+        <div className="w-full flexss gap-[20px] overflow-x-auto py-[10px] sm:flex-wrap">
           {Videos.map((video, i) => {
             return (
               <>

@@ -6,9 +6,9 @@ const SubTopic = (props) => {
   const [Id, setId] = useState("");
   return (
     <>
-      <div className="w-full cflexss font-[400] text-[0.8rem] gap-[0.5em]">
+      <div className="w-full cflexss font-[400] text-[20px] lg:text-[18px] ls:text-[16px] gap-[16px]">
         <p>{topic}</p>
-        <div className="w-full border-[0.2em] rounded-[0.5em] cflexmm">
+        <div className="w-full border-[1px] rounded-[0.5em] cflexmm">
           {contents.map((content, i) => {
             return (
               <>
@@ -16,8 +16,8 @@ const SubTopic = (props) => {
                   key={i}
                   className={
                     Id === content.track
-                      ? "w-full p-[1em] bg-primary2 text-white flexsm gap-[0.5em] cursor-pointer"
-                      : "w-full border-b-[0.2em] p-[1em] flexsm gap-[0.5em] cursor-pointer"
+                      ? "w-full p-[20px] bg-primary2 text-white flexsm gap-[10px] cursor-pointer"
+                      : "w-full border-b-[1px] p-[20px] flexsm gap-[10px] cursor-pointer"
                   }
                   onClick={() => {                    
                     setId(content.track);
@@ -28,7 +28,7 @@ const SubTopic = (props) => {
                   ) : (
                     <PlayOutline width="8%" />
                   )}
-                  <p className="font-[600] text-[0.7rem] w-[95%]">
+                  <p className="font-[600] text-[20px] lg:text-[18px] ls:text-[16px] w-[95%]">
                     {content.track}
                   </p>
                 </div>

@@ -15,19 +15,19 @@ const Price = () => {
   return (
     <>
       <NavBar active={3} background={"sec2"} />
-      <div className="cflexss w-full px-xpadding pt-[5em] pb-[3em] text-[24px] lg:text-[20px] ls:text-[18px] font-[400]">
+      <div className="cflexss w-full px-xpadding pt-[5em] sm:pt-[2em] pb-[3em] text-[24px] lg:text-[20px] ls:text-[18px] font-[400]">
         <div className="w-full cflexsm gap-[24px] text-center pb-[6em]">
           <p>Pricing That Supports Learning Adventures</p>
-          <h1 className="font-[700] text-[40px] lg:text-[35px] ls:text-[32px] max-w-[25em]">
+          <p className="font-[700] text-[40px] lg:text-[35px] ls:text-[24px] max-w-[25em]">
             Welcome to Curious Kids' Pricing Page! We believe in making quality
             education and engaging content accessible to all young minds.
-          </h1>
+          </p>
           <p className="max-w-[45em]">
             Our pricing structure is designed to cater to both individual
             learners and educational institutions, ensuring that the journey of
             curiosity and learning is open to everyone.
           </p>
-          <div className="flexss sm1:justify-center gap-[1em] font-[700] text-[19px] ls:text-[17px] flex-wrap sm1:w-full mt-[2em] p-[0.5em] bg-white rounded-full shadow-md sm:shadow-none">
+          <div className="flexss sm1:justify-center gap-[1em] font-[700] text-[19px] ls:text-[17px] flex-wrap sm1:w-full mt-[2em] p-[0.5em] bg-white rounded-full sm:rounded-[15px] shadow-md sm:shadow-md">
             <div
               className="sm:flex flex-grow"
               onClick={() => {
@@ -66,9 +66,9 @@ const Price = () => {
         <div className="w-full cflexmm gap-[40px]">
           <div className="w-[80%] sm:w-full cflexmm">
             <Range
-              step={1}
+              step={10}
               min={0}
-              max={700}
+              max={600}
               values={values}
               onChange={(newValues) => setValues(newValues)}
               disabled={false}
@@ -125,7 +125,7 @@ const Price = () => {
                   />
                   <div>
                     <h3 className="font-[700] text-[28px] lg:text-[24px] ls:text-[22px]">
-                      ₦ 2000/per term
+                      ₦ 1500/per term
                     </h3>
                     <p>For Individual Learners</p>
                   </div>
@@ -133,8 +133,8 @@ const Price = () => {
                 <div
                   className={
                     selected === "individual"
-                      ? "w-full flexbm rounded-xl p-[1em] cursor-pointer bg-[#F0F0F0] transition duration-500 ease-in-out"
-                      : "w-full flexbm rounded-xl shadow-lg p-[1em] border-[3px] border-sec1 cursor-pointer transition duration-500 ease-in-out"
+                      ? "w-full flexbm rounded-xl p-[1em] cursor-pointer bg-[#F0F0F0] transition duration-500 ease-in-out flex-wrap"
+                      : "w-full flexbm rounded-xl shadow-lg p-[1em] border-[3px] border-sec1 cursor-pointer transition duration-500 ease-in-out flex-wrap"
                   }
                   onClick={() => {
                     setSelected("institution");
@@ -149,8 +149,8 @@ const Price = () => {
                       }
                     />
                     <div>
-                      <h3 className="font-[700] text-[28px] lg:text-[24px] ls:text-[22px]">
-                        ₦ {60000*values[0]}/per term
+                      <h3 className="font-[700] text-[28px] lg:text-[24px] ls:text-[20px]">
+                        ₦ {1200*values[0]}/per term
                       </h3>
                       <p>For Schools and Institutions</p>
                     </div>
@@ -158,8 +158,8 @@ const Price = () => {
                   <div
                     className={
                       selected === "individual"
-                        ? "bg-[#AAAAAA] p-[0.3em] font-[600] text-[20px] lg:text-[18px] ls:text-[17px] px-[1em] rounded-full text-white"
-                        : "bg-sec1 p-[0.3em] px-[1em] font-[600] text-[20px] lg:text-[18px] ls:text-[17px] rounded-full text-white"
+                        ? "bg-[#AAAAAA] p-[0.3em] font-[600] text-[20px] lg:text-[18px] ls:text-[15px] px-[1em] rounded-full text-white"
+                        : "bg-sec1 p-[0.3em] px-[1em] font-[600] text-[20px] lg:text-[18px] ls:text-[15px] rounded-full text-white"
                     }
                   >
                     <p>1 - {values[0]}</p>
@@ -197,8 +197,8 @@ const Price = () => {
                 <div
                   className={
                     selected === "individual"
-                      ? "w-full flexbm rounded-xl p-[1em] cursor-pointer bg-[#F0F0F0] transition duration-500 ease-in-out"
-                      : "w-full flexbm rounded-xl shadow-lg p-[1em] border-[3px] border-sec1 cursor-pointer transition duration-500 ease-in-out"
+                      ? "w-full flexbm rounded-xl p-[1em] cursor-pointer bg-[#F0F0F0] transition duration-500 ease-in-out flex-wrap"
+                      : "w-full flexbm rounded-xl shadow-lg p-[1em] border-[3px] border-sec1 cursor-pointer transition duration-500 ease-in-out flex-wrap"
                   }
                   onClick={() => {
                     setSelected("institution");
@@ -213,8 +213,8 @@ const Price = () => {
                       }
                     />
                     <div>
-                      <h3 className="font-[700] text-[28px] lg:text-[24px] ls:text-[22px]">
-                        ₦ {180000*values[0]}/per annum
+                      <h3 className="font-[700] text-[28px] lg:text-[24px] ls:text-[20px]">
+                        ₦ {4000*values[0]}/per annum
                       </h3>
                       <p>For Schools and Institutions</p>
                     </div>
@@ -222,8 +222,8 @@ const Price = () => {
                   <div
                     className={
                       selected === "individual"
-                        ? "bg-[#AAAAAA] p-[0.3em] text-[20px] lg:text-[18px] ls:text-[17px] font-[600] px-[1em] rounded-full text-white"
-                        : "bg-sec1 p-[0.3em] px-[1em] text-[20px] lg:text-[18px] ls:text-[17px] font-[600] rounded-full text-white"
+                        ? "bg-[#AAAAAA] p-[0.3em] text-[20px] lg:text-[18px] ls:text-[15px] font-[600] px-[1em] rounded-full text-white"
+                        : "bg-sec1 p-[0.3em] px-[1em] text-[20px] lg:text-[18px] ls:text-[15px] font-[600] rounded-full text-white"
                     }
                   >
                     <p>1 - {values[0]}</p>

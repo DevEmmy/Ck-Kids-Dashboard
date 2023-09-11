@@ -1,11 +1,11 @@
 'use client'
 
-import MainPage from '@/Components/Kids-Dashboard/MainPage'
+import Messages from "@/Components/Kids-Dashboard/Messages"
 
 export default function Home() {
   return (
    <>
-    <MainPage />
+    <Messages />
    </>
   )
 }

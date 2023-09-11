@@ -3,11 +3,16 @@ module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/Components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/Components/Kids-Dashboard**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/Components/Teachers-Dashboard**/*.{js,ts,jsx,tsx,mdx}",
     "./src/AtomicComponents/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
+      fontSize: {
+        
+      },
       spacing: {
         xPadding: "5%",
         xpadding: "6.94%",
@@ -15,6 +20,7 @@ module.exports = {
       gridTemplateColumns: {
         "3to1": "3fr 1fr",
       },
+      
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -37,7 +43,8 @@ module.exports = {
         sec7: "#000",
       },
       fontFamily: {
-        sans: ["Poppins", "sans-serif"],
+        body: ['"Open Sans"', "sans"],
+        marker: ['"Permanent Marker"', "cursive"],
       },
       screens: {
         lt: { max: "500px" },
@@ -48,8 +55,7 @@ module.exports = {
         lg: { max: "1707px" },
         ls: { max: "1370px" },
         xl: { max: "1250px" },
-        lf: { max: "1150px" },
-        "2xl": { max: "1536px" },
+        lf: { max: "1150px" },        
       },
     },
   },

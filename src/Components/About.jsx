@@ -22,7 +22,7 @@ const About = () => {
         }
         imageFirst={true}
       >
-        <div className="flex flex-col font-[400] gap-[32px] sm:gap-[0.5em] leading-[1.7em] text-[20px] lg:text-[17px] ls:text-[16px] text-[#333]">
+        <div className="flex flex-col font-sans font-[400] gap-[32px] sm:gap-[0.5em] leading-[1.7em] text-[20px] lg:text-[17px] ls:text-[16px] text-[#333]">
           <p className="text-[24px] sm:font-[700] sm:text-[17px]  ">About Us</p>
 
           <h3 className="text-[40px] lg:text-[35px] ls:text-[30px] sm:text-[28px] leading-[150%] font-[700] sm:font-[800] text-sec1 sm:leading-[1.5em]">

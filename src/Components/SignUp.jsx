@@ -15,11 +15,11 @@ const SignUp = () => {
           } py-[4em] sm:py-[2em] px-[5em] text-sec2 sm:px-[1.5em] md1:w-full`}
         >
           <div className="cflexss gap-[1.5em]">
-            <Link href="/" className="w-[320px] lg:w-[300px] ls:w-[280px] sm:w-[280px]">
+            <a href="/" className="w-[320px] lg:w-[300px] ls:w-[280px] sm:w-[280px]">
               <Image src="logo.svg" width={100} height={100} alt="CSkidz" />
-            </Link>
+            </a>
             <div>
-              <h1 className="text-[60px] lg:text-[55px] ls:text-[52px] sm:text-[1.8rem] font-[800]">
+              <h1 className="text-[60px] lg:text-[55px] ls:text-[32px] sm:text-[1.8rem] font-[800]">
                 Welcome to CuriousKidz!
               </h1>
               <p className="text-[18px] lg:text-[17px] ls:text-[16px] sm:text-[20px] font-[400] pt-[0.5em] leading-[1.7em]">

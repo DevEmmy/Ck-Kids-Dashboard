@@ -96,26 +96,18 @@ const StudentAccount = ({ setAccountType }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    await studentRegister(
-      userDetails.fullName,
-      userDetails.email,
-      userDetails.productKey,
-      userDetails.password
-    );
     if (valid) {
-      // setUserDetails({
-      //   fullName: "",
-      //   email: "",
-      //   productKey: "",
-      //   password: "",
-      //   country: "",
-      // });
-
       // ENDPOINT FOR SUBMITTING USER DETAILS
+      setLoading(true);
+      await studentRegister(
+        userDetails.fullName,
+        userDetails.email,
+        userDetails.productKey,
+        userDetails.password
+      );
+      setLoading(false); 
       console.log(userDetails);
-    }
-    setLoading(false);
+    }    
   };
   return (
     <>
@@ -218,7 +210,7 @@ const StudentAccount = ({ setAccountType }) => {
               )}
             </div>
             {passError && (
-              <p className="text-sec1 text-[14px] lg:text-[12 px] sm:text-[19px] font-[400] flex flex-wrap w-[30em] sm:w-full">
+              <p className="text-sec1 text-[14px] lg:text-[12px] font-[400] flex flex-wrap w-[30em] sm:w-full">
                 * Password should be at least 8 characters long and must contain
                 at least one character
               </p>

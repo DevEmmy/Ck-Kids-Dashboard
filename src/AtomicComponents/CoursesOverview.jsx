@@ -20,28 +20,40 @@ const CoursesOverview = () => {
     },
   ];
   return (
-    <div>
+    <div className="w-full">
       <div className="flex justify-between mt-10 mb-3">
-        <p className="font-[700] text-black">Continue Course</p>
+        <p className="font-[600] text-[20px] lg:text-[18px] lf:text-[12px] ls:text-[16px] text-black">
+          Continue Course
+        </p>
 
-        <Link href="/" className="text-gray-500">
+        <a
+          href="/kids-dashboard/continue-course"
+          className="text-gray-500 font-[400] text-[20px] lg:text-[18px] lf:text-[12px] cursor-pointer"
+        >
           View all
-        </Link>
+        </a>
       </div>
 
-      <div className="flex gap-8">
+      <div className="grid grid-cols-3 gap-[20px] md1:grid-cols-1">
         {courses.map((course, index) => {
           return (
-            <div className="border rounded-xl p-5" key={index}>
-              <p className="text-primary3 text-[0.8em] font-[500]">
-                {course.category}
+            <div
+              className="border rounded-[12px] p-5 cursor-pointer"
+              key={index}
+            >
+              <div className="flexss">
+                <p className="text-primary3 text-[14px] lg:text-[12px] py-[2px] px-[10px] bg-[#F9F5FF] rounded-[14px] font-[700]">
+                  {course.category}
+                </p>
+              </div>
+              <p className="text-black font-[700] text-[20px] lf:text-[20px] lg:text-[18px]">
+                {course.title}
               </p>
-              <p className="text-black font-[800]">{course.title}</p>
-              <p className="text-gray-500 text-[0.8em] mt-3">
+              <p className="text-gray-500 text-[17px] lg:text-[15px] lf:text-[17px] font-[700] mt-3">
                 Overall Progress
               </p>
               <div className="flex gap-3 items-center mt-">
-                <div className="w-full h-2 bg-gray-200 rounded-3xl">
+                <div className="w-full h-[8px] bg-gray-200 rounded-3xl">
                   <div
                     style={{ width: course.progress }}
                     className={`${getProgressBarClass(
@@ -49,7 +61,9 @@ const CoursesOverview = () => {
                     )} h-2 bg-red-500 rounded-3xl`}
                   ></div>
                 </div>
-                <p className="text-black font-[600]">{course.progress}</p>
+                <p className="text-black text-[17px] font-[700]">
+                  {course.progress}
+                </p>
               </div>
             </div>
           );

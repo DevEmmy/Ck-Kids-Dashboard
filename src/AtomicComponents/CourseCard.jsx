@@ -2,38 +2,48 @@ import Link from "next/link";
 import Image from "next/image";
 import ImageStacked from "./ImageStacked";
 
-const CourseCard = ({ image, title, heading, content, images, enrolled, link="/", size }) => {
+const CourseCard = ({
+  image,
+  title,
+  heading,
+  content,
+  images,
+  enrolled,
+  link = "/",  
+}) => {
   return (
     <>
-      <Link href={link} className="sm:flex-grow">
-        <div style={{width: size || "100%"}} className="border border-[#E6E6E6] cflexbs gap-[0.5em] p-[0.5em] w-[100%] sm:w-full min-h-[20em] rounded-xl cursor-pointer shadow-md">
-          <div className="w-full flexmm">
-            <Image
+      <a
+        href={link}
+        className="min-w-[340px] lg:min-w-[300px] ls:min-w-[280px] lf:w-full"
+      >
+        <div className="w-full hover:border-primary2 border-[1px] border-white cflexss gap-[20px] p-[20px] rounded-[24px] cursor-pointer shadow-lg">
+          <div className="w-full flexmm h-[218px] lg:h-[190px]">
+            <img
               src={`/${image}.svg`}
-              width={100}
-              height={100}
               alt={`${image}`}
+              className="h-[100%] object-cover rounded-[24px]"
             />
           </div>
-          <div className="py-[0.3em] px-[0.6em] bg-[#F9F5FF] rounded-full font-[400]">
-            <p className="text-purplePrime text-[0.6rem]">
-              {title}
-            </p>
+          <div className="py-[2px] px-[10px] bg-[#F9F5FF] text-purplePrime text-[14px] rounded-full font-[400]">
+            {title}
           </div>
-          <p className="text-[0.7rem] font-[800] text-[#101828] line-clamp-1">
-            {heading}
-          </p>
-          <p className="text-[0.7rem] text-[#667085]">
-            {content}
-          </p>
-          <div className="flexsm gap-[0.5em] pb-[0.5em]">
-            <ImageStacked images={images} />
-            <p className="text-[0.7rem] pl-[5.6em] sm:pl-[4.6em]">
-              {enrolled}
+          <div className="w-full cflexss gap-[12px">
+            <p className="text-[20px] lg:text-[18px] lf:text-[20px] font-[700] text-[#101828]">
+              {heading}
             </p>
+            <p className="text-[16px] font-[400] text-[#667085] line-clamp-3">
+              {content}
+            </p>
+            <div className="flexsm gap-[16px] py-[10px]">
+              <ImageStacked images={images} />
+              <p className="text-[14px] sm:text-[16px] pl-[5.6em] text-[#222] font-[400] sm:pl-[4.6em]">
+                {enrolled}
+              </p>
+            </div>
           </div>
         </div>
-      </Link>
+      </a>
     </>
   );
 };
