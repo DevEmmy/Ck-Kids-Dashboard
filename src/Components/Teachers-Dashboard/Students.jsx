@@ -210,7 +210,7 @@ const StudentProfile = ({ profile, setProfile, data }) => {
       <div
         className={`absolute top-0 z-25 w-[35.75rem] bg-[#FFF] text-[0.75rem] lg:text-[0.6rem] font-[400] border-l-[1px] border-b-[1px] text-[#808080] px-[20px] ${
           profile ? "right-0" : "right-[-100%]"
-        } py-[30px] flex-shrink cflexss gap-[15px] transition-all duration-500`}
+        } py-[30px] flex-shrink cflexss gap-[15px] transition-all duration-1000`}
       >
         <div
           className="p-[0.75em] flexmm border-[1px] rounded-[0.5rem] cursor-pointer"
@@ -241,7 +241,7 @@ const StudentProfile = ({ profile, setProfile, data }) => {
               </div>
             </div>
             <div className="w-full grid grid-cols-2 gap-[20px]">
-              <div className="w-[15.75rem] h-[8.125rem] rounded-[0.75rem] p-[2px] pb-[8px] text-primary3 bg-primary3">
+              <div className="w-[252px] h-[130px] rounded-[0.75rem] p-[2px] pb-[8px] text-primary3 bg-primary3">
                 <div className="bg-white rounded-t-[0.75rem] h-full rounded-b-[0.25rem] flexmm gap-[16px]">
                   <IoDiamondOutline size="2.5rem" />
                   <div className="cflexsm gap-[0.125rem]">
@@ -252,35 +252,37 @@ const StudentProfile = ({ profile, setProfile, data }) => {
                   </div>
                 </div>
               </div>
-              <div className="w-[15.75rem] h-[8.125rem] rounded-[0.75rem] p-[2px] pb-[8px] text-white bg-[#A37414]">
-                <div className="bg-primary1 rounded-t-[0.75rem] h-full rounded-b-[0.25rem] flexmm gap-[16px]">
-                  <BsFire size="1.4375rem" />
-                  <div className="cflexsm gap-[0.125rem]">
-                    <p>Learning Gems</p>
-                    <p className="font-marker text-[1.625rem] lg:text-[1.425rem] ls:text-[1.2rem]">
-                      50,000 LG
-                    </p>
+              <div className="w-[252px] h-[130px] rounded-[12px] pb-[8px] text-white bg-[#A37414]">
+                <div className="bg-primary1 w-full rounded-t-[12px] h-full pl-[20px] rounded-b-[0.25rem] cflexms gap-[8px]">
+                  <div className="flexmm gap-[13px]">
+                    <div className="p-[10px] rounded-[6.498px] text-primary1 bg-white">
+                      <BsFire size="23px" />
+                    </div>
+                    <p className="font-[800] text-[40px] lg:text-[36px] ls:text-[30px]">200</p>
                   </div>
+                  <p className="text-[#222] text-[16px] lg:text-[14px] ls:text-[12px]">Day Streak</p>
                 </div>
               </div>
-              <div className="w-[15.75rem] h-[8.125rem] rounded-[0.75rem] p-[2px] pb-[8px] text-white bg-[#00734F]">
-                <div className="bg-primary2 rounded-t-[0.75rem] h-full rounded-b-[0.25rem] flexmm gap-[16px]">
-                  <GiGraduateCap size="1.4375rem" />
-                  <div className="cflexsm gap-[0.125rem]">
-                    <p>Learning Gems</p>
-                    <p className="font-marker text-[1.625rem] lg:text-[1.425rem] ls:text-[1.2rem]">
-                      50,000 LG
-                    </p>
+              <div className="w-[15.75rem] h-[8.125rem] rounded-[0.75rem] pb-[8px] text-white bg-[#00734F]">
+                <div className="bg-primary2  w-full rounded-t-[12px] h-full pl-[20px] rounded-b-[0.25rem] cflexms gap-[8px]">
+                  <div className="flexmm gap-[13px]">
+                    <div className="p-[10px] rounded-[6.498px] text-primary2 bg-white">
+                      <GiGraduateCap size="23px" />
+                    </div>
+                    <p className="font-[800] text-[40px] lg:text-[36px] ls:text-[30px]">100</p>
                   </div>
+                  <p className="text-[#FFF] text-[16px] lg:text-[14px] ls:text-[12px]">Completed Courses</p>
                 </div>
               </div>
-              <div className="w-[15.75rem] h-[8.125rem] rounded-[0.75rem] p-[2px] pb-[8px] text-white bg-[#5E4589]">
-                <div className="bg-primary3 rounded-t-[0.75rem] h-full rounded-b-[0.25rem] flexmm gap-[16px]">
-                  <BsTrophy size="1.4375rem" />
-                  <div className="cflexsm gap-[0.125rem]">
-                    <p>Learning Gems</p>
-                    <p className="font-marker text-[1.625rem] lg:text-[1.425rem] ls:text-[1.2rem]">
-                      50,000 LG
+              <div className="w-[15.75rem] h-[8.125rem] rounded-[0.75rem] pb-[8px] text-white bg-[#5E4589]">
+                <div className="bg-primary3 rounded-t-[0.75rem] h-full rounded-b-[0.25rem] pl-[20px] flexsm gap-[13px]">
+                  <div className="p-[10px] rounded-[6.498px] text-primary3 bg-white">
+                    <BsTrophy size="23px" />
+                  </div>
+                  <div className="cflexmm">
+                    <p className="text-[#FFF] text-[16px] lg:text-[14px] ls:text-[12px]">Mastery Stages</p>
+                    <p className="font-[800] text-[26px] lg:text-[24px] ls:text-[20px]">
+                      Innovator 
                     </p>
                   </div>
                 </div>
