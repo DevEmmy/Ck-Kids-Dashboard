@@ -96,7 +96,7 @@ const Overview = () => {
               <p className="text-[64px] lg:text-[58px] ls:text-[42px] font-[800]">
                 25
               </p>
-              <p className="text-[24px] lg:text-[20px] ls:text-[18px] font-[400]">
+              <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Students
               </p>
             </div>
@@ -109,7 +109,7 @@ const Overview = () => {
               <p className="text-[64px] lg:text-[58px] ls:text-[42px] font-[800]">
                 25
               </p>
-              <p className="text-[24px] lg:text-[20px] ls:text-[18px] font-[400]">
+              <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Visit
               </p>
             </div>
@@ -122,7 +122,7 @@ const Overview = () => {
               <p className="text-[64px] lg:text-[58px] ls:text-[42px] font-[800]">
                 25
               </p>
-              <p className="text-[24px] lg:text-[20px] ls:text-[18px] font-[400]">
+              <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Students Online
               </p>
             </div>
