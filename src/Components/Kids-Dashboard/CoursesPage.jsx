@@ -66,7 +66,7 @@ const CoursesPage = () => {
       <Nav active={1} student={student} />
       <div className="w-full flexbs py-[2em] mt-[90px] px-xPadding flex-wrap">
         <div className="w-[70%] lf:w-full cflexss gap-[2em] font-[400] text-[20px] lg:text-[18px] ls:text-[16px]">
-          <div className="flexmm gap-[2em] overflow-x-auto">
+          <div className="flexmm gap-[2em]">
             <div className="hidden lf:block min-w-[154px]">
               <div className="px-[13px] py-[22px] w-full text-[#222] flexmm border rounded-[12px] gap-[8px]">
                 <IoDiamondOutline size="20px" className="text-primary3" />
@@ -80,7 +80,7 @@ const CoursesPage = () => {
               </div>
             </div>
             <div
-              className="relative z-25 flexmm p-[1em] border-[2px] gap-[1em] rounded-xl cursor-pointer"
+              className="z-25 flexmm p-[1em] border-[2px] gap-[1em] rounded-xl cursor-pointer"
               onClick={() => {
                 setCat(!cat);
               }}
@@ -92,7 +92,7 @@ const CoursesPage = () => {
                   animate="visible"
                   initial="hidden"
                   variants={Appear}
-                  className="absolute top-[5em] left-0 bg-white cflexss gap-[0.5em] p-[0.5em] w-[18em] rounded-xl shadow-md border-2"
+                  className="absolute top-[210px] left-0 lf:left-[50px] bg-white cflexss gap-[0.5em] p-[0.5em] w-[18em] rounded-xl shadow-md border-2"
                 >
                   {Categories.map((item, i) => {
                     return (
