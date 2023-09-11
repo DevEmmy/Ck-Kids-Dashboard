@@ -1,4 +1,5 @@
 import Overview from "./Overview";
+import Messages from "./Messages";
 import { useState, useEffect } from "react";
 import { FiGrid, FiBell, FiChevronDown } from "react-icons/fi";
 import {
@@ -170,6 +171,10 @@ const Dashboard = () => {
 
           {
             view === "Overview" && <Overview />
+          }
+
+{
+            view === "Chat" && <Messages />
           }
 
         </div>

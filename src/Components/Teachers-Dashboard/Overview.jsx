@@ -195,7 +195,7 @@ const Overview = () => {
               {StudentActivities.map((activity) => {
                 return (
                   <>
-                    <div className="w-full py-[10px] flexbm text-[16px] font-[400] text-[#222]">
+                    <div className="w-full py-[10px] flexbm text-[16px] lg:text-[14px] ls:text-[12px] font-[400] text-[#222]">
                       <div className="flexsm gap-[27px]">
                         {activity.medal === "gold" && (
                           <div className="p-[12px] flexmm rounded-[6px] bg-[#FDECBF]">
@@ -212,7 +212,7 @@ const Overview = () => {
                             <img src="/gem.svg" alt="gem" />
                           </div>
                         )}
-                        <div className="cflexss text-[16px] font-[400] gap-[8px]">
+                        <div className="cflexss text-[16px] lg:text-[14px] ls:text-[12px] font-[400] gap-[8px]">
                           <p className="font-[700]">{activity.title}</p>
                           <p>{activity.content}</p>
                         </div>
@@ -228,7 +228,7 @@ const Overview = () => {
 
         <div className="w-full cflexss gap-[20px] border-[1px] rounded-[24px] py-[40px] px-[25px] bg-white flex-shrink">
           <p>Teachers Recommendation</p>
-          <table className="w-full cflexss gap-[12px] px-[20px] text-[20px] font-[400]">
+          <table className="w-full cflexss gap-[12px] px-[20px] text-[20px] lg:text-[18px] ls:text-[16px] font-[400]">
             <tr className="w-full flexsm border-b-[1px] py-[12px]">
               <th className="w-[25%] flexsm">Title</th>
               <th className="w-[25%] flexsm">Category</th>
@@ -236,8 +236,8 @@ const Overview = () => {
               <th className="w-[25%] flexsm">Views</th>
               <th className="w-[25%] flexsm">Completed</th>
             </tr>
-            <tr className="w-full flexsm text-[14px]">
-              <td className="w-[25%] flexsm text-[20px] font-[700]">
+            <tr className="w-full flexsm text-[14px] lg:text-[12px]">
+              <td className="w-[25%] flexsm font-[700]">
                 Exploring Classic Nursery Rhymes
               </td>
               <td className="w-[25%] flexsm text-primary3">Nursery Rhyme</td>
@@ -245,8 +245,8 @@ const Overview = () => {
               <td className="w-[25%] flexsm">120</td>
               <td className="w-[25%] flexsm">30</td>
             </tr>
-            <tr className="w-full flexsm text-[14px]">
-              <td className="w-[25%] flexsm text-[20px] font-[700]">
+            <tr className="w-full flexsm text-[14px] lg:text-[12px]">
+              <td className="w-[25%] flexsm font-[700]">
                 Sweet Treats: Baking Delightful Desserts
               </td>
               <td className="w-[25%] flexsm text-primary1">Cooking</td>
@@ -254,8 +254,8 @@ const Overview = () => {
               <td className="w-[25%] flexsm">80</td>
               <td className="w-[25%] flexsm">50</td>
             </tr>
-            <tr className="w-full flexsm text-[14px]">
-              <td className="w-[25%] flexsm text-[20px] font-[700]">
+            <tr className="w-full flexsm text-[14px] lg:text-[12px]">
+              <td className="w-[25%] flexsm font-[700]">
                 From Seed to Sprout: Understanding Plant Life Cycles
               </td>
               <td className="w-[25%] flexsm text-primary2">Gardening</td>
