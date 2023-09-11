@@ -1,5 +1,6 @@
 import Overview from "./Overview";
 import Messages from "./Messages";
+import Students from "./Students";
 import { useState, useEffect } from "react";
 import { FiGrid, FiBell, FiChevronDown } from "react-icons/fi";
 import {
@@ -12,7 +13,7 @@ import {
 } from "heroicons-react";
 import Notification from "./Notification";
 const Dashboard = () => {
-  const [view, setView] = useState("Overview")
+  const [view, setView] = useState("Overview");
   const Nav = [
     {
       name: "Overview",
@@ -80,10 +81,17 @@ const Dashboard = () => {
             {Nav.map((item, index) => {
               return (
                 <>
-                  <div className="w-full px-[20px] py-[12px] flexbm cursor-pointer" onClick={()=>{
-                    setView(item.name)
-                  }}>
-                    <div className={`flexmm gap-[10px] ${view === item.name ? "text-primary2" : "text-[#808080]" }`}>
+                  <div
+                    className="w-full px-[20px] py-[12px] flexbm cursor-pointer"
+                    onClick={() => {
+                      setView(item.name);
+                    }}
+                  >
+                    <div
+                      className={`flexmm gap-[10px] ${
+                        view === item.name ? "text-primary2" : "text-[#808080]"
+                      }`}
+                    >
                       {item.icon}
                       <p>{item.name}</p>
                     </div>
@@ -169,14 +177,11 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {
-            view === "Overview" && <Overview />
-          }
+          {view === "Overview" && <Overview />}
 
-{
-            view === "Chat" && <Messages />
-          }
+          {view === "Chat" && <Messages />}
 
+          {view === "Student" && <Students />}
         </div>
       </div>
     </>

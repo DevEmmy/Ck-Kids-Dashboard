@@ -69,7 +69,7 @@ const TopCategories = () => {
         <h1 className="font-[700] text-[#012B1D] text-[24px] lg:text-[18px] ls:text-[16px]">
           Top categories recommended for you
         </h1>
-        <div className="w-full grid grid-cols-5 md1:flexss md1:overflow-x-auto gap-[20px]">
+        <div className="w-full grid grid-cols-5 lf:flexsm lf:overflow-x-auto gap-[20px]">
           {Categories.map((category) => {
             return (
               <>

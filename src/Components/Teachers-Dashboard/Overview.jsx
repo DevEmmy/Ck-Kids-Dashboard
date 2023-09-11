@@ -1,6 +1,8 @@
-import { ChevronUp, ChevronDown, Users } from "heroicons-react";
+import { ChevronUp, ChevronDown, Users, ChevronRight } from "heroicons-react";
+import { useState } from "react";
 
 const Overview = () => {
+  const [drop, setDrop] = useState(false);
   const TopStudents = [
     {
       avatar: "teacherAvatar",
@@ -60,16 +62,59 @@ const Overview = () => {
       time: "20 mins ago",
     },
   ];
+
+  const Class = [
+    {
+      class: "JSS 1D",
+    },
+    {
+      class: "JSS 1E",
+    },
+    {
+      class: "JSS 1E",
+    },
+    {
+      class: "JSS 1E",
+    },
+    {
+      class: "JSS 1E",
+    },
+  ];
   return (
     <>
       <div className="w-full cflexss font-[700] gap-[37px] text-[24px] lg:text-[20px] ls:text-[18px] bg-[#F7F7F7] h-full p-[30px]">
         <div className="w-full flexbm">
           <p>Welcome, Savannah Nguyen</p>
           <div className="flexmm gap-[28px]">
-            <div className="text-[#808080] font-[400] text-[20px] lg:text-[18px] ls:text-[16px] rounded-[10px] p-[12px] gap-[10px] flexmm bg-white cursor-pointer">
+            <div
+              className="relative text-[#808080] font-[400] text-[20px] lg:text-[18px] ls:text-[16px] rounded-[10px] p-[12px] gap-[10px] flexmm bg-white cursor-pointer"
+              onClick={() => {
+                setDrop(!drop);
+              }}
+            >
               <p>Class</p>
-              <ChevronUp />
-            </div>
+              {
+                drop ? <ChevronUp /> : <ChevronDown />
+              }       
+              {
+                drop && (
+                  <div className="absolute top-[60px] text-[17px] font-[400] left-0 z-25 border-[1px] shadow-md py-[8px] px-[4px] rounded-[12px] bg-white cflexss">
+                    {
+                      Class.map((items)=>{
+                        return(
+                          <> 
+                            <div className="w-[270px] flexbm py-[12px] px-[16px]">
+                              <p>{items.class}</p>
+                              <ChevronRight />
+                            </div>
+                          </>
+                        )
+                      })
+                    }
+                  </div >
+                )
+              }       
+            </div>            
             <div className="bg-transparent text-[20px] lg:text-[18px] ls:text-[16px] font-[400] text-[#808080] flexmm gap-[4px]">
               <div className="p-[12px] rounded-l-[8px] bg-primary2 text-black cursor-pointer">
                 <p>Today</p>
@@ -262,7 +307,7 @@ const Overview = () => {
               <td className="w-[25%] flexsm">Darrell Steward</td>
               <td className="w-[25%] flexsm">102</td>
               <td className="w-[25%] flexsm">43</td>
-            </tr>           
+            </tr>
           </table>
         </div>
       </div>
