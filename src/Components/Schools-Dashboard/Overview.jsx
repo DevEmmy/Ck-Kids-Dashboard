@@ -147,7 +147,7 @@ const Overview = () => {
             <div className="flexmm bg-white rounded-[8px] p-4">
               <Users size="26px" color="#00AC76" />
             </div>
-            <div className="cflexss leading-8">
+            <div className="cflexss">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
                 25
               </p>
@@ -161,7 +161,7 @@ const Overview = () => {
             <div className="flexmm bg-white rounded-[8px] p-4">
               <Users size="26px" color="#8D67CE" />
             </div>
-            <div className="cflexss leading-8">
+            <div className="cflexss">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
                 25
               </p>
@@ -175,7 +175,7 @@ const Overview = () => {
             <div className="flexmm bg-white rounded-[8px] p-4">
               <Users size="26px" color="#F5AE1E" />
             </div>
-            <div className="cflexss leading-8">
+            <div className="cflexss">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
                 25
               </p>
