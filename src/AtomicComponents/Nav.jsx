@@ -13,8 +13,9 @@ import {
   SearchOutline
 } from "heroicons-react";
 import Profile from "./Profile";
-import Notification from "@/Components/Notification";
+// import Notification from "@/Components/Notification";
 import { logOut } from "@/services/request";
+import Notification from "@/Components/Teachers-Dashboard/Notification";
 
 const Nav = ({ active = 0, student }) => {
   const [profMenu, setProfMenu] = useState(false);
