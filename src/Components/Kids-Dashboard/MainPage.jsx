@@ -1,27 +1,17 @@
 import GemView from '@/AtomicComponents/GemView'
 import MainContentOnOverview from '@/AtomicComponents/MainContentOnOverview'
 import Nav from '@/AtomicComponents/Nav'
-import { getMyDetails } from '@/services/request'
+import { fetchFromLS, getMyDetails } from '@/services/request'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
-const MainPage = ({studentt}) => {
-  const [student, setStudent] = useState(studentt)                             
+
+const MainPage = () => {
+  const [student, setStudent] = useState(fetchFromLS())  
 
   // useEffect(()=>{
-  //   getMyDetails()
-  // }, [])
-  
-  useEffect(()=>{
-    let student = getMyDetails()
-    setStudent(student)
-  }, [student])
-
-  // useEffect(() => {
-  //   if (!isAuthorized) {
-  //     router.push('/signin'); // Redirect to the login page if not authorized
-  //   }
-  // }, [isAuthorized]);
+  //   setStudent(fetchFromLS())
+  // },[])
 
   return (
     <div>
@@ -40,6 +30,8 @@ const MainPage = ({studentt}) => {
   )
 }
 
+<<<<<<< HEAD:src/Components/MainPage.jsx
+=======
 export async function getServerSideProps(context) {
   // Implement your condition check here, e.g., check if the user is authenticated
   let studentt = getMyDetails()
@@ -47,13 +39,8 @@ export async function getServerSideProps(context) {
   if(studentt){
     isAuthorized = true
   }
+>>>>>>> 9ae1258e6c79d14f3ebfe3edab04ea0b3e651b5e:src/Components/Kids-Dashboard/MainPage.jsx
 
-  return {
-    props: {
-      isAuthorized,
-      studentt
-    },
-  };
-}
+
 
 export default MainPage

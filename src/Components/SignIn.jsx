@@ -128,7 +128,7 @@ const SignIn = () => {
               Sign in to continue your learning journey and explore a world of
               endless possibilities.
             </p>
-            <form className="cflexss gap-[1em] w-full">
+            <form className="cflexss gap-[1em] w-full" method="POST">
               <div className="sect">
                 <p>Email address</p>
                 <div className="inputCont">

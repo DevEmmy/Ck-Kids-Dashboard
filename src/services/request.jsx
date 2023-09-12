@@ -9,6 +9,7 @@ const getCookie = ()=>{
 
 }
 
+
 export const studentLogin = async (email, password, router)=>{
     await axios.post(`${api}/student/sign-in`, {
         email, password
@@ -19,8 +20,10 @@ export const studentLogin = async (email, password, router)=>{
 
     })
     .then(response => {
-        // console.log(document.cookie.includes('token'))
+        console.log(response)
         const {student} = response.data.payload;
+        console.log(response.data.payload.token)
+        document.cookie = "token=" + response.data.payload.token;
         localStorage.setItem("student", JSON.stringify(student))
         console.log(student);
         router.push("/kids-dashboard");
@@ -29,7 +32,12 @@ export const studentLogin = async (email, password, router)=>{
         // window.location.href = "/kids-dashboard"
     })
     .catch(err => {
-        notifyError(err.response.data.message)
+        if(err.response.data.message){
+            notifyError(err.response.data.message)
+        }
+        else{
+            notifyError("Network Error")
+        }
         console.log(err)}
     )
 }
@@ -87,8 +95,35 @@ export const schoolRegister = async (schoolName, email, password)=>{
     })
 }
 
-export const getMyDetails = ()=>{
-    let student = localStorage.getItem("student")
-    student = JSON.parse(student)
+export const getMyDetails = async ()=>{
+    let student= {}
+    await axios.get(`${api}/student/`,  {
+        withCredentials: true
+    })
+    .then(response => {
+        student = response.data.payload
+        localStorage.setItem("student", JSON.stringify(student))
+        notify(response.data.message)
+    })
+    .catch(err => {
+        notifyError(err.response.data.message)
+        console.log(err)
+    })
+    
+    return student
+ }
+
+ export const logOut = async ()=>{
+    await axios.get(`${api}/logout`,  {
+        withCredentials: true
+    })
+    localStorage.clear()
+    document.cookie = "token=" + "";
+ }
+
+
+ export const fetchFromLS = ()=>{
+    let student = JSON.parse(localStorage.getItem("student"))
+    console.log(student)
     return student
  }
