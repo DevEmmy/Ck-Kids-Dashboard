@@ -65,15 +65,15 @@ const TopCategories = () => {
   ];
   return (
     <>
-      <div className="cflexss gap-[1em] sm:px-[1.5rem] font-[400]">
+      <div className="w-full cflexss gap-[1em] font-[400]">
         <h1 className="font-[700] text-[#012B1D] text-[24px] lg:text-[18px] ls:text-[16px]">
           Top categories recommended for you
         </h1>
-        <div className="w-full flexsm sm:justify-center gap-[20px] lg:gap-[18px] ls:gap-[15px] flex-wrap">
+        <div className="w-full grid grid-cols-5 lf:flexsm lf:overflow-x-auto gap-[20px]">
           {Categories.map((category) => {
             return (
               <>
-                <Link href={category.link} className="w-[200px] lg:w-[190px] ls:w-[170px] sm:w-full">
+                <Link href={category.link} className="w-full md1:w-[212px]">
                   <div
                     className={`py-[24px] lg:py-[20px] ls:py-[18px] font-[400] text-[20px] lg:text-[18px] ls:text-[16px] w-full rounded-[8px] flexmm bg-[${category.background}] text-${category.color}`}
                   >

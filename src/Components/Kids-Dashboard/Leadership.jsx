@@ -8,11 +8,11 @@ import { getMyDetails } from "@/services/request";
 
 const Leadership = () => {
   const [level, setLevel] = useState(3);
-  const [student, setStudent] = useState();
+  const [student, setStudent] = useState("");
   useEffect(() => {
     let student = getMyDetails("");
     setStudent(student);
-  }, [student]);
+  }, []);
   const MasteryLevel = [
     {
       img1: "/masteryLevel/fmst1.png",

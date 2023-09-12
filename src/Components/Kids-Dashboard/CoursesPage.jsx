@@ -13,6 +13,7 @@ import Recommended from "@/AtomicComponents/Recommended";
 import GemView from "@/AtomicComponents/GemView";
 import { motion, transform } from "framer-motion";
 import { getMyDetails } from "@/services/request";
+import { IoDiamondOutline } from "react-icons/io5";
 
 const Appear = {
   hidden: { opacity: 0 },
@@ -25,7 +26,7 @@ const CoursesPage = () => {
   useEffect(() => {
     let student = getMyDetails();
     setStudent(student);
-  }, [student]);
+  }, []);
   const Categories = [
     {
       category: "History",
@@ -63,11 +64,23 @@ const CoursesPage = () => {
   return (
     <>
       <Nav active={1} student={student} />
-      <div className="w-full flexbs py-[2em] px-xPadding flex-wrap">
-        <div className="w-[70%] sm:w-full cflexss gap-[2em] font-[400] text-[20px] lg:text-[18px] ls:text-[16px]">
+      <div className="w-full flexbs py-[2em] mt-[90px] px-xPadding flex-wrap">
+        <div className="w-[70%] lf:w-full cflexss gap-[2em] font-[400] text-[20px] lg:text-[18px] ls:text-[16px]">
           <div className="flexmm gap-[2em]">
+            <div className="hidden lf:block min-w-[154px]">
+              <div className="px-[13px] py-[22px] w-full text-[#222] flexmm border rounded-[12px] gap-[8px]">
+                <IoDiamondOutline size="20px" className="text-primary3" />
+                <div className="font-[600] text-[10px]">
+                  <p>Learning Gems</p>
+
+                  <h2 className="text-[20px] font-marker font-[800]">
+                    {student?.gem || 0} LG
+                  </h2>
+                </div>
+              </div>
+            </div>
             <div
-              className="relative flexmm p-[1em] border-[2px] gap-[1em] rounded-xl cursor-pointer"
+              className="z-25 flexmm p-[1em] border-[2px] gap-[1em] rounded-xl cursor-pointer"
               onClick={() => {
                 setCat(!cat);
               }}
@@ -79,7 +92,7 @@ const CoursesPage = () => {
                   animate="visible"
                   initial="hidden"
                   variants={Appear}
-                  className="absolute top-[5em] left-0 bg-white cflexss gap-[0.5em] p-[0.5em] w-[18em] rounded-xl shadow-md border-2"
+                  className="absolute top-[210px] left-0 lf:left-[50px] bg-white cflexss gap-[0.5em] p-[0.5em] w-[18em] rounded-xl shadow-md border-2"
                 >
                   {Categories.map((item, i) => {
                     return (
@@ -95,7 +108,7 @@ const CoursesPage = () => {
                 </motion.div>
               )}
             </div>
-            <div className="flexmm p-[1em] border-[2px] gap-[1em] rounded-xl">
+            <div className="block lf:hidden flexmm p-[1em] border-[2px] gap-[1em] rounded-xl">
               <SearchOutline
                 size="20px"
                 color="#D8D8D8"
@@ -110,7 +123,7 @@ const CoursesPage = () => {
           <Recommended />
         </div>
 
-        <div className="sticky top-[1em] right-0 w-[25%] sm:w-full cflexmm gap-[1em]">
+        <div className="fixed lf:hidden z-25 top-[110px] lf:top-[90px] right-[5%] w-[25%] cflexmm gap-[1em]">
           <GemView />
         </div>
       </div>

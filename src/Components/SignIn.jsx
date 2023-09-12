@@ -42,14 +42,9 @@ const SignIn = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+    e.preventDefault();    
     if (valid) {
-      // setLoginDetails({
-      //   email: "",
-      //   password: "",
-      // });
-
+      setLoading(true);     
       // ENDPOINT FOR SUBMITTING LOGIN DETAILS
       await studentLogin(loginDetails.email, loginDetails.password, router).then(
         (resp) => {

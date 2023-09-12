@@ -32,8 +32,8 @@ const GemView = ({student}) => {
     },
   ];
   return (
-    <div className="sticky top-0 right-0 w-full">
-      <div className="balance flex items-center border rounded-3xl gap-2 h-48 justify-center">
+    <div className="w-full">
+      <div className="block balance flexmm border rounded-3xl gap-2 h-48 lf:hidden">
         <IoDiamondOutline size={50} className="text-primary3" />
         <div className="font-[600] text-[19px] lg:text-[17px] ls:text-[15px]">
           <p>Learning Gems</p>
@@ -43,8 +43,8 @@ const GemView = ({student}) => {
       </div>
 
       <div className="mt-10">
-        <div className="flex justify-between mb-2 text-[24px] lg:text-[20px] ls:text-[18px] font-[400]">
-          <p>CURIOUSITY MISSION</p>
+        <div className="flex justify-between mb-2 text-[24px] lg:text-[20px] text-[#222] ls:text-[18px] font-[400]">
+          <p className="font-marker font-[800]">CURIOUSITY MISSION</p>
           <p className="text-gray-500 text-[20px] lg:text-[18px] ls:text-[16px]">View all</p>
         </div>
 

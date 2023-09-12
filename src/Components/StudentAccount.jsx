@@ -96,26 +96,18 @@ const StudentAccount = ({ setAccountType }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    await studentRegister(
-      userDetails.fullName,
-      userDetails.email,
-      userDetails.productKey,
-      userDetails.password
-    );
     if (valid) {
-      // setUserDetails({
-      //   fullName: "",
-      //   email: "",
-      //   productKey: "",
-      //   password: "",
-      //   country: "",
-      // });
-
       // ENDPOINT FOR SUBMITTING USER DETAILS
+      setLoading(true);
+      await studentRegister(
+        userDetails.fullName,
+        userDetails.email,
+        userDetails.productKey,
+        userDetails.password
+      );
+      setLoading(false); 
       console.log(userDetails);
-    }
-    setLoading(false);
+    }    
   };
   return (
     <>

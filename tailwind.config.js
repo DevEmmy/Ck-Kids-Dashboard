@@ -3,6 +3,8 @@ module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/Components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/Components/Kids-Dashboard**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/Components/Teachers-Dashboard**/*.{js,ts,jsx,tsx,mdx}",
     "./src/AtomicComponents/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
@@ -41,7 +43,8 @@ module.exports = {
         sec7: "#000",
       },
       fontFamily: {
-        sans: ["Open Sans", "sans"],
+        body: ['"Open Sans"', "sans"],
+        marker: ['"Permanent Marker"', "cursive"],
       },
       screens: {
         lt: { max: "500px" },

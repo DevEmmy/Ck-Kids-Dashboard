@@ -22,13 +22,13 @@ const CoursesOverview = () => {
   return (
     <div className="w-full">
       <div className="flex justify-between mt-10 mb-3">
-        <p className="font-[600] text-[20px] lg:text-[18px] ls:text-[16px] text-black">
+        <p className="font-[600] text-[20px] lg:text-[18px] lf:text-[12px] ls:text-[16px] text-black">
           Continue Course
         </p>
 
         <a
           href="/kids-dashboard/continue-course"
-          className="text-gray-500 font-[400] text-[20px] cursor-pointer"
+          className="text-gray-500 font-[400] text-[20px] lg:text-[18px] lf:text-[12px] cursor-pointer"
         >
           View all
         </a>
@@ -46,10 +46,10 @@ const CoursesOverview = () => {
                   {course.category}
                 </p>
               </div>
-              <p className="text-black font-[700] text-[20px] lg:text-[18px]">
+              <p className="text-black font-[700] text-[20px] lf:text-[20px] lg:text-[18px]">
                 {course.title}
               </p>
-              <p className="text-gray-500 text-[17px] lg:text-[15px] font-[700] mt-3">
+              <p className="text-gray-500 text-[17px] lg:text-[15px] lf:text-[17px] font-[700] mt-3">
                 Overall Progress
               </p>
               <div className="flex gap-3 items-center mt-">
