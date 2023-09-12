@@ -83,19 +83,20 @@ const Overview = () => {
   return (
     <>
       <div className="w-full cflexss font-[700] gap-[37px] text-[24px] lg:text-[20px] ls:text-[18px] bg-[#F7F7F7] h-full p-[30px]">
+
         <div className="w-full flexbm">
-          <p>Welcome, Savannah Nguyen</p>
+          <p className="text-gray-400">Welcome, Savannah Nguyen</p>
           <div className="flexmm gap-[28px]">
             <div
-              className="relative text-[#808080] font-[400] text-[20px] lg:text-[18px] ls:text-[16px] rounded-[10px] p-[12px] gap-[10px] flexmm bg-white cursor-pointer"
+              className="relative text-[#808080] font-[400] text-[20px] lg:text-[18px] ls:text-[14px] rounded-[10px] p-[12px] gap-[10px] flexmm bg-white cursor-pointer"
               onClick={() => {
                 setDrop(!drop);
               }}
             >
               <p>Class</p>
-              {drop ? <ChevronDown /> : <ChevronUp />}
+              {drop ? <ChevronUp size={"18px"}/> : <ChevronDown size={"18px"}/>}
               {drop && (
-                <div className="absolute top-[60px] w-[270px] text-[17px] font-[400] left-0 z-25 border-[1px] shadow-md py-[8px] px-[4px] rounded-[12px] bg-white cflexss">
+                <div className="absolute top-[60px] w-[270px] text-[14px] font-[400] left-0 z-25 border-[1px] shadow-md py-[8px] px-[4px] rounded-[12px] bg-white cflexss">
                   {Class.map((items, i) => {
                     return (
                       <>
@@ -112,8 +113,8 @@ const Overview = () => {
                 </div>
               )}
             </div>
-            <div className="bg-divansparent text-[20px] lg:text-[18px] ls:text-[16px] font-[400] text-[#808080] flexmm gap-[4px]">
-              <div className="p-[12px] rounded-l-[8px] bg-primary2 text-black cursor-pointer">
+            <div className="bg-divansparent text-[20px] lg:text-[18px] ls:text-[14px] font-[400] text-[#808080] flexmm gap-[4px]">
+              <div className="p-[12px] rounded-l-[8px] bg-primary2  cursor-pointer text-white">
                 <p>Today</p>
               </div>
               <div className="p-[12px] bg-white cursor-pointer">
@@ -130,7 +131,8 @@ const Overview = () => {
         </div>
 
         <div className="grid grid-cols-3 w-full gap-[16px]">
-          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] ls:py-[30px] bg-primary1 text-white flexsm gap-[24px] rounded-[24px] shadow-md">
+
+          {/* <div className="w-full pl-[32px] py-[40px] lg:py-[35px] ls:py-[30px] bg-primary1 text-white flexsm gap-[24px] rounded-[24px] shadow-md">
             <div className="flexmm bg-white rounded-[8px] p-[20px]">
               <Users size="32px" color="#F5AE1E" />
             </div>
@@ -166,6 +168,48 @@ const Overview = () => {
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Students Online
+              </p>
+            </div>
+          </div> */}
+
+<div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[50px] bg-primary1 text-white flexsm gap-4 rounded-[24px] shadow-md">
+            <div className="flexmm bg-white rounded-[8px] p-4">
+              <Users size="26px" color="#F5AE1E" />
+            </div>
+            <div className="cflexss leading-8">
+              <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
+                25
+              </p>
+              <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
+                Total Classes
+              </p>
+            </div>
+          </div>
+
+          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[50px] bg-primary2 text-white flexsm gap-4 rounded-[24px] shadow-md">
+            <div className="flexmm bg-white rounded-[8px] p-4">
+              <Users size="26px" color="#00AC76" />
+            </div>
+            <div className="cflexss leading-8">
+              <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
+                25
+              </p>
+              <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
+                Total Students
+              </p>
+            </div>
+          </div>
+
+          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[50px] bg-primary3 text-white flexsm gap-4 rounded-[24px] shadow-md">
+            <div className="flexmm bg-white rounded-[8px] p-4">
+              <Users size="26px" color="#8D67CE" />
+            </div>
+            <div className="cflexss leading-8">
+              <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
+                25
+              </p>
+              <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
+                Total Students Visit
               </p>
             </div>
           </div>

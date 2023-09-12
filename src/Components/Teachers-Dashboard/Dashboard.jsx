@@ -22,27 +22,27 @@ const Dashboard = () => {
   const Nav = [
     {
       name: "Overview",
-      icon: <FiGrid size="16px" />,
+      icon: <FiGrid size="20" />,
     },
     {
       name: "Student",
-      icon: <UsersOutline size="16px" />,
+      icon: <UsersOutline size="20" />,
     },
     {
       name: "Courses",
-      icon: <GiGraduateCap size="16px" />,
+      icon: <GiGraduateCap size="20" />,
     },
     {
       name: "Chat",
-      icon: <ChatAlt size="16px" />,
+      icon: <ChatAlt size="20" />,
     },
     {
       name: "Gamification",
-      icon: <FiGrid size="16px" />,
+      icon: <FiGrid size="20" />,
     },
     {
       name: "Leadership Board",
-      icon: <BsTrophy size="16px" />,
+      icon: <BsTrophy size="20" />,
     },
   ];
 
@@ -73,7 +73,8 @@ const Dashboard = () => {
   return (
     <>
       <div className="w-full flexss bg-[#F7F7F7]">
-        <div className="w-[23vw] pt-[61px] px-[25px] pb-[475px] border-r-[1px] border-b-[1px] cflexss gap-[37px] bg-white">
+
+        <div className="w-1/5 pt-[61px] px-3 pb-[475px] border-r-[1px] border-b-[1px] cflexss gap-[37px] bg-white fixed top-0 left-0">
           <div className="w-[226px]">
             <img src="/logo.png" alt="curiouz-kidz-logo" />
           </div>
@@ -82,10 +83,11 @@ const Dashboard = () => {
               return (
                 <>
                   <div
-                    className="w-full px-[20px] py-[12px] flexbm cursor-pointer"
+                    className="w-full px-[20px] flexbm cursor-pointer"
                     onClick={() => {
                       setView(item.name);
                     }}
+                    key={index}
                   >
                     <div
                       className={`flexmm gap-[10px] ${
@@ -95,7 +97,7 @@ const Dashboard = () => {
                       {item.icon}
                       <p>{item.name}</p>
                     </div>
-                    <ChevronDown />
+                    <ChevronDown color="#808080" size={"0.8em"}/>
                   </div>
                 </>
               );
@@ -103,8 +105,8 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="w-[77vw]">
-          <div className="w-full p-[30px] font-[700] text-[28px] lg:text-[22px] ls:text-[18px] bg-white flexbs border-b-[1px]">
+        <div className="w-4/5 fixed top-0 right-0 z-20">
+          <div className="w-full p-4 font-[700] text-[28px] lg:text-[22px] ls:text-[18px] bg-white flexbs border-b-[1px]">
             {view === "Overview" && <p>Teachers Dashboard Overview</p>}
             {view === "Student" && <p>Student Data Management</p>}
             {view === "Courses" && <p>Course Management</p>}
@@ -160,7 +162,9 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
+        </div>
 
+        <div className="main__content absolute w-4/5 right-0 z-10 top-14">
           {view === "Overview" && <Overview />}
 
           {view === "Student" && <Students />}
@@ -169,6 +173,7 @@ const Dashboard = () => {
 
           {view === "Chat" && <Messages />}
         </div>
+        
       </div>
     </>
   );
