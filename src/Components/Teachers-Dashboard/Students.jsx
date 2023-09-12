@@ -117,7 +117,7 @@ const Students = () => {
             data={data}
           />
         )}
-        {trash && <Trash setTrash={setTrash} data={data} />}
+        {trash && <Trash setTrash={setTrash} data={data} setProfile={setProfile}/>}
         <div className="w-full flexes">
           <div className="flexmm gap-[10px] rounded-[8px] border-[1px] p-[16px] w-[526px] bg-white">
             <SearchOutline size="16px" />
@@ -151,8 +151,8 @@ const Students = () => {
                 />
               </svg>
             </div>
-            <div className="w-[20%] flexsm">Email</div>
-            <div className="w-[14%] flexsm">Username</div>
+            <div className="w-[25%] flexsm">Email</div>
+            <div className="w-[18%] flexsm">Username</div>
             <div className="w-[14%] flexsm">Date Joined</div>
             <div className="w-[14%] flexsm">Class</div>
             <div className="w-[14%] flexsm">Actions</div>
@@ -177,8 +177,8 @@ const Students = () => {
                     </div>
                   </div>
                   <div className="w-[14%] flexsm">{data.name}</div>
-                  <div className="w-[20%] flexsm">{data.email}</div>
-                  <div className="w-[14%] flexsm">@{data.username}</div>
+                  <div className="w-[25%] flexsm">{data.email}</div>
+                  <div className="w-[18%] flexsm">@{data.username}</div>
                   <div className="w-[14%] flexsm">{data.dateJoined}</div>
                   <div className="w-[14%] flexsm">{data.class}</div>
                   <div className="w-[14%] flexsm gap-[20px]">
@@ -215,7 +215,7 @@ const Students = () => {
 
 export default Students;
 
-const Trash = ({ setTrash, data }) => {
+const Trash = ({ setTrash, data, setProfile }) => {
   const [remove, setRemove] = useState(false);
   return (
     <>
@@ -227,7 +227,8 @@ const Trash = ({ setTrash, data }) => {
                 <p>Wait for approval from the principal</p>
               </div>
               <div className="absolute top-[8%] right-[8%] flexmm cursor-pointer" onClick={()=>{
-                setTrash(false)                
+                setTrash(false)               
+                setProfile(false) 
               }}>
                 <XCircleOutline size="16px" />
               </div>
@@ -255,6 +256,7 @@ const Trash = ({ setTrash, data }) => {
                   className="py-[18px] px-[60px] rounded-full text-[#808080] border-[1px]"
                   onClick={() => {
                     setTrash(false);
+                    setProfile(false);
                   }}
                 >
                   Cancel

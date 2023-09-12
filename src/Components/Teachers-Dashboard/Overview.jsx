@@ -2,7 +2,7 @@ import { ChevronUp, ChevronDown, Users, ChevronRight } from "heroicons-react";
 import { useState } from "react";
 
 const Overview = () => {
-  const [drop, setDrop] = useState(false);
+  const [drop, sedivrop] = useState(false);
   const TopStudents = [
     {
       avatar: "teacherAvatar",
@@ -89,33 +89,27 @@ const Overview = () => {
             <div
               className="relative text-[#808080] font-[400] text-[20px] lg:text-[18px] ls:text-[16px] rounded-[10px] p-[12px] gap-[10px] flexmm bg-white cursor-pointer"
               onClick={() => {
-                setDrop(!drop);
+                sedivrop(!drop);
               }}
             >
               <p>Class</p>
-              {
-                drop ? <ChevronUp /> : <ChevronDown />
-              }       
-              {
-                drop && (
-                  <div className="absolute top-[60px] text-[17px] font-[400] left-0 z-25 border-[1px] shadow-md py-[8px] px-[4px] rounded-[12px] bg-white cflexss">
-                    {
-                      Class.map((items)=>{
-                        return(
-                          <> 
-                            <div className="w-[270px] flexbm py-[12px] px-[16px]">
-                              <p>{items.class}</p>
-                              <ChevronRight />
-                            </div>
-                          </>
-                        )
-                      })
-                    }
-                  </div >
-                )
-              }       
-            </div>            
-            <div className="bg-transparent text-[20px] lg:text-[18px] ls:text-[16px] font-[400] text-[#808080] flexmm gap-[4px]">
+              {drop ? <ChevronUp /> : <ChevronDown />}
+              {drop && (
+                <div className="absolute top-[60px] text-[17px] font-[400] left-0 z-25 border-[1px] shadow-md py-[8px] px-[4px] rounded-[12px] bg-white cflexss">
+                  {Class.map((items) => {
+                    return (
+                      <>
+                        <div className="w-[270px] flexbm py-[12px] px-[16px]">
+                          <p>{items.class}</p>
+                          <ChevronRight />
+                        </div>
+                      </>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+            <div className="bg-divansparent text-[20px] lg:text-[18px] ls:text-[16px] font-[400] text-[#808080] flexmm gap-[4px]">
               <div className="p-[12px] rounded-l-[8px] bg-primary2 text-black cursor-pointer">
                 <p>Today</p>
               </div>
@@ -186,7 +180,7 @@ const Overview = () => {
         <div className="w-full flexbs gap-[20px]">
           <div className="w-[639px] border-[1px] rounded-[24px] py-[40px] px-[25px] bg-white flex-shrink">
             <div className="flexsm p-[12px] gap-[10px] rounded-[8px]">
-              <p>Student Streak</p>
+              <p>Student Sdiveak</p>
               <ChevronDown size="16px" />
             </div>
           </div>
@@ -273,42 +267,42 @@ const Overview = () => {
 
         <div className="w-full cflexss gap-[20px] border-[1px] rounded-[24px] py-[40px] px-[25px] bg-white flex-shrink">
           <p>Teachers Recommendation</p>
-          <table className="w-full cflexss gap-[12px] px-[20px] text-[20px] lg:text-[18px] ls:text-[16px] font-[400]">
-            <tr className="w-full flexsm border-b-[1px] py-[12px]">
-              <th className="w-[25%] flexsm">Title</th>
-              <th className="w-[25%] flexsm">Category</th>
-              <th className="w-[25%] flexsm">Teacher Name</th>
-              <th className="w-[25%] flexsm">Views</th>
-              <th className="w-[25%] flexsm">Completed</th>
-            </tr>
-            <tr className="w-full flexsm text-[14px] lg:text-[12px]">
-              <td className="w-[25%] flexsm font-[700]">
+          <div className="w-full cflexss gap-[12px] px-[20px] text-[20px] lg:text-[18px] ls:text-[16px] font-[400]">
+            <div className="w-full flexsm border-b-[1px] py-[12px]">
+              <div className="w-[25%] flexsm">Title</div>
+              <div className="w-[25%] flexsm">Category</div>
+              <div className="w-[25%] flexsm">Teacher Name</div>
+              <div className="w-[25%] flexsm">Views</div>
+              <div className="w-[25%] flexsm">Completed</div>
+            </div>
+            <div className="w-full flexsm text-[14px] lg:text-[12px]">
+              <div className="w-[25%] flexsm font-[700]">
                 Exploring Classic Nursery Rhymes
-              </td>
-              <td className="w-[25%] flexsm text-primary3">Nursery Rhyme</td>
-              <td className="w-[25%] flexsm">Darlene Robertson</td>
-              <td className="w-[25%] flexsm">120</td>
-              <td className="w-[25%] flexsm">30</td>
-            </tr>
-            <tr className="w-full flexsm text-[14px] lg:text-[12px]">
-              <td className="w-[25%] flexsm font-[700]">
-                Sweet Treats: Baking Delightful Desserts
-              </td>
-              <td className="w-[25%] flexsm text-primary1">Cooking</td>
-              <td className="w-[25%] flexsm">Eleanor Pena</td>
-              <td className="w-[25%] flexsm">80</td>
-              <td className="w-[25%] flexsm">50</td>
-            </tr>
-            <tr className="w-full flexsm text-[14px] lg:text-[12px]">
-              <td className="w-[25%] flexsm font-[700]">
+              </div>
+              <div className="w-[25%] flexsm text-primary3">Nursery Rhyme</div>
+              <div className="w-[25%] flexsm">Darlene Robertson</div>
+              <div className="w-[25%] flexsm">120</div>
+              <div className="w-[25%] flexsm">30</div>
+            </div>
+            <div className="w-full flexsm text-[14px] lg:text-[12px]">
+              <div className="w-[25%] flexsm font-[700]">
+                Sweet diveats: Baking Delightful Desserts
+              </div>
+              <div className="w-[25%] flexsm text-primary1">Cooking</div>
+              <div className="w-[25%] flexsm">Eleanor Pena</div>
+              <div className="w-[25%] flexsm">80</div>
+              <div className="w-[25%] flexsm">50</div>
+            </div>
+            <div className="w-full flexsm text-[14px] lg:text-[12px]">
+              <div className="w-[25%] flexsm font-[700]">
                 From Seed to Sprout: Understanding Plant Life Cycles
-              </td>
-              <td className="w-[25%] flexsm text-primary2">Gardening</td>
-              <td className="w-[25%] flexsm">Darrell Steward</td>
-              <td className="w-[25%] flexsm">102</td>
-              <td className="w-[25%] flexsm">43</td>
-            </tr>
-          </table>
+              </div>
+              <div className="w-[25%] flexsm text-primary2">Gardening</div>
+              <div className="w-[25%] flexsm">Darrell Steward</div>
+              <div className="w-[25%] flexsm">102</div>
+              <div className="w-[25%] flexsm">43</div>
+            </div>
+          </div>
         </div>
       </div>
     </>
