@@ -2,7 +2,7 @@ import { ChevronUp, ChevronDown, Users, ChevronRight } from "heroicons-react";
 import { useState } from "react";
 
 const Overview = () => {
-  const [drop, sedivrop] = useState(false);
+  const [drop, setDrop] = useState(false);
   const TopStudents = [
     {
       avatar: "teacherAvatar",
@@ -89,17 +89,20 @@ const Overview = () => {
             <div
               className="relative text-[#808080] font-[400] text-[20px] lg:text-[18px] ls:text-[16px] rounded-[10px] p-[12px] gap-[10px] flexmm bg-white cursor-pointer"
               onClick={() => {
-                sedivrop(!drop);
+                setDrop(!drop);
               }}
             >
               <p>Class</p>
-              {drop ? <ChevronUp /> : <ChevronDown />}
+              {drop ? <ChevronDown /> : <ChevronUp />}
               {drop && (
-                <div className="absolute top-[60px] text-[17px] font-[400] left-0 z-25 border-[1px] shadow-md py-[8px] px-[4px] rounded-[12px] bg-white cflexss">
-                  {Class.map((items) => {
+                <div className="absolute top-[60px] w-[270px] text-[17px] font-[400] left-0 z-25 border-[1px] shadow-md py-[8px] px-[4px] rounded-[12px] bg-white cflexss">
+                  {Class.map((items, i) => {
                     return (
                       <>
-                        <div className="w-[270px] flexbm py-[12px] px-[16px]">
+                        <div
+                          key={i}
+                          className="flexbm w-full px-[16px] py-[12px] rounded-xl hover:bg-primary2 hover:text-white transition-all duration-400"
+                        >
                           <p>{items.class}</p>
                           <ChevronRight />
                         </div>

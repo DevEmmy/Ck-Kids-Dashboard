@@ -1,6 +1,7 @@
 import Overview from "./Overview";
 import Messages from "./Messages";
 import Students from "./Students";
+import Courses from "./Courses";
 import { useState, useEffect } from "react";
 import { FiGrid, FiBell, FiChevronDown } from "react-icons/fi";
 import { BsTrophy } from "react-icons/bs";
@@ -12,7 +13,7 @@ import {
   QuestionMarkCircleOutline,
   LogoutOutline,
   UsersOutline,
-  ChatAlt
+  ChatAlt,
 } from "heroicons-react";
 import { GiGraduateCap } from "react-icons/gi";
 import Notification from "./Notification";
@@ -162,9 +163,11 @@ const Dashboard = () => {
 
           {view === "Overview" && <Overview />}
 
-          {view === "Chat" && <Messages />}
-
           {view === "Student" && <Students />}
+
+          {view === "Courses" && <Courses />}
+
+          {view === "Chat" && <Messages />}
         </div>
       </div>
     </>

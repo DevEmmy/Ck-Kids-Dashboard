@@ -114,7 +114,7 @@ const Students = () => {
           <StudentProfile
             profile={profile}
             setProfile={setProfile}
-            data={data}
+            data={data}            
           />
         )}
         {trash && <Trash setTrash={setTrash} data={data} setProfile={setProfile}/>}

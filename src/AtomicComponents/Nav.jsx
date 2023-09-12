@@ -13,7 +13,7 @@ import {
   SearchOutline
 } from "heroicons-react";
 import Profile from "./Profile";
-import Notification from "@/Components/Notification";
+import Notification from "@/Components/Kids-Dashboard/Notification";
 import { logOut } from "@/services/request";
 
 const Nav = ({ active = 0, student }) => {
