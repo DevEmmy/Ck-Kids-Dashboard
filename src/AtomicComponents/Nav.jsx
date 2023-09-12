@@ -12,6 +12,7 @@ import {
 import Link from "next/link";
 import Profile from "./Profile";
 import Notification from "@/Components/Notification";
+import { logOut } from "@/services/request";
 
 const Nav = ({ active = 0, student }) => {
   const [profMenu, setProfMenu] = useState(false);
@@ -68,7 +69,7 @@ const Nav = ({ active = 0, student }) => {
       name: "Log Out",
       link: "/signin",
       icon: <LogoutOutline color="black" size={20} />,
-      action: ()=> {localStorage.clear()}
+      action: logOut
     },
   ];
   return (
