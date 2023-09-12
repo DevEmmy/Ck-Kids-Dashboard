@@ -208,7 +208,7 @@ const StudentProfile = ({ profile, setProfile, data }) => {
   return (
     <>
       <div
-        className={`absolute top-0 z-50 w-[35.75rem] bg-[#FFF] text-[0.75rem] lg:text-[0.6rem] font-[400] border-l-[1px] border-b-[1px] text-[#808080] px-[20px] ${
+        className={`absolute top-0 z-25 w-[35.75rem] bg-[#FFF] text-[0.75rem] lg:text-[0.6rem] font-[400] border-l-[1px] border-b-[1px] text-[#808080] px-[20px] ${
           profile ? "right-0" : "right-[-100%]"
         } py-[30px] flex-shrink cflexss gap-[15px] transition-all duration-500`}
       >
@@ -222,15 +222,18 @@ const StudentProfile = ({ profile, setProfile, data }) => {
         </div>
         <div className="w-full flexmm">
           <div className="cflexmm gap-[1.25em]">
-            <div className="w-[9.375em] h-[9.375em] rounded-full">
+            <div className="relative w-[9.375em] h-[9.375em] rounded-full">
               <img
                 src={`/${data.avatar}.svg`}
                 className="rounded-full"
                 alt="profileAvatar"
               />
+              <div className="absolute bottom-0 right-0 bg-primary2 w-[1.5625rem] h-[1.5625rem] border-[4px] border-white rounded-full" />
             </div>
             <div className="cflexmm gap-[0.25em]">
-              <p className="font-[700] text-[1.25rem] lg:text-[1.1rem]">{data.name}</p>
+              <p className="font-[700] text-[1.25rem] lg:text-[1.1rem]">
+                {data.name}
+              </p>
               <p>@{data.username}</p>
               <p>{data.email}</p>
               <div className="border-[1px] py-[0.25rem] px-[0.625rem] flexmm rounded-[0.25rem]">
@@ -243,7 +246,9 @@ const StudentProfile = ({ profile, setProfile, data }) => {
                   <IoDiamondOutline size="2.5rem" />
                   <div className="cflexsm gap-[0.125rem]">
                     <p>Learning Gems</p>
-                    <p className="font-marker text-[1.625rem] lg:text-[1.425rem] ls:text-[1.2rem]">50,000 LG</p>
+                    <p className="font-marker text-[1.625rem] lg:text-[1.425rem] ls:text-[1.2rem]">
+                      50,000 LG
+                    </p>
                   </div>
                 </div>
               </div>
@@ -252,7 +257,9 @@ const StudentProfile = ({ profile, setProfile, data }) => {
                   <BsFire size="1.4375rem" />
                   <div className="cflexsm gap-[0.125rem]">
                     <p>Learning Gems</p>
-                    <p className="font-marker text-[1.625rem] lg:text-[1.425rem] ls:text-[1.2rem]">50,000 LG</p>
+                    <p className="font-marker text-[1.625rem] lg:text-[1.425rem] ls:text-[1.2rem]">
+                      50,000 LG
+                    </p>
                   </div>
                 </div>
               </div>
@@ -261,7 +268,9 @@ const StudentProfile = ({ profile, setProfile, data }) => {
                   <GiGraduateCap size="1.4375rem" />
                   <div className="cflexsm gap-[0.125rem]">
                     <p>Learning Gems</p>
-                    <p className="font-marker text-[1.625rem] lg:text-[1.425rem] ls:text-[1.2rem]">50,000 LG</p>
+                    <p className="font-marker text-[1.625rem] lg:text-[1.425rem] ls:text-[1.2rem]">
+                      50,000 LG
+                    </p>
                   </div>
                 </div>
               </div>
@@ -270,7 +279,9 @@ const StudentProfile = ({ profile, setProfile, data }) => {
                   <BsTrophy size="1.4375rem" />
                   <div className="cflexsm gap-[0.125rem]">
                     <p>Learning Gems</p>
-                    <p className="font-marker text-[1.625rem] lg:text-[1.425rem] ls:text-[1.2rem]">50,000 LG</p>
+                    <p className="font-marker text-[1.625rem] lg:text-[1.425rem] ls:text-[1.2rem]">
+                      50,000 LG
+                    </p>
                   </div>
                 </div>
               </div>
