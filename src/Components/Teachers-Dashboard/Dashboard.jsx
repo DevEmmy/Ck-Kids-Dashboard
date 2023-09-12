@@ -3,6 +3,7 @@ import Messages from "./Messages";
 import Students from "./Students";
 import { useState, useEffect } from "react";
 import { FiGrid, FiBell, FiChevronDown } from "react-icons/fi";
+import { BsTrophy } from "react-icons/bs";
 import {
   ChevronDown,
   ChevronUp,
@@ -10,7 +11,10 @@ import {
   CogOutline,
   QuestionMarkCircleOutline,
   LogoutOutline,
+  UsersOutline,
+  ChatAlt
 } from "heroicons-react";
+import { GiGraduateCap } from "react-icons/gi";
 import Notification from "./Notification";
 const Dashboard = () => {
   const [view, setView] = useState("Overview");
@@ -21,15 +25,15 @@ const Dashboard = () => {
     },
     {
       name: "Student",
-      icon: <FiGrid size="16px" />,
+      icon: <UsersOutline size="16px" />,
     },
     {
       name: "Courses",
-      icon: <FiGrid size="16px" />,
+      icon: <GiGraduateCap size="16px" />,
     },
     {
       name: "Chat",
-      icon: <FiGrid size="16px" />,
+      icon: <ChatAlt size="16px" />,
     },
     {
       name: "Gamification",
@@ -37,16 +41,11 @@ const Dashboard = () => {
     },
     {
       name: "Leadership Board",
-      icon: <FiGrid size="16px" />,
+      icon: <BsTrophy size="16px" />,
     },
   ];
 
   const profMenuItems = [
-    {
-      name: "Profile",
-      // link: "/profile",
-      icon: <UserCircleOutline color="black" size={20} />,
-    },
     {
       name: "Settings",
       link: "/kids-dashboard-settings",
@@ -105,7 +104,12 @@ const Dashboard = () => {
 
         <div className="w-[77vw]">
           <div className="w-full p-[30px] font-[700] text-[28px] lg:text-[22px] ls:text-[18px] bg-white flexbs border-b-[1px]">
-            <p>Teachers Dashboard Overview</p>
+            {view === "Overview" && <p>Teachers Dashboard Overview</p>}
+            {view === "Student" && <p>Student Data Management</p>}
+            {view === "Courses" && <p>Course Management</p>}
+            {view === "Chat" && <p>Chat/Messaging</p>}
+            {view === "Gamification" && <p>Gamification Management</p>}
+            {view === "Leadership Board" && <p>Leadership Board</p>}
             <div className="flexsm gap-[20px]">
               <div
                 className="cursor-pointer border rounded-[8px] p-[8px]"
@@ -133,37 +137,16 @@ const Dashboard = () => {
                       {profMenuItems.map((item, i) => {
                         return (
                           <>
-                            {item.name === "Profile" ? (
-                              <>
-                                <div
-                                  className="flex w-full items-center gap-[1em] p-[10px] rounded-lg hover:bg-primary2 cursor-pointer hover:text-white transition-all duration-500"
-                                  onClick={() => {
-                                    if (item.name === "Profile") {
-                                      setProfile(true);
-                                    }
-                                  }}
-                                >
-                                  <span className={`flexmm`}>{item.icon}</span>
-                                  <p className="text-[0.9em]">{item.name}</p>
-                                </div>
-                              </>
-                            ) : (
-                              <>
-                                {" "}
-                                <a
-                                  href={item.link}
-                                  className="w-full"
-                                  onClick={item.action && item.action}
-                                >
-                                  <div className="flex w-full items-center gap-[1em] p-[10px] rounded-lg hover:bg-primary2 cursor-pointer hover:text-white transition-all duration-500">
-                                    <span className={`flexmm`}>
-                                      {item.icon}
-                                    </span>
-                                    <p className="text-[0.9em]">{item.name}</p>
-                                  </div>
-                                </a>
-                              </>
-                            )}
+                            <a
+                              href={item.link}
+                              className="w-full"
+                              onClick={item.action && item.action}
+                            >
+                              <div className="flex w-full items-center gap-[1em] p-[10px] rounded-lg hover:bg-primary2 cursor-pointer hover:text-white transition-all duration-500">
+                                <span className={`flexmm`}>{item.icon}</span>
+                                <p className="text-[0.9em]">{item.name}</p>
+                              </div>
+                            </a>
                           </>
                         );
                       })}

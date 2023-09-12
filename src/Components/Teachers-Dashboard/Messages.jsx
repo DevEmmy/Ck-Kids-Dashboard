@@ -45,8 +45,7 @@ const Messages = () => {
   ];
 
   return (
-    <>
-      <Nav active={2} student={student} />
+    <>      
       <div className="w-full flexbm h-[90vh] px-xPadding py-[2em]">
         <div className="w-[30%] h-full md:w-full cflexss gap-[12px]">
           <div className="flexbm text-[17px] lg:text-[15px] w-full p-[16px] font-[400]  rounded-[8px] border-[1px] border-[#D8D8D8]">
