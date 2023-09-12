@@ -6,6 +6,7 @@ import {
   Plus,
   VideoCameraOutline,
   PlusCircle,
+  DotsVertical,
 } from "heroicons-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -204,13 +205,27 @@ const Courses = () => {
               <ChevronUp />
             </div>
           </div>
-        </div>
-        <div className="w-full cflexss gap-[20px]">
-            <div className="w-full rounded-[12px] border-[1px] flexss">
-                <div className="w-[50%] border-r-[1px] p-[20px] flexmm gap-[20px]">
 
+          <div className="w-full cflexss gap-[20px] bg-[#FFF]">
+            <div className="w-full rounded-[12px] border-[1px] flexss">
+              <div className="w-[50%] border-r-[1px] p-[20px] flexss gap-[20px]">
+                <div className="flexmm w-[327px] min-h-[200px] flex-shrink rounded-[12px]">
+                  <img
+                    src="/addImage.svg"
+                    alt="courseImage"
+                    className="rounded-[12px]"
+                  />
                 </div>
+                <div className="flexbs">
+                  <div className="pt-[20px] w-[90%] cflexss font-[700] text-[#101828]">
+                    <p>Exploring Classic Nursery Rhymes</p>
+                    <p className="text-[#AAA]">Description</p>
+                  </div>
+                  <DotsVertical size="16px" color="#808080" className="cursor-pointer"/>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
       </div>
     </>
