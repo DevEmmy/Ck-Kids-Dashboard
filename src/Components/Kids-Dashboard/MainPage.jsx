@@ -7,14 +7,17 @@ import React, { useEffect, useState } from 'react'
 
 
 const MainPage = () => {
-  const [student, setStudent] = useState(fetchFromLS())  
+  const [student, setStudent] = useState()  
 
-  // useEffect(()=>{
-  //   setStudent(fetchFromLS())
-  // },[])
+  useEffect(()=>{
+    setStudent(fetchFromLS())
+  },[])
 
   return (
-    <div>
+    <>
+      {
+        student &&
+        <div>
         <Nav student={student}/>
         <div className="flexbs lf:flex-wrap font-sans px-xPadding mt-[120px] lf:mt-[90px]">
             <div className='w-[72%] lf:w-full cflexss'>
@@ -26,7 +29,9 @@ const MainPage = () => {
               <GemView student={student}/>
             </div>
         </div>
-    </div>
+        </div>
+      }
+    </>
   )
 }
 
