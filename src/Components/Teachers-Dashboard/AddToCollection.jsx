@@ -7,9 +7,9 @@ const AddToCollection = () => {
     courseName: "",
     courseLink: "",
     coursePhoto: "",
-    collections: "",
+    collection: "",
   });
-  const [collectionItems, setCollectionItems] = useState([{}]);
+  const [collectionItems, setCollectionItems] = useState([]);
   const [changing, setChanging] = useState(false);
   const [fileName, setFileName] = useState("");
   const [fileError, setFileError] = useState(false);
@@ -22,8 +22,8 @@ const AddToCollection = () => {
       collections["courseName"].trim().length > 0 &&
       !urlError &&
       collections["courseLink"].trim().length > 0 &&
-      collections["coursePhoto"].trim().length > 0 &&
-      collections["collections"].trim().length > 0
+      collections["coursePhoto"] &&
+      collections["collection"]
     ) {
       setValid(true);
       setUrlError(false);
@@ -49,7 +49,6 @@ const AddToCollection = () => {
 
   useEffect(() => {
     fetchCollection(setCollectionItems);
-    console.log(collectionItems);
   }, []);
 
   const handleChange = (e) => {
@@ -58,6 +57,8 @@ const AddToCollection = () => {
     setCollections({ ...collections, [name]: value });
     setChanging(!changing);
   };
+
+
 
   const upload = (file) => {
     if (
@@ -68,7 +69,8 @@ const AddToCollection = () => {
         file.type === "image/jfif" ||
         file.type === "image/svg")
     ) {
-      setCollections({ ...collections, collections: file.base64 });
+      setCollections({ ...collections, coursePhoto: file });
+      console.log({ ...collections, coursePhoto: file })
       setFileError(false);
       setChanging(!changing);
     } else {
@@ -81,12 +83,14 @@ const AddToCollection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(collections)
+    addToCollection(collections["courseName"], collections["courseLink"], collections.collection ,collections["coursePhoto"]);
+
     if (valid) {
-      addToCollection(collections["courseName"], colections["courseLink"], collectionId, collections["coursePhoto"]);
+      
     }
   };
 
-  const Collections = [];
 
   return (
     <>
@@ -146,12 +150,12 @@ const AddToCollection = () => {
           <p>Collections</p>
           <select
             className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
-            name="category"
+            name="collection"
             onChange={handleChange}
           >
             <option></option>
-            {collectionItems?.map((item) => {
-              return <option>{item.title}</option>;
+            {collectionItems.map((item) => {
+              return <option value={item._id}>{item.title}</option>;
             })}
           </select>
         </div>
