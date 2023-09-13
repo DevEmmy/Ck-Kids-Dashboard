@@ -21,6 +21,7 @@ import Messages from "../Kids-Dashboard/Messages";
 import Students from "./Students";
 import Overview from "./Overview";
 import Teachers from "./Teachers";
+import Courses from "../Teachers-Dashboard/Courses";
 
 const Dashboard = () => {
   const [view, setView] = useState("Overview");
@@ -185,6 +186,8 @@ const Dashboard = () => {
             {view === "Student" && <Students />}
 
             {view === "Teachers" && <Teachers />}
+
+            {view === "Courses" && <Courses />}
         </div>
       </div>
     </>

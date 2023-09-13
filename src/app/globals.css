@@ -169,3 +169,7 @@ input:checked+div svg {
     transform: rotate(360deg);
   }
 }
+
+.input{
+  @apply border-solid border border-gray-300 p-3 rounded-md focus:outline-none
+}

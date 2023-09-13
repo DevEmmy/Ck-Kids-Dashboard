@@ -14,11 +14,18 @@ import {
   import StudentProfile from "./StudentProfile";
 import { HiUpload } from "react-icons/hi";
 import { FaPlus, FaUpload } from "react-icons/fa";
+import { useDisclosure } from '@mantine/hooks';
+import { Modal, useMantineTheme } from '@mantine/core';
+import AddTeacher from "./AddTeacher";
   
   const Teachers = () => {
     const [profile, setProfile] = useState(false);
     const [data, setData] = useState({});
     const [trash, setTrash] = useState(false);
+
+    const [opened, { open, close }] = useDisclosure(false);
+    const theme = useMantineTheme();
+
     const StudentData = [
       {
         checked: false,
@@ -157,7 +164,7 @@ import { FaPlus, FaUpload } from "react-icons/fa";
             </div>
             
 
-            <div className="btn ">
+            <div className="btn " onClick={open}>
                 Add Teacher
                 <FaPlus />
             </div>
@@ -244,6 +251,20 @@ import { FaPlus, FaUpload } from "react-icons/fa";
             </div>
           </div> */}
         </div>
+
+        <Modal
+        opened={opened}
+        onClose={close}
+        size={"md"}
+        title="Add Teacher"
+        overlayProps={{
+          color: theme.colorScheme === 'dark' ? theme.colors.dark[9] : "#00AC76",
+          opacity: 0.2,
+          blur: 3,
+        }}
+      >
+       <AddTeacher />
+      </Modal>
       </>
     );
   };
