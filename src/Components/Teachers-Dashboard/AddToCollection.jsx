@@ -81,8 +81,13 @@ const AddToCollection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let collectionIds = {}
+    for(var i =0 ; i< collectionItems.length; i++){
+      collectionIds.append(collectionItems.id)
+    }
     if (valid) {
-      addToCollection(collections["courseName"], colections["courseLink"], collectionId, collections["coursePhoto"]);
+
+      addToCollection(collections["courseName"], collectionIds, collections["coursePhoto"]);
     }
   };
 
