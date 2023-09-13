@@ -83,7 +83,6 @@ const Overview = () => {
   return (
     <>
       <div className="w-full cflexss font-[700] gap-[37px] text-[24px] lg:text-[20px] ls:text-[18px] bg-[#F7F7F7] h-full p-[30px]">
-
         <div className="w-full flexbm">
           <p className="text-gray-400">Welcome, Savannah Nguyen</p>
           <div className="flexmm gap-[28px]">
@@ -94,7 +93,11 @@ const Overview = () => {
               }}
             >
               <p>Class</p>
-              {drop ? <ChevronUp size={"18px"}/> : <ChevronDown size={"18px"}/>}
+              {drop ? (
+                <ChevronUp size={"18px"} />
+              ) : (
+                <ChevronDown size={"18px"} />
+              )}
               {drop && (
                 <div className="absolute top-[60px] w-[270px] text-[14px] font-[400] left-0 z-25 border-[1px] shadow-md py-[8px] px-[4px] rounded-[12px] bg-white cflexss">
                   {Class.map((items, i) => {
@@ -131,52 +134,11 @@ const Overview = () => {
         </div>
 
         <div className="grid grid-cols-3 w-full gap-[16px]">
-
-          {/* <div className="w-full pl-[32px] py-[40px] lg:py-[35px] ls:py-[30px] bg-primary1 text-white flexsm gap-[24px] rounded-[24px] shadow-md">
-            <div className="flexmm bg-white rounded-[8px] p-[20px]">
-              <Users size="32px" color="#F5AE1E" />
-            </div>
-            <div className="cflexss">
-              <p className="text-[64px] lg:text-[58px] ls:text-[42px] font-[800]">
-                25
-              </p>
-              <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
-                Total Students
-              </p>
-            </div>
-          </div>
-          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] ls:py-[30px] bg-primary2 text-white flexsm gap-[24px] rounded-[24px] shadow-md">
-            <div className="flexmm bg-white rounded-[8px] p-[20px]">
-              <Users size="32px" color="#00AC76" />
-            </div>
-            <div className="cflexss">
-              <p className="text-[64px] lg:text-[58px] ls:text-[42px] font-[800]">
-                25
-              </p>
-              <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
-                Total Visit
-              </p>
-            </div>
-          </div>
-          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] ls:py-[30px] bg-primary3 text-white flexsm gap-[24px] rounded-[24px] shadow-md">
-            <div className="flexmm bg-white rounded-[8px] p-[20px]">
-              <Users size="32px" color="#8D67CE" />
-            </div>
-            <div className="cflexss">
-              <p className="text-[64px] lg:text-[58px] ls:text-[42px] font-[800]">
-                25
-              </p>
-              <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
-                Total Students Online
-              </p>
-            </div>
-          </div> */}
-
-<div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[50px] bg-primary1 text-white flexsm gap-4 rounded-[24px] shadow-md">
+          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[50px] bg-primary1 text-white flexsm gap-4 rounded-[24px] shadow-md">
             <div className="flexmm bg-white rounded-[8px] p-4">
               <Users size="26px" color="#F5AE1E" />
             </div>
-            <div className="cflexss leading-8">
+            <div className="cflexss">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
                 25
               </p>
@@ -190,7 +152,7 @@ const Overview = () => {
             <div className="flexmm bg-white rounded-[8px] p-4">
               <Users size="26px" color="#00AC76" />
             </div>
-            <div className="cflexss leading-8">
+            <div className="cflexss">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
                 25
               </p>
@@ -204,7 +166,7 @@ const Overview = () => {
             <div className="flexmm bg-white rounded-[8px] p-4">
               <Users size="26px" color="#8D67CE" />
             </div>
-            <div className="cflexss leading-8">
+            <div className="cflexss">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
                 25
               </p>

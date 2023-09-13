@@ -164,7 +164,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="main__content absolute w-4/5 right-0 z-10 top-14">
+        <div className="main__content absolute w-4/5 right-0 z-10 top-[70px]">
           {view === "Overview" && <Overview />}
 
           {view === "Student" && <Students />}

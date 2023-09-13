@@ -219,7 +219,7 @@ const Trash = ({ setTrash, data, setProfile }) => {
   const [remove, setRemove] = useState(false);
   return (
     <>
-      <div className="fixed w-full h-full top-0 left-0 bg-secondary1 flexmm">
+      <div className="fixed w-full h-full z-50 top-0 left-0 bg-secondary1 flexmm">
         <div className="relative cflexmm gap-[30px] w-[580px] h-[341px] bg-[#FAFAFA] border-[1px] rounded-[12px] flex-shrink m-[20px] shadow-md">
           {remove ? (
             <>
