@@ -107,6 +107,10 @@ body {
   font-size: 16px;  
 }
 
+.btn{
+  @apply rounded-full py-3 px-6 bg-primary2 text-white text-[0.8em] font-[700] cursor-pointer flex justify-center items-center gap-2
+}
+
 img,
 video {
   object-fit: cover;
