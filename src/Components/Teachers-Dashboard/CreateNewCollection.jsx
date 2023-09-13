@@ -2,27 +2,26 @@ import { uploadCollection } from "@/services/request";
 import { useState, useEffect } from "react";
 import FileBase64 from "react-file-base64";
 
-const CreateNewCollection = () => {
+const CreateNewCollection = ({ close }) => {
   const [newColleciton, setNewColleciton] = useState({
     title: "",
-    description: "",    
+    description: "",
     coursePhoto: "",
   });
   const [changing, setChanging] = useState(false);
   const [fileName, setFileName] = useState("");
   const [fileError, setFileError] = useState(false);
-  const [valid, setValid] = useState(false);  
+  const [valid, setValid] = useState(false);
 
   useEffect(() => {
     if (
       newColleciton["title"].trim().length > 0 &&
-      newColleciton["description"].trim().length > 0 &&            
+      newColleciton["description"].trim().length > 0 &&
       newColleciton["coursePhoto"]
     ) {
       setValid(true);
       // setUrlError(false);
     }
-   
   }, [changing]);
 
   const handleChange = (e) => {
@@ -31,6 +30,41 @@ const CreateNewCollection = () => {
     setNewColleciton({ ...newColleciton, [name]: value });
     setChanging(!changing);
   };
+
+  const Categories = [
+    {
+      category: "History",
+      content: [],
+    },
+    {
+      category: "Nursery Rhymes",
+      content: [],
+    },
+    {
+      category: "Music-Dance",
+      content: [],
+    },
+    {
+      category: "Gardening",
+      content: [],
+    },
+    {
+      category: "Drawing and Painting",
+      content: [],
+    },
+    {
+      category: "Cooking",
+      content: [],
+    },
+    {
+      category: "Arts and Craft",
+      content: [],
+    },
+    {
+      category: "Globalization",
+      content: [],
+    },
+  ];
 
   const upload = (file) => {
     if (
@@ -55,8 +89,17 @@ const CreateNewCollection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (valid) {
-      uploadCollection(newColleciton.title, newColleciton.description, newColleciton.coursePhoto)
+      uploadCollection(
+        newColleciton.title,
+        newColleciton.description,
+        newColleciton.coursePhoto
+      );
     }
+  };
+
+  const handleClose = (e) => {
+    e.preventDefault();
+    close();
   };
 
   return (
@@ -85,6 +128,10 @@ const CreateNewCollection = () => {
             onChange={handleChange}
             className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px] resize-none h-[187px]"
           />
+        </div>
+        <div className="w-full cflexss gap-[12px]">
+          <p>Category</p>
+          <select className="w-[526px] p-[10px] border-[1px] rounded-[8px] outline-none cursor-pointer"></select>
         </div>
         <div className="w-full cflexss gap-[12px]">
           <p>Course photo</p>
@@ -122,7 +169,10 @@ const CreateNewCollection = () => {
           >
             <p>Submit</p>
           </button>
-          <button className="py-[18px] px-[52px] rounded-full bg-[#FFF] text-primary2 border-[1px] border-primary2">
+          <button
+            className="py-[18px] px-[52px] rounded-full bg-[#FFF] text-primary2 border-[1px] border-primary2"
+            onClick={handleClose}
+          >
             <p>Cancel</p>
           </button>
         </div>

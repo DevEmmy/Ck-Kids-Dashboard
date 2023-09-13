@@ -78,6 +78,11 @@ const AddNewVideo = () => {
     }
   };
 
+  const handleClose = (e) =>{
+    e.preventDefault()
+    close()
+  }
+
   return (
     <>
       <form className="w-full cflexss gap-[20px] text-[20px] px-[40px] pb-[40px] lg:text-[18px] ls:text-[16px] font-[400] bg-[#FFF] overflow-y-auto">

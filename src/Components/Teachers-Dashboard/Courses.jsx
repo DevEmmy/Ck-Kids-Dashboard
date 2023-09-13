@@ -94,17 +94,17 @@ const Courses = () => {
     {
       type: "Single Video",
       icon: <VideoCameraOutline size="16px" />,
-      element: <AddNewVideo />,
+      element: <AddNewVideo close={close}/>,
     },
     {
       type: "Create new collection",
       icon: <VideoCameraOutline size="16px" />,
-      element: <CreateNewCollection />,
+      element: <CreateNewCollection close={close}/>,
     },
     {
       type: "Add to collection",
       icon: <PlusCircle size="16px" />,
-      element: <AddToCollection />,
+      element: <AddToCollection close={close}/>,
     },
   ];
 
