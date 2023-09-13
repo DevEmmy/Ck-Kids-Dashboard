@@ -15,8 +15,8 @@ import { useState } from "react";
 import AddNewVideo from "./AddNewVideo";
 import AddToCollection from "./AddToCollection";
 import CreateNewCollection from "./CreateNewCollection";
-import { useDisclosure } from '@mantine/hooks';
-import { Modal, useMantineTheme } from '@mantine/core';
+import { useDisclosure } from "@mantine/hooks";
+import { Modal, useMantineTheme } from "@mantine/core";
 import { FaPlus } from "react-icons/fa";
 
 const Courses = () => {
@@ -72,19 +72,22 @@ const Courses = () => {
 
   const Class = [
     {
-      class: "JSS 1D",
+      class: "JSS 1",
     },
     {
-      class: "JSS 1E",
+      class: "JSS 2",
     },
     {
-      class: "JSS 1E",
+      class: "JSS 3",
     },
     {
-      class: "JSS 1E",
+      class: "SSS 1",
     },
     {
-      class: "JSS 1E",
+      class: "SSS 2",
+    },
+    {
+      class: "SSS 3",
     },
   ];
 
@@ -94,17 +97,17 @@ const Courses = () => {
     {
       type: "Single Video",
       icon: <VideoCameraOutline size="16px" />,
-      element: <AddNewVideo close={close}/>,
+      element: <AddNewVideo close={close} />,
     },
     {
       type: "Create new collection",
       icon: <VideoCameraOutline size="16px" />,
-      element: <CreateNewCollection close={close}/>,
+      element: <CreateNewCollection close={close} />,
     },
     {
       type: "Add to collection",
       icon: <PlusCircle size="16px" />,
-      element: <AddToCollection close={close}/>,
+      element: <AddToCollection close={close} />,
     },
   ];
 
@@ -123,7 +126,7 @@ const Courses = () => {
             }}
           >
             <p>Add new course</p>
-            <FaPlus size="16px"/>
+            <FaPlus size="16px" />
             {add && (
               <div className="absolute top-[80px] z-50 font-[400] text-[17px] text-[#808080] cflexss p-[6px] border-[1px] rounded-[12px] bg-[#FFF] flex-shrink shadow-md">
                 {AddCourse.map((course) => {
@@ -300,7 +303,7 @@ const Courses = () => {
           opened={opened}
           onClose={close}
           size={"auto"}
-        //   title="Add New Video"
+          //   title="Add New Video"
           overlayProps={{
             color:
               theme.colorScheme === "dark" ? theme.colors.dark[9] : "#00AC76",
@@ -308,7 +311,7 @@ const Courses = () => {
             blur: 3,
           }}
           radius={"12px"}
-        >          
+        >
           {modalElement}
         </Modal>
       </div>

@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import FileBase64 from "react-file-base64";
+import { fetchCollection, addToCollection } from "@/services/request";
 
 const AddToCollection = () => {
   const [collections, setCollections] = useState({
-    courseName: "",    
+    courseName: "",
     courseLink: "",
+    coursePhoto: "",
     collections: "",
   });
+  const [collectionItems, setCollectionItems] = useState([{}]);
   const [changing, setChanging] = useState(false);
   const [fileName, setFileName] = useState("");
   const [fileError, setFileError] = useState(false);
@@ -15,10 +18,11 @@ const AddToCollection = () => {
   const urlRegex = /^(https?|http|ftp):\/\/[^\s/$.?#].[^\s]*$/;
 
   useEffect(() => {
-    if (      
+    if (
       collections["courseName"].trim().length > 0 &&
       !urlError &&
       collections["courseLink"].trim().length > 0 &&
+      collections["coursePhoto"].trim().length > 0 &&
       collections["collections"].trim().length > 0
     ) {
       setValid(true);
@@ -42,6 +46,11 @@ const AddToCollection = () => {
       setUrlError(false);
     }
   }, [changing]);
+
+  useEffect(() => {
+    fetchCollection(setCollectionItems);
+    console.log(collectionItems);
+  }, []);
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -73,8 +82,11 @@ const AddToCollection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (valid) {
+      addToCollection(collections["courseName"], colections["courseLink"], collectionId, collections["coursePhoto"]);
     }
   };
+
+  const Collections = [];
 
   return (
     <>
@@ -93,7 +105,7 @@ const AddToCollection = () => {
             className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px]"
           />
         </div>
-        
+
         <div className="w-full cflexss gap-[12px]">
           <p>Course link</p>
           <input
@@ -109,18 +121,17 @@ const AddToCollection = () => {
           )}
         </div>
         <div className="w-full cflexss gap-[12px]">
-          <p>Collections</p>
+          <p>Course photo</p>
           <div className="w-full flexmm text-[#808080] text-[16px] border-[2px] border-[#808080] border-dotted rounded-[12px] h-[125px] lg:text-[14px] font-[400] cursor-pointer">
-            {fileName ? fileName.name : <p>Drop file to be uploaded here</p>}
+            {fileName ? fileName.name : <p>Drop file to upload here</p>}
             <div className="absolute opacity-0">
               <FileBase64
-                name="collections"
-                defaultValue={collections["collectinos"]}
+                name="coursePhoto"
+                defaultValue={collections["coursePhoto"]}
                 multiple={false}
                 onDone={(base64) => {
                   upload(base64);
                   setFileName(base64);
-                  console.log(base64);
                 }}
               />
             </div>
@@ -130,6 +141,19 @@ const AddToCollection = () => {
               make sure you uploaded an image not more that 10mb.
             </p>
           )}
+        </div>
+        <div className="w-full cflexss gap-[12px]">
+          <p>Collections</p>
+          <select
+            className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+            name="category"
+            onChange={handleChange}
+          >
+            <option></option>
+            {collectionItems?.map((item) => {
+              return <option>{item.title}</option>;
+            })}
+          </select>
         </div>
         {!valid && (
           <p className="flexmm text-[12px] text-red-700">

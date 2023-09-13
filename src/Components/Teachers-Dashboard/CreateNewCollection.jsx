@@ -1,33 +1,38 @@
 import { uploadCollection } from "@/services/request";
 import { useState, useEffect } from "react";
 import FileBase64 from "react-file-base64";
+import Loader from "@/AtomicComponents/Loader";
 
 const CreateNewCollection = ({ close }) => {
-  const [newColleciton, setNewColleciton] = useState({
+  const [newCollection, setNewCollection] = useState({
     title: "",
     description: "",
+    category: "",
+    class: "",
     coursePhoto: "",
   });
   const [changing, setChanging] = useState(false);
   const [fileName, setFileName] = useState("");
   const [fileError, setFileError] = useState(false);
   const [valid, setValid] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (
-      newColleciton["title"].trim().length > 0 &&
-      newColleciton["description"].trim().length > 0 &&
-      newColleciton["coursePhoto"]
+      newCollection["title"].trim().length > 0 &&
+      newCollection["description"].trim().length > 0 &&
+      newCollection["category"].trim().length > 0 &&
+      newCollection["class"].trim().length > 0 &&
+      newCollection["coursePhoto"]
     ) {
       setValid(true);
-      // setUrlError(false);
     }
   }, [changing]);
 
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setNewColleciton({ ...newColleciton, [name]: value });
+    setNewCollection({ ...newCollection, [name]: value });
     setChanging(!changing);
   };
 
@@ -66,6 +71,27 @@ const CreateNewCollection = ({ close }) => {
     },
   ];
 
+  const Class = [
+    {
+      class: "JSS 1",
+    },
+    {
+      class: "JSS 2",
+    },
+    {
+      class: "JSS 3",
+    },
+    {
+      class: "SSS 1",
+    },
+    {
+      class: "SSS 2",
+    },
+    {
+      class: "SSS 3",
+    },
+  ];
+
   const upload = (file) => {
     if (
       parseInt(file.size.substring(0, 4)) <= 10240 &&
@@ -75,7 +101,7 @@ const CreateNewCollection = ({ close }) => {
         file.type === "image/jfif" ||
         file.type === "image/svg")
     ) {
-      setNewColleciton({ ...newColleciton, coursePhoto: file });
+      setNewCollection({ ...newCollection, coursePhoto: file });
       setFileError(false);
       setChanging(!changing);
     } else {
@@ -86,14 +112,18 @@ const CreateNewCollection = ({ close }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (valid) {
-      uploadCollection(
-        newColleciton.title,
-        newColleciton.description,
-        newColleciton.coursePhoto
+      setLoading(true);
+      await uploadCollection(
+        newCollection.title,
+        newCollection.description,
+        newCollection.category,
+        newCollection.coursePhoto
       );
+      setLoading(false);
+      close()
     }
   };
 
@@ -114,7 +144,7 @@ const CreateNewCollection = ({ close }) => {
             type="text"
             name="title"
             placeholder="Collection Title"
-            value={newColleciton["title"]}
+            value={newCollection["title"]}
             onChange={handleChange}
             className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px]"
           />
@@ -124,28 +154,49 @@ const CreateNewCollection = ({ close }) => {
           <textarea
             type="text"
             name="description"
-            value={newColleciton["description"]}
+            value={newCollection["description"]}
             onChange={handleChange}
             className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px] resize-none h-[187px]"
           />
         </div>
         <div className="w-full cflexss gap-[12px]">
           <p>Category</p>
-          <select className="w-[526px] p-[10px] border-[1px] rounded-[8px] outline-none cursor-pointer"></select>
+          <select
+            className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+            name="category"
+            onChange={handleChange}
+          >
+            <option></option>
+            {Categories.map((category) => {
+              return <option>{category.category}</option>;
+            })}
+          </select>
+        </div>
+        <div className="w-full cflexss gap-[12px]">
+          <p>Class</p>
+          <select
+            className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+            name="class"
+            onChange={handleChange}
+          >
+            <option></option>
+            {Class.map((classes) => {
+              return <option>{classes.class}</option>;
+            })}
+          </select>
         </div>
         <div className="w-full cflexss gap-[12px]">
           <p>Course photo</p>
           <div className="w-full flexmm text-[#808080] text-[16px] border-[2px] border-[#808080] border-dotted rounded-[12px] h-[125px] lg:text-[14px] font-[400] cursor-pointer">
-            {fileName ? fileName.name : <p>Drop file to be upload here</p>}
+            {fileName ? fileName.name : <p>Drop file to upload here</p>}
             <div className="absolute opacity-0">
               <FileBase64
                 name="coursePhoto"
-                defaultValue={newColleciton["coursePhoto"]}
+                defaultValue={newCollection["coursePhoto"]}
                 multiple={false}
                 onDone={(base64) => {
                   upload(base64);
                   setFileName(base64);
-                  console.log(base64);
                 }}
               />
             </div>
@@ -167,7 +218,7 @@ const CreateNewCollection = ({ close }) => {
             className="py-[18px] px-[52px] rounded-full bg-primary2 text-[#FFF]"
             onClick={handleSubmit}
           >
-            <p>Submit</p>
+            {loading ? <Loader /> : <p>Submit</p>}
           </button>
           <button
             className="py-[18px] px-[52px] rounded-full bg-[#FFF] text-primary2 border-[1px] border-primary2"
