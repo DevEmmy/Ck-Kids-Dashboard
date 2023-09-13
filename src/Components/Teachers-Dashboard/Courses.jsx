@@ -13,6 +13,8 @@ import {
 import { motion } from "framer-motion";
 import { useState } from "react";
 import AddNewVideo from "./AddNewVideo";
+import AddToCollection from "./AddToCollection";
+import CreateNewCollection from "./CreateNewCollection";
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, useMantineTheme } from '@mantine/core';
 import { FaPlus } from "react-icons/fa";
@@ -97,12 +99,12 @@ const Courses = () => {
     {
       type: "Create new collection",
       icon: <VideoCameraOutline size="16px" />,
-      element: null,
+      element: <CreateNewCollection />,
     },
     {
       type: "Add to collection",
       icon: <PlusCircle size="16px" />,
-      element: null,
+      element: <AddToCollection />,
     },
   ];
 
@@ -111,7 +113,7 @@ const Courses = () => {
       <div className="w-full p-[30px] cflexss gap-[25px] font-[400] text-[20px] lg:text-[18px] ls:text-[16px]">
         <div className="w-full flexmm flexem">
           <button
-            className="btn relative px-[52px] flexmm font-[600] lg:py-[18px] ls:py-[15px] rounded-full bg-primary2 cursor-pointer text-[#FFF] border-none"
+            className="relative px-[52px] flexmm font-[600] gap-[10px] py-[22px] lg:py-[18px] ls:py-[15px] rounded-full bg-primary2 cursor-pointer text-[#FFF] border-none"
             onClick={() => {
               setAdd(!add);
               setCat(false);
@@ -121,7 +123,7 @@ const Courses = () => {
             }}
           >
             <p>Add new course</p>
-            <FaPlus/>
+            <FaPlus size="16px"/>
             {add && (
               <div className="absolute top-[80px] z-50 font-[400] text-[17px] text-[#808080] cflexss p-[6px] border-[1px] rounded-[12px] bg-[#FFF] flex-shrink shadow-md">
                 {AddCourse.map((course) => {
