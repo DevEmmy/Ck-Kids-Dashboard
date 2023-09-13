@@ -13,8 +13,8 @@ import {
 import { motion } from "framer-motion";
 import { useState } from "react";
 import AddNewVideo from "./AddNewVideo";
-import { useDisclosure } from '@mantine/hooks';
-import { Modal, useMantineTheme } from '@mantine/core';
+import { useDisclosure } from "@mantine/hooks";
+import { Modal, useMantineTheme } from "@mantine/core";
 
 const Courses = () => {
   const [drop, setDrop] = useState(false);
@@ -24,10 +24,9 @@ const Courses = () => {
   const [edit, setEdit] = useState(false);
   const [modal, setModal] = useState(false);
 
-
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
-  
+
   const Appear = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 0.2 } },
@@ -86,23 +85,23 @@ const Courses = () => {
     },
   ];
 
-  const [modalElement, setModalElement] = useState()
+  const [modalElement, setModalElement] = useState();
 
   const AddCourse = [
     {
       type: "Single Video",
       icon: <VideoCameraOutline size="16px" />,
-      element: null
+      element: <AddNewVideo />,
     },
     {
       type: "Create new collection",
       icon: <VideoCameraOutline size="16px" />,
-      element: null
+      element: null,
     },
     {
       type: "Add to collection",
       icon: <PlusCircle size="16px" />,
-      element: null
+      element: null,
     },
   ];
 
@@ -127,7 +126,13 @@ const Courses = () => {
                 {AddCourse.map((course) => {
                   return (
                     <>
-                      <div className="w-[228px] py-[12px] px-[16px] gap-[10px] flexsm rounded-[4px] flex-shrink hover:bg-primary2 hover:text-white transition-all cursor-pointer duration-400" onClick={()=> {setModalElement(course.element); open()}}>
+                      <div
+                        className="w-[228px] py-[12px] px-[16px] gap-[10px] flexsm rounded-[4px] flex-shrink hover:bg-primary2 hover:text-white transition-all cursor-pointer duration-400"
+                        onClick={() => {
+                          setModalElement(course.element);
+                          open();
+                        }}
+                      >
                         {course.icon}
                         <p>{course.type}</p>
                       </div>
@@ -289,19 +294,20 @@ const Courses = () => {
         </div>
 
         <Modal
-        opened={opened}
-        onClose={close}
-        size={"lg"}
-        title="Authentication"
-        overlayProps={{
-          color: theme.colorScheme === 'dark' ? theme.colors.dark[9] : "#00AC76",
-          opacity: 0.2,
-          blur: 3,
-        }}
-      >
-        hello
-        {/* Modal content */}
-      </Modal>
+          opened={opened}
+          onClose={close}
+          size={"auto"}
+        //   title="Add New Video"
+          overlayProps={{
+            color:
+              theme.colorScheme === "dark" ? theme.colors.dark[9] : "#00AC76",
+            opacity: 0.2,
+            blur: 3,
+          }}
+          radius={"12px"}
+        >          
+          {modalElement}
+        </Modal>
       </div>
     </>
   );
