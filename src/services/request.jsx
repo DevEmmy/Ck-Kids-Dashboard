@@ -3,7 +3,7 @@ import {notify, notifyError} from "./toastify";
 import { parse } from 'cookie';
 //"http://localhost:4030"
 const api = "https://ck-onboarding.onrender.com"
-const kidsDashboard = "https://ck-kids-dashboard.vercel.app/"
+const kidsDashboard = "https://ck-onboarding.onrender.com"
 
 const getCookie = ()=>{
 
@@ -126,4 +126,16 @@ export const getMyDetails = async ()=>{
     let student = JSON.parse(localStorage.getItem("student"))
     console.log(student)
     return student
+ }
+
+ export const uploadCollection = async (title, description, cover, classId)=>{
+    await axios.post(`${api}/collection`, {title, description, cover, class: "6501943d9df5e3c94892ace6"}, {withCredentials: true})
+    .then(response => {
+        console.log(response)
+        notify(response.data.message)
+    })
+    .catch(err => {
+        notifyError(err.response.data.message)
+        console.log(err)
+    })
  }

@@ -1,3 +1,4 @@
+import { uploadCollection } from "@/services/request";
 import { useState, useEffect } from "react";
 import FileBase64 from "react-file-base64";
 
@@ -16,10 +17,10 @@ const CreateNewCollection = () => {
     if (
       newColleciton["title"].trim().length > 0 &&
       newColleciton["description"].trim().length > 0 &&            
-      newColleciton["coursePhoto"].trim().length > 0
+      newColleciton["coursePhoto"]
     ) {
       setValid(true);
-      setUrlError(false);
+      // setUrlError(false);
     }
    
   }, [changing]);
@@ -40,7 +41,7 @@ const CreateNewCollection = () => {
         file.type === "image/jfif" ||
         file.type === "image/svg")
     ) {
-      setNewColleciton({ ...newColleciton, coursePhoto: file.base64 });
+      setNewColleciton({ ...newColleciton, coursePhoto: file });
       setFileError(false);
       setChanging(!changing);
     } else {
@@ -54,6 +55,7 @@ const CreateNewCollection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (valid) {
+      uploadCollection(newColleciton.title, newColleciton.description, newColleciton.coursePhoto)
     }
   };
 
