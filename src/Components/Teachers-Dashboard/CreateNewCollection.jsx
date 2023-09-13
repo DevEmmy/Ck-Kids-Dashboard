@@ -1,54 +1,33 @@
 import { useState, useEffect } from "react";
 import FileBase64 from "react-file-base64";
 
-const AddNewVideo = () => {
-  const [newVideoData, setNewVideoData] = useState({
-    courseName: "",
-    courseDetails: "",
-    courseLink: "",
+const CreateNewCollection = () => {
+  const [newColleciton, setNewColleciton] = useState({
+    title: "",
+    description: "",    
     coursePhoto: "",
   });
   const [changing, setChanging] = useState(false);
   const [fileName, setFileName] = useState("");
   const [fileError, setFileError] = useState(false);
-  const [valid, setValid] = useState(false);
-  const [urlError, setUrlError] = useState(false);
-  const urlRegex = /^(https?|http|ftp):\/\/[^\s/$.?#].[^\s]*$/;
+  const [valid, setValid] = useState(false);  
 
   useEffect(() => {
     if (
-      newVideoData["courseDetails"].trim().length > 0 &&
-      newVideoData["courseName"].trim().length > 0 &&
-      !urlError &&
-      newVideoData["courseLink"].trim().length > 0 &&
-      newVideoData["coursePhoto"].trim().length > 0
+      newColleciton["title"].trim().length > 0 &&
+      newColleciton["description"].trim().length > 0 &&            
+      newColleciton["coursePhoto"].trim().length > 0
     ) {
       setValid(true);
       setUrlError(false);
     }
-
-    if (
-      newVideoData["courseLink"].trim().length > 0 &&
-      urlRegex.test(newVideoData["courseLink"])
-    ) {
-      setUrlError(false);
-    }
-
-    if (
-      newVideoData["courseLink"].trim().length > 0 &&
-      !urlRegex.test(newVideoData["courseLink"])
-    ) {
-      setUrlError(true);
-      setValid(false);
-    } else {
-      setUrlError(false);
-    }
+   
   }, [changing]);
 
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setNewVideoData({ ...newVideoData, [name]: value });
+    setNewColleciton({ ...newColleciton, [name]: value });
     setChanging(!changing);
   };
 
@@ -61,7 +40,7 @@ const AddNewVideo = () => {
         file.type === "image/jfif" ||
         file.type === "image/svg")
     ) {
-      setNewVideoData({ ...newVideoData, coursePhoto: file.base64 });
+      setNewColleciton({ ...newColleciton, coursePhoto: file.base64 });
       setFileError(false);
       setChanging(!changing);
     } else {
@@ -82,51 +61,37 @@ const AddNewVideo = () => {
     <>
       <form className="w-full cflexss gap-[20px] text-[20px] px-[40px] pb-[40px] lg:text-[18px] ls:text-[16px] font-[400] bg-[#FFF] overflow-y-auto">
         <p className="text-[24px] font-[800] lg:text-[22px] ls:text-[20px]">
-          Add New Video
+          Create a new collection
         </p>
         <div className="w-full cflexss gap-[12px]">
-          <p>Course name</p>
+          <p>Title</p>
           <input
             type="text"
-            name="courseName"
-            placeholder="Course name"
-            value={newVideoData["courseName"]}
+            name="title"
+            placeholder="Collection Title"
+            value={newColleciton["title"]}
             onChange={handleChange}
             className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px]"
           />
         </div>
         <div className="w-full cflexss gap-[12px]">
-          <p>Course details</p>
+          <p>Description</p>
           <textarea
             type="text"
-            name="courseDetails"
-            value={newVideoData["courseDetails"]}
+            name="description"
+            value={newColleciton["description"]}
             onChange={handleChange}
             className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px] resize-none h-[187px]"
           />
         </div>
         <div className="w-full cflexss gap-[12px]">
-          <p>Course link</p>
-          <input
-            type="text"
-            name="courseLink"
-            placeholder="Paste video link here"
-            value={newVideoData["courseLink"]}
-            onChange={handleChange}
-            className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px]"
-          />
-          {urlError && (
-            <p className="flexmm text-[12px] text-red-700">* invalid URL!</p>
-          )}
-        </div>
-        <div className="w-full cflexss gap-[12px]">
           <p>Course photo</p>
           <div className="w-full flexmm text-[#808080] text-[16px] border-[2px] border-[#808080] border-dotted rounded-[12px] h-[125px] lg:text-[14px] font-[400] cursor-pointer">
-            {fileName ? fileName.name : <p>Drop file to be uploaded here</p>}
+            {fileName ? fileName.name : <p>Drop file to be upload here</p>}
             <div className="absolute opacity-0">
               <FileBase64
                 name="coursePhoto"
-                defaultValue={newVideoData["coursePhoto"]}
+                defaultValue={newColleciton["coursePhoto"]}
                 multiple={false}
                 onDone={(base64) => {
                   upload(base64);
@@ -164,4 +129,4 @@ const AddNewVideo = () => {
   );
 };
 
-export default AddNewVideo;
+export default CreateNewCollection;
