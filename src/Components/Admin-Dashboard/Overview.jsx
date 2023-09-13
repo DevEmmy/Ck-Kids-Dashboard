@@ -138,7 +138,7 @@ const Overview = () => {
                 25
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
-                Total Classes
+                Total Schools
               </p>
             </div>
           </div>
@@ -152,7 +152,7 @@ const Overview = () => {
                 25
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
-                Total Students
+                Total Teachers
               </p>
             </div>
           </div>
@@ -166,7 +166,7 @@ const Overview = () => {
                 25
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
-                Total Students Visit
+                Total Students
               </p>
             </div>
           </div>
@@ -180,7 +180,7 @@ const Overview = () => {
                 25
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
-                Total Teachers
+                Total Courses
               </p>
             </div>
           </div>
@@ -194,7 +194,21 @@ const Overview = () => {
                 25
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
-                Total Students Online
+                Total Badges
+              </p>
+            </div>
+          </div>
+
+          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[30px] bg-primary2 text-white flexsm gap-4 rounded-[24px] shadow-md">
+            <div className="flexmm bg-white rounded-[8px] p-4">
+              <Users size="26px" color="#00AC76" />
+            </div>
+            <div className="cflexss ">
+              <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
+                25
+              </p>
+              <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
+                Total Achievement
               </p>
             </div>
           </div>
