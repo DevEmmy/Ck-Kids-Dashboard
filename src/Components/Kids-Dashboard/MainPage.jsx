@@ -30,17 +30,5 @@ const MainPage = () => {
   )
 }
 
-<<<<<<< HEAD:src/Components/MainPage.jsx
-=======
-export async function getServerSideProps(context) {
-  // Implement your condition check here, e.g., check if the user is authenticated
-  let studentt = getMyDetails()
-  let isAuthorized = false
-  if(studentt){
-    isAuthorized = true
-  }
->>>>>>> 9ae1258e6c79d14f3ebfe3edab04ea0b3e651b5e:src/Components/Kids-Dashboard/MainPage.jsx
-
-
 
 export default MainPage
