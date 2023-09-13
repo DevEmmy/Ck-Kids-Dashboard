@@ -134,7 +134,7 @@ const Overview = () => {
         </div>
 
         <div className="grid grid-cols-3 w-full gap-[16px]">
-          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[50px] bg-primary1 text-white flexsm gap-4 rounded-[24px] shadow-md">
+          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[30px] bg-primary1 text-white flexsm gap-4 rounded-[24px] shadow-md">
             <div className="flexmm bg-white rounded-[8px] p-4">
               <Users size="26px" color="#F5AE1E" />
             </div>
@@ -148,7 +148,7 @@ const Overview = () => {
             </div>
           </div>
 
-          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[50px] bg-primary2 text-white flexsm gap-4 rounded-[24px] shadow-md">
+          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[30px] bg-primary2 text-white flexsm gap-4 rounded-[24px] shadow-md">
             <div className="flexmm bg-white rounded-[8px] p-4">
               <Users size="26px" color="#00AC76" />
             </div>
@@ -162,7 +162,7 @@ const Overview = () => {
             </div>
           </div>
 
-          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[50px] bg-primary3 text-white flexsm gap-4 rounded-[24px] shadow-md">
+          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[30px] bg-primary3 text-white flexsm gap-4 rounded-[24px] shadow-md">
             <div className="flexmm bg-white rounded-[8px] p-4">
               <Users size="26px" color="#8D67CE" />
             </div>

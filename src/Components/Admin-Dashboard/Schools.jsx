@@ -17,8 +17,9 @@ import { FaPlus, FaUpload } from "react-icons/fa";
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, useMantineTheme } from '@mantine/core';
 import AddTeacher from "./AddTeacher";
+import AddSchool from "./AddSchool";
   
-  const Teachers = () => {
+  const Schools = () => {
     const [profile, setProfile] = useState(false);
     const [data, setData] = useState({});
     const [trash, setTrash] = useState(false);
@@ -165,91 +166,11 @@ import AddTeacher from "./AddTeacher";
             
 
             <div className="btn " onClick={open}>
-                Add Teacher
+                Create School Profile
                 <FaPlus />
             </div>
           </div>
           
-          {/* <div className="w-full font-[400] text-[17px] lg:text-[15px] py-[20px] border-[1px] ls:text-[13px] rounded-[24px] text-[#808080] shadow-md bg-[#FFF]">
-            <div className="w-full flexsm py-[10px] px-[20px] border-b-[1px]">
-              <div className="w-[9%] flexsm gap-[15px]">
-                <input type="checkbox" />
-                <p>Avatar</p>
-              </div>
-              <div className="w-[14%] flexsm gap-[10px]">
-                <p>Name</p>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5"
-                  />
-                </svg>
-              </div>
-              <div className="w-[25%] flexsm">Email</div>
-              <div className="w-[18%] flexsm">Username</div>
-              <div className="w-[14%] flexsm">Date Joined</div>
-              <div className="w-[14%] flexsm">Class</div>
-              <div className="w-[14%] flexsm">Actions</div>
-            </div>
-            {StudentData.map((data, index) => {
-              return (
-                <>
-                  <div
-                    key={index}
-                    className={`w-full flexsm py-[10px] px-[20px] cursor-pointer ${
-                      (index + 1) % 2 === 0 ? "bg-[#F7F7F7]" : "bg-white"
-                    }`}
-                    onClick={() => {
-                      setProfile(true);
-                      setData(data);
-                    }}
-                  >
-                    <div className="w-[9%] flexsm gap-[15px]">
-                      <input type="checkbox" checked={data.checked} />
-                      <div className="flexmm w-[24px]">
-                        <img src={`/${data.avatar}.svg`} alt="avatar" />
-                      </div>
-                    </div>
-                    <div className="w-[14%] flexsm">{data.name}</div>
-                    <div className="w-[25%] flexsm">{data.email}</div>
-                    <div className="w-[18%] flexsm">@{data.username}</div>
-                    <div className="w-[14%] flexsm">{data.dateJoined}</div>
-                    <div className="w-[14%] flexsm">{data.class}</div>
-                    <div className="w-[14%] flexsm gap-[20px]">
-                      <EyeOutline size="16px" />
-                      <PencilAltOutline size="16px" />
-                      <TrashOutline
-                        size="16px"
-                        onClick={() => {
-                          setTrash(true);
-                          setData(data);
-                        }}
-                      />
-                    </div>
-                  </div>
-                </>
-              );
-            })}
-            <br />
-            <div className="w-full text-[14px] lg:text-[12px] px-[20px] pt-[20px] border-t-[1px] flexbm">
-              <div className="flexmm gap-[8px] cursor-pointer">
-                <ArrowLeft size="16px" />
-                <p>Previous</p>
-              </div>
-              <div className="flexmm gap-[8px] cursor-pointer">
-                <p>Next</p>
-                <ArrowRight size="16px" />
-              </div>
-            </div>
-          </div> */}
         </div>
 
         <Modal
@@ -263,13 +184,13 @@ import AddTeacher from "./AddTeacher";
           blur: 3,
         }}
       >
-       <AddTeacher />
+       <AddSchool />
       </Modal>
       </>
     );
   };
   
-  export default Teachers;
+  export default Schools;
   
   const Trash = ({ setTrash, data, setProfile }) => {
     const [remove, setRemove] = useState(false);

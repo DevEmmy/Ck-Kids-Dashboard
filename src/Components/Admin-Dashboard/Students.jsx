@@ -13,19 +13,12 @@ import {
   import { useState } from "react";
   import StudentProfile from "./StudentProfile";
 import { HiUpload } from "react-icons/hi";
-import { FaPlus, FaUpload } from "react-icons/fa";
-import { useDisclosure } from '@mantine/hooks';
-import { Modal, useMantineTheme } from '@mantine/core';
-import AddTeacher from "./AddTeacher";
+import { FaUpload } from "react-icons/fa";
   
-  const Teachers = () => {
+  const Students = () => {
     const [profile, setProfile] = useState(false);
     const [data, setData] = useState({});
     const [trash, setTrash] = useState(false);
-
-    const [opened, { open, close }] = useDisclosure(false);
-    const theme = useMantineTheme();
-
     const StudentData = [
       {
         checked: false,
@@ -161,16 +154,40 @@ import AddTeacher from "./AddTeacher";
                         className="w-full border-none outline-none"
                     />
                 </div>
+
+                <div
+                    className="relative text-[#808080] font-[400] text-[20px] lg:text-[18px] ls:text-[14px] rounded-[10px] p-3 gap-[10px] flexmm bg-white cursor-pointer border "
+                    onClick={() => {
+                        sedivrop(!drop);
+                    }}
+                    >
+                    <p>Class</p>
+                    {drop ? <ChevronUp size={"18px"}/> : <ChevronDown size={"18px"}/>}
+                    {drop && (
+                        <div className="absolute top-[60px] text-[14px] font-[400] left-0 z-25 border-[1px] shadow-md py-[8px] px-[4px] rounded-[12px] bg-white cflexss">
+                        {Class.map((items) => {
+                            return (
+                            <>
+                                <div className="w-[270px] flexbm py-[12px] px-[16px]">
+                                <p>{items.class}</p>
+                                <ChevronRight />
+                                </div>
+                            </>
+                            );
+                        })}
+                        </div>
+                    )}
+                </div>
             </div>
             
 
-            <div className="btn " onClick={open}>
-                Add Teacher
-                <FaPlus />
+            <div className="btn ">
+                Upload Student Data
+                <FaUpload />
             </div>
           </div>
           
-          {/* <div className="w-full font-[400] text-[17px] lg:text-[15px] py-[20px] border-[1px] ls:text-[13px] rounded-[24px] text-[#808080] shadow-md bg-[#FFF]">
+          <div className="w-full font-[400] text-[17px] lg:text-[15px] py-[20px] border-[1px] ls:text-[13px] rounded-[24px] text-[#808080] shadow-md bg-[#FFF]">
             <div className="w-full flexsm py-[10px] px-[20px] border-b-[1px]">
               <div className="w-[9%] flexsm gap-[15px]">
                 <input type="checkbox" />
@@ -249,27 +266,13 @@ import AddTeacher from "./AddTeacher";
                 <ArrowRight size="16px" />
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
-
-        <Modal
-        opened={opened}
-        onClose={close}
-        size={"md"}
-        title="Add Teacher"
-        overlayProps={{
-          color: theme.colorScheme === 'dark' ? theme.colors.dark[9] : "#00AC76",
-          opacity: 0.2,
-          blur: 3,
-        }}
-      >
-       <AddTeacher />
-      </Modal>
       </>
     );
   };
   
-  export default Teachers;
+  export default Students;
   
   const Trash = ({ setTrash, data, setProfile }) => {
     const [remove, setRemove] = useState(false);

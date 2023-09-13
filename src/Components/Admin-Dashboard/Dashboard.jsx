@@ -22,6 +22,7 @@ import Students from "./Students";
 import Overview from "./Overview";
 import Teachers from "./Teachers";
 import Courses from "../Teachers-Dashboard/Courses";
+import Schools from "./Schools";
 
 const Dashboard = () => {
   const [view, setView] = useState("Overview");
@@ -31,29 +32,17 @@ const Dashboard = () => {
       icon: <FiGrid size="16px" />,
     },
     {
-      name: "Student",
+      name: "Schools",
       icon: <UsersOutline size="16px" />,
-    },
-    {
-        name: "Teachers",
-        icon: <User size="16px" />,
     },
     {
       name: "Courses",
       icon: <GiGraduateCap size="16px" />,
     },
     {
-      name: "Chat",
-      icon: <ChatAlt size="16px" />,
-    },
-    {
       name: "Gamification",
       icon: <FiGrid size="16px" />,
-    },
-    {
-      name: "Leadership Board",
-      icon: <BsTrophy size="16px" />,
-    },
+    }
   ];
 
   const profMenuItems = [
@@ -117,13 +106,11 @@ const Dashboard = () => {
 
         <div className="w-4/5 fixed top-0 right-0 z-20">
           <div className="w-full p-4 font-[700] text-[28px] lg:text-[22px] ls:text-[18px] bg-white flexbs border-b-[1px]">
-            {view === "Overview" && <p>School's Dashboard Overview</p>}
-            {view === "Student" && <p>Student Data Management</p>}
-            {view === "Teachers" && <p>Teachers Data Management</p>}
+            {view === "Overview" && <p>Curious Kid's Dashboard Overview</p>}
+            {view === "Schools" && <p>Schools Data Management</p>}
             {view === "Courses" && <p>Course Management</p>}
-            {view === "Chat" && <p>Chat/Messaging</p>}
             {view === "Gamification" && <p>Gamification Management</p>}
-            {view === "Leadership Board" && <p>Leadership Board</p>}
+    
             <div className="flexsm gap-[20px]">
               <div
                 className="cursor-pointer border rounded-[8px] p-[8px]"
@@ -183,7 +170,7 @@ const Dashboard = () => {
 
             {view === "Chat" && <Messages />}
 
-            {view === "Student" && <Students />}
+            {view === "Schools" && <Schools />}
 
             {view === "Teachers" && <Teachers />}
 
