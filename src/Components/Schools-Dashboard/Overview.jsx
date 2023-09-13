@@ -83,7 +83,7 @@ const Overview = () => {
   return (
     <>
       <div className="w-full cflexss font-[700] gap-[37px] text-[24px] lg:text-[20px] ls:text-[18px] bg-[#F7F7F7] h-full p-[30px]">
-        
+
         <div className="w-full flexbm">
           <p className="text-gray-400">Welcome, Savannah Nguyen</p>
           <div className="flexmm gap-[28px]">
@@ -129,11 +129,11 @@ const Overview = () => {
 
         <div className="grid grid-cols-3 w-full gap-[16px]">
 
-          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[50px] bg-primary1 text-white flexsm gap-4 rounded-[24px] shadow-md">
+          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[30px] bg-primary1 text-white flexsm gap-4 rounded-[24px] shadow-md">
             <div className="flexmm bg-white rounded-[8px] p-4">
               <Users size="26px" color="#F5AE1E" />
             </div>
-            <div className="cflexss leading-8">
+            <div className="cflexss ">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
                 25
               </p>
@@ -143,11 +143,11 @@ const Overview = () => {
             </div>
           </div>
 
-          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[50px] bg-primary2 text-white flexsm gap-4 rounded-[24px] shadow-md">
+          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[30px] bg-primary2 text-white flexsm gap-4 rounded-[24px] shadow-md">
             <div className="flexmm bg-white rounded-[8px] p-4">
               <Users size="26px" color="#00AC76" />
             </div>
-            <div className="cflexss">
+            <div className="cflexss ">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
                 25
               </p>
@@ -157,11 +157,11 @@ const Overview = () => {
             </div>
           </div>
 
-          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[50px] bg-primary3 text-white flexsm gap-4 rounded-[24px] shadow-md">
+          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[30px] bg-primary3 text-white flexsm gap-4 rounded-[24px] shadow-md">
             <div className="flexmm bg-white rounded-[8px] p-4">
               <Users size="26px" color="#8D67CE" />
             </div>
-            <div className="cflexss">
+            <div className="cflexss ">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
                 25
               </p>
@@ -171,11 +171,11 @@ const Overview = () => {
             </div>
           </div>
 
-          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[50px] bg-primary1 text-white flexsm gap-4 rounded-[24px] shadow-md">
+          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[30px] bg-primary1 text-white flexsm gap-4 rounded-[24px] shadow-md">
             <div className="flexmm bg-white rounded-[8px] p-4">
               <Users size="26px" color="#F5AE1E" />
             </div>
-            <div className="cflexss">
+            <div className="cflexss ">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
                 25
               </p>
@@ -185,11 +185,11 @@ const Overview = () => {
             </div>
           </div>
 
-          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[50px] bg-primary2 text-white flexsm gap-4 rounded-[24px] shadow-md">
+          <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[30px] bg-primary2 text-white flexsm gap-4 rounded-[24px] shadow-md">
             <div className="flexmm bg-white rounded-[8px] p-4">
               <Users size="26px" color="#00AC76" />
             </div>
-            <div className="cflexss leading-8">
+            <div className="cflexss ">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
                 25
               </p>

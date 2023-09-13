@@ -18,8 +18,9 @@ import { GiGraduateCap } from "react-icons/gi";
 import Notification from "../Kids-Dashboard/Notification";
 
 import Messages from "../Kids-Dashboard/Messages";
-import Students from "../Teachers-Dashboard/Students";
+import Students from "./Students";
 import Overview from "./Overview";
+import Teachers from "./Teachers";
 
 const Dashboard = () => {
   const [view, setView] = useState("Overview");
@@ -117,6 +118,7 @@ const Dashboard = () => {
           <div className="w-full p-4 font-[700] text-[28px] lg:text-[22px] ls:text-[18px] bg-white flexbs border-b-[1px]">
             {view === "Overview" && <p>School's Dashboard Overview</p>}
             {view === "Student" && <p>Student Data Management</p>}
+            {view === "Teachers" && <p>Teachers Data Management</p>}
             {view === "Courses" && <p>Course Management</p>}
             {view === "Chat" && <p>Chat/Messaging</p>}
             {view === "Gamification" && <p>Gamification Management</p>}
@@ -181,6 +183,8 @@ const Dashboard = () => {
             {view === "Chat" && <Messages />}
 
             {view === "Student" && <Students />}
+
+            {view === "Teachers" && <Teachers />}
         </div>
       </div>
     </>
