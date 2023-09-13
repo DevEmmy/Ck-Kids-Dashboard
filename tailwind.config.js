@@ -10,9 +10,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontSize: {
-        
-      },
+      fontSize: {},
       spacing: {
         xPadding: "5%",
         xpadding: "6.94%",
@@ -20,7 +18,7 @@ module.exports = {
       gridTemplateColumns: {
         "3to1": "3fr 1fr",
       },
-      
+
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -34,6 +32,7 @@ module.exports = {
         primary5: "#D8D8D8",
         purplePrime: "#6941C6",
         secondary1: "rgba(0, 0, 0, 0.5)",
+        secondary2: "rgba(0, 172, 118, 0.20)",
         sec1: "#00AC76",
         sec2: "#FFF",
         sec3: "#090914",
@@ -55,7 +54,7 @@ module.exports = {
         lg: { max: "1707px" },
         ls: { max: "1370px" },
         xl: { max: "1250px" },
-        lf: { max: "1150px" },        
+        lf: { max: "1150px" },
       },
     },
   },

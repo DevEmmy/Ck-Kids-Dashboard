@@ -12,6 +12,7 @@ import {
 } from "heroicons-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import AddNewVideo from "./AddNewVideo";
 
 const Courses = () => {
   const [drop, setDrop] = useState(false);
@@ -19,6 +20,7 @@ const Courses = () => {
   const [type, setType] = useState(false);
   const [add, setAdd] = useState(false);
   const [edit, setEdit] = useState(false);
+  const [modal, setModal] = useState(false);
 
   const Appear = {
     hidden: { opacity: 0 },
