@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import FileBase64 from "react-file-base64";
+import Loader from "@/AtomicComponents/Loader";
 import { fetchCollection, addToCollection } from "@/services/request";
 
 const AddToCollection = () => {
@@ -10,6 +11,7 @@ const AddToCollection = () => {
     collections: "",
   });
   const [collectionItems, setCollectionItems] = useState([{}]);
+  const [loading, setLoading] = useState(false)
   const [changing, setChanging] = useState(false);
   const [fileName, setFileName] = useState("");
   const [fileError, setFileError] = useState(false);
@@ -23,7 +25,7 @@ const AddToCollection = () => {
       !urlError &&
       collections["courseLink"].trim().length > 0 &&
       collections["coursePhoto"].trim().length > 0 &&
-      collections["collections"].trim().length > 0
+      collections["collections"].length > 0
     ) {
       setValid(true);
       setUrlError(false);
@@ -47,10 +49,10 @@ const AddToCollection = () => {
     }
   }, [changing]);
 
-  useEffect(() => {
-    fetchCollection(setCollectionItems);
-    console.log(collectionItems);
-  }, []);
+  // useEffect(() => {
+  //   fetchCollection(setCollectionItems);
+  //   console.log(collectionItems);
+  // }, []);
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -79,19 +81,24 @@ const AddToCollection = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let collectionIds = {}
     for(var i =0 ; i< collectionItems.length; i++){
       collectionIds.append(collectionItems.id)
     }
     if (valid) {
-
-      addToCollection(collections["courseName"], collectionIds, collections["coursePhoto"]);
+      setLoading(true)
+      await addToCollection(collections["courseName"], collections["courseLink"], collections["coursePhoto"]);
+      setLoading(false)
     }
   };
 
-  const Collections = [];
+  const Collections = [
+    {
+      collection:"something"
+    }
+  ];
 
   return (
     <>
@@ -155,8 +162,8 @@ const AddToCollection = () => {
             onChange={handleChange}
           >
             <option></option>
-            {collectionItems?.map((item) => {
-              return <option>{item.title}</option>;
+            {Collections.map((item) => {
+              return <option>{item.collection}</option>;
             })}
           </select>
         </div>

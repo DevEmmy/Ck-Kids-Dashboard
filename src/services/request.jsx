@@ -173,17 +173,17 @@ export const uploadCollection = async (
     });
 };
 
-export const fetchCollection = async ({ setCollectionItems }) => {
-  await axios
-    .get(`${api}/collections`, { withCredentials: true })
-    .then((response) => {
-      console.log(response.data.payload);
-      setCollectionItems(response.data.payload);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+// export const fetchCollection = async ({ setCollectionItems }) => {
+//   await axios
+//     .get(`${api}/collections`, { withCredentials: true })
+//     .then((response) => {
+//       console.log(response.data.payload);
+//       setCollectionItems(response.data.payload);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
 
 export const addToCollection = async ({
   courseName,
@@ -194,7 +194,7 @@ export const addToCollection = async ({
   await axios
     .post(
       `${api}/collection/update`,
-      { name:courseName, link:courseLink, collectionRelation:collectionId, collectionPhoto },
+      { name:courseName, link:courseLink, collectionPhoto},
       { withCredentials: true }
     )
     .then((response) => {
