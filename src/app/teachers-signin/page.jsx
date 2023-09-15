@@ -1,10 +1,10 @@
 'use client'
-import LandingPage from '../Components/LandingPage'
+import TeacherSignIn from '@/Components/TeacherSignIn'
 
 export default function Home() {
   return (
     <>  
-        <LandingPage/>
+        <TeacherSignIn/>
     </>
   )
 }

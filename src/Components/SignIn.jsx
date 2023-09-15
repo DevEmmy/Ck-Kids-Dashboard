@@ -1,66 +1,19 @@
 import { useState, useRef, useEffect } from "react";
-import { EyeOutline, EyeOffOutline, ArrowRightOutline, ArrowLeftOutline } from "heroicons-react";
-import Link from "next/link";
 import Image from "next/image";
-import { studentLogin } from "@/services/request";
-import Cookies from "js-cookie";
-import Loader from "@/AtomicComponents/Loader";
-import { useRouter } from "next/navigation";
+import StudentSignIn from "./StudentSignIn";
+import SchoolSignIn from "./SchoolSignIn";
 
 const SignIn = () => {
-  const eMail = useRef(null);
-  const [valid, setValid] = useState(false);
-  const [changing, setChanging] = useState(false);
-  const [emailError, setEmailError] = useState(false);
-  const [hide, setHide] = useState(true);
-  const [loading, setLoading] = useState(false);
-  const [loginDetails, setLoginDetails] = useState({
-    email: "",
-    password: "",
-  });
-  const router = useRouter();
-  // useEffect(() => {
-  //   eMail.current.focus();
-  // }, []);
-
-  useEffect(() => {
-    if (
-      loginDetails["email"].trim().length > 0 &&
-      loginDetails["password"].trim().length > 0
-    ) {
-      setValid(true);
-    } else {
-      setValid(false);
-    }
-  }, [changing]);
-
-  const handleChange = (e) => {
-    var name = e.target.name;
-    var value = e.target.value;
-    setLoginDetails({ ...loginDetails, [name]: value });
-    setChanging(!changing);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();    
-    if (valid) {
-      setLoading(true);     
-      // ENDPOINT FOR SUBMITTING LOGIN DETAILS
-      await studentLogin(loginDetails.email, loginDetails.password, router).then(
-        (resp) => {
-          console.log(resp)
-        }
-      );
-      setLoading(false);
-    }
-  };
-
-  // localStorage.clear()
+  const [loginType, setLoginType] = useState("none")
 
   return (
     <>
       <div className="h-full w-full flexss flex-wrap">
-        <div className="w-[45%] h-full bg-sec1 pt-[4em] sm:py-[2em] pb-[6em] px-[5em] text-sec2 sm:px-[1.5em] md1:w-full">
+        <div
+          className={`w-[45%] h-full ${
+            loginType === "institution" ? "bg-purplePrime" : "bg-sec1"
+          } py-[4em] sm:py-[2em] px-[5em] text-sec2 sm:px-[1.5em] md1:w-full`}
+        >
           <div className="cflexss gap-[1.5em]">
             <a
               href="/"
@@ -110,135 +63,38 @@ const SignIn = () => {
         </div>
 
         <div className="w-[50%] h-full bg-white py-[6em] sm:py-[2em] pl-[6em] pr-[7em] sm:px-[1.5em] md1:w-full">
-          <div className="cflexss w-full gap-[28px]">
-            <div
-              className="flexss bg-sec1 rounded-[0.5em] p-[0.4em] cursor-pointer"
-              onClick={() => {
-                window.history.back()
-              }}
-            >
-              <div className="w-[1.2em] h-[1.2em] rounded-full bg-white flexmm">
-                <ArrowLeftOutline size="12px" color="#00AC76" />
-              </div>
-            </div>
-            <h1 className="text-[1.7rem] font-[700] sm:font-[800] text-sec3">
-              Sign In
-            </h1>
-            <p className="text-[18px] lg:text-[16px] ls:text-[14px] sm:text-[20px] font-400 text-[#52525B] leading-[1.5em]">
-              Sign in to continue your learning journey and explore a world of
-              endless possibilities.
-            </p>
-            <form className="cflexss gap-[1em] w-full" method="POST">
-              <div className="sect">
-                <p>Email address</p>
-                <div className="inputCont">
-                  <input
-                    className="input"
-                    type="text"
-                    name="email"
-                    placeholder="E.g annette.black@example.com"
-                    value={loginDetails["email"]}
-                    ref={eMail}
-                    onChange={handleChange}
-                  />
+          {loginType === "none" && (
+            <>
+              <div className="cflexmm h-full gap-[2em] w-full py-[3em]">
+                <div
+                  className="w-[90%] h-[332px] lg:h-[300px] sm:w-full p-[0.15em] pb-[0.5em] rounded-xl bg-sec1 cursor-pointer"
+                  onClick={() => {
+                    setLoginType("student");
+                  }}
+                >
+                  <div className="w-full h-full bg-white flexmm text-[28px] lg:text-[24px] ls:text-[20px] font-[700] rounded-xl">
+                    <p>Student</p>
+                  </div>
                 </div>
-                {emailError && <p className="err">* Fill in a valid email</p>}
-              </div>
-
-              <div className="sect">
-                <p>Password</p>
-                <div className="inputCont">
-                  <input
-                    className="input"
-                    type={hide ? "password" : "text"}
-                    name="password"
-                    placeholder="Password"
-                    value={loginDetails["password"]}
-                    onChange={handleChange}
-                  />
-                  {hide ? (
-                    <EyeOutline
-                      className="w-5 h-5 text-gray-500 cursor-pointer"
-                      onClick={() => {
-                        setHide(!hide);
-                      }}
-                    />
-                  ) : (
-                    <EyeOffOutline
-                      className="w-5 h-5 text-gray-500 cursor-pointer"
-                      onClick={() => {
-                        setHide(!hide);
-                      }}
-                    />
-                  )}
+                <div
+                  className="w-[90%] h-[332px] lg:h-[300px] sm:w-full p-[0.15em] pb-[0.5em] rounded-xl bg-purplePrime cursor-pointer"
+                  onClick={() => {
+                    setLoginType("institution");
+                  }}
+                >
+                  <div className="w-full h-full bg-white flexmm text-[28px] lg:text-[24px] ls:text-[20px] font-[700] rounded-xl">
+                    <p>Schools / Institutions</p>
+                  </div>
                 </div>
               </div>
-
-              {!valid && (
-                <div className="err">
-                  <p>*All fields are required.</p>
-                </div>
-              )}
-
-              <div className="flexbm w-full text-[16px] lg:text-[14px] sm:text-[20px]">
-                <div className="flexmm gap-[12px]">
-                  <input type="checkbox" />
-                  <p>Remember me</p>
-                </div>
-                <p className="text-sec1 cursor-pointer">Forgot password?</p>
-              </div>
-
-              <button
-                type="submit"
-                className="flexmm gap-[0.5em] rounded-[2em] bg-sec1 px-[2.5em] py-[1em] text-white text-[18px] sm:text-[1rem] font-[600] sm:font-[400]"
-                onClick={handleSubmit}
-                disabled={loading && true}
-              >
-                {loading ? (
-                  <Loader />
-                ) : (
-                  <>
-                    <p>Sign In</p>
-                    <ArrowRightOutline size="12px" />
-                  </>
-                )}
-              </button>
-            </form>
-            <div className="text-[16px] lg:text-[14px] sm:text-[18rem] font-[400]">
-              <p>
-                Don't have an account?{" "}
-                <a href="/signup">
-                  <span className="text-sec1 font-[700] cursor-pointer">
-                    Create free account
-                  </span>
-                </a>
-              </p>
-            </div>
-            <div className="flexsm flex-wrap gap-[12px] font-[400] text-[16px] sm:text-[1rem] text-[#344054] w-full">
-              <div className="box">
-                <div className="w-[1.5em] sm:w-[1.2em]">
-                  <Image
-                    src="google.svg"
-                    width={100}
-                    height={100}
-                    alt="google"
-                  />
-                </div>
-                <p>Sign in with Google</p>
-              </div>
-              <div className="box">
-                <div className="w-[1.5em] sm:w-[1.2em]">
-                  <Image
-                    src="outlook.svg"
-                    width={100}
-                    height={100}
-                    alt="google"
-                  />
-                </div>
-                <p>Sign in with Outlook</p>
-              </div>
-            </div>
-          </div>
+            </>
+          )}
+          {loginType === "student" && (
+            <StudentSignIn setLoginType={setLoginType} />
+          )}
+          {loginType === "institution" && (
+            <SchoolSignIn setLoginType={setLoginType} />
+          )}
         </div>
       </div>
     </>

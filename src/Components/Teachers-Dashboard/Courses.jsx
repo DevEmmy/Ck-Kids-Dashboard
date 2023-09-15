@@ -18,6 +18,7 @@ import CreateNewCollection from "./CreateNewCollection";
 import { useDisclosure } from "@mantine/hooks";
 import { Modal, useMantineTheme } from "@mantine/core";
 import { FaPlus } from "react-icons/fa";
+import EachCourse from "./EachCourse";
 
 const Courses = () => {
   const [drop, setDrop] = useState(false);
@@ -35,6 +36,32 @@ const Courses = () => {
     visible: { opacity: 1, transition: { duration: 0.2 } },
   };
 
+  const videos = [
+    {
+      name: "Punch",
+      link: "https://github.com/CREOS-LAB/Ck-kidsDashboard-backend",
+      cover: "/addImage.svg",
+      description: "description"
+    },
+    {
+      name: "Punch",
+      link: "https://github.com/CREOS-LAB/Ck-kidsDashboard-backend",
+      cover: "/addImage.svg",
+      description: "description"
+    },
+    {
+      name: "Punch",
+      link: "https://github.com/CREOS-LAB/Ck-kidsDashboard-backend",
+      cover: "/addImage.svg",
+      description: "description"
+    },
+    {
+      name: "Punch",
+      link: "https://github.com/CREOS-LAB/Ck-kidsDashboard-backend",
+      cover: "/addImage.svg",
+      description: "description"
+    }
+  ]
   const Categories = [
     {
       category: "History",
@@ -116,7 +143,7 @@ const Courses = () => {
       <div className="w-full p-[30px] cflexss gap-[25px] font-[400] text-[20px] lg:text-[18px] ls:text-[16px]">
         <div className="w-full flexmm flexem">
           <button
-            className="relative px-[52px] flexmm font-[600] gap-[10px] py-[22px] lg:py-[18px] ls:py-[15px] rounded-full bg-primary2 cursor-pointer text-[#FFF] border-none"
+            className="relative btn px-[52px] flexmm font-[600] gap-[10px] py-[22px] lg:py-[18px] ls:py-[15px] rounded-full bg-primary2 cursor-pointer text-[#FFF] border-none"
             onClick={() => {
               setAdd(!add);
               setCat(false);
@@ -126,7 +153,7 @@ const Courses = () => {
             }}
           >
             <p>Add new course</p>
-            <FaPlus size="16px" />
+            <FaPlus size="10px" />
             {add && (
               <div className="absolute top-[80px] z-50 font-[400] text-[17px] text-[#808080] cflexss p-[6px] border-[1px] rounded-[12px] bg-[#FFF] flex-shrink shadow-md">
                 {AddCourse.map((course) => {
@@ -149,6 +176,7 @@ const Courses = () => {
             )}
           </button>
         </div>
+
         <div className="w-full h-full cflexss gap-[30px] border-[1px] rounded-[24px] bg-[#FFF] shadow-md py-[30px] px-[20px]">
           <div className="w-full flexsm gap-[25px] text-[#AAA]">
             <div className="flexmm gap-[10px] rounded-[8px] border-[1px] p-[16px] w-[526px] bg-white flex-shrink">
@@ -237,65 +265,16 @@ const Courses = () => {
           </div>
 
           <div className="w-full cflexss gap-[20px] bg-[#FFF]">
-            <div className="w-full rounded-[12px] border-[1px] flexss">
-              <div className="w-[50%] border-r-[1px] p-[15px] flexss gap-[20px]">
-                <div className="flexmm w-[327px] min-h-[200px] flex-shrink rounded-[12px]">
-                  <img
-                    src="/addImage.svg"
-                    alt="courseImage"
-                    className="rounded-[12px]"
-                  />
-                </div>
-                <div className="flexbs">
-                  <div className="pt-[20px] w-[90%] cflexss font-[700] text-[#101828]">
-                    <p>Exploring Classic Nursery Rhymes</p>
-                    <p className="text-[#AAA]">Description</p>
-                  </div>
-                  <div
-                    className="relative flexmm"
-                    onClick={() => {
-                      setEdit(!edit);
-                      setDrop(false);
-                      setCat(false);
-                      setType(false);
-                      setAdd(false);
-                    }}
-                  >
-                    <DotsVertical
-                      size="16px"
-                      color="#808080"
-                      className="cursor-pointer"
-                    />
-                    {edit && (
-                      <div className="absolute top-[30px] z-50 font-[400] text-[17px] text-[#808080] cflexss p-[6px] border-[1px] rounded-[12px] bg-[#FFF] flex-shrink shadow-md">
-                        <div className="w-[228px] py-[12px] px-[16px] gap-[10px] flexsm rounded-[4px] flex-shrink hover:bg-primary2 hover:text-white transition-all cursor-pointer duration-400">
-                          <PencilAltOutline size="16px" />
-                          <p>Edit</p>
-                        </div>
-                        <div className="w-[228px] py-[12px] px-[16px] gap-[10px] flexsm rounded-[4px] flex-shrink hover:bg-primary2 hover:text-white transition-all cursor-pointer duration-400">
-                          <TrashOutline size="16px" />
-                          <p>Delete</p>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-              <div className="w-[50%] py-[20px] px-[25px] gap-[25%] flexss text-[#AAA]">
-                <div className="cflexss gap-[20px]">
-                  <p>Views</p>
-                  <p className="text-[#333]">20</p>
-                </div>
-                <div className="cflexss gap-[20px]">
-                  <p>Views</p>
-                  <p className="text-[#333]">20</p>
-                </div>
-                <div className="cflexss gap-[20px]">
-                  <p>Views</p>
-                  <p className="text-[#333]">20</p>
-                </div>
-              </div>
-            </div>
+
+              {
+                videos.map((video, i)=>{
+                  return(
+                    <EachCourse video={video} setAdd={setAdd} setDrop={setDrop} setCat={setCat} setType={setType} key={i}/>
+                  )
+                })
+              }
+            
+
           </div>
         </div>
 

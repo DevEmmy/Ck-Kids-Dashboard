@@ -173,32 +173,37 @@ export const uploadCollection = async (
     });
 };
 
-// export const fetchCollection = async ({ setCollectionItems }) => {
-//   await axios
-//     .get(`${api}/collections`, { withCredentials: true })
-//     .then((response) => {
-//       console.log(response.data.payload);
-//       setCollectionItems(response.data.payload);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// };
+export const fetchCollection = async (setCollectionItems) => {
+  await axios
+    .get(`${api}/collections`, { withCredentials: true })
+    .then((response) => {
+      console.log(response.data.payload);
+      setCollectionItems(response.data.payload);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
-export const addToCollection = async ({
+
+export const addToCollection = async (
   courseName,
   courseLink,
-  collectionId,  
+  collection,
   collectionPhoto,
-}) => {
+) => {
+  let data = { name:courseName, link:courseLink, collectionRelation: collection, cover:collectionPhoto }
+  console.log(data)
+
   await axios
     .post(
-      `${api}/collection/update`,
-      { name:courseName, link:courseLink, collectionPhoto},
+      `${api}/video`,
+      { name:courseName, link:courseLink, cover:collectionPhoto },
       { withCredentials: true }
     )
     .then((response) => {
       console.log(response);
+      notify(response.data.message);
     })
     .catch((err) => {
       notifyError(err.response.data.message);
