@@ -20,6 +20,7 @@ import { Modal, useMantineTheme } from "@mantine/core";
 import { FaPlus } from "react-icons/fa";
 import EachCourse from "./EachCourse";
 import { getAllVideos } from "@/services/request";
+import { SpinnerCircular } from "spinners-react";
 
 const Courses = () => {
   const [drop, setDrop] = useState(false);
@@ -28,17 +29,19 @@ const Courses = () => {
   const [add, setAdd] = useState(false);
   const [edit, setEdit] = useState(false);
   const [modal, setModal] = useState(false);
-  const [videos, setVideos] = useState([])
+  const [videos, setVideos] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const fetchData = async ()=>{
-    let data = await getAllVideos()
-    console.log(data)
-    setVideos(data)
-  }
-  useEffect(()=>{
-    fetchData()
-  }, [])
-  
+  const fetchData = async () => {
+    setLoading(true);
+    let data = await getAllVideos();
+    console.log(data);
+    setLoading(false);
+    setVideos(data);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
@@ -109,24 +112,21 @@ const Courses = () => {
     },
   ];
 
-  const Class = [
+  const Ages = [
     {
-      class: "JSS 1",
+      age: "3 - 5",
     },
     {
-      class: "JSS 2",
+      age: "6 - 8",
     },
     {
-      class: "JSS 3",
+      age: "9 - 10",
     },
     {
-      class: "SSS 1",
+      age: "11 - 13",
     },
     {
-      class: "SSS 2",
-    },
-    {
-      class: "SSS 3",
+      age: "14 - 16",
     },
   ];
 
@@ -249,18 +249,18 @@ const Courses = () => {
                 setEdit(false);
               }}
             >
-              <p>Class</p>
+              <p>Ages</p>
               {drop ? <ChevronDown /> : <ChevronUp />}
               {drop && (
                 <div className="absolute top-[70px] w-[150px] text-[17px] font-[400] left-0 z-25 border-[1px] shadow-md py-[8px] px-[4px] rounded-[12px] bg-white cflexss">
-                  {Class.map((items, i) => {
+                  {Ages.map((items, i) => {
                     return (
                       <>
                         <div
                           key={i}
                           className="flexbm w-full px-[16px] py-[12px] rounded-xl hover:bg-primary2 hover:text-white transition-all cursor-pointer duration-400"
                         >
-                          <p>{items.class}</p>
+                          <p>{items.age}</p>
                           <ChevronRight />
                         </div>
                       </>
@@ -277,16 +277,32 @@ const Courses = () => {
           </div>
 
           <div className="w-full cflexss gap-[20px] bg-[#FFF]">
-
-              {
-                videos.map((video, i)=>{
-                  return(
-                    <EachCourse video={video} setAdd={setAdd} setDrop={setDrop} setCat={setCat} setType={setType} key={i}/>
-                  )
-                })
-              }
-            
-
+            {loading ? (
+              <div className="w-full flexmm">
+                <SpinnerCircular
+                  color="#00AC76"
+                  className="mr-4"
+                  secondaryColor={theme.color}
+                  size={50}
+                  thickness={150}
+                />
+              </div>
+            ) : (
+              <>
+                {videos.map((video, i) => {
+                  return (
+                    <EachCourse
+                      video={video}
+                      setAdd={setAdd}
+                      setDrop={setDrop}
+                      setCat={setCat}
+                      setType={setType}
+                      key={i}
+                    />
+                  );
+                })}
+              </>
+            )}
           </div>
         </div>
 

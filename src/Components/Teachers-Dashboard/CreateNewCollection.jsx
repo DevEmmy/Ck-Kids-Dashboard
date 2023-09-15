@@ -71,24 +71,21 @@ const CreateNewCollection = ({ close }) => {
     },
   ];
 
-  const Class = [
+  const Ages = [
     {
-      class: "JSS 1",
+      age: "3 - 5",
     },
     {
-      class: "JSS 2",
+      age: "6 - 8",
     },
     {
-      class: "JSS 3",
+      age: "9 - 10",
     },
     {
-      class: "SSS 1",
+      age: "11 - 13",
     },
     {
-      class: "SSS 2",
-    },
-    {
-      class: "SSS 3",
+      age: "14 - 16",
     },
   ];
 
@@ -123,7 +120,7 @@ const CreateNewCollection = ({ close }) => {
         newCollection.coursePhoto
       );
       setLoading(false);
-      close()
+      close();
     }
   };
 
@@ -160,28 +157,28 @@ const CreateNewCollection = ({ close }) => {
           />
         </div>
         <div className="w-full cflexss gap-[12px]">
-          <p>Category</p>
+          <p>Course Category</p>
           <select
             className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
             name="category"
             onChange={handleChange}
           >
-            <option></option>
+            <option>None</option>
             {Categories.map((category) => {
               return <option>{category.category}</option>;
             })}
           </select>
         </div>
         <div className="w-full cflexss gap-[12px]">
-          <p>Class</p>
+          <p>Ages</p>
           <select
             className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
             name="class"
             onChange={handleChange}
           >
-            <option></option>
-            {Class.map((classes) => {
-              return <option>{classes.class}</option>;
+            <option>None</option>
+            {Ages.map((ages) => {
+              return <option>{ages.age}</option>;
             })}
           </select>
         </div>
@@ -201,6 +198,11 @@ const CreateNewCollection = ({ close }) => {
               />
             </div>
           </div>
+          {fileName && (
+            <div className="flexmm w-[15em] rounded-[12px] flex-shrink">
+              <img src={fileName.base64} alt="image" className="rounded-[12px]"/>
+            </div>
+          )}
           {fileError && (
             <p className="flexmm text-[12px] text-red-700">
               make sure you uploaded an image not more that 10mb.

@@ -216,12 +216,12 @@ export const getAllVideos = async ()=>{
   await axios.get(`${api}/videos`)
   .then((response) => {
     data = response.data.payload;
-    console.log(data)
-    notify(response.data.message);
+    console.log(data)    
   })
   .catch((err) => {
     notifyError(err.response.data.message);
     console.log(err);
+    data = []
   });
 
   return data;

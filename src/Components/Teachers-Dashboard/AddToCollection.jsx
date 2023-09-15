@@ -3,7 +3,7 @@ import FileBase64 from "react-file-base64";
 import Loader from "@/AtomicComponents/Loader";
 import { fetchCollection, addToCollection } from "@/services/request";
 
-const AddToCollection = () => {
+const AddToCollection = ({ close }) => {
   const [collections, setCollections] = useState({
     courseName: "",
     courseLink: "",
@@ -17,6 +17,7 @@ const AddToCollection = () => {
   const [fileError, setFileError] = useState(false);
   const [valid, setValid] = useState(false);
   const [urlError, setUrlError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const urlRegex = /^(https?|http|ftp):\/\/[^\s/$.?#].[^\s]*$/;
 
   useEffect(() => {
@@ -24,8 +25,7 @@ const AddToCollection = () => {
       collections["courseName"].trim().length > 0 &&
       !urlError &&
       collections["courseLink"].trim().length > 0 &&
-      collections["coursePhoto"] &&
-      collections["collection"]&&
+      collections["collection"] &&
       collections["courseDetails"]
     ) {
       setValid(true);
@@ -85,14 +85,23 @@ const AddToCollection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(collections);
+
     if (valid) {
-      addToCollection(
+      setLoading(true);
+      await addToCollection(
         collections["courseName"],
         collections["courseLink"],
         collections.collection,
         collections["coursePhoto"]
       );
+      setLoading(false);
+      close();
     }
+  };
+
+  const handleClose = (e) => {
+    e.preventDefault();
+    close();
   };
 
   return (
@@ -118,7 +127,7 @@ const AddToCollection = () => {
           <textarea
             type="text"
             name="courseDetails"
-            value={newVideoData["courseDetails"]}
+            value={collections["courseDetails"]}
             onChange={handleChange}
             className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px] resize-none h-[187px]"
           />
@@ -154,6 +163,16 @@ const AddToCollection = () => {
               />
             </div>
           </div>
+          {fileName && (
+            <div className="flexmm w-[15em] rounded-[12px] flex-shrink">
+              <img
+                src={fileName.base64}
+                alt="image"
+                className="rounded-[12px]"
+              />
+            </div>
+          )}
+          <p className="flexmm text-[12px] text-[#808080]">(optional)</p>
           {fileError && (
             <p className="flexmm text-[12px] text-red-700">
               make sure you uploaded an image not more that 10mb.
@@ -184,9 +203,12 @@ const AddToCollection = () => {
             className="py-[18px] px-[52px] rounded-full bg-primary2 text-[#FFF]"
             onClick={handleSubmit}
           >
-            <p>Submit</p>
+            {loading ? <Loader /> : <p>Submit</p>}
           </button>
-          <button className="py-[18px] px-[52px] rounded-full bg-[#FFF] text-primary2 border-[1px] border-primary2">
+          <button
+            className="py-[18px] px-[52px] rounded-full bg-[#FFF] text-primary2 border-[1px] border-primary2"
+            onClick={handleClose}
+          >
             <p>Cancel</p>
           </button>
         </div>

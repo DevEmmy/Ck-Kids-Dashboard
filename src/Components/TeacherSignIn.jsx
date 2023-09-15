@@ -198,17 +198,7 @@ const TeacherSignIn = ({ setLoginType }) => {
                   </>
                 )}
               </button>
-            </form>
-            <div className="text-[16px] lg:text-[14px] sm:text-[18rem] font-[400]">
-              <p>
-                Don't have an account?{" "}
-                <a href="/signup">
-                  <span className="text-primary1 font-[700] cursor-pointer">
-                    Create free account
-                  </span>
-                </a>
-              </p>
-            </div>
+            </form>            
             <div className="flexsm flex-wrap gap-[12px] font-[400] text-[16px] sm:text-[1rem] text-[#344054] w-full">
               <div className="box">
                 <div className="w-[1.5em] sm:w-[1.2em]">
