@@ -11,7 +11,7 @@ import {
   PencilAltOutline,
 } from "heroicons-react";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddNewVideo from "./AddNewVideo";
 import AddToCollection from "./AddToCollection";
 import CreateNewCollection from "./CreateNewCollection";
@@ -19,6 +19,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { Modal, useMantineTheme } from "@mantine/core";
 import { FaPlus } from "react-icons/fa";
 import EachCourse from "./EachCourse";
+import { getAllVideos } from "@/services/request";
 
 const Courses = () => {
   const [drop, setDrop] = useState(false);
@@ -27,6 +28,17 @@ const Courses = () => {
   const [add, setAdd] = useState(false);
   const [edit, setEdit] = useState(false);
   const [modal, setModal] = useState(false);
+  const [videos, setVideos] = useState([])
+
+  const fetchData = async ()=>{
+    let data = await getAllVideos()
+    console.log(data)
+    setVideos(data)
+  }
+  useEffect(()=>{
+    fetchData()
+  }, [])
+  
 
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
@@ -36,32 +48,32 @@ const Courses = () => {
     visible: { opacity: 1, transition: { duration: 0.2 } },
   };
 
-  const videos = [
-    {
-      name: "Punch",
-      link: "https://github.com/CREOS-LAB/Ck-kidsDashboard-backend",
-      cover: "/addImage.svg",
-      description: "description"
-    },
-    {
-      name: "Punch",
-      link: "https://github.com/CREOS-LAB/Ck-kidsDashboard-backend",
-      cover: "/addImage.svg",
-      description: "description"
-    },
-    {
-      name: "Punch",
-      link: "https://github.com/CREOS-LAB/Ck-kidsDashboard-backend",
-      cover: "/addImage.svg",
-      description: "description"
-    },
-    {
-      name: "Punch",
-      link: "https://github.com/CREOS-LAB/Ck-kidsDashboard-backend",
-      cover: "/addImage.svg",
-      description: "description"
-    }
-  ]
+  // const videos = [
+  //   {
+  //     name: "Punch",
+  //     link: "https://github.com/CREOS-LAB/Ck-kidsDashboard-backend",
+  //     cover: "/addImage.svg",
+  //     description: "description"
+  //   },
+  //   {
+  //     name: "Punch",
+  //     link: "https://github.com/CREOS-LAB/Ck-kidsDashboard-backend",
+  //     cover: "/addImage.svg",
+  //     description: "description"
+  //   },
+  //   {
+  //     name: "Punch",
+  //     link: "https://github.com/CREOS-LAB/Ck-kidsDashboard-backend",
+  //     cover: "/addImage.svg",
+  //     description: "description"
+  //   },
+  //   {
+  //     name: "Punch",
+  //     link: "https://github.com/CREOS-LAB/Ck-kidsDashboard-backend",
+  //     cover: "/addImage.svg",
+  //     description: "description"
+  //   }
+  // ]
   const Categories = [
     {
       category: "History",

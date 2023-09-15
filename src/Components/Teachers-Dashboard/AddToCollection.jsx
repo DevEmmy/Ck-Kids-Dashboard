@@ -8,6 +8,7 @@ const AddToCollection = () => {
     courseName: "",
     courseLink: "",
     coursePhoto: "",
+    courseDetails: "",
     collection: "",
   });
   const [collectionItems, setCollectionItems] = useState([]);
@@ -24,7 +25,8 @@ const AddToCollection = () => {
       !urlError &&
       collections["courseLink"].trim().length > 0 &&
       collections["coursePhoto"] &&
-      collections["collection"]
+      collections["collection"]&&
+      collections["courseDetails"]
     ) {
       setValid(true);
       setUrlError(false);
@@ -108,6 +110,17 @@ const AddToCollection = () => {
             value={collections["courseName"]}
             onChange={handleChange}
             className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px]"
+          />
+        </div>
+
+        <div className="w-full cflexss gap-[12px]">
+          <p>Course details</p>
+          <textarea
+            type="text"
+            name="courseDetails"
+            value={newVideoData["courseDetails"]}
+            onChange={handleChange}
+            className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px] resize-none h-[187px]"
           />
         </div>
 

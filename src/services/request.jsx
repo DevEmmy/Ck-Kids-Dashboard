@@ -210,3 +210,19 @@ export const addToCollection = async (
       console.log(err);
     });
 };
+
+export const getAllVideos = async ()=>{
+   let data = []
+  await axios.get(`${api}/videos`)
+  .then((response) => {
+    data = response.data.payload;
+    console.log(data)
+    notify(response.data.message);
+  })
+  .catch((err) => {
+    notifyError(err.response.data.message);
+    console.log(err);
+  });
+
+  return data;
+}
