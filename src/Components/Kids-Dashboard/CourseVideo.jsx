@@ -57,8 +57,8 @@ const CourseVideo = () => {
   return (
     <>
       <Nav active={1} />
-      <div className="w-full top-[100px] flexss gap-[1em] pt-[2em] px-[5%]">
-        <a href="/courses" className="flexmm">
+      <div className="w-full mt-[100px] flexss gap-[1em] pt-[2em] px-[5%]">
+        <a href="/kids-dashboard/courses" className="flexmm">
           <div className="flexss bg-primary2 rounded-[0.5em] p-[0.4em] cursor-pointer">
             <div className="w-[1.2em] h-[1.2em] rounded-full bg-white flexmm">
               <ArrowLeftOutline size="12px" color="#00AC76" />
