@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FileBase64 from "react-file-base64";
 import Loader from "@/AtomicComponents/Loader";
+import { uploadData } from "@/services/request";
 
 const UploadStudentData = ({ close }) => {
   const [file, setFile] = useState("");
@@ -31,8 +32,9 @@ const UploadStudentData = ({ close }) => {
     e.preventDefault();
     if (file) {
       setLoading(true);
-
-      //   close()
+      // console.log(file)
+      await uploadData(file)
+      close()
     }
   };
 

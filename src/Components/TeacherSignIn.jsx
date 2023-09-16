@@ -6,7 +6,7 @@ import {
   ArrowLeftOutline,
 } from "heroicons-react";
 import Image from "next/image";
-import { studentLogin } from "@/services/request";
+import { studentLogin, teacherLogin } from "@/services/request";
 import Cookies from "js-cookie";
 import Loader from "@/AtomicComponents/Loader";
 import { useRouter } from "next/navigation";
@@ -50,14 +50,14 @@ const TeacherSignIn = ({ setLoginType }) => {
     if (valid) {
       setLoading(true);
       // ENDPOINT FOR SUBMITTING LOGIN DETAILS
-      //   await studentLogin(
-      //     loginDetails.email,
-      //     loginDetails.password,
-      //     router
-      //   ).then((resp) => {
-      //     console.log(resp);
-      //   });
-      //   setLoading(false);
+        await teacherLogin(
+          loginDetails.email,
+          loginDetails.password,
+          router
+        ).then((resp) => {
+          console.log(resp);
+        });
+        setLoading(false);
     }
   };
   return (
