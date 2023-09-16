@@ -6,16 +6,37 @@ import {
   EyeOutline,
   PencilAltOutline,
   TrashOutline,
-  XCircleOutline
+  XCircleOutline,
 } from "heroicons-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StudentProfile from "./StudentProfile";
+import ReactPaginate from "react-paginate";
+import { Paginated, GetPaginatedData } from "@/AtomicComponents/Pagination";
 
 const Students = () => {
   const [profile, setProfile] = useState(false);
   const [data, setData] = useState({});
   const [trash, setTrash] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
+  const PAGINATION = 10;
+
+  const handlePageClick = (data) => {
+    const selectedPage = data.selected;
+    setCurrentPage(selectedPage);
+    console.log(selectedPage)
+    console.log("clicked!")
+    // Fetch and display data for the selected page
+  };
   const StudentData = [
+    {
+      checked: true,
+      avatar: "teacherAvatar",
+      name: "Emeka Eze",
+      email: "emekaeze@gmail.com",
+      username: "emekaeze",
+      dateJoined: "20/10/2023",
+      class: "JSS 1D",
+    },
     {
       checked: false,
       avatar: "teacherAvatar",
@@ -107,6 +128,8 @@ const Students = () => {
       class: "JSS 1D",
     },
   ];
+  const pageCount = Paginated(StudentData, PAGINATION);
+
   return (
     <>
       <div className="relative w-full p-[30px] cflexss gap-[28px]">
@@ -114,10 +137,12 @@ const Students = () => {
           <StudentProfile
             profile={profile}
             setProfile={setProfile}
-            data={data}            
+            data={data}
           />
         )}
-        {trash && <Trash setTrash={setTrash} data={data} setProfile={setProfile}/>}
+        {trash && (
+          <Trash setTrash={setTrash} data={data} setProfile={setProfile} />
+        )}
         <div className="w-full flexes">
           <div className="flexmm gap-[10px] rounded-[8px] border-[1px] p-[16px] w-[526px] bg-white">
             <SearchOutline size="16px" />
@@ -157,47 +182,63 @@ const Students = () => {
             <div className="w-[14%] flexsm">Class</div>
             <div className="w-[14%] flexsm">Actions</div>
           </div>
-          {StudentData.map((data, index) => {
-            return (
-              <>
-                <div
-                  key={index}
-                  className={`w-full flexsm py-[10px] px-[20px] cursor-pointer ${
-                    (index + 1) % 2 === 0 ? "bg-[#F7F7F7]" : "bg-white"
-                  }`}
-                  onClick={() => {
-                    setProfile(true);
-                    setData(data);
-                  }}
-                >
-                  <div className="w-[9%] flexsm gap-[15px]">
-                    <input type="checkbox" checked={data.checked} />
-                    <div className="flexmm w-[24px]">
-                      <img src={`/${data.avatar}.svg`} alt="avatar" />
+          {GetPaginatedData(currentPage, PAGINATION, StudentData).map(
+            (data, index) => {
+              return (
+                <>
+                  <div
+                    key={index}
+                    className={`w-full flexsm py-[10px] px-[20px] cursor-pointer ${
+                      (index + 1) % 2 === 0 ? "bg-[#F7F7F7]" : "bg-white"
+                    }`}
+                    onClick={() => {
+                      setProfile(true);
+                      setData(data);
+                    }}
+                  >
+                    <div className="w-[9%] flexsm gap-[15px]">
+                      <input type="checkbox" checked={data.checked} />
+                      <div className="flexmm w-[24px]">
+                        <img src={`/${data.avatar}.svg`} alt="avatar" />
+                      </div>
+                    </div>
+                    <div className="w-[14%] flexsm">{data.name}</div>
+                    <div className="w-[25%] flexsm">{data.email}</div>
+                    <div className="w-[18%] flexsm">@{data.username}</div>
+                    <div className="w-[14%] flexsm">{data.dateJoined}</div>
+                    <div className="w-[14%] flexsm">{data.class}</div>
+                    <div className="w-[14%] flexsm gap-[20px]">
+                      <EyeOutline size="16px" />
+                      <PencilAltOutline size="16px" />
+                      <TrashOutline
+                        size="16px"
+                        onClick={() => {
+                          setTrash(true);
+                          setData(data);
+                        }}
+                      />
                     </div>
                   </div>
-                  <div className="w-[14%] flexsm">{data.name}</div>
-                  <div className="w-[25%] flexsm">{data.email}</div>
-                  <div className="w-[18%] flexsm">@{data.username}</div>
-                  <div className="w-[14%] flexsm">{data.dateJoined}</div>
-                  <div className="w-[14%] flexsm">{data.class}</div>
-                  <div className="w-[14%] flexsm gap-[20px]">
-                    <EyeOutline size="16px" />
-                    <PencilAltOutline size="16px" />
-                    <TrashOutline
-                      size="16px"
-                      onClick={() => {
-                        setTrash(true);
-                        setData(data);
-                      }}
-                    />
-                  </div>
-                </div>
-              </>
-            );
-          })}
+                </>
+              );
+            }
+          )}
           <br />
-          <div className="w-full text-[14px] lg:text-[12px] px-[20px] pt-[20px] border-t-[1px] flexbm">
+          <ReactPaginate
+            previousLabel={"< Previous"}
+            nextLabel={"Next >"}
+            breakLabel={"..."}
+            breakClassName={"break-me"}
+            pageCount={pageCount}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={handlePageClick}
+            containerClassName={
+              "w-full text-[14px] lg:text-[12px] px-[20px] pt-[20px] border-t-[1px] flexbm"
+            }
+            activeClassName={"active"}
+          />
+          {/* <div className="w-full text-[14px] lg:text-[12px] px-[20px] pt-[20px] border-t-[1px] flexbm">
             <div className="flexmm gap-[8px] cursor-pointer">
               <ArrowLeft size="16px" />
               <p>Previous</p>
@@ -206,9 +247,8 @@ const Students = () => {
               <p>Next</p>
               <ArrowRight size="16px" />
             </div>
-          </div>
+          </div> */}
         </div>
-        
       </div>
     </>
   );
@@ -227,10 +267,13 @@ const Trash = ({ setTrash, data, setProfile }) => {
               <div className="w-[286px] text-center font-[600] text-[24px]">
                 <p>Wait for approval from the principal</p>
               </div>
-              <div className="absolute top-[8%] right-[8%] flexmm cursor-pointer" onClick={()=>{
-                setTrash(false)               
-                setProfile(false) 
-              }}>
+              <div
+                className="absolute top-[8%] right-[8%] flexmm cursor-pointer"
+                onClick={() => {
+                  setTrash(false);
+                  setProfile(false);
+                }}
+              >
                 <XCircleOutline size="16px" />
               </div>
             </>
