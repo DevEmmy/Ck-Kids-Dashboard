@@ -1,3 +1,5 @@
+import Loader from "@/AtomicComponents/Loader";
+import { addToCollection } from "@/services/request";
 import { useState, useEffect } from "react";
 import FileBase64 from "react-file-base64";
 
@@ -16,6 +18,7 @@ const AddNewVideo = ({ close }) => {
   const [valid, setValid] = useState(false);
   const [urlError, setUrlError] = useState(false);
   const urlRegex = /^(https?|http|ftp):\/\/[^\s/$.?#].[^\s]*$/;
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (
@@ -25,7 +28,7 @@ const AddNewVideo = ({ close }) => {
       newVideoData["courseLink"].trim().length > 0 &&
       newVideoData["category"].trim().length > 0 &&
       newVideoData["ages"].trim().length > 0 &&
-      newVideoData["coursePhoto"].trim().length > 0
+      newVideoData["coursePhoto"]
     ) {
       setValid(true);
       setUrlError(false);
@@ -65,7 +68,7 @@ const AddNewVideo = ({ close }) => {
         file.type === "image/jfif" ||
         file.type === "image/svg")
     ) {
-      setNewVideoData({ ...newVideoData, coursePhoto: file.base64 });
+      setNewVideoData({ ...newVideoData, coursePhoto: file});
       setFileError(false);
       setChanging(!changing);
     } else {
@@ -76,8 +79,13 @@ const AddNewVideo = ({ close }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    console.log(newVideoData)
+    await addToCollection(newVideoData["courseName"], newVideoData["courseLink"] ,newVideoData["coursePhoto"], newVideoData.courseDetails);
+    setLoading(false);
+    close();
     if (valid) {
     }
   };
@@ -250,7 +258,7 @@ const AddNewVideo = ({ close }) => {
             className="py-[18px] px-[52px] rounded-full bg-primary2 text-[#FFF]"
             onClick={handleSubmit}
           >
-            <p>Submit</p>
+            {loading ? <Loader /> : <p>Submit</p>}
           </button>
           <button
             className="py-[18px] px-[52px] rounded-full bg-[#FFF] text-primary2 border-[1px] border-primary2"

@@ -1,8 +1,8 @@
 import axios from "axios";
 import { notify, notifyError } from "./toastify";
 import { parse } from "cookie";
-//"http://localhost:4030"
-const api = "https://ck-onboarding.onrender.com";
+//"https://ck-onboarding.onrender.com";
+const api = "http://localhost:4030"
 const kidsDashboard = "https://ck-onboarding.onrender.com";
 
 const getCookie = () => {};
@@ -189,16 +189,17 @@ export const fetchCollection = async (setCollectionItems) => {
 export const addToCollection = async (
   courseName,
   courseLink,
-  collection,
   collectionPhoto,
+  description,
+  collection
 ) => {
-  let data = { name:courseName, link:courseLink, collectionRelation: collection, cover:collectionPhoto }
+  let data = { name:courseName, link:courseLink, collectionRelation: collection, cover:collectionPhoto, description }
   console.log(data)
 
   await axios
     .post(
       `${api}/video`,
-      { name:courseName, link:courseLink, cover:collectionPhoto },
+      data,
       { withCredentials: true }
     )
     .then((response) => {
@@ -216,7 +217,6 @@ export const getAllVideos = async ()=>{
   await axios.get(`${api}/videos`)
   .then((response) => {
     data = response.data.payload;
-    console.log(data)    
   })
   .catch((err) => {
     notifyError(err.response.data.message);
@@ -225,4 +225,16 @@ export const getAllVideos = async ()=>{
   });
 
   return data;
+}
+
+export const onBoardTeacher = async (firstName, lastName, email)=>{
+  await axios.post(`${api}/teacher/sign-up`, {firstName, lastName, email}, {withCredentials: true})
+  .then((response) => {
+    console.log(response);
+    notify(response.data.message);
+  })
+  .catch((err) => {
+    notifyError(err.response.data.message);
+    console.log(err);
+  });
 }

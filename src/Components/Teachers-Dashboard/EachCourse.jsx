@@ -52,22 +52,22 @@ const EachCourse = ({ video, setCat, setType, setAdd, setDrop }) => {
         </div>
       </div>
 
-      <div className="w-2/5 py-[20px] px-[25px] gap-[10%] flexss text-[#AAA]">
-        <div className="cflexss gap-[20px]">
-          <p>Views</p>
-          <p className="text-[#333]">20</p>
-        </div>
-        <div className="cflexss gap-[20px]">
-          <p>Watched</p>
-          <p className="text-[#333]">20</p>
-        </div>
-        <div className="cflexss gap-[20px]">
-          <p>Comments</p>
-          <p className="text-[#333]">20</p>
-        </div>
-      </div>
-    </div>
-  );
-};
+                      <div className="w-2/5 py-[20px] px-[25px] gap-[10%] flexss text-[#AAA]">
+                        <div className="cflexss gap-[20px]">
+                          <p>Views</p>
+                          <p className="text-[#333]">{video.views}</p>
+                        </div>
+                        <div className="cflexss gap-[20px]">
+                          <p>Watched</p>
+                          <p className="text-[#333]">{video.watched}</p>
+                        </div>
+                        {/* <div className="cflexss gap-[20px]">
+                          <p>Views</p>
+                          <p className="text-[#333]">20</p>
+                        </div> */}
+                      </div>
+                    </div>
+  )
+}
 
 export default EachCourse;
