@@ -170,6 +170,6 @@ input:checked+div svg {
   }
 }
 
-/* .input{
+.input-1{
   @apply border-solid border border-gray-300 p-3 rounded-md focus:outline-none
-} */
+}

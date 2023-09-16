@@ -86,7 +86,7 @@ const AddToCollection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(collections)
-    addToCollection(collections["courseName"], collections["courseLink"], collections.collection ,collections["coursePhoto"]);
+    addToCollection(collections["courseName"], collections["courseLink"] ,collections["coursePhoto"], collections.courseDetails, collections.collection);
 
     if (valid) {
       
@@ -117,7 +117,7 @@ const AddToCollection = () => {
           <textarea
             type="text"
             name="courseDetails"
-            value={newVideoData["courseDetails"]}
+            value={collections["courseDetails"]}
             onChange={handleChange}
             className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px] resize-none h-[187px]"
           />

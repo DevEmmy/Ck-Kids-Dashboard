@@ -6,22 +6,22 @@ const AddTeacher = () => {
 
     <div className="flex flex-col gap-2">
       <label htmlFor="firstName">First Name</label>
-      <input type="text" placeholder="First name" className="input"/>
+      <input type="text" placeholder="First name" className="input-1"/>
     </div>
 
     <div className="flex flex-col gap-2">
       <label htmlFor="firstName">Last Name</label>
-      <input type="text" placeholder="Last name" className="input"/>
+      <input type="text" placeholder="Last name" className="input-1"/>
     </div>
 
     <div className="flex flex-col gap-2">
       <label htmlFor="firstName">Email</label>
-      <input type="text" placeholder="Email" className="input"/>
+      <input type="text" placeholder="Email" className="input-1"/>
     </div>
 
     <div className="flex flex-col gap-2">
       <label htmlFor="firstName">Class Designation</label>
-      <select name="class" id="" className="input">
+      <select name="class" id="" className="input-1">
         <option value="1a">Class 1a</option>
         <option value="1a">Class 1a</option>
         <option value="1a">Class 1a</option>
