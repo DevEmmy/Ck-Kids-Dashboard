@@ -8,6 +8,13 @@ const UploadStudentData = ({ close }) => {
   const [fileName, setFileName] = useState("");
   const [fileError, setFileError] = useState(false);
   const [loading, setLoading] = useState(false);
+  
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+    console.log(e.target.files[0])
+  };
 
   const upload = (file) => {
     if (
@@ -30,12 +37,15 @@ const UploadStudentData = ({ close }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (file) {
-      setLoading(true);
+
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+    // if (file) {
+    setLoading(true);
       // console.log(file)
-      await uploadData(file)
-      close()
-    }
+    await uploadData(formData)
+    close()
+    // }
   };
 
   const handleClose = (e) => {
@@ -51,7 +61,7 @@ const UploadStudentData = ({ close }) => {
           <div className="w-full flexmm text-[#808080] text-[16px] border-[2px] border-[#808080] border-dotted rounded-[12px] h-[125px] lg:text-[14px] font-[400] cursor-pointer">
             {file ? fileName.name : <p>Drop excel file to upload here</p>}
             <div className="absolute opacity-0">
-              <FileBase64
+              {/* <FileBase64
                 name="coursePhoto"
                 defaultValue={file}
                 multiple={false}
@@ -59,7 +69,8 @@ const UploadStudentData = ({ close }) => {
                   upload(base64);
                   setFileName(base64);
                 }}
-              />
+              /> */}
+              <input type="file" onChange={handleFileChange} name="file"/>
             </div>
           </div>
           {fileError && (

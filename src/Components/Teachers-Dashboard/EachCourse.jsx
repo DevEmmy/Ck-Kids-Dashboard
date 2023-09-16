@@ -18,7 +18,7 @@ const EachCourse = ({ video, setCat, setType, setAdd, setDrop }) => {
 
           <div className="pt-[20px] w-full cflexss font-[700] text-[#101828]">
             <p>{video.name}</p>
-            <p className="text-[#AAA]">{video.description}</p>
+            <p className="text-[#AAA] line-clamp-3 font-[400]">{video.description}</p>
           </div>
         </div>
 
