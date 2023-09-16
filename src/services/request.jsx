@@ -42,6 +42,41 @@ export const studentLogin = async (email, password, router) => {
     });
 };
 
+
+export const teacherLogin = async (email, password, router) => {
+  await axios
+    .post(
+      `${api}/teacher/sign-in`,
+      {
+        email,
+        password,
+      },
+      {
+        withCredentials: true
+      }
+    )
+    .then((response) => {
+      console.log(response);
+      const { teacher } = response.data.payload;
+      console.log(response.data.payload.token);
+      document.cookie = "token=" + response.data.payload.token;
+      localStorage.setItem("teacher", JSON.stringify(teacher));
+      console.log(teacher);
+      router.push("/teachers-dashboard");
+
+      notify(response.data.message);
+      // window.location.href = "/kids-dashboard"
+    })
+    .catch((err) => {
+      if (err.response.data.message) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
+      console.log(err);
+    });
+};
+
 export const schoolLogin = (email, password) => {
   axios
     .post(`${api}/school/sign-in`, {
@@ -235,6 +270,19 @@ export const onBoardTeacher = async (firstName, lastName, email)=>{
   })
   .catch((err) => {
     notifyError(err.response.data.message);
+    console.log(err);
+  });
+}
+
+export const uploadData = async (base64Data)=>{
+  console.log("ioi")
+  await axios.post(`${api}/upload-student`, {base64Data})
+  .then((response) => {
+    console.log(response);
+    notify(response.data.message);
+  })
+  .catch((err) => {
+    // notifyError(err.response.data.message);
     console.log(err);
   });
 }
