@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import FileBase64 from "react-file-base64";
 
-const AddNewVideo = () => {
+const AddNewVideo = ({ close }) => {
   const [newVideoData, setNewVideoData] = useState({
     courseName: "",
     courseDetails: "",
     courseLink: "",
+    category: "",
+    ages: "",
     coursePhoto: "",
   });
   const [changing, setChanging] = useState(false);
@@ -21,6 +23,8 @@ const AddNewVideo = () => {
       newVideoData["courseName"].trim().length > 0 &&
       !urlError &&
       newVideoData["courseLink"].trim().length > 0 &&
+      newVideoData["category"].trim().length > 0 &&
+      newVideoData["ages"].trim().length > 0 &&
       newVideoData["coursePhoto"].trim().length > 0
     ) {
       setValid(true);
@@ -78,10 +82,63 @@ const AddNewVideo = () => {
     }
   };
 
-  const handleClose = (e) =>{
-    e.preventDefault()
-    close()
-  }
+  const handleClose = (e) => {
+    e.preventDefault();
+    close();
+  };
+
+  const Categories = [
+    {
+      category: "History",
+      content: [],
+    },
+    {
+      category: "Nursery Rhymes",
+      content: [],
+    },
+    {
+      category: "Music-Dance",
+      content: [],
+    },
+    {
+      category: "Gardening",
+      content: [],
+    },
+    {
+      category: "Drawing and Painting",
+      content: [],
+    },
+    {
+      category: "Cooking",
+      content: [],
+    },
+    {
+      category: "Arts and Craft",
+      content: [],
+    },
+    {
+      category: "Globalization",
+      content: [],
+    },
+  ];
+
+  const Ages = [
+    {
+      age: "3 - 5",
+    },
+    {
+      age: "6 - 8",
+    },
+    {
+      age: "9 - 10",
+    },
+    {
+      age: "11 - 13",
+    },
+    {
+      age: "14 - 16",
+    },
+  ];
 
   return (
     <>
@@ -125,6 +182,32 @@ const AddNewVideo = () => {
           )}
         </div>
         <div className="w-full cflexss gap-[12px]">
+          <p>Course Category</p>
+          <select
+            className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+            name="category"
+            onChange={handleChange}
+          >
+            <option>None</option>
+            {Categories.map((category) => {
+              return <option>{category.category}</option>;
+            })}
+          </select>
+        </div>
+        <div className="w-full cflexss gap-[12px]">
+          <p>Ages</p>
+          <select
+            className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+            name="ages"
+            onChange={handleChange}
+          >
+            <option>None</option>
+            {Ages.map((ages) => {
+              return <option>{ages.age}</option>;
+            })}
+          </select>
+        </div>
+        <div className="w-full cflexss gap-[12px]">
           <p>Course photo</p>
           <div className="w-full flexmm text-[#808080] text-[16px] border-[2px] border-[#808080] border-dotted rounded-[12px] h-[125px] lg:text-[14px] font-[400] cursor-pointer">
             {fileName ? fileName.name : <p>Drop file to be uploaded here</p>}
@@ -141,6 +224,15 @@ const AddNewVideo = () => {
               />
             </div>
           </div>
+          {fileName && (
+            <div className="flexmm w-[15em] rounded-[12px] flex-shrink">
+              <img
+                src={fileName.base64}
+                alt="image"
+                className="rounded-[12px]"
+              />
+            </div>
+          )}
           {fileError && (
             <p className="flexmm text-[12px] text-red-700">
               make sure you uploaded an image not more that 10mb.
@@ -160,7 +252,10 @@ const AddNewVideo = () => {
           >
             <p>Submit</p>
           </button>
-          <button className="py-[18px] px-[52px] rounded-full bg-[#FFF] text-primary2 border-[1px] border-primary2">
+          <button
+            className="py-[18px] px-[52px] rounded-full bg-[#FFF] text-primary2 border-[1px] border-primary2"
+            onClick={handleClose}
+          >
             <p>Cancel</p>
           </button>
         </div>

@@ -35,8 +35,8 @@ const VideoCard = ({
               {author}
             </p>
             <div className="flexsm gap-[16px] py-[10px]">
-              <ImageStacked images={images} />
-              <p className="text-[14px] sm:text-[16px] font-[400]">
+              <ImageStacked images={images} />              
+              <p className="text-[14px] sm:text-[16px] pl-[5.6em] text-[#222] font-[400] sm:pl-[4.6em]">
                 {enrolled}
               </p>
             </div>

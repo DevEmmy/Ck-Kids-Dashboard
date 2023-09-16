@@ -221,6 +221,7 @@ export const getAllVideos = async ()=>{
   .catch((err) => {
     notifyError(err.response.data.message);
     console.log(err);
+    data = []
   });
 
   return data;
