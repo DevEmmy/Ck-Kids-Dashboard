@@ -226,3 +226,15 @@ export const getAllVideos = async ()=>{
 
   return data;
 }
+
+export const onBoardTeacher = async (firstName, lastName, email)=>{
+  await axios.post(`${api}/teacher/sign-up`, {firstName, lastName, email}, {withCredentials: true})
+  .then((response) => {
+    console.log(response);
+    notify(response.data.message);
+  })
+  .catch((err) => {
+    notifyError(err.response.data.message);
+    console.log(err);
+  });
+}

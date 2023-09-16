@@ -263,7 +263,7 @@ import AddTeacher from "./AddTeacher";
           blur: 3,
         }}
       >
-       <AddTeacher />
+       <AddTeacher close={close}/>
       </Modal>
       </>
     );

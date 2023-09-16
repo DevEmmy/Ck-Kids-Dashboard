@@ -35,9 +35,8 @@ const Courses = () => {
   const fetchData = async () => {
     setLoading(true);
     let data = await getAllVideos();
-    console.log(data);
-    setLoading(false);
     setVideos(data);
+    setLoading(false);
   };
   useEffect(() => {
     fetchData();
@@ -282,7 +281,7 @@ const Courses = () => {
                 <SpinnerCircular
                   color="#00AC76"
                   className="mr-4"
-                  secondaryColor={theme.color}
+                  secondaryColor={"#eeeeee"}
                   size={50}
                   thickness={150}
                 />

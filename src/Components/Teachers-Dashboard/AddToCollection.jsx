@@ -84,19 +84,14 @@ const AddToCollection = ({ close }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(collections)
-    addToCollection(collections["courseName"], collections["courseLink"] ,collections["coursePhoto"], collections.courseDetails, collections.collection);
+
+    setLoading(true);
+    await addToCollection(collections["courseName"], collections["courseLink"] ,collections["coursePhoto"], collections.courseDetails, collections.collection);
+    setLoading(false);
+    close();
 
     if (valid) {
-      setLoading(true);
-      await addToCollection(
-        collections["courseName"],
-        collections["courseLink"],
-        collections.collection,
-        collections["coursePhoto"]
-      );
-      setLoading(false);
-      close();
+      
     }
   };
 
