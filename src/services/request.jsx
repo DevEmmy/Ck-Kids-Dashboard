@@ -1,7 +1,8 @@
 import axios from "axios";
 import { notify, notifyError } from "./toastify";
 import { parse } from "cookie";
-const api = "https://ck-onboarding.onrender.com"
+//"https://ck-onboarding.onrender.com";
+const api = "https://ck-onboarding.onrender.com";
 const kidsDashboard = "https://ck-onboarding.onrender.com";
 
 const getCookie = () => {};
@@ -273,9 +274,13 @@ export const onBoardTeacher = async (firstName, lastName, email)=>{
   });
 }
 
-export const uploadData = async (base64Data)=>{
-  console.log("ioi")
-  await axios.post(`${api}/upload-student`, {base64Data})
+export const uploadData = async (formData)=>{
+  
+  await axios.post(`${api}/upload-student`, {formData}, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  })
   .then((response) => {
     console.log(response);
     notify(response.data.message);
