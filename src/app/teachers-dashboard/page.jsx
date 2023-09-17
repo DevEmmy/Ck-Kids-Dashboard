@@ -4,17 +4,27 @@ import { useEffect, useState } from "react";
 import Dashboard from "@/Components/Teachers-Dashboard/Dashboard";
 import { useRouter } from "next/navigation";
 import { notifyError } from "@/services/toastify";
-import useLocalStorage from "@/AtomicComponents/UseLocalStorage";
+import { fetchFromLS } from "@/services/request";
+
 
 export default function Home() {
-  const [storedValue, setValue] = useLocalStorage("teacher", null)  
+  onst [student, setStudent] = useState();
+  const router = useRouter()
+
+  useEffect(() => {
+    let data = fetchFromLS("teacher")
+    setStudent(data);
+
+    if(!data){
+      router.push("/teacher-signin")
+      notifyError("UnAuthorized")
+    }
+  }, []); 
  
 
   return (
-    <>
-      <PrivateRoute teacherObject={storedValue}>
-        <Dashboard teacherObject={storedValue} />
-      </PrivateRoute>
+    <>      
+        <Dashboard teacherObject={storedValue} />      
     </>
   );
 }

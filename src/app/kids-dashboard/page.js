@@ -2,12 +2,10 @@
 import { useRouter } from "next/navigation";
 import MainPage from "@/Components/Kids-Dashboard/MainPage";
 import { notifyError } from "@/services/toastify";
-import useLocalStorage from "@/AtomicComponents/UseLocalStorage";
 import { useEffect, useState } from "react";
 import { fetchFromLS } from "@/services/request";
 
-export default function Home() {  
-  // const [storedValue, setValue] = useLocalStorage("student", null)  
+export default function Home() {    
 
   const [student, setStudent] = useState();
   const router = useRouter()
@@ -18,14 +16,13 @@ export default function Home() {
 
     if(!data){
       router.push("/signin")
+      notifyError("UnAuthorized")
     }
   }, []);
 
   return (
-    <>
-      {/* <PrivateRoute studentObject={storedValue}> */}
-        <MainPage studentObject={student} />
-      {/* </PrivateRoute> */}
+    <>      
+        <MainPage studentObject={student} />      
     </>
   );
 }
