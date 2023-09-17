@@ -1,11 +1,14 @@
-'use client'
+"use client";
 
-import ContinueCourse from "@/Components/Kids-Dashboard/ContinueCourse"
+import { PrivateRoute } from "../page";
+import ContinueCourse from "@/Components/Kids-Dashboard/ContinueCourse";
 
 export default function Home() {
   return (
-   <>
-    <ContinueCourse />
-   </>
-  )
+    <>
+      <PrivateRoute>
+        <ContinueCourse />
+      </PrivateRoute>
+    </>
+  );
 }
