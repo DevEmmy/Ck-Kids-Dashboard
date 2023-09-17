@@ -290,3 +290,29 @@ export const uploadData = async (formData)=>{
     console.log(err);
   });
 }
+
+export const editVideo = async (
+  courseName,
+  courseLink,
+  collectionPhoto,
+  description,
+  collection
+) => {
+  let data = { name:courseName, link:courseLink, collectionRelation: collection, cover:collectionPhoto, description }
+  console.log(data)
+
+  await axios
+    .post(
+      `${api}/video/update`,
+      data,
+      { withCredentials: true }
+    )
+    .then((response) => {
+      console.log(response);
+      notify(response.data.message);
+    })
+    .catch((err) => {
+      // notifyError(err.response.data.message);
+      console.log(err);
+    });
+};

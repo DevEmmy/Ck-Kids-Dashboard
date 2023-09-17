@@ -181,7 +181,7 @@ const Overview = () => {
         <div className="w-full flexbs gap-[20px]">
           <div className="w-[469px] border-[1px] rounded-[24px] py-[40px] px-[25px] bg-white flex-shrink">
             <p>Student by Gender</p>
-            <BarChart />
+            {/* <BarChart /> */}
           </div>
           <div className="w-[809px] border-[1px] rounded-[24px] py-[40px] px-[25px] bg-white flex-shrink">
             <p>Total Attendance Report</p>
