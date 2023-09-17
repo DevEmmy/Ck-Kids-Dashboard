@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CourseCard from "./CourseCard";
+import { getAllVideos } from "@/services/request";
 
 const RecommendedCourses = () => {
   const Videos = [
@@ -32,6 +33,17 @@ const RecommendedCourses = () => {
     },
   ];
 
+  const [courses, setCourses] = useState([])
+
+  const fetchData = async () => {
+    let data = await getAllVideos();
+    console.log(data)
+    setCourses(data)
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <>
       <div className="cflexss gap-[20px] py-[2em] font-[400]">
@@ -39,7 +51,7 @@ const RecommendedCourses = () => {
           Recommended Courses
         </h1>
         <div className="w-full flexss gap-[20px] overflow-x-auto py-[10px] sm:flex-wrap">
-          {Videos.map((video, i) => {
+          {courses.map((video, i) => {
             return (
               <>
                 <CourseCard key={i} {...video} />

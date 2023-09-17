@@ -1,6 +1,6 @@
 import CourseCard from "./CourseCard";
 
-const Recommended = () => {
+const Recommended = ({courses}) => {
   const Videos = [
     {
       image: "history",
@@ -46,7 +46,7 @@ const Recommended = () => {
           Recommended Courses
         </h1>
         <div className="w-full flexss gap-[20px] overflow-x-auto py-[10px] sm:flex-wrap">
-          {Videos.map((video, i) => {
+          {courses.map((video, i) => {
             return (
               <>
                 <CourseCard key={i} {...video}/>

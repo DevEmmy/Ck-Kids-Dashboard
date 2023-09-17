@@ -21,7 +21,7 @@ export default function Home() {
   }, []);
   return (
     <>      
-        <CoursesPage studentObject={student}/>      
+        <CoursesPage student={student}/>      
     </>
   );
 }

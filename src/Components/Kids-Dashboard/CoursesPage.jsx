@@ -12,7 +12,7 @@ import TopCategories from "@/AtomicComponents/TopCategories";
 import Recommended from "@/AtomicComponents/Recommended";
 import GemView from "@/AtomicComponents/GemView";
 import { motion, transform } from "framer-motion";
-import { getMyDetails } from "@/services/request";
+import { getAllVideos, getMyDetails } from "@/services/request";
 import { IoDiamondOutline } from "react-icons/io5";
 
 const Appear = {
@@ -20,13 +20,9 @@ const Appear = {
   visible: { opacity: 1, transition: { duration: 0.2 } },
 };
 
-const CoursesPage = () => {
+const CoursesPage = ({student}) => {
   const [cat, setCat] = useState(false);
-  const [student, setStudent] = useState("");
-  useEffect(() => {
-    let student = getMyDetails();
-    setStudent(student);
-  }, []);
+  
   const Categories = [
     {
       category: "History",
@@ -61,6 +57,20 @@ const CoursesPage = () => {
       content: [],
     },
   ];
+
+  const [courses, setCourses] = useState([])
+
+  const fetchData = async () => {
+    let data = await getAllVideos();
+    console.log(data)
+    setCourses(data)
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+
   return (
     <>
       <Nav active={1} student={student} />
@@ -117,10 +127,10 @@ const CoursesPage = () => {
               <input type="text" className="w-[25em] outline-none" />
             </div>
           </div>
-          <GetStarted />
-          <PopularCourses />
+          <GetStarted courses={courses}/>
+          <PopularCourses courses={courses}/>
           <TopCategories />
-          <Recommended />
+          <Recommended courses={courses}/>
         </div>
 
         <div className="fixed lf:hidden z-25 top-[110px] lf:top-[90px] right-[5%] w-[25%] cflexmm gap-[1em]">

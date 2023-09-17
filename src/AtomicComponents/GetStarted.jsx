@@ -1,6 +1,6 @@
 import CourseCard from "@/AtomicComponents/CourseCard";
 
-const GetStarted = () => {
+const GetStarted = ({courses}) => {
   const Videos = [
     {
       image: "history",
@@ -30,6 +30,8 @@ const GetStarted = () => {
       link:""
     },
   ];
+
+
   return (
     <>
       <div className="w-full cflexss gap-[1em] font-[400]">
@@ -37,7 +39,7 @@ const GetStarted = () => {
           Courses to get you started
         </h1>
         <div className="w-full flexss gap-[20px] overflow-x-auto py-[10px] sm:flex-wrap">
-          {Videos.map((video, i) => {
+          {courses.map((video, i) => {
             return (
               <>
                 <CourseCard key={i} {...video} />

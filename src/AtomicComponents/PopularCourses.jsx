@@ -1,6 +1,6 @@
 import CourseCard from "@/AtomicComponents/CourseCard";
 
-const PopularCourses = () => {
+const PopularCourses = ({courses}) => {
   const Videos = [
     {
       image: "history",
@@ -37,7 +37,7 @@ const PopularCourses = () => {
           Most Popular courses
         </h1>
         <div className="w-full flexss gap-[20px] py-[10px] overflow-x-auto sm:flex-wrap">
-          {Videos.map((video, i) => {
+          {courses.map((video, i) => {
             return (
               <>
                 <CourseCard key={i} {...video} />
