@@ -22,7 +22,7 @@ export default function Home() {
 
   return (
     <>      
-        <Leadership />      
+        <Leadership studentObject={student}/>      
     </>
   );
 }

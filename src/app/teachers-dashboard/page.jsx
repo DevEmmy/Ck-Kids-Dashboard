@@ -8,12 +8,12 @@ import { fetchFromLS } from "@/services/request";
 
 
 export default function Home() {
-  onst [student, setStudent] = useState();
+  onst [teacher, setTeacher] = useState();
   const router = useRouter()
 
   useEffect(() => {
     let data = fetchFromLS("teacher")
-    setStudent(data);
+    setTeacher(data);
 
     if(!data){
       router.push("/teacher-signin")
@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <>      
-        <Dashboard teacherObject={storedValue} />      
+        <Dashboard teacherObject={teacher} />      
     </>
   );
 }

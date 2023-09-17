@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <>
       
-        <Contact />      
+        <Contact studentObject={student}/>      
     </>
   );
 }
