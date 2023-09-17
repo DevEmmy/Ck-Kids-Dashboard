@@ -76,7 +76,7 @@ export const teacherLogin = async (email, password, router) => {
 };
 
 export const schoolLogin = async (email, password, router) => {
- await axios
+  await axios
     .post(`${api}/school/sign-in`, {
       email,
       password,
@@ -86,7 +86,7 @@ export const schoolLogin = async (email, password, router) => {
       const { school } = response.data.payload;
       document.cookie = "token=" + response.data.payload.token;
       localStorage.setItem("school", JSON.stringify(school));
-    
+
       router.push("/schools-dashboard");
 
       notify(response.data.message);
@@ -192,7 +192,7 @@ export const uploadCollection = async (
   description,
   category,
   ageRange,
-  cover,  
+  cover
 ) => {
   await axios
     .post(
@@ -202,7 +202,7 @@ export const uploadCollection = async (
         description,
         category,
         cover,
-        ageRange
+        ageRange,
       },
       { withCredentials: true }
     )
@@ -234,7 +234,7 @@ export const addToCollection = async (
   collectionPhoto,
   category,
   ageRange,
-  description,  
+  description,
   collection
 ) => {
   let data = {
@@ -320,12 +320,12 @@ export const editVideo = async (
   courseCover,
   category,
   ageRange,
-  description,    
-  videoId,
+  description,
+  videoId
 ) => {
   let data = {
     name: courseName,
-    link: courseLink,    
+    link: courseLink,
     cover: courseCover,
     category,
     ageRange,
@@ -335,6 +335,19 @@ export const editVideo = async (
 
   await axios
     .post(`${api}/video/update/${videoId}`, data, { withCredentials: true })
+    .then((response) => {
+      console.log(response);
+      notify(response.data.message);
+    })
+    .catch((err) => {
+      // notifyError(err.response.data.message);
+      console.log(err);
+    });
+};
+
+export const deleteVideo = async ({videoId}) => {  
+  await axios
+    .post(`${api}/video/delete/${videoId}`, { withCredentials: true })
     .then((response) => {
       console.log(response);
       notify(response.data.message);

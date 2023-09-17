@@ -3,12 +3,19 @@ import React, { useState } from "react";
 import EditVideo from "./EditVideo";
 import { useDisclosure } from "@mantine/hooks";
 import { Modal, useMantineTheme } from "@mantine/core";
+import { deleteVideo } from "@/services/request";
 
 const EachCourse = ({ video, setCat, setType, setAdd, setDrop, fetchData }) => {
   const [edit, setEdit] = useState(false);
+  const [remove, setRemove] = useState(false);
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
   const [modalElement, setModalElement] = useState(null);
+
+  const handleDelete = () =>{
+    deleteVideo(video._id)
+    fetchData();
+  }
 
   return (
     <div className="w-full rounded-[12px] border-[1px] flex">
@@ -51,7 +58,13 @@ const EachCourse = ({ video, setCat, setType, setAdd, setDrop, fetchData }) => {
                 className="w-[228px] py-[12px] px-[16px] gap-[10px] flexsm rounded-[4px] flex-shrink hover:bg-primary2 hover:text-white transition-all cursor-pointer duration-400"
                 onClick={() => {
                   console.log("clicked");
-                  setModalElement(<EditVideo video={video} close={close} fetchData={fetchData}/>);
+                  setModalElement(
+                    <EditVideo
+                      video={video}
+                      close={close}
+                      fetchData={fetchData}
+                    />
+                  );
                   open();
                   setEdit(false);
                 }}
@@ -59,7 +72,13 @@ const EachCourse = ({ video, setCat, setType, setAdd, setDrop, fetchData }) => {
                 <PencilAltOutline size="16px" />
                 <p>Edit</p>
               </div>
-              <div className="w-[228px] py-[12px] px-[16px] gap-[10px] flexsm rounded-[4px] flex-shrink hover:bg-primary2 hover:text-white transition-all cursor-pointer duration-400">
+              <div
+                className="w-[228px] py-[12px] px-[16px] gap-[10px] flexsm rounded-[4px] flex-shrink hover:bg-primary2 hover:text-white transition-all cursor-pointer duration-400"
+                onClick={() => {
+                  setRemove(true);
+                  handleDelete();
+                }}
+              >
                 <TrashOutline size="16px" />
                 <p>Delete</p>
               </div>
