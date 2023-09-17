@@ -317,21 +317,24 @@ export const uploadData = async (formData) => {
 export const editVideo = async (
   courseName,
   courseLink,
-  collectionPhoto,
-  description,
-  collection
+  courseCover,
+  category,
+  ageRange,
+  description,    
+  videoId,
 ) => {
   let data = {
     name: courseName,
-    link: courseLink,
-    collectionRelation: collection,
-    cover: collectionPhoto,
+    link: courseLink,    
+    cover: courseCover,
+    category,
+    ageRange,
     description,
   };
   console.log(data);
 
   await axios
-    .post(`${api}/video/update`, data, { withCredentials: true })
+    .post(`${api}/video/update/${videoId}`, data, { withCredentials: true })
     .then((response) => {
       console.log(response);
       notify(response.data.message);

@@ -136,12 +136,15 @@ const EditVideo = ({ close, video, fetchData }) => {
     e.preventDefault();
     if (valid) {
       setLoading(true);
-      //   await editVideo(
-      //     editCourse.title,
-      //     editCourse.description,
-      //     editCourse.category,
-      //     editCourse.coursePhoto
-      //   );
+      await editVideo(
+        editCourse["courseName"],
+        editCourse["courseLink"],
+        editCourse["courseCover"],
+        editCourse["category"],
+        editCourse["courseAge"],
+        editCourse["courseDetails"],
+        video._id
+      );
       setLoading(false);
       close();
       fetchData();

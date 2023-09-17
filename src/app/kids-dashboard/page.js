@@ -1,16 +1,16 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useEffect,useState } from "react";
 import MainPage from "@/Components/Kids-Dashboard/MainPage";
 import { notifyError } from "@/services/toastify";
+import useLocalStorage from "@/AtomicComponents/UseLocalStorage";
 
-export default function Home() {
-  const [studentObject, setStudentObject] = useState(localStorage.getItem("student"))  
-  
+export default function Home() {  
+  const [storedValue, setValue] = useLocalStorage("student", null)  
+
   return (
     <>
-      <PrivateRoute studentObject={studentObject}>
-        <MainPage studentObject={studentObject} />
+      <PrivateRoute studentObject={storedValue}>
+        <MainPage studentObject={storedValue} />
       </PrivateRoute>
     </>
   );

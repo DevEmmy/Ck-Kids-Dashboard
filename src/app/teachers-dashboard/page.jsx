@@ -4,18 +4,16 @@ import { useEffect, useState } from "react";
 import Dashboard from "@/Components/Teachers-Dashboard/Dashboard";
 import { useRouter } from "next/navigation";
 import { notifyError } from "@/services/toastify";
+import useLocalStorage from "@/AtomicComponents/UseLocalStorage";
 
 export default function Home() {
-  const [teacherObject, setTeacherObject] = useState(localStorage.getItem("teacher"))
-
-  // useEffect(() => {
-  //   setTeacherObject(localStorage.getItem("teacher"))
-  // }, []);
+  const [storedValue, setValue] = useLocalStorage("teacher", null)  
+ 
 
   return (
     <>
-      <PrivateRoute teacherObject={teacherObject}>
-        <Dashboard teacherObject={teacherObject} />
+      <PrivateRoute teacherObject={storedValue}>
+        <Dashboard teacherObject={storedValue} />
       </PrivateRoute>
     </>
   );
@@ -23,8 +21,7 @@ export default function Home() {
 
 export function PrivateRoute({ children, teacherObject }) {
   const router = useRouter();
-  const isAuthenticated = teacherObject;
-  console.log(teacherObject);
+  let isAuthenticated = teacherObject;  
 
   if (!isAuthenticated) {
     router.push("/teachers-signin");
