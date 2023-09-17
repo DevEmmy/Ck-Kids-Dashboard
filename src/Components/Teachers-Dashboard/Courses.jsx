@@ -35,6 +35,7 @@ const Courses = () => {
   const fetchData = async () => {
     setLoading(true);
     let data = await getAllVideos();
+    console.log(data)
     setVideos(data);
     setLoading(false);
   };
@@ -50,32 +51,6 @@ const Courses = () => {
     visible: { opacity: 1, transition: { duration: 0.2 } },
   };
 
-  // const videos = [
-  //   {
-  //     name: "Punch",
-  //     link: "https://github.com/CREOS-LAB/Ck-kidsDashboard-backend",
-  //     cover: "/addImage.svg",
-  //     description: "description"
-  //   },
-  //   {
-  //     name: "Punch",
-  //     link: "https://github.com/CREOS-LAB/Ck-kidsDashboard-backend",
-  //     cover: "/addImage.svg",
-  //     description: "description"
-  //   },
-  //   {
-  //     name: "Punch",
-  //     link: "https://github.com/CREOS-LAB/Ck-kidsDashboard-backend",
-  //     cover: "/addImage.svg",
-  //     description: "description"
-  //   },
-  //   {
-  //     name: "Punch",
-  //     link: "https://github.com/CREOS-LAB/Ck-kidsDashboard-backend",
-  //     cover: "/addImage.svg",
-  //     description: "description"
-  //   }
-  // ]
   const Categories = [
     {
       category: "History",
@@ -135,17 +110,17 @@ const Courses = () => {
     {
       type: "Single Video",
       icon: <VideoCameraOutline size="16px" />,
-      element: <AddNewVideo close={close} />,
+      element: <AddNewVideo close={close} fetchData={fetchData}/>,
     },
     {
       type: "Create new collection",
       icon: <VideoCameraOutline size="16px" />,
-      element: <CreateNewCollection close={close} />,
+      element: <CreateNewCollection close={close} fetchData={fetchData}/>,
     },
     {
       type: "Add to collection",
       icon: <PlusCircle size="16px" />,
-      element: <AddToCollection close={close} />,
+      element: <AddToCollection close={close} fetchData={fetchData}/>,
     },
   ];
 
@@ -288,7 +263,7 @@ const Courses = () => {
               </div>
             ) : (
               <>
-                {videos.map((video, i) => {
+                {videos?.map((video, i) => {
                   return (
                     <EachCourse
                       video={video}
@@ -296,8 +271,11 @@ const Courses = () => {
                       setDrop={setDrop}
                       setCat={setCat}
                       setType={setType}
+                      setModalElement={setModalElement}
+                      close={close}
+                      fetchData={fetchData}
                       key={i}
-                    />
+                    />                    
                   );
                 })}
               </>

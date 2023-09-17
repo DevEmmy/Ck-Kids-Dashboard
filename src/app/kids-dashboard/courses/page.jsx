@@ -1,11 +1,14 @@
-'use client'
+"use client";
 
-import CoursesPage from '@/Components/Kids-Dashboard/CoursesPage'
+import { PrivateRoute } from "../page";
+import CoursesPage from "@/Components/Kids-Dashboard/CoursesPage";
 
 export default function Home() {
   return (
-   <>
-    <CoursesPage />
-   </>
-  )
+    <>
+      <PrivateRoute>
+        <CoursesPage />
+      </PrivateRoute>
+    </>
+  );
 }

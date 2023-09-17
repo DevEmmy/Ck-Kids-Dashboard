@@ -18,7 +18,7 @@ const Students = () => {
   const [data, setData] = useState({});
   const [trash, setTrash] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
-  const PAGINATION = 10;
+  const PAGINATION = 20;
 
   const handlePageClick = (data) => {
     const selectedPage = data.selected;

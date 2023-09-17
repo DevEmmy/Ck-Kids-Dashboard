@@ -1,11 +1,14 @@
-'use client'
+"use client";
 
-import Leadership from "@/Components/Kids-Dashboard/Leadership"
+import { PrivateRoute } from "../page";
+import Leadership from "@/Components/Kids-Dashboard/Leadership";
 
 export default function Home() {
   return (
-   <>
-    <Leadership />
-   </>
-  )
+    <>
+      <PrivateRoute>
+        <Leadership />
+      </PrivateRoute>
+    </>
+  );
 }

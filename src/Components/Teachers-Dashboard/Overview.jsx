@@ -1,5 +1,6 @@
 import { ChevronUp, ChevronDown, Users, ChevronRight } from "heroicons-react";
 import { useState } from "react";
+import BarChart from "@/AtomicComponents/BarChart";
 
 const Overview = () => {
   const [drop, setDrop] = useState(false);
@@ -180,6 +181,7 @@ const Overview = () => {
         <div className="w-full flexbs gap-[20px]">
           <div className="w-[469px] border-[1px] rounded-[24px] py-[40px] px-[25px] bg-white flex-shrink">
             <p>Student by Gender</p>
+            {/* <BarChart /> */}
           </div>
           <div className="w-[809px] border-[1px] rounded-[24px] py-[40px] px-[25px] bg-white flex-shrink">
             <p>Total Attendance Report</p>

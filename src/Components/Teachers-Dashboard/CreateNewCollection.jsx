@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import FileBase64 from "react-file-base64";
 import Loader from "@/AtomicComponents/Loader";
 
-const CreateNewCollection = ({ close }) => {
+const CreateNewCollection = ({ close, fetchData }) => {
   const [newCollection, setNewCollection] = useState({
     title: "",
     description: "",
@@ -121,6 +121,7 @@ const CreateNewCollection = ({ close }) => {
       );
       setLoading(false);
       close();
+      fetchData()
     }
   };
 

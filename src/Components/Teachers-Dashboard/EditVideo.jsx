@@ -1,49 +1,49 @@
-import Loader from "@/AtomicComponents/Loader";
-import { addToCollection } from "@/services/request";
+import { editVideo } from "@/services/request";
 import { useState, useEffect } from "react";
 import FileBase64 from "react-file-base64";
+import Loader from "@/AtomicComponents/Loader";
 
-const AddNewVideo = ({ close, fetchData }) => {
-  const [newVideoData, setNewVideoData] = useState({
-    courseName: "",
-    courseDetails: "",
-    courseLink: "",
-    category: "",
-    ages: "",
-    coursePhoto: "",
+const EditVideo = ({ close, video, fetchData }) => {
+  const [editCourse, setEditCourse] = useState({
+    courseName: video?.name,
+    courseDetails: video?.description,
+    courseLink: video?.link,
+    courseCategory: video?.category,
+    courseAge: video?.age,
+    courseCover: video?.cover,
   });
   const [changing, setChanging] = useState(false);
   const [fileName, setFileName] = useState("");
   const [fileError, setFileError] = useState(false);
   const [valid, setValid] = useState(false);
   const [urlError, setUrlError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const urlRegex = /^(https?|http|ftp):\/\/[^\s/$.?#].[^\s]*$/;
-  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (
-      newVideoData["courseDetails"].trim().length > 0 &&
-      newVideoData["courseName"].trim().length > 0 &&
+      editCourse["courseName"].trim().length > 0 &&
+      editCourse["courseDetails"].trim().length > 0 &&
       !urlError &&
-      newVideoData["courseLink"].trim().length > 0 &&
-      newVideoData["category"].trim().length > 0 &&
-      newVideoData["ages"].trim().length > 0 &&
-      newVideoData["coursePhoto"]
+      editCourse["courseLink"].trim().length > 0 &&
+      editCourse["courseCategory"] &&
+      editCourse["courseAge"] &&
+      editCourse["courseCover"]
     ) {
       setValid(true);
       setUrlError(false);
     }
 
     if (
-      newVideoData["courseLink"].trim().length > 0 &&
-      urlRegex.test(newVideoData["courseLink"])
+      editCourse["courseLink"].trim().length > 0 &&
+      urlRegex.test(editCourse["courseLink"])
     ) {
       setUrlError(false);
     }
 
     if (
-      newVideoData["courseLink"].trim().length > 0 &&
-      !urlRegex.test(newVideoData["courseLink"])
+      editCourse["courseLink"].trim().length > 0 &&
+      !urlRegex.test(editCourse["courseLink"])
     ) {
       setUrlError(true);
       setValid(false);
@@ -55,45 +55,8 @@ const AddNewVideo = ({ close, fetchData }) => {
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setNewVideoData({ ...newVideoData, [name]: value });
+    setEditCourse({ ...editCourse, [name]: value });
     setChanging(!changing);
-  };
-
-  const upload = (file) => {
-    if (
-      parseInt(file.size.substring(0, 4)) <= 10240 &&
-      (file.type === "image/png" ||
-        file.type === "image/jpg" ||
-        file.type === "image/jpeg" ||
-        file.type === "image/jfif" ||
-        file.type === "image/svg")
-    ) {
-      setNewVideoData({ ...newVideoData, coursePhoto: file});
-      setFileError(false);
-      setChanging(!changing);
-    } else {
-      setFileError(true);
-      console.log(file.type);
-      console.log(file.size);
-      setChanging(!changing);
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    console.log(newVideoData)
-    await addToCollection(newVideoData["courseName"], newVideoData["courseLink"] ,newVideoData["coursePhoto"], newVideoData.courseDetails);
-    setLoading(false);
-    close();
-    fetchData()
-    if (valid) {
-    }
-  };
-
-  const handleClose = (e) => {
-    e.preventDefault();
-    close();
   };
 
   const Categories = [
@@ -149,19 +112,60 @@ const AddNewVideo = ({ close, fetchData }) => {
     },
   ];
 
+  const upload = (file) => {
+    if (
+      parseInt(file.size.substring(0, 4)) <= 10240 &&
+      (file.type === "image/png" ||
+        file.type === "image/jpg" ||
+        file.type === "image/jpeg" ||
+        file.type === "image/jfif" ||
+        file.type === "image/svg")
+    ) {
+      setEditCourse({ ...editCourse, courseCover: file });
+      setFileError(false);
+      setChanging(!changing);
+    } else {
+      setFileError(true);
+      console.log(file.type);
+      console.log(file.size);
+      setChanging(!changing);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (valid) {
+      setLoading(true);
+      //   await editVideo(
+      //     editCourse.title,
+      //     editCourse.description,
+      //     editCourse.category,
+      //     editCourse.coursePhoto
+      //   );
+      setLoading(false);
+      close();
+      fetchData();
+    }
+  };
+
+  const handleClose = (e) => {
+    e.preventDefault();
+    close();
+  };
+
   return (
     <>
       <form className="w-full cflexss gap-[20px] text-[20px] px-[40px] pb-[40px] lg:text-[18px] ls:text-[16px] font-[400] bg-[#FFF] overflow-y-auto">
         <p className="text-[24px] font-[800] lg:text-[22px] ls:text-[20px]">
-          Add New Video
+          Edit Video
         </p>
         <div className="w-full cflexss gap-[12px]">
           <p>Course name</p>
           <input
             type="text"
             name="courseName"
-            placeholder="Course name"
-            value={newVideoData["courseName"]}
+            placeholder="courseName"
+            value={editCourse["courseName"]}
             onChange={handleChange}
             className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px]"
           />
@@ -171,20 +175,19 @@ const AddNewVideo = ({ close, fetchData }) => {
           <textarea
             type="text"
             name="courseDetails"
-            value={newVideoData["courseDetails"]}
+            value={editCourse["courseDetails"]}
             onChange={handleChange}
             className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px] resize-none h-[187px]"
           />
         </div>
         <div className="w-full cflexss gap-[12px]">
           <p>Course link</p>
-          <input
+          <textarea
             type="text"
             name="courseLink"
-            placeholder="Paste video link here"
-            value={newVideoData["courseLink"]}
+            value={editCourse["courseLink"]}
             onChange={handleChange}
-            className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px]"
+            className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px] resize-none h-[187px]"
           />
           {urlError && (
             <p className="flexmm text-[12px] text-red-700">* invalid URL!</p>
@@ -194,7 +197,7 @@ const AddNewVideo = ({ close, fetchData }) => {
           <p>Course Category</p>
           <select
             className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
-            name="category"
+            name="courseCategory"
             onChange={handleChange}
           >
             <option>None</option>
@@ -207,7 +210,7 @@ const AddNewVideo = ({ close, fetchData }) => {
           <p>Ages</p>
           <select
             className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
-            name="ages"
+            name="courseAge"
             onChange={handleChange}
           >
             <option>None</option>
@@ -219,20 +222,28 @@ const AddNewVideo = ({ close, fetchData }) => {
         <div className="w-full cflexss gap-[12px]">
           <p>Course photo</p>
           <div className="w-full flexmm text-[#808080] text-[16px] border-[2px] border-[#808080] border-dotted rounded-[12px] h-[125px] lg:text-[14px] font-[400] cursor-pointer">
-            {fileName ? fileName.name : <p>Drop file to be uploaded here</p>}
+            {fileName ? fileName.name : <p>Drop file to upload here</p>}
             <div className="absolute opacity-0">
               <FileBase64
-                name="coursePhoto"
-                defaultValue={newVideoData["coursePhoto"]}
+                name="courseCover"
+                defaultValue={editCourse["courseCover"]}
                 multiple={false}
                 onDone={(base64) => {
                   upload(base64);
                   setFileName(base64);
-                  console.log(base64);
                 }}
               />
             </div>
           </div>
+          {editCourse["courseCover"] && !fileName && (
+            <div className="flexmm w-[15em] rounded-[12px] flex-shrink">
+              <img
+                src={editCourse["courseCover"]}
+                alt="image"
+                className="rounded-[12px]"
+              />
+            </div>
+          )}
           {fileName && (
             <div className="flexmm w-[15em] rounded-[12px] flex-shrink">
               <img
@@ -259,7 +270,7 @@ const AddNewVideo = ({ close, fetchData }) => {
             className="py-[18px] px-[52px] rounded-full bg-primary2 text-[#FFF]"
             onClick={handleSubmit}
           >
-            {loading ? <Loader /> : <p>Submit</p>}
+            {loading ? <Loader /> : <p>Update</p>}
           </button>
           <button
             className="py-[18px] px-[52px] rounded-full bg-[#FFF] text-primary2 border-[1px] border-primary2"
@@ -273,4 +284,4 @@ const AddNewVideo = ({ close, fetchData }) => {
   );
 };
 
-export default AddNewVideo;
+export default EditVideo;

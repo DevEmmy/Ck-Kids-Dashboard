@@ -1,11 +1,14 @@
-'use client'
+"use client";
 
-import CourseVideo from "@/Components/Kids-Dashboard/CourseVideo"
+import { PrivateRoute } from "../videos/page";
+import CourseVideo from "@/Components/Kids-Dashboard/CourseVideo";
 
 export default function Home() {
   return (
-   <>
-    <CourseVideo />
-   </>
-  )
+    <>
+      <PrivateRoute>
+        <CourseVideo />
+      </PrivateRoute>
+    </>
+  );
 }

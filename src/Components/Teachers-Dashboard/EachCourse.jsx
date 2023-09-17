@@ -1,8 +1,14 @@
 import { DotsVertical, PencilAltOutline, TrashOutline } from "heroicons-react";
 import React, { useState } from "react";
+import EditVideo from "./EditVideo";
+import { useDisclosure } from "@mantine/hooks";
+import { Modal, useMantineTheme } from "@mantine/core";
 
-const EachCourse = ({ video, setCat, setType, setAdd, setDrop }) => {
+const EachCourse = ({ video, setCat, setType, setAdd, setDrop, fetchData }) => {
   const [edit, setEdit] = useState(false);
+  const [opened, { open, close }] = useDisclosure(false);
+  const theme = useMantineTheme();
+  const [modalElement, setModalElement] = useState(null);
 
   return (
     <div className="w-full rounded-[12px] border-[1px] flex">
@@ -18,7 +24,9 @@ const EachCourse = ({ video, setCat, setType, setAdd, setDrop }) => {
 
           <div className="pt-[20px] w-full cflexss font-[700] text-[#101828]">
             <p>{video.name}</p>
-            <p className="text-[#AAA] line-clamp-3 font-[400]">{video.description}</p>
+            <p className="text-[#AAA] line-clamp-3 font-[400]">
+              {video.description}
+            </p>
           </div>
         </div>
 
@@ -39,7 +47,15 @@ const EachCourse = ({ video, setCat, setType, setAdd, setDrop }) => {
           />
           {edit && (
             <div className="absolute top-[30px] z-50 font-[400] text-[17px] text-[#808080] cflexss p-[6px] border-[1px] rounded-[12px] bg-[#FFF] flex-shrink shadow-md">
-              <div className="w-[228px] py-[12px] px-[16px] gap-[10px] flexsm rounded-[4px] flex-shrink hover:bg-primary2 hover:text-white transition-all cursor-pointer duration-400">
+              <div
+                className="w-[228px] py-[12px] px-[16px] gap-[10px] flexsm rounded-[4px] flex-shrink hover:bg-primary2 hover:text-white transition-all cursor-pointer duration-400"
+                onClick={() => {
+                  console.log("clicked");
+                  setModalElement(<EditVideo video={video} close={close} fetchData={fetchData}/>);
+                  open();
+                  setEdit(false);
+                }}
+              >
                 <PencilAltOutline size="16px" />
                 <p>Edit</p>
               </div>
@@ -52,22 +68,37 @@ const EachCourse = ({ video, setCat, setType, setAdd, setDrop }) => {
         </div>
       </div>
 
-                      <div className="w-2/5 py-[20px] px-[25px] gap-[10%] flexss text-[#AAA]">
-                        <div className="cflexss gap-[20px]">
-                          <p>Views</p>
-                          <p className="text-[#333]">{video.views}</p>
-                        </div>
-                        <div className="cflexss gap-[20px]">
-                          <p>Watched</p>
-                          <p className="text-[#333]">{video.watched}</p>
-                        </div>
-                        {/* <div className="cflexss gap-[20px]">
-                          <p>Views</p>
-                          <p className="text-[#333]">20</p>
-                        </div> */}
-                      </div>
-                    </div>
-  )
-}
+      <div className="w-2/5 py-[20px] px-[25px] gap-[10%] flexss text-[#AAA]">
+        <div className="cflexss gap-[20px]">
+          <p>Views</p>
+          <p className="text-[#333]">{video.views}</p>
+        </div>
+        <div className="cflexss gap-[20px]">
+          <p>Watched</p>
+          <p className="text-[#333]">{video.watched}</p>
+        </div>
+        <div className="cflexss gap-[20px]">
+          <p>Comments</p>
+          <p className="text-[#333]">0</p>
+        </div>
+      </div>
+      <Modal
+        opened={opened}
+        onClose={close}
+        size={"auto"}
+        //   title="Add New Video"
+        overlayProps={{
+          color:
+            theme.colorScheme === "dark" ? theme.colors.dark[9] : "#00AC76",
+          opacity: 0.2,
+          blur: 3,
+        }}
+        radius={"12px"}
+      >
+        {modalElement}
+      </Modal>
+    </div>
+  );
+};
 
 export default EachCourse;

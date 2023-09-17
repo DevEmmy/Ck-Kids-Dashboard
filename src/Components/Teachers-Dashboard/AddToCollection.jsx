@@ -3,7 +3,7 @@ import FileBase64 from "react-file-base64";
 import Loader from "@/AtomicComponents/Loader";
 import { fetchCollection, addToCollection } from "@/services/request";
 
-const AddToCollection = ({ close }) => {
+const AddToCollection = ({ close, fetchData }) => {
   const [collections, setCollections] = useState({
     courseName: "",
     courseLink: "",
@@ -86,12 +86,18 @@ const AddToCollection = ({ close }) => {
     e.preventDefault();
 
     setLoading(true);
-    await addToCollection(collections["courseName"], collections["courseLink"] ,collections["coursePhoto"], collections.courseDetails, collections.collection);
+    await addToCollection(
+      collections["courseName"],
+      collections["courseLink"],
+      collections["coursePhoto"],
+      collections.courseDetails,
+      collections.collection
+    );
     setLoading(false);
     close();
+    fetchData()
 
     if (valid) {
-      
     }
   };
 

@@ -117,7 +117,7 @@ const Dashboard = () => {
               <div
                 className="cursor-pointer border rounded-[8px] p-[8px]"
                 onClick={() => {
-                  setNotification(true);
+                  setNotification(!notification);
                 }}
               >
                 <FiBell />
