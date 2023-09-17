@@ -16,15 +16,15 @@ export default function Home() {
   );
 }
 
-export function PrivateRoute({ children, studentObject }) {
-  const router = useRouter();
-  const isAuthenticated = studentObject;
+export const  PrivateRoute = ({ children, studentObject }) => {
+  // const router = useRouter();
+  // const isAuthenticated = studentObject;
 
-  if (!isAuthenticated) {
-    router.push("/signin");
-    notifyError("UnAuthorized");
-    return null;
-  }
+  // if (!isAuthenticated) {
+  //   router.push("/signin");
+  //   notifyError("UnAuthorized");
+  //   return null;
+  // }
 
   return children;
 }

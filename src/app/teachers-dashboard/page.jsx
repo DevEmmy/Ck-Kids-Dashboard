@@ -20,14 +20,14 @@ export default function Home() {
 }
 
 export function PrivateRoute({ children, teacherObject }) {
-  const router = useRouter();
-  let isAuthenticated = teacherObject;  
+  // const router = useRouter();
+  // let isAuthenticated = teacherObject;  
 
-  if (!isAuthenticated) {
-    router.push("/teachers-signin");
-    notifyError("UnAuthorized");
-    return null;
-  }
+  // if (!isAuthenticated) {
+  //   router.push("/teachers-signin");
+  //   notifyError("UnAuthorized");
+  //   return null;
+  // }
 
   return children;
 }
