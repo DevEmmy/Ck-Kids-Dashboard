@@ -77,18 +77,28 @@ export const teacherLogin = async (email, password, router) => {
     });
 };
 
-export const schoolLogin = (email, password) => {
-  axios
+export const schoolLogin = async (email, password, router) => {
+ await axios
     .post(`${api}/school/sign-in`, {
       email,
       password,
     })
     .then((response) => {
-      console.log(response.data);
+      console.log(response);
+      const { school } = response.data.payload;
+      document.cookie = "token=" + response.data.payload.token;
+      localStorage.setItem("school", JSON.stringify(school));
+    
+      router.push("/schools-dashboard");
+
       notify(response.data.message);
     })
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -280,6 +290,7 @@ export const uploadData = async (formData)=>{
     headers: {
       'Content-Type': 'multipart/form-data',
     },
+    withCredentials: true
   })
   .then((response) => {
     console.log(response);
