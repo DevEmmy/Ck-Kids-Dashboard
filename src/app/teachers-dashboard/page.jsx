@@ -8,7 +8,7 @@ import { fetchFromLS } from "@/services/request";
 
 
 export default function Home() {
-  onst [teacher, setTeacher] = useState();
+  const [teacher, setTeacher] = useState();
   const router = useRouter()
 
   useEffect(() => {
@@ -27,17 +27,4 @@ export default function Home() {
         <Dashboard teacherObject={teacher} />      
     </>
   );
-}
-
-export function PrivateRoute({ children, teacherObject }) {
-  // const router = useRouter();
-  // let isAuthenticated = teacherObject;  
-
-  // if (!isAuthenticated) {
-  //   router.push("/teachers-signin");
-  //   notifyError("UnAuthorized");
-  //   return null;
-  // }
-
-  return children;
 }
