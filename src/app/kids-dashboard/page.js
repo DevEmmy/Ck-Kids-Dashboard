@@ -5,11 +5,7 @@ import MainPage from "@/Components/Kids-Dashboard/MainPage";
 import { notifyError } from "@/services/toastify";
 
 export default function Home() {
-  const [studentObject, setStudentObject] = useState()
-
-  useEffect(() => {
-    setStudentObject(localStorage.getItem("student"))
-  }, []);
+  const [studentObject, setStudentObject] = useState(localStorage.getItem("student"))  
   
   return (
     <>
