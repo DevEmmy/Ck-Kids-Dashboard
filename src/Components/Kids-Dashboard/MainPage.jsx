@@ -5,7 +5,7 @@ import { fetchFromLS, getMyDetails } from "@/services/request";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-const MainPage = ({student}) => {
+const MainPage = ({studentObject}) => {
   // const [student, setStudent] = useState();
   // const router = useRouter()
 
@@ -20,16 +20,16 @@ const MainPage = ({student}) => {
 
   return (
     <>
-      {student && (
+      {studentObject && (
         <div>
-          <Nav student={student} />
+          <Nav student={studentObject} />
           <div className="flexbs lf:flex-wrap font-sans px-xPadding mt-[120px] lf:mt-[90px]">
             <div className="w-[72%] lf:w-full cflexss">
-              <MainContentOnOverview student={student} />
+              <MainContentOnOverview student={studentObject} />
             </div>
 
             <div className="fixed lf:hidden top-[110px] z-0 right-[4%] w-[25%] cflexmm">
-              <GemView student={student} />
+              <GemView student={studentObject} />
             </div>
           </div>
         </div>
