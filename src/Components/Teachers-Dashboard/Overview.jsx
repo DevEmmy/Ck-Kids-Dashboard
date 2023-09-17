@@ -2,7 +2,7 @@ import { ChevronUp, ChevronDown, Users, ChevronRight } from "heroicons-react";
 import { useState } from "react";
 import BarChart from "@/AtomicComponents/BarChart";
 
-const Overview = () => {
+const Overview = ({teacher}) => {
   const [drop, setDrop] = useState(false);
   const TopStudents = [
     {
@@ -85,7 +85,7 @@ const Overview = () => {
     <>
       <div className="w-full cflexss font-[700] gap-[37px] text-[24px] lg:text-[20px] ls:text-[18px] bg-[#F7F7F7] h-full p-[30px]">
         <div className="w-full flexbm">
-          <p className="text-gray-400">Welcome, Savannah Nguyen</p>
+          <p className="text-gray-400">Welcome, {teacher?.firstName + " " + teacher?.lastName}</p>
           <div className="flexmm gap-[28px]">
             <div
               className="relative text-[#808080] font-[400] text-[20px] lg:text-[18px] ls:text-[14px] rounded-[10px] p-[12px] gap-[10px] flexmm bg-white cursor-pointer"

@@ -14,6 +14,7 @@ export default function Home() {
   useEffect(() => {
     let data = fetchFromLS("teacher")
     setTeacher(data);
+    console.log(data)
 
     if(!data){
       router.push("/teacher-signin")
@@ -24,7 +25,7 @@ export default function Home() {
 
   return (
     <>      
-        <Dashboard teacherObject={teacher} />      
+        <Dashboard teacher={teacher} />      
     </>
   );
 }

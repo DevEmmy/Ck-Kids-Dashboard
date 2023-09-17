@@ -10,13 +10,14 @@ import {
   ChevronUp,
   ChevronDown,
 } from "heroicons-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StudentProfile from "./StudentProfile";
 import { useDisclosure } from "@mantine/hooks";
 import { Modal, useMantineTheme } from "@mantine/core";
 import { HiUpload } from "react-icons/hi";
 import { FaUpload } from "react-icons/fa";
 import UploadStudentData from "./UploadStudentData";
+import { getStudents } from "@/services/request";
 
 const Students = () => {
   const [modalElement, setModalElement] = useState();
@@ -136,6 +137,17 @@ const Students = () => {
     },
   ];
 
+  const [students, setStudents] = useState()
+
+  const fetchStudents = async ()=>{
+    let data = await getStudents()
+    setStudents(data)
+  }
+
+  useEffect(()=>{
+    fetchStudents()
+  }, [])
+
   const [drop, sedivrop] = useState(false);
   return (
     <>
@@ -209,7 +221,7 @@ const Students = () => {
               <input type="checkbox" />
               <p>Avatar</p>
             </div>
-            <div className="w-[14%] flexsm gap-[10px]">
+            <div className="w-[30%] flexsm gap-[10px]">
               <p>Name</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -217,7 +229,7 @@ const Students = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="w-3 h-3"
               >
                 <path
                   strokeLinecap="round"
@@ -227,12 +239,22 @@ const Students = () => {
               </svg>
             </div>
             <div className="w-[25%] flexsm">Email</div>
-            <div className="w-[18%] flexsm">Username</div>
+            {/* <div className="w-[18%] flexsm">Username</div> */}
             <div className="w-[14%] flexsm">Date Joined</div>
-            <div className="w-[14%] flexsm">Class</div>
+            {/* <div className="w-[14%] flexsm">Class</div> */}
             <div className="w-[14%] flexsm">Actions</div>
           </div>
-          {StudentData.map((data, index) => {
+          {students?.map((data, index) => {
+            const inputDate = new Date(data.createdAt);
+
+            // Extract the individual date components
+            const year = inputDate.getFullYear() % 100; // Get the last two digits of the year
+            const month = inputDate.getMonth() + 1; // Months are 0-based, so add 1
+            const day = inputDate.getDate();
+            
+            // Create the formatted date string
+            const formattedDate = `${day}/${month < 10 ? "0" : ""}${month}/${year}`;
+            
             return (
               <>
                 <div
@@ -248,14 +270,14 @@ const Students = () => {
                   <div className="w-[9%] flexsm gap-[15px]">
                     <input type="checkbox" checked={data.checked} />
                     <div className="flexmm w-[24px]">
-                      <img src={`/${data.avatar}.svg`} alt="avatar" />
+                      <img src={data.profilePicture} alt="avatar" />
                     </div>
                   </div>
-                  <div className="w-[14%] flexsm">{data.name}</div>
+                  <div className="w-[30%] flexsm">{data.fullName}</div>
                   <div className="w-[25%] flexsm">{data.email}</div>
-                  <div className="w-[18%] flexsm">@{data.username}</div>
-                  <div className="w-[14%] flexsm">{data.dateJoined}</div>
-                  <div className="w-[14%] flexsm">{data.class}</div>
+                  {/* <div className="w-[18%] flexsm">@{data.username}</div> */}
+                  <div className="w-[14%] flexsm">{formattedDate}</div>
+                  {/* <div className="w-[14%] flexsm">{data.class}</div> */}
                   <div className="w-[14%] flexsm gap-[20px]">
                     <EyeOutline size="16px" />
                     <PencilAltOutline size="16px" />

@@ -23,7 +23,7 @@ import Overview from "./Overview";
 import Teachers from "./Teachers";
 import Courses from "../Teachers-Dashboard/Courses";
 
-const Dashboard = () => {
+const Dashboard = ({school}) => {
   const [view, setView] = useState("Overview");
   const Nav = [
     {
@@ -82,7 +82,9 @@ const Dashboard = () => {
   const [notification, setNotification] = useState(false);
   return (
     <>
-      <div className="w-full flexss bg-[#F7F7F7]">
+      {
+        school &&
+        <div className="w-full flexss bg-[#F7F7F7]">
 
         <div className="w-1/5 pt-[61px] px-3 pb-[475px] border-r-[1px] border-b-[1px] cflexss gap-[37px] bg-white fixed top-0 left-0">
           <div className="w-[226px]">
@@ -141,10 +143,10 @@ const Dashboard = () => {
                 }}
               >
                 <img
-                  src="/teacherAvatar.svg"
+                  src={school.profilePicture}
                   className="w-[32px] h-[32px] object-cover rounded-md"
                 />
-                <p>Savannah Nguyen</p>
+                <p>{school.schoolName}</p>
                 <FiChevronDown />
                 {profMenu && (
                   <>
@@ -179,7 +181,7 @@ const Dashboard = () => {
         </div>
 
         <div className="main__content absolute w-4/5 right-0 z-10 top-[70px]">
-            {view === "Overview" && <Overview />}
+            {view === "Overview" && <Overview school={school}/>}
 
             {view === "Chat" && <Messages />}
 
@@ -190,6 +192,7 @@ const Dashboard = () => {
             {view === "Courses" && <Courses />}
         </div>
       </div>
+      }
     </>
   );
 };

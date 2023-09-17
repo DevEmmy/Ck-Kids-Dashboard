@@ -2,6 +2,7 @@ import axios from "axios";
 import { notify, notifyError } from "./toastify";
 import { parse } from "cookie";
 //"https://ck-onboarding.onrender.com";
+
 const api = "https://ck-onboarding.onrender.com";
 
 const getCookie = () => {};
@@ -345,7 +346,7 @@ export const editVideo = async (
     });
 };
 
-export const deleteVideo = async ({videoId}) => {  
+export const deleteVideo = async (videoId) => {  
   await axios
     .post(`${api}/video/delete/${videoId}`, { withCredentials: true })
     .then((response) => {
@@ -357,3 +358,19 @@ export const deleteVideo = async ({videoId}) => {
       console.log(err);
     });
 };
+
+export const getStudents = async ()=>{
+  let students;
+  await axios.get(`${api}/students/all`, {withCredentials: true})
+  .then((response) => {
+    console.log(response);
+    notify(response.data.message);
+    students = response.data.payload;
+  })
+  .catch((err) => {
+    // notifyError(err.response.data.message);
+    console.log(err);
+  });
+
+  return students
+}
