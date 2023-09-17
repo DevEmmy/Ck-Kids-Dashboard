@@ -181,8 +181,8 @@ export const logOut = async () => {
   document.cookie = "token=" + "";
 };
 
-export const fetchFromLS = () => {
-  let student = JSON.parse(localStorage.getItem("student"));
+export const fetchFromLS = (user) => {
+  let student = JSON.parse(localStorage.getItem(user));
   console.log(student);
   return student;
 };

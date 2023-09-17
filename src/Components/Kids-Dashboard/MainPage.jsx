@@ -5,12 +5,18 @@ import { fetchFromLS, getMyDetails } from "@/services/request";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-const MainPage = () => {
-  const [student, setStudent] = useState();
+const MainPage = ({student}) => {
+  // const [student, setStudent] = useState();
+  // const router = useRouter()
 
-  useEffect(() => {
-    setStudent(fetchFromLS());
-  }, []);
+  // useEffect(() => {
+  //   let data = fetchFromLS("student")
+  //   setStudent(data);
+
+  //   if(!data){
+  //     router.push("/signin")
+  //   }
+  // }, []);
 
   return (
     <>

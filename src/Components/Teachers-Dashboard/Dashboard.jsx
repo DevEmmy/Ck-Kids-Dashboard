@@ -19,6 +19,8 @@ import { GiGraduateCap } from "react-icons/gi";
 import Notification from "./Notification";
 const Dashboard = () => {
   const [view, setView] = useState("Overview");
+
+  
   const Nav = [
     {
       name: "Overview",
