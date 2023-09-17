@@ -6,11 +6,11 @@ import { useRouter } from "next/navigation";
 import { notifyError } from "@/services/toastify";
 
 export default function Home() {
-  const [teacherObject, setTeacherObject] = useState()
+  const [teacherObject, setTeacherObject] = useState(localStorage.getItem("teacher"))
 
-  useEffect(() => {
-    setTeacherObject(localStorage.getItem("teacher"))
-  }, []);
+  // useEffect(() => {
+  //   setTeacherObject(localStorage.getItem("teacher"))
+  // }, []);
 
   return (
     <>
