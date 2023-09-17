@@ -10,7 +10,7 @@ const ContinueCourse = () => {
   useEffect(() => {
     let student = getMyDetails();
     setStudent(student);
-  }, [student]);
+  }, []);
   const courses = [
     {
       category: "Music-Dance",

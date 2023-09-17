@@ -1,8 +1,7 @@
 import axios from "axios";
 import { notify, notifyError } from "./toastify";
 import { parse } from "cookie";
-//"https://ck-onboarding.onrender.com";
-const api = "http://localhost:4030"
+const api = "https://ck-onboarding.onrender.com"
 const kidsDashboard = "https://ck-onboarding.onrender.com";
 
 const getCookie = () => {};

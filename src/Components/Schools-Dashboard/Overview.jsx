@@ -83,7 +83,6 @@ const Overview = () => {
   return (
     <>
       <div className="w-full cflexss font-[700] gap-[37px] text-[24px] lg:text-[20px] ls:text-[18px] bg-[#F7F7F7] h-full p-[30px]">
-
         <div className="w-full flexbm">
           <p className="text-gray-400">Welcome, Savannah Nguyen</p>
           <div className="flexmm gap-[28px]">
@@ -94,7 +93,11 @@ const Overview = () => {
               }}
             >
               <p>Class</p>
-              {drop ? <ChevronUp size={"18px"}/> : <ChevronDown size={"18px"}/>}
+              {drop ? (
+                <ChevronUp size={"18px"} />
+              ) : (
+                <ChevronDown size={"18px"} />
+              )}
               {drop && (
                 <div className="absolute top-[60px] text-[14px] font-[400] left-0 z-25 border-[1px] shadow-md py-[8px] px-[4px] rounded-[12px] bg-white cflexss">
                   {Class.map((items) => {
@@ -128,7 +131,6 @@ const Overview = () => {
         </div>
 
         <div className="grid grid-cols-3 w-full gap-[16px]">
-
           <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[30px] bg-primary1 text-white flexsm gap-4 rounded-[24px] shadow-md">
             <div className="flexmm bg-white rounded-[8px] p-4">
               <Users size="26px" color="#F5AE1E" />
@@ -198,16 +200,14 @@ const Overview = () => {
               </p>
             </div>
           </div>
-
-
         </div>
 
         <div className="w-full flexbs gap-[20px]">
           <div className="w-[469px] border-[1px] rounded-[24px] py-[40px] px-[25px] bg-white flex-shrink">
             <p>Student by Gender</p>
           </div>
-          <div className="w-[809px] border-[1px] rounded-[24px] py-[40px] px-[25px] bg-white flex-shrink">
-            <p>Total Attendance Report</p>
+          <div className="cflexss w-[809px] border-[1px] rounded-[24px] py-[40px] px-[25px] bg-white flex-shrink">
+            <p>Total Attendance Report</p>            
           </div>
         </div>
 
