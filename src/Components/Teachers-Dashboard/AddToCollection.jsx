@@ -85,19 +85,21 @@ const AddToCollection = ({ close, fetchData }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setLoading(true);
-    await addToCollection(
-      collections["courseName"],
-      collections["courseLink"],
-      collections["coursePhoto"],
-      collections.courseDetails,
-      collections.collection
-    );
-    setLoading(false);
-    close();
-    fetchData()
-
     if (valid) {
+      setLoading(true);
+      console.log(collections)
+      await addToCollection(
+        collections["courseName"],
+        collections["courseLink"],
+        collections["coursePhoto"],
+        null,
+        null,
+        collections.courseDetails,
+        collections.collection
+      );
+      setLoading(false);
+      close();
+      fetchData();
     }
   };
 

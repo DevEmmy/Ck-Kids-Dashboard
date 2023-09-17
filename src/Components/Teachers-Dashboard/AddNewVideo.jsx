@@ -18,7 +18,7 @@ const AddNewVideo = ({ close, fetchData }) => {
   const [valid, setValid] = useState(false);
   const [urlError, setUrlError] = useState(false);
   const urlRegex = /^(https?|http|ftp):\/\/[^\s/$.?#].[^\s]*$/;
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (
@@ -68,7 +68,7 @@ const AddNewVideo = ({ close, fetchData }) => {
         file.type === "image/jfif" ||
         file.type === "image/svg")
     ) {
-      setNewVideoData({ ...newVideoData, coursePhoto: file});
+      setNewVideoData({ ...newVideoData, coursePhoto: file });
       setFileError(false);
       setChanging(!changing);
     } else {
@@ -82,11 +82,19 @@ const AddNewVideo = ({ close, fetchData }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log(newVideoData)
-    await addToCollection(newVideoData["courseName"], newVideoData["courseLink"] ,newVideoData["coursePhoto"], newVideoData.courseDetails);
+    console.log(newVideoData);
+    await addToCollection(
+      newVideoData["courseName"],
+      newVideoData["courseLink"],
+      newVideoData["coursePhoto"],
+      newVideoData["category"],
+      newVideoData["ages"],     
+      newVideoData["courseDetails"],
+      null
+    );
     setLoading(false);
     close();
-    fetchData()
+    fetchData();
     if (valid) {
     }
   };

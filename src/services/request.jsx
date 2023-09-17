@@ -42,7 +42,6 @@ export const studentLogin = async (email, password, router) => {
     });
 };
 
-
 export const teacherLogin = async (email, password, router) => {
   await axios
     .post(
@@ -52,7 +51,7 @@ export const teacherLogin = async (email, password, router) => {
         password,
       },
       {
-        withCredentials: true
+        withCredentials: true,
       }
     )
     .then((response) => {
@@ -183,8 +182,8 @@ export const uploadCollection = async (
   title,
   description,
   category,
-  cover,
-  classId
+  ageRange,
+  cover,  
 ) => {
   await axios
     .post(
@@ -194,7 +193,7 @@ export const uploadCollection = async (
         description,
         category,
         cover,
-        class: "6501943d9df5e3c94892ace6",
+        ageRange
       },
       { withCredentials: true }
     )
@@ -220,21 +219,59 @@ export const fetchCollection = async (setCollectionItems) => {
     });
 };
 
-
 export const addToCollection = async (
   courseName,
   courseLink,
   collectionPhoto,
-  description,
+  category,
+  ageRange,
+  description,  
   collection
 ) => {
-  let data = { name:courseName, link:courseLink, collectionRelation: collection, cover:collectionPhoto, description }
-  console.log(data)
+  let data = {
+    name: courseName,
+    link: courseLink,
+    collectionRelation: collection,
+    cover: collectionPhoto,
+    category,
+    ageRange,
+    description,
+  };
+  console.log(data);
 
   await axios
+    .post(`${api}/video`, data, { withCredentials: true })
+    .then((response) => {
+      console.log(response);
+      notify(response.data.message);
+    })
+    .catch((err) => {
+      notifyError(err.response.data.message);
+      console.log(err);
+    });
+};
+
+export const getAllVideos = async () => {
+  let data = [];
+  await axios
+    .get(`${api}/videos`)
+    .then((response) => {
+      data = response.data.payload;
+    })
+    .catch((err) => {
+      notifyError(err.response.data.message);
+      console.log(err);
+      data = [];
+    });
+
+  return data;
+};
+
+export const onBoardTeacher = async (firstName, lastName, email) => {
+  await axios
     .post(
-      `${api}/video`,
-      data,
+      `${api}/teacher/sign-up`,
+      { firstName, lastName, email },
       { withCredentials: true }
     )
     .then((response) => {
@@ -247,49 +284,26 @@ export const addToCollection = async (
     });
 };
 
-export const getAllVideos = async ()=>{
-   let data = []
-  await axios.get(`${api}/videos`)
-  .then((response) => {
-    data = response.data.payload;
-  })
-  .catch((err) => {
-    notifyError(err.response.data.message);
-    console.log(err);
-    data = []
-  });
-
-  return data;
-}
-
-export const onBoardTeacher = async (firstName, lastName, email)=>{
-  await axios.post(`${api}/teacher/sign-up`, {firstName, lastName, email}, {withCredentials: true})
-  .then((response) => {
-    console.log(response);
-    notify(response.data.message);
-  })
-  .catch((err) => {
-    notifyError(err.response.data.message);
-    console.log(err);
-  });
-}
-
-export const uploadData = async (formData)=>{
-  
-  await axios.post(`${api}/upload-student`, {formData}, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
-  })
-  .then((response) => {
-    console.log(response);
-    notify(response.data.message);
-  })
-  .catch((err) => {
-    // notifyError(err.response.data.message);
-    console.log(err);
-  });
-}
+export const uploadData = async (formData) => {
+  await axios
+    .post(
+      `${api}/upload-student`,
+      { formData },
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    )
+    .then((response) => {
+      console.log(response);
+      notify(response.data.message);
+    })
+    .catch((err) => {
+      // notifyError(err.response.data.message);
+      console.log(err);
+    });
+};
 
 export const editVideo = async (
   courseName,
@@ -298,15 +312,17 @@ export const editVideo = async (
   description,
   collection
 ) => {
-  let data = { name:courseName, link:courseLink, collectionRelation: collection, cover:collectionPhoto, description }
-  console.log(data)
+  let data = {
+    name: courseName,
+    link: courseLink,
+    collectionRelation: collection,
+    cover: collectionPhoto,
+    description,
+  };
+  console.log(data);
 
   await axios
-    .post(
-      `${api}/video/update`,
-      data,
-      { withCredentials: true }
-    )
+    .post(`${api}/video/update`, data, { withCredentials: true })
     .then((response) => {
       console.log(response);
       notify(response.data.message);

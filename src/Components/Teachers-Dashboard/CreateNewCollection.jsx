@@ -8,7 +8,7 @@ const CreateNewCollection = ({ close, fetchData }) => {
     title: "",
     description: "",
     category: "",
-    class: "",
+    ages: "",
     coursePhoto: "",
   });
   const [changing, setChanging] = useState(false);
@@ -22,7 +22,7 @@ const CreateNewCollection = ({ close, fetchData }) => {
       newCollection["title"].trim().length > 0 &&
       newCollection["description"].trim().length > 0 &&
       newCollection["category"].trim().length > 0 &&
-      newCollection["class"].trim().length > 0 &&
+      newCollection["ages"].trim() &&
       newCollection["coursePhoto"]
     ) {
       setValid(true);
@@ -117,6 +117,7 @@ const CreateNewCollection = ({ close, fetchData }) => {
         newCollection.title,
         newCollection.description,
         newCollection.category,
+        newCollection.ages,
         newCollection.coursePhoto
       );
       setLoading(false);
@@ -174,7 +175,7 @@ const CreateNewCollection = ({ close, fetchData }) => {
           <p>Ages</p>
           <select
             className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
-            name="class"
+            name="ages"
             onChange={handleChange}
           >
             <option>None</option>
