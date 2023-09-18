@@ -10,12 +10,14 @@ export default function Home() {
   const [student, setStudent] = useState();
   const router = useRouter()
   const [courseId, setCourseId] = useState(null);
-  const [course, setCourse] = useState(null)
+  const [course, setCourse] = useState("")
+  const [loading, setLoading] = useState(true);
 
-  const fetchVideo = async (id)=>{
+  const fetchVideo = async (id)=>{    
     let data = await getVideoById(id)
     console.log(data);
     setCourse(data)
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -40,7 +42,7 @@ export default function Home() {
 
   return (
     <>      
-        <CourseVideo student={student} course={course}/>      
+        <CourseVideo student={student} course={course} loading={loading}/>      
     </>
   );
 }
