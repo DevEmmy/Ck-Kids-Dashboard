@@ -3,14 +3,32 @@
 import { useRouter } from "next/navigation";
 import { notifyError } from "@/services/toastify";
 import { useEffect, useState } from "react";
-import { fetchFromLS } from "@/services/request";
+import { fetchFromLS, getVideoById } from "@/services/request";
 import CourseVideo from "@/Components/Kids-Dashboard/CourseVideo";
 
 export default function Home() {
   const [student, setStudent] = useState();
   const router = useRouter()
+  const [courseId, setCourseId] = useState(null);
+  const [course, setCourse] = useState(null)
+
+  const fetchVideo = async (id)=>{
+    let data = await getVideoById(id)
+    console.log(data);
+    setCourse(data)
+  }
 
   useEffect(() => {
+    // Parse the current URL to extract the courseId
+    const pathSegments = window.location.pathname.split('/');
+    const courseIdIndex = pathSegments.indexOf('courses') + 1;
+
+    if (pathSegments.length > courseIdIndex) {
+      const courseId = pathSegments[courseIdIndex];
+      console.log(courseId)
+      fetchVideo(courseId)
+    }
+
     let data = fetchFromLS("student")
     setStudent(data);
 
@@ -22,7 +40,7 @@ export default function Home() {
 
   return (
     <>      
-        <CourseVideo studentObject={student}/>      
+        <CourseVideo student={student} course={course}/>      
     </>
   );
 }

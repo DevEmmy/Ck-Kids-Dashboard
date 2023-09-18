@@ -7,7 +7,7 @@ import Recommended from "@/AtomicComponents/Recommended";
 import YouTube from "react-youtube";
 import { useState } from "react";
 
-const CourseVideo = () => {
+const CourseVideo = ({student, course}) => {
   // var getYouTubeID = require("get-youtube-id");
   const [url, setURL] = useState("");
 
@@ -73,7 +73,7 @@ const CourseVideo = () => {
   const [selected, setSelected] = useState("question");
   return (
     <>
-      <Nav active={1} />
+      <Nav active={1} student={student} />
       <div className="w-full mt-[100px] flexss gap-[1em] pt-[2em] px-[5%]">
         <a href="/kids-dashboard/courses" className="flexmm">
           <div className="flexss bg-primary2 rounded-[0.5em] p-[0.4em] cursor-pointer">
