@@ -1,6 +1,7 @@
 import CourseCard from "@/AtomicComponents/CourseCard";
+import { SpinnerCircular } from "spinners-react";
 
-const PopularCourses = ({courses}) => {
+const PopularCourses = ({ courses, loading }) => {
   const Videos = [
     {
       image: "history",
@@ -9,7 +10,7 @@ const PopularCourses = ({courses}) => {
       content: "15 Lessons | 30 hours",
       images: ["kid1", "kid2", "kid3", "kid4"],
       enrolled: "53+ Kids enrolled",
-      link:""
+      link: "",
     },
     {
       image: "creative",
@@ -18,7 +19,7 @@ const PopularCourses = ({courses}) => {
       content: "34 Lessons | 38 hours",
       images: ["kid1", "kid2", "kid3", "kid4"],
       enrolled: "19+ Kids enrolled",
-      link:""
+      link: "",
     },
     {
       image: "imagination",
@@ -27,7 +28,7 @@ const PopularCourses = ({courses}) => {
       content: "28 Lessons | 56 hours",
       images: ["kid1", "kid2", "kid3", "kid4"],
       enrolled: "430+ Kids enrolled",
-      link:""
+      link: "",
     },
   ];
   return (
@@ -37,13 +38,29 @@ const PopularCourses = ({courses}) => {
           Most Popular courses
         </h1>
         <div className="w-full flexss gap-[20px] py-[10px] overflow-x-auto sm:flex-wrap">
-          {courses.map((video, i) => {
-            return (
-              <>
-                <CourseCard key={i} {...video} />
-              </>
-            );
-          })}
+          {loading ? (
+            <>
+              <div className="w-full flexmm">
+                <SpinnerCircular
+                  color="#00AC76"
+                  className="mr-4"
+                  secondaryColor={"#eeeeee"}
+                  size={50}
+                  thickness={150}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              {courses.map((video, i) => {
+                return (
+                  <>
+                    <CourseCard key={i} {...video} />
+                  </>
+                );
+              })}
+            </>
+          )}
         </div>
       </div>
     </>

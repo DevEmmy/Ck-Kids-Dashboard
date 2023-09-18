@@ -1,6 +1,7 @@
 import CourseCard from "@/AtomicComponents/CourseCard";
+import { SpinnerCircular } from "spinners-react";
 
-const GetStarted = ({courses}) => {
+const GetStarted = ({ courses, loading }) => {
   const Videos = [
     {
       image: "history",
@@ -9,7 +10,7 @@ const GetStarted = ({courses}) => {
       content: "24 Lessons | 48 hours",
       images: ["kid1", "kid2", "kid3", "kid4"],
       enrolled: "43+ Kids enrolled",
-      link:""
+      link: "",
     },
     {
       image: "arts",
@@ -18,7 +19,7 @@ const GetStarted = ({courses}) => {
       content: "24 Lessons | 44 hours",
       images: ["kid1", "kid2", "kid3", "kid4"],
       enrolled: "59+ Kids enrolled",
-      link:"/kids-dashboard/courses/videos"
+      link: "/kids-dashboard/courses/videos",
     },
     {
       image: "imagination",
@@ -27,10 +28,9 @@ const GetStarted = ({courses}) => {
       content: "13 Lessons | 26 hours",
       images: ["kid1", "kid2", "kid3", "kid4"],
       enrolled: "430+ Kids enrolled",
-      link:""
+      link: "",
     },
   ];
-
 
   return (
     <>
@@ -39,13 +39,27 @@ const GetStarted = ({courses}) => {
           Courses to get you started
         </h1>
         <div className="w-full flexss gap-[20px] overflow-x-auto py-[10px] sm:flex-wrap">
-          {courses.map((video, i) => {
-            return (
-              <>
-                <CourseCard key={i} {...video} />
-              </>
-            );
-          })}
+          {loading ? (
+            <div className="w-full flexmm">
+              <SpinnerCircular
+                color="#00AC76"
+                className="mr-4"
+                secondaryColor={"#eeeeee"}
+                size={50}
+                thickness={150}
+              />
+            </div>
+          ) : (
+            <>
+              {courses.map((video, i) => {
+                return (
+                  <>
+                    <CourseCard key={i} {...video} />
+                  </>
+                );
+              })}
+            </>
+          )}
         </div>
       </div>
     </>

@@ -1,6 +1,7 @@
 import CourseCard from "./CourseCard";
+import { SpinnerCircular } from "spinners-react";
 
-const Recommended = ({courses}) => {
+const Recommended = ({ courses, loading }) => {
   const Videos = [
     {
       image: "history",
@@ -9,7 +10,7 @@ const Recommended = ({courses}) => {
       content: "32 Lessons | 64 hours",
       images: ["kid1", "kid2", "kid3", "kid4"],
       enrolled: "43+ Kids enrolled",
-      link:""
+      link: "",
     },
     {
       image: "creative",
@@ -18,7 +19,7 @@ const Recommended = ({courses}) => {
       content: "12 Lessons | 24 hours",
       images: ["kid1", "kid2", "kid3", "kid4"],
       enrolled: "59+ Kids enrolled",
-      link:""
+      link: "",
     },
     {
       image: "imagination",
@@ -27,7 +28,7 @@ const Recommended = ({courses}) => {
       content: "31 Lessons | 62 hours",
       images: ["kid1", "kid2", "kid3", "kid4"],
       enrolled: "430+ Kids enrolled",
-      link:""
+      link: "",
     },
     {
       image: "creative",
@@ -36,7 +37,7 @@ const Recommended = ({courses}) => {
       content: "8 Lessons | 16 hours",
       images: ["kid1", "kid2", "kid3", "kid4"],
       enrolled: "140+ Kids enrolled",
-      link:""
+      link: "",
     },
   ];
   return (
@@ -46,13 +47,29 @@ const Recommended = ({courses}) => {
           Recommended Courses
         </h1>
         <div className="w-full flexss gap-[20px] overflow-x-auto py-[10px] sm:flex-wrap">
-          {courses.map((video, i) => {
-            return (
-              <>
-                <CourseCard key={i} {...video}/>
-              </>
-            );
-          })}
+          {loading ? (
+            <>
+              <div className="w-full flexmm">
+                <SpinnerCircular
+                  color="#00AC76"
+                  className="mr-4"
+                  secondaryColor={"#eeeeee"}
+                  size={50}
+                  thickness={150}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              {courses.map((video, i) => {
+                return (
+                  <>
+                    <CourseCard key={i} {...video} />
+                  </>
+                );
+              })}
+            </>
+          )}
         </div>
       </div>
     </>

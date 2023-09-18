@@ -62,7 +62,7 @@ const SignIn = () => {
           </div>
         </div>
 
-        <div className="w-[50%] h-full bg-white py-[6em] sm:py-[2em] pl-[6em] pr-[7em] sm:px-[1.5em] md1:w-full">
+        <div className="w-[50%] h-full bg-white pt-[6em] sm:py-[2em] pl-[6em] pr-[7em] sm:px-[1.5em] md1:w-full">
           {loginType === "none" && (
             <>
               <div className="cflexmm h-full gap-[2em] w-full py-[3em]">

@@ -3,11 +3,28 @@ import Image from "next/image";
 import Link from "next/link";
 import SubTopic from "@/AtomicComponents/SubTopic";
 import { ArrowLeftOutline, HeartOutline } from "heroicons-react";
-import CourseCard from "@/AtomicComponents/CourseCard";
 import Recommended from "@/AtomicComponents/Recommended";
+import YouTube from "react-youtube";
 import { useState } from "react";
 
 const CourseVideo = () => {
+  // var getYouTubeID = require("get-youtube-id");
+  const [url, setURL] = useState("");
+
+  const opts = {
+    height: "390",
+    width: "750",
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 0,
+    },
+  };
+
+  const _onReady = (event) => {
+    // access to player in all event handlers via event.target
+    event.target.pauseVideo();
+  };
+
   const Topic = [
     {
       topic: "Introduction to Arts and Crafts",
@@ -75,21 +92,14 @@ const CourseVideo = () => {
 
       <div className="w-full flexbs pt-[2em] px-[5%] gap-[1em] flex-wrap">
         <div className="w-[68%] sm:w-full cflexss gap-[2em] font-[400] text-[0.9rem]">
-          <div className="w-full h-auto flexmm cursor-pointer">
-            <Image
+          <div className="w-full h-auto flexss cursor-pointer">
+            {/* <Image
               src={"/CourseImage.svg"}
               width={100}
               height={100}
               alt="course video"
-            />
-            {/* <div>
-              <div className="image">
-                <video width="300px" height="300px" controls>
-                  <source src={video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            </div> */}
+            /> */}
+            <YouTube videoId="2g811Eo7K8U" opts={opts} onReady={_onReady} />
           </div>
         </div>
         <div className="w-[28%] sm:w-full cflexss gap-[16px] border-[0.2em] rounded-[8px] h-[670px] lg:h-[600px] ls:h-[550px] p-[20px] overflow-y-auto">

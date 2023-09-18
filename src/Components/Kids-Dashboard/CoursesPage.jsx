@@ -20,9 +20,10 @@ const Appear = {
   visible: { opacity: 1, transition: { duration: 0.2 } },
 };
 
-const CoursesPage = ({student}) => {
+const CoursesPage = ({ student }) => {
   const [cat, setCat] = useState(false);
-  
+  const [loading, setLoading] = useState();
+
   const Categories = [
     {
       category: "History",
@@ -58,18 +59,19 @@ const CoursesPage = ({student}) => {
     },
   ];
 
-  const [courses, setCourses] = useState([])
+  const [courses, setCourses] = useState([]);
 
   const fetchData = async () => {
+    setLoading(true);
     let data = await getAllVideos();
-    console.log(data)
-    setCourses(data)
+    console.log(data);
+    setCourses(data);
+    setLoading(false);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
-
 
   return (
     <>
@@ -127,10 +129,10 @@ const CoursesPage = ({student}) => {
               <input type="text" className="w-[25em] outline-none" />
             </div>
           </div>
-          <GetStarted courses={courses}/>
-          <PopularCourses courses={courses}/>
+          <GetStarted courses={courses} loading={loading} />
+          <PopularCourses courses={courses} loading={loading} />
           <TopCategories />
-          <Recommended courses={courses}/>
+          <Recommended courses={courses} loading={loading} />
         </div>
 
         <div className="fixed lf:hidden z-25 top-[110px] lf:top-[90px] right-[5%] w-[25%] cflexmm gap-[1em]">
