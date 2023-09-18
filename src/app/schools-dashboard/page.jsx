@@ -17,7 +17,7 @@ const page = () => {
     setSchool(data);
 
     if(!data){
-      router.push("/teacher-signin")
+      router.push("/signin")
       notifyError("UnAuthorized")
     }
   }, []); 
