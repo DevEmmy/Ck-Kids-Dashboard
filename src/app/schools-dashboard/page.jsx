@@ -16,10 +16,10 @@ const page = () => {
     let data = fetchFromLS("school")
     setSchool(data);
 
-    if(!data){
-      router.push("/signin")
-      notifyError("UnAuthorized")
-    }
+    // if(!data){
+    //   router.push("/signin")
+    //   notifyError("UnAuthorized")
+    // }
   }, []); 
 
   return (
