@@ -46,7 +46,7 @@ const Recommended = ({courses}) => {
           Recommended Courses
         </h1>
         <div className="w-full flexss gap-[20px] overflow-x-auto py-[10px] sm:flex-wrap">
-          {courses.map((video, i) => {
+          {courses?.map((video, i) => {
             return (
               <>
                 <CourseCard key={i} {...video}/>

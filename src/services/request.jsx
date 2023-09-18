@@ -374,3 +374,19 @@ export const getStudents = async ()=>{
 
   return students
 }
+
+export const getVideoById = async (id)=>{
+  let video;
+  await axios.get(`${api}/video/${id}`, {withCredentials: true})
+  .then(response => {
+    console.log(response.data);
+    video = response.data.payload;
+    notify(response.data.message);
+  })
+  .catch((err) => {
+    // notifyError(err.response.data.message);
+    console.log(err);
+  });
+
+  return video
+}
