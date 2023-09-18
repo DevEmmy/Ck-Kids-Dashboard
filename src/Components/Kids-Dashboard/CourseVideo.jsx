@@ -105,10 +105,10 @@ const CourseVideo = ({ student, course, loading }) => {
               </div>
             </a>
             <div className="cflexss font-[600] text-[20px] lg:text-[18px] ls:text-[16px] gap-[12px]">
-              <p className="text-[28px] lg:text-[24px] ls:text-[20px] font-[700]">
-                Arts and Crafts: Unleashing Imagination
+              <p className="text-[28px] lg:text-[24px] ls:text-[20px] font-[600]">
+                {course.name}
               </p>
-              <p>22 Lessons</p>
+              {/* <p>22 Lessons</p> */}
             </div>
           </div>
 
