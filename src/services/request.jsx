@@ -348,7 +348,7 @@ export const editVideo = async (
 
 export const deleteVideo = async (videoId) => {  
   await axios
-    .post(`${api}/video/delete/${videoId}`, { withCredentials: true })
+    .delete(`${api}/video/delete/${videoId}`, { withCredentials: true })
     .then((response) => {
       console.log(response);
       notify(response.data.message);

@@ -12,8 +12,8 @@ const EachCourse = ({ video, setCat, setType, setAdd, setDrop, fetchData }) => {
   const theme = useMantineTheme();
   const [modalElement, setModalElement] = useState(null);
 
-  const handleDelete = () =>{
-    deleteVideo(video._id)
+  const handleDelete = async () =>{
+    await deleteVideo(video._id)
     fetchData();
   }
 

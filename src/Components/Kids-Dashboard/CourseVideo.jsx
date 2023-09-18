@@ -164,10 +164,17 @@ const CourseVideo = ({ student, course, loading }) => {
                 <p> Ask question</p>
               </div>
             </div>
-            <div className="w-full cflexss gap-[1em]">
+            <div className="w-full cflexss gap">
               {selected === "about" && (
                 <>
                   <h1>ABOUT THIS COURSE</h1>
+
+                  <p className="text-[1.2em] font-[600]">
+                    {course.name}
+                  </p>
+                  <p className="text-[1em] text-gray-500">
+                    {course.description}
+                  </p>
                 </>
               )}
               {selected === "transcript" && (
@@ -177,7 +184,7 @@ const CourseVideo = ({ student, course, loading }) => {
               )}
               {selected === "question" && (
                 <>
-                  <div className="w-full cflexsm gap-[1em] overflow-y-auto h-auto px-[2em]">
+                  {/* <div className="w-full cflexsm gap-[1em] overflow-y-auto h-auto px-[2em]">
                     <div className="flexbs w-full flex-wrap font-[400] text-[20px] lg:text-[18px] ls:text-[16px]">
                       <div className="flexss gap-[24px]">
                         <div className="flexmm w-[60px] h-[60px]">
@@ -231,7 +238,8 @@ const CourseVideo = ({ student, course, loading }) => {
                         />
                       </div>
                     </div>
-                  </div>
+                  </div> */}
+
                   <div className="w-full flexmm">
                     <div className="w-[70%] flex-shrink px-[40px] py-[35px] cflexms gap-[20px] bg-[#CCEEE4] rounded-[8px] font-[400] text-[20px] lg:text-[18px] ls:text-[16px]">
                       <p className="text-primary2 font-[700]">Response</p>
