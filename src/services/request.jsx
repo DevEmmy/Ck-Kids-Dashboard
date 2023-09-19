@@ -3,7 +3,7 @@ import { notify, notifyError } from "./toastify";
 import { parse } from "cookie";
 //"https://ck-onboarding.onrender.com";
 
-const api = "https://ck-onboarding.onrender.com";
+const api = "http://localhost:4030";
 
 const getCookie = () => {};
 
@@ -390,4 +390,44 @@ export const getVideoById = async (id)=>{
   });
 
   return video
+}
+
+export const bulkUploadOfVideos =async (videos, ageRange, category)=>{
+  await axios.post(`${api}/videos/bulk-upload`, {videos, ageRange, category}, {withCredentials: true})
+  .then(response => {
+    console.log(response.data);
+    notify(response.data.message);
+  })
+  .catch((err) => {
+    if(err.response){
+      notifyError(err.response.data.message);
+    }
+    
+    console.log(err);
+  });
+}
+
+export const watchVideoRequest = async (id)=>{
+  await axios.patch(`${api}/video/watch/${id}`, {}, {withCredentials: true})
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch((err) => {
+    if(err.response){
+      
+    }
+    console.log(err);
+  });
+}
+
+export const viewVideoRequest = async (id)=>{
+  await axios.patch(`${api}/video/view/${id}`, {}, {withCredentials: true})
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch((err) => {
+    if(err.response){
+    }
+    console.log(err);
+  });
 }

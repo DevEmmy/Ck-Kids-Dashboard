@@ -7,17 +7,29 @@ import Recommended from "@/AtomicComponents/Recommended";
 import YouTube from "react-youtube";
 import { useState, useEffect } from "react";
 import { SpinnerCircular } from "spinners-react";
+import { viewVideoRequest } from "@/services/request";
 
 const CourseVideo = ({ student, course, loading }) => {
   var getYouTubeID = require("get-youtube-id");
   const [url, setURL] = useState("");
-  console.log(course);
+  
 
   useEffect(() => {
     if (!loading) {
       setURL(getYouTubeID(course.link));
     }
   }, [loading]);
+
+  // const viewVideo= async () =>{
+  //   await viewVideoRequest(course._id)
+  // }
+
+  useEffect(()=>{
+    if(course._id){
+      viewVideoRequest(course._id)
+    }
+    
+  }, [course])
 
   const opts = {
     height: "500",
