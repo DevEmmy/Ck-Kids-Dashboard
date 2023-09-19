@@ -2,8 +2,26 @@ import Button from "@/AtomicComponents/Button";
 import Link from "next/link";
 import { ArrowRightOutline } from "heroicons-react";
 import VideoCard from "@/AtomicComponents/VideoCard";
+import { getAllVideos } from "@/services/request";
+import { useState, useEffect } from "react";
+import { SpinnerCircular } from "spinners-react";
 
 const Section1 = () => {
+  const [loading, setLoading] = useState(false);
+  const [courses, setCourses] = useState(null);
+
+  const fetchData = async () => {
+    setLoading(true);
+    let data = await getAllVideos();
+    console.log(data);
+    setCourses(data);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const Videos = [
     {
       image: "history",
@@ -66,25 +84,31 @@ const Section1 = () => {
                 <p>See more</p> <ArrowRightOutline size="1em" />
               </Button>
             </a>
-          </div>          
+          </div>
         </div>
         <div className="grid grid-cols-4 md1:flex md1:flex-wrap w-full gap-[20px] overflow-x-auto">
-          {Videos.map((video, i) => {
-            return (
-              <>
-                <VideoCard
-                  key={i}
-                  image={video.image}
-                  title={video.title}
-                  heading={video.heading}
-                  content={video.content}
-                  author={video.author}
-                  images={video.images}
-                  enrolled={video.enrolled}
-                />
-              </>
-            );
-          })}
+          {loading ? (
+            <>
+              {" "}
+              <SpinnerCircular
+                color="#00AC76"
+                className="mr-4"
+                secondaryColor={"#eeeeee"}
+                size={50}
+                thickness={150}
+              />{" "}
+            </>
+          ) : (
+            <>
+              {courses?.map((video, i) => {
+                return (
+                  <>
+                    <VideoCard key={i} {...video} />
+                  </>
+                );
+              })}
+            </>
+          )}
         </div>
       </div>
     </>
