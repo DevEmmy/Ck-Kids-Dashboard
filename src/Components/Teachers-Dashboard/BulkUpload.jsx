@@ -1,5 +1,5 @@
 import Loader from "@/AtomicComponents/Loader";
-import { addToCollection } from "@/services/request";
+import { addToCollection, bulkUploadOfVideos } from "@/services/request";
 import { useState, useEffect } from "react";
 import FileBase64 from "react-file-base64";
 
@@ -28,22 +28,23 @@ const BulkUpload = ({ close, fetchData }) => {
       setUrlError(false);
     }
 
-    if (
-      bulkVideoData["courseLink"].trim().length > 0 &&
-      urlRegex.test(bulkVideoData["courseLink"])
-    ) {
-      setUrlError(false);
-    }
+    // if (
+    //   bulkVideoData["courseLink"].trim().length > 0 &&
+    //   urlRegex.test(bulkVideoData["courseLink"])
+    // ) {
+    //   setUrlError(false);
+    // }
 
-    if (
-      bulkVideoData["courseLink"].trim().length > 0 &&
-      !urlRegex.test(bulkVideoData["courseLink"])
-    ) {
-      setUrlError(true);
-      setValid(false);
-    } else {
-      setUrlError(false);
-    }
+    // if (
+    //   bulkVideoData["courseLink"].trim().length > 0 &&
+    //   !urlRegex.test(bulkVideoData["courseLink"])
+    // ) {
+    //   setUrlError(true);
+    //   setValid(false);
+    // } else {
+    //   setUrlError(false);
+    // }
+    // addToCollection(bulkVideoData);
   }, [changing]);
 
   const handleChange = (e) => {
@@ -58,7 +59,7 @@ const BulkUpload = ({ close, fetchData }) => {
     if (valid) {
       setLoading(true);
       console.log(bulkVideoData);
-      await addToCollection(bulkVideoData);
+      await bulkUploadOfVideos(bulkVideoData.courseLink, bulkVideoData.ages, bulkVideoData.category)
       setLoading(false);
       close();
       fetchData();
