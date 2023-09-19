@@ -90,11 +90,11 @@ const EachCourse = ({ video, setCat, setType, setAdd, setDrop, fetchData }) => {
       <div className="w-2/5 py-[20px] px-[25px] gap-[10%] flexss text-[#AAA]">
         <div className="cflexss gap-[20px]">
           <p>Views</p>
-          <p className="text-[#333]">{video.views}</p>
+          <p className="text-[#333]">{video.views?.length}</p>
         </div>
         <div className="cflexss gap-[20px]">
           <p>Watched</p>
-          <p className="text-[#333]">{video.watched}</p>
+          <p className="text-[#333]">{video.watched?.length}</p>
         </div>
         <div className="cflexss gap-[20px]">
           <p>Comments</p>

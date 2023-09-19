@@ -1,9 +1,9 @@
 import axios from "axios";
 import { notify, notifyError } from "./toastify";
 import { parse } from "cookie";
-//"http://localhost:4030";
+//"https://ck-onboarding.onrender.com";
 
-const api = "https://ck-onboarding.onrender.com";
+const api = "http://localhost:4030";
 
 const getCookie = () => {};
 
@@ -403,6 +403,31 @@ export const bulkUploadOfVideos =async (videos, ageRange, category)=>{
       notifyError(err.response.data.message);
     }
     
+    console.log(err);
+  });
+}
+
+export const watchVideoRequest = async (id)=>{
+  await axios.patch(`${api}/video/watch/${id}`, {}, {withCredentials: true})
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch((err) => {
+    if(err.response){
+      
+    }
+    console.log(err);
+  });
+}
+
+export const viewVideoRequest = async (id)=>{
+  await axios.patch(`${api}/video/view/${id}`, {}, {withCredentials: true})
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch((err) => {
+    if(err.response){
+    }
     console.log(err);
   });
 }
