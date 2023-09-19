@@ -1,7 +1,7 @@
 import axios from "axios";
 import { notify, notifyError } from "./toastify";
 import { parse } from "cookie";
-//"https://ck-onboarding.onrender.com";
+//"http://localhost:4030"
 
 const api = "https://ck-onboarding.onrender.com";
 
@@ -298,7 +298,7 @@ export const uploadData = async (formData) => {
   await axios
     .post(
       `${api}/upload-student`,
-      { formData },
+       formData ,
       {
         headers: {
           "Content-Type": "multipart/form-data",

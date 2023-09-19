@@ -63,11 +63,11 @@ const UploadStudentData = ({ close }) => {
           <p className="w-full py-[5px] font-[400]">
             Download a sample excel sheet{" "}
             <span className="font-[600] text-primary2 cursor-pointer underline">
-              <a href="/">here</a>
+              <a href="/sample.xlsx" download={"sample-upload.xlsx"}>here</a>
             </span>
           </p>
           <div className="w-full flexmm text-[#808080] text-[16px] border-[2px] border-[#808080] border-dotted rounded-[12px] h-[125px] lg:text-[14px] font-[400] cursor-pointer">
-            {file ? fileName.name : <p>Drop excel file to upload here</p>}
+            {selectedFile ? selectedFile.name : <p>Drop excel file to upload here</p>}
             <div className="absolute opacity-0">
               {/* <FileBase64
                 name="coursePhoto"
@@ -78,7 +78,7 @@ const UploadStudentData = ({ close }) => {
                   setFileName(base64);
                 }}
               /> */}
-              <input type="file" onChange={handleFileChange} name="file" />
+              <input type="file" onChange={handleFileChange} name="file"/>
             </div>
           </div>
           {fileError && (
