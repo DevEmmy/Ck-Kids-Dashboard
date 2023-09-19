@@ -1,7 +1,6 @@
 import Loader from "@/AtomicComponents/Loader";
 import { addToCollection } from "@/services/request";
 import { useState, useEffect } from "react";
-import FileBase64 from "react-file-base64";
 
 const BulkUpload = ({ close, fetchData }) => {
   const [bulkVideoData, setBulkVideoData] = useState({
