@@ -53,9 +53,9 @@ const RecommendedCourses = () => {
         <div className="w-full flexss gap-[20px] overflow-x-auto py-[10px] sm:flex-wrap">
           {courses.map((video, i) => {
             return (
-              <>
-                <CourseCard key={i} {...video} />
-              </>
+              <div key={i} className="w-1/3">
+                <CourseCard {...video} />
+              </div>
             );
           })}
         </div>

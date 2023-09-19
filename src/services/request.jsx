@@ -1,11 +1,41 @@
 import axios from "axios";
 import { notify, notifyError } from "./toastify";
 import { parse } from "cookie";
-//"https://ck-onboarding.onrender.com";
+//"http://localhost:4030";
 
-const api = "http://localhost:4030";
+const api = "https://ck-onboarding.onrender.com";
 
-const getCookie = () => {};
+function getCookie(cookieName) {
+  const name = cookieName + "=";
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const cookieArray = decodedCookie.split(';');
+
+  for (let i = 0; i < cookieArray.length; i++) {
+    let cookie = cookieArray[i];
+    while (cookie.charAt(0) === ' ') {
+      cookie = cookie.substring(1);
+    }
+    if (cookie.indexOf(name) === 0) {
+      return cookie.substring(name.length, cookie.length);
+    }
+  }
+  return null; // Return null if the cookie is not found
+}
+
+
+const setConfig = () => {
+  const authToken = getCookie("token")
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+      ContentType: "application/x-www-form-urlencoded",
+    },
+    withCredentials: true
+  };
+
+  return config;
+};
 
 export const studentLogin = async (email, password, router) => {
   await axios
@@ -205,7 +235,7 @@ export const uploadCollection = async (
         cover,
         ageRange,
       },
-      { withCredentials: true }
+      setConfig()
     )
     .then((response) => {
       console.log(response);
@@ -219,7 +249,7 @@ export const uploadCollection = async (
 
 export const fetchCollection = async (setCollectionItems) => {
   await axios
-    .get(`${api}/collections`, { withCredentials: true })
+    .get(`${api}/collections`, setConfig())
     .then((response) => {
       console.log(response.data.payload);
       setCollectionItems(response.data.payload);
@@ -250,7 +280,7 @@ export const addToCollection = async (
   console.log(data);
 
   await axios
-    .post(`${api}/video`, data, { withCredentials: true })
+    .post(`${api}/video`, data, setConfig())
     .then((response) => {
       console.log(response);
       notify(response.data.message);
@@ -267,7 +297,7 @@ export const getAllVideos = async () => {
     .get(`${api}/videos`)
     .then((response) => {
       data = response.data.payload;
-    })
+    }, setConfig())
     .catch((err) => {
       notifyError(err.response.data.message);
       console.log(err);
@@ -282,7 +312,7 @@ export const onBoardTeacher = async (firstName, lastName, email) => {
     .post(
       `${api}/teacher/sign-up`,
       { firstName, lastName, email },
-      { withCredentials: true }
+      setConfig()
     )
     .then((response) => {
       console.log(response);
@@ -295,12 +325,14 @@ export const onBoardTeacher = async (firstName, lastName, email) => {
 };
 
 export const uploadData = async (formData) => {
+  const authToken = getCookie("token")
   await axios
     .post(
       `${api}/upload-student`,
        formData ,
       {
         headers: {
+          Authorization: `Bearer ${authToken}`,
           "Content-Type": "multipart/form-data",
         },
         withCredentials: true
@@ -336,7 +368,7 @@ export const editVideo = async (
   console.log(data);
 
   await axios
-    .post(`${api}/video/update/${videoId}`, data, { withCredentials: true })
+    .patch(`${api}/video/update/${videoId}`, data, setConfig())
     .then((response) => {
       console.log(response);
       notify(response.data.message);
@@ -349,7 +381,7 @@ export const editVideo = async (
 
 export const deleteVideo = async (videoId) => {  
   await axios
-    .delete(`${api}/video/delete/${videoId}`, { withCredentials: true })
+    .delete(`${api}/video/delete/${videoId}`, setConfig())
     .then((response) => {
       console.log(response);
       notify(response.data.message);
@@ -362,7 +394,7 @@ export const deleteVideo = async (videoId) => {
 
 export const getStudents = async ()=>{
   let students;
-  await axios.get(`${api}/students/all`, {withCredentials: true})
+  await axios.get(`${api}/students/all`,  setConfig())
   .then((response) => {
     console.log(response);
     notify(response.data.message);
@@ -378,7 +410,7 @@ export const getStudents = async ()=>{
 
 export const getVideoById = async (id)=>{
   let video;
-  await axios.get(`${api}/video/${id}`, {withCredentials: true})
+  await axios.get(`${api}/video/${id}`,  setConfig())
   .then(response => {
     console.log(response.data);
     video = response.data.payload;
@@ -393,7 +425,7 @@ export const getVideoById = async (id)=>{
 }
 
 export const bulkUploadOfVideos =async (videos, ageRange, category)=>{
-  await axios.post(`${api}/videos/bulk-upload`, {videos, ageRange, category}, {withCredentials: true})
+  await axios.post(`${api}/videos/bulk-upload`, {videos, ageRange, category},  setConfig())
   .then(response => {
     console.log(response.data);
     notify(response.data.message);
@@ -408,7 +440,7 @@ export const bulkUploadOfVideos =async (videos, ageRange, category)=>{
 }
 
 export const watchVideoRequest = async (id)=>{
-  await axios.patch(`${api}/video/watch/${id}`, {}, {withCredentials: true})
+  await axios.patch(`${api}/video/watch/${id}`, {},setConfig())
   .then(response => {
     console.log(response.data);
   })
@@ -421,7 +453,7 @@ export const watchVideoRequest = async (id)=>{
 }
 
 export const viewVideoRequest = async (id)=>{
-  await axios.patch(`${api}/video/view/${id}`, {}, {withCredentials: true})
+  await axios.patch(`${api}/video/view/${id}`, {},  setConfig())
   .then(response => {
     console.log(response.data);
   })
