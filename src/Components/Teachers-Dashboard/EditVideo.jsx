@@ -201,6 +201,7 @@ const EditVideo = ({ close, video, fetchData }) => {
           <select
             className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
             name="courseCategory"
+            value={editCourse["courseCategory"]}
             onChange={handleChange}
           >
             <option>None</option>
@@ -214,6 +215,7 @@ const EditVideo = ({ close, video, fetchData }) => {
           <select
             className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
             name="courseAge"
+            value={editCourse["courseAge"]}
             onChange={handleChange}
           >
             <option>None</option>

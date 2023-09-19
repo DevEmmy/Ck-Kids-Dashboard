@@ -1,9 +1,9 @@
 import axios from "axios";
 import { notify, notifyError } from "./toastify";
 import { parse } from "cookie";
-//"https://ck-onboarding.onrender.com";
+// "https://ck-onboarding.onrender.com";
 
-const api = "http://localhost:4030";
+const api = "https://ck-onboarding.onrender.com";
 
 const getCookie = () => {};
 
@@ -336,13 +336,13 @@ export const editVideo = async (
   console.log(data);
 
   await axios
-    .post(`${api}/video/update/${videoId}`, data, { withCredentials: true })
+    .patch(`${api}/video/update/${videoId}`, data, { withCredentials: true })
     .then((response) => {
       console.log(response);
       notify(response.data.message);
     })
     .catch((err) => {
-      // notifyError(err.response.data.message);
+      notifyError(err.response.data.message);
       console.log(err);
     });
 };

@@ -7,12 +7,12 @@ import Recommended from "@/AtomicComponents/Recommended";
 import YouTube from "react-youtube";
 import { useState, useEffect } from "react";
 import { SpinnerCircular } from "spinners-react";
-import { viewVideoRequest } from "@/services/request";
+import { viewVideoRequest, watchVideoRequest } from "@/services/request";
 
 const CourseVideo = ({ student, course, loading }) => {
+  const [size, setSize] = useState(window.innerWidth);
   var getYouTubeID = require("get-youtube-id");
-  const [url, setURL] = useState("");
-  
+  const [url, setURL] = useState("");  
 
   useEffect(() => {
     if (!loading) {
@@ -20,29 +20,41 @@ const CourseVideo = ({ student, course, loading }) => {
     }
   }, [loading]);
 
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setSize(window.innerWidth);
+    });
+    window.removeEventListener("resize", () => {
+      setSize(window.innerWidth);
+    });
+  },[size]);
+
   // const viewVideo= async () =>{
   //   await viewVideoRequest(course._id)
   // }
 
-  useEffect(()=>{
-    if(course._id){
-      viewVideoRequest(course._id)
+  useEffect(() => {
+    if (course._id) {
+      viewVideoRequest(course._id);
     }
-    
-  }, [course])
+  }, [course]);
 
   const opts = {
-    height: "500",
-    width: "750",
+    height: "550",
+    width: `${(size * 60) / 100}`,
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
-      autoplay: 0,
+      autoplay: 1,
     },
   };
 
   const _onReady = (event) => {
     // access to player in all event handlers via event.target
     event.target.pauseVideo();
+  };
+
+  const onPlay = () => {
+    watchVideoRequest(course._id);
   };
 
   const Topic = [
@@ -127,7 +139,13 @@ const CourseVideo = ({ student, course, loading }) => {
           <div className="w-full flexbs pt-[2em] px-[5%] gap-[1em] flex-wrap">
             <div className="w-[68%] sm:w-full cflexss gap-[2em] font-[400] text-[0.9rem]">
               <div className="w-full h-auto flexss cursor-pointer">
-                <YouTube videoId={url} opts={opts} onReady={_onReady} />
+                <YouTube
+                  videoId={url}
+                  opts={opts}
+                  onReady={_onReady}
+                  onPlay={onPlay}
+                  className={"w-full rounded-[12px]"}
+                />
               </div>
             </div>
             <div className="w-[28%] sm:w-full cflexss gap-[16px] border-[0.2em] rounded-[8px] h-[670px] lg:h-[600px] ls:h-[550px] p-[20px] overflow-y-auto">
@@ -181,9 +199,7 @@ const CourseVideo = ({ student, course, loading }) => {
                 <>
                   <h1>ABOUT THIS COURSE</h1>
 
-                  <p className="text-[1.2em] font-[600]">
-                    {course.name}
-                  </p>
+                  <p className="text-[1.2em] font-[600]">{course.name}</p>
                   <p className="text-[1em] text-gray-500">
                     {course.description}
                   </p>
