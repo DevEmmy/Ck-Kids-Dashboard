@@ -23,7 +23,7 @@ import Overview from "./Overview";
 import Teachers from "./Teachers";
 import Courses from "../Teachers-Dashboard/Courses";
 
-const Dashboard = ({school}) => {
+const Dashboard = ({school}) => {  
   const [view, setView] = useState("Overview");
   const Nav = [
     {

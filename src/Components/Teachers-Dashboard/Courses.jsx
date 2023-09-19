@@ -21,6 +21,8 @@ import { FaPlus } from "react-icons/fa";
 import EachCourse from "./EachCourse";
 import { getAllVideos } from "@/services/request";
 import { SpinnerCircular } from "spinners-react";
+import { fetchFromLS } from "@/services/request";
+import BulkUpload from "./BulkUpload";
 
 const Courses = () => {
   const [drop, setDrop] = useState(false);
@@ -28,19 +30,29 @@ const Courses = () => {
   const [type, setType] = useState(false);
   const [add, setAdd] = useState(false);
   const [edit, setEdit] = useState(false);
-  const [modal, setModal] = useState(false);
+  const [school, setSchool] = useState();
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
     setLoading(true);
     let data = await getAllVideos();
-    console.log(data)
+    console.log(data);
     setVideos(data);
     setLoading(false);
   };
   useEffect(() => {
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    let data = fetchFromLS("school");
+    setSchool(data);
+    console.log(data);
+
+    if (!data) {
+      setSchool("");
+    }
   }, []);
 
   const [opened, { open, close }] = useDisclosure(false);
@@ -110,17 +122,22 @@ const Courses = () => {
     {
       type: "Single Video",
       icon: <VideoCameraOutline size="16px" />,
-      element: <AddNewVideo close={close} fetchData={fetchData}/>,
+      element: <AddNewVideo close={close} fetchData={fetchData} />,
     },
     {
       type: "Create new collection",
       icon: <VideoCameraOutline size="16px" />,
-      element: <CreateNewCollection close={close} fetchData={fetchData}/>,
+      element: <CreateNewCollection close={close} fetchData={fetchData} />,
     },
     {
       type: "Add to collection",
       icon: <PlusCircle size="16px" />,
-      element: <AddToCollection close={close} fetchData={fetchData}/>,
+      element: <AddToCollection close={close} fetchData={fetchData} />,
+    },
+    {
+      type: "Bulk Video Upload",
+      icon: <VideoCameraOutline size="16px" />,
+      element: <BulkUpload close={close} fetchData={fetchData} />,
     },
   ];
 
@@ -275,7 +292,7 @@ const Courses = () => {
                       close={close}
                       fetchData={fetchData}
                       key={i}
-                    />                    
+                    />
                   );
                 })}
               </>
