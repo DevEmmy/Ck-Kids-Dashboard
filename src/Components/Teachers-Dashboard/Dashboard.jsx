@@ -135,10 +135,10 @@ const Dashboard = ({teacher}) => {
                 }}
               >
                 <img
-                  src={teacher?.profilePicture}
+                  src={teacher.profilePicture}
                   className="w-[32px] h-[32px] object-cover rounded-md"
                 />
-                <p>{teacher?.firstName + " " + teacher?.lastName}</p>
+                <p>{teacher.firstName + " " + teacher.lastName}</p>
                 <FiChevronDown />
                 {profMenu && (
                   <>

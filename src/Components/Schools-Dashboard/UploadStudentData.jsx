@@ -12,6 +12,7 @@ const UploadStudentData = ({ close }) => {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (e) => {
+    console.log(e.target.files[0])
     setSelectedFile(e.target.files[0]);
     console.log(e.target.files[0])
   };
@@ -39,6 +40,7 @@ const UploadStudentData = ({ close }) => {
     e.preventDefault();
 
     const formData = new FormData();
+
     formData.append('file', selectedFile);
     // if (file) {
     setLoading(true);
