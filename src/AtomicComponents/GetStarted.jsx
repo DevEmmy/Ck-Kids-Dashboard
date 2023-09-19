@@ -53,9 +53,9 @@ const GetStarted = ({ courses, loading }) => {
             <>
               {courses.map((video, i) => {
                 return (
-                  <>
+                  <div key={i} className="w-1/3">
                     <CourseCard key={i} {...video} />
-                  </>
+                  </div>
                 );
               })}
             </>
