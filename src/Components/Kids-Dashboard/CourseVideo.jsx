@@ -35,7 +35,7 @@ const CourseVideo = ({ student, course, loading }) => {
 
   useEffect(() => {
     if (course._id) {
-      viewVideoRequest(course._id);
+      viewVideoRequest(student._id);
     }
   }, [course]);
 
@@ -54,7 +54,7 @@ const CourseVideo = ({ student, course, loading }) => {
   };
 
   const onPlay = () => {
-    watchVideoRequest(course._id);
+    watchVideoRequest(student._id);
   };
 
   const Topic = [
@@ -148,7 +148,7 @@ const CourseVideo = ({ student, course, loading }) => {
                 />
               </div>
             </div>
-            <div className="w-[28%] sm:w-full cflexss gap-[16px] border-[0.2em] rounded-[8px] h-[670px] lg:h-[600px] ls:h-[550px] p-[20px] overflow-y-auto">
+            <div className="w-[28%] sm:w-full cflexss gap-[16px] border-[1px] rounded-[8px] h-[670px] lg:h-[600px] ls:h-[550px] p-[20px] overflow-y-auto">
               {Topic.map((topic, i) => {
                 return <SubTopic {...topic} key={i} />;
               })}
