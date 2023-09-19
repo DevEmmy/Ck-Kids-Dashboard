@@ -13,6 +13,7 @@ export default function Home() {
   useEffect(() => {
     let data = fetchFromLS("student")
     setStudent(data);
+    
 
     if(!data){
       router.push("/signin")
