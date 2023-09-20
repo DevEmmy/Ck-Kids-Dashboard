@@ -349,9 +349,10 @@ export const uploadData = async (formData) => {
 
 export const uploadVideoData = async (formData, isTeacher) => {
   const authToken = getCookie("token")
+  let url = isTeacher ?  `${api}/videos/bulk-upload-2?teacher=true` :  `${api}/videos/bulk-upload-2`
   await axios
     .post(
-      `${api}/videos/bulk-upload-2${isTeacher && "?teacher=true"}`,
+     url,
        formData ,
       {
         headers: {
