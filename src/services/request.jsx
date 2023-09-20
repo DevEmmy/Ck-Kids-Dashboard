@@ -347,7 +347,7 @@ export const uploadData = async (formData) => {
     });
 };
 
-export const uploadVideoData = async (formData) => {
+export const uploadVideoData = async (formData, isTeacher) => {
   const authToken = getCookie("token")
   await axios
     .post(
