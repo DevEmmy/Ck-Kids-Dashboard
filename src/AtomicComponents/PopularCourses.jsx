@@ -37,7 +37,7 @@ const PopularCourses = ({ courses, loading }) => {
         <h1 className="font-[700] text-[#012B1D] text-[24px] lg:text-[18px] ls:text-[16px]">
           Most Popular courses
         </h1>
-        <div className="w-full flexss gap-[20px] py-[10px] overflow-x-auto sm:flex-wrap">
+        <div className="w-full flexss gap-[20px] py-[10px] overflow-x-scroll sm:flex-wrap">
           {loading ? (
             <>
               <div className="w-full flexmm">

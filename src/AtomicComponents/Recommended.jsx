@@ -46,7 +46,7 @@ const Recommended = ({ courses, loading }) => {
         <h1 className="font-[700] text-[#012B1D] text-[24px] lg:text-[18px] ls:text-[16px]">
           Recommended Courses
         </h1>
-        <div className="w-full flexss gap-[20px] overflow-x-auto py-[10px] sm:flex-wrap">
+        <div className="w-full flexss gap-[20px] py-[10px] sm:flex-wrap overflow-x-scroll">
           {loading ? (
             <>
               <div className="w-full flexmm">
