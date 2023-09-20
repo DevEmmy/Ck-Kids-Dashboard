@@ -35,7 +35,7 @@ const CourseVideo = ({ student, course, loading }) => {
 
   useEffect(() => {
     if (course._id) {
-      viewVideoRequest(student._id);
+      viewVideoRequest(course._id);
     }
   }, [course]);
 
@@ -54,7 +54,7 @@ const CourseVideo = ({ student, course, loading }) => {
   };
 
   const onPlay = () => {
-    watchVideoRequest(student._id);
+    watchVideoRequest(course._id);
   };
 
   const Topic = [

@@ -21,16 +21,17 @@ import { FaPlus } from "react-icons/fa";
 import EachCourse from "./EachCourse";
 import { getAllVideos } from "@/services/request";
 import { SpinnerCircular } from "spinners-react";
-import { fetchFromLS } from "@/services/request";
+import { getFilteredCourses } from "@/services/request";
 import BulkUpload from "./BulkUpload";
 
 const Courses = () => {
   const [drop, setDrop] = useState(false);
   const [cat, setCat] = useState(false);
+  const [ageRange, setAgeRange] = useState(null);
+  const [category, setCategory] = useState(null);
   const [type, setType] = useState(false);
   const [add, setAdd] = useState(false);
   const [edit, setEdit] = useState(false);
-  const [school, setSchool] = useState();
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -45,15 +46,12 @@ const Courses = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    let data = fetchFromLS("school");
-    setSchool(data);
-    console.log(data);
-
-    if (!data) {
-      setSchool("");
-    }
-  }, []);
+  const filterBy = async (ageRange, category) => {
+    setLoading(true);
+    let data = await getFilteredCourses(ageRange, category);
+    setVideos(data)
+    setLoading(false)
+  };
 
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
@@ -220,6 +218,10 @@ const Courses = () => {
                       <div
                         key={i}
                         className="flexbm w-full px-[16px] py-[12px] rounded-xl hover:bg-primary2 hover:text-white cursor-pointer transition-all duration-400"
+                        onClick={() => {
+                          setCategory(item.category);
+                          filterBy(ageRange, item.category);
+                        }}
                       >
                         <p>{item.category}</p>
                         <ChevronRight />
@@ -250,6 +252,10 @@ const Courses = () => {
                         <div
                           key={i}
                           className="flexbm w-full px-[16px] py-[12px] rounded-xl hover:bg-primary2 hover:text-white transition-all cursor-pointer duration-400"
+                          onClick={() => {
+                            setAgeRange(items.age);
+                            filterBy(items.age, category);
+                          }}
                         >
                           <p>{items.age}</p>
                           <ChevronRight />

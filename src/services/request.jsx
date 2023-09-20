@@ -459,3 +459,19 @@ export const viewVideoRequest = async (id)=>{
     console.log(err);
   });
 }
+
+export const getFilteredCourses = async (
+  ageRange,
+  category
+) => {  
+  await axios
+    .post(`${api}/videos/query`, {ageRange, category}, setConfig())
+    .then((response) => {
+      console.log(response);
+      notify(response.data.message);
+    })
+    .catch((err) => {
+      notifyError(err.response.data.message);
+      console.log(err);
+    });
+};

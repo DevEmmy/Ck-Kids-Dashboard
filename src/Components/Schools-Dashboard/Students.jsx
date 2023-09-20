@@ -31,14 +31,14 @@ const Students = () => {
   const [trash, setTrash] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const PAGINATION = 20;
+  const [pageCount, setPageCount] = useState(0)
   const [students, setStudents] = useState();
   const [loading, setLoading] = useState(true);
-
-  var pageCount = 0;
+  
   const fetchStudents = async () => {
     let data = await getStudents();    
     setStudents(data);
-    pageCount = Paginated(data, PAGINATION);
+    setPageCount(Paginated(data, PAGINATION));
     setLoading(false);
   };
 

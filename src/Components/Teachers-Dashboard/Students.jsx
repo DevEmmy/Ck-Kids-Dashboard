@@ -18,19 +18,20 @@ const Students = () => {
   const [trash, setTrash] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const PAGINATION = 20;
+  const [pageCount, setPageCount] = useState(0);
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
-  var pageCount = 0;
+
   const fetchStudents = async () => {
     let data = await getStudents();
     console.log(data);
     setStudents(data);
-    pageCount = Paginated(data, PAGINATION);
+    setPageCount(Paginated(data, PAGINATION));
     setLoading(false);
   };
 
   useEffect(() => {
-    fetchStudents();            
+    fetchStudents();
   }, []);
 
   const handlePageClick = (data) => {
@@ -173,7 +174,7 @@ const Students = () => {
               "w-full text-[14px] lg:text-[12px] px-[20px] pt-[20px] border-t-[1px] flexbm"
             }
             activeClassName={"active"}
-          />          
+          />
         </div>
       </div>
     </>
