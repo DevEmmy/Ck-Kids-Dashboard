@@ -16,11 +16,12 @@ import { useDisclosure } from "@mantine/hooks";
 import { Modal, useMantineTheme } from "@mantine/core";
 import { HiUpload } from "react-icons/hi";
 import { FaUpload } from "react-icons/fa";
-import UploadStudentData from "./UploadStudentData";
+
 import { getStudents } from "@/services/request";
 import { SpinnerCircular } from "spinners-react";
 import ReactPaginate from "react-paginate";
 import { Paginated, GetPaginatedData } from "@/AtomicComponents/Pagination";
+import UploadStudentData from "../Schools-Dashboard/UploadStudentData";
 
 const Students = () => {
   const [modalElement, setModalElement] = useState();
