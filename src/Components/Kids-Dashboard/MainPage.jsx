@@ -1,4 +1,5 @@
 import GemView from "@/AtomicComponents/GemView";
+import LoadScreen from "@/AtomicComponents/LoadScreen";
 import MainContentOnOverview from "@/AtomicComponents/MainContentOnOverview";
 import Nav from "@/AtomicComponents/Nav";
 import { fetchFromLS, getMyDetails } from "@/services/request";
@@ -20,7 +21,7 @@ const MainPage = ({studentObject}) => {
 
   return (
     <>
-      {studentObject && (
+      {studentObject ? (
         <div>
           <Nav student={studentObject} />
           <div className="flexbs lf:flex-wrap font-sans px-xPadding mt-[120px] lf:mt-[90px]">
@@ -33,7 +34,10 @@ const MainPage = ({studentObject}) => {
             </div>
           </div>
         </div>
-      )}
+      )
+        :
+        <LoadScreen />
+    }
     </>
   );
 };

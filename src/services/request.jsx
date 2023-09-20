@@ -266,7 +266,8 @@ export const addToCollection = async (
   category,
   ageRange,
   description,
-  collection
+  collection,
+  isTeacher
 ) => {
   let data = {
     name: courseName,
@@ -280,7 +281,7 @@ export const addToCollection = async (
   console.log(data);
 
   await axios
-    .post(`${api}/video`, data, setConfig())
+    .post(`${api}/video${isTeacher && "?teacher=true"}`, data, setConfig())
     .then((response) => {
       console.log(response);
       notify(response.data.message);
@@ -329,6 +330,30 @@ export const uploadData = async (formData) => {
   await axios
     .post(
       `${api}/upload-student`,
+       formData ,
+      {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true
+      }
+    )
+    .then((response) => {
+      console.log(response);
+      notify(response.data.message);
+    })
+    .catch((err) => {
+      // notifyError(err.response.data.message);
+      console.log(err);
+    });
+};
+
+export const uploadVideoData = async (formData) => {
+  const authToken = getCookie("token")
+  await axios
+    .post(
+      `${api}/videos/bulk-upload-2${isTeacher && "?teacher=true"}`,
        formData ,
       {
         headers: {
