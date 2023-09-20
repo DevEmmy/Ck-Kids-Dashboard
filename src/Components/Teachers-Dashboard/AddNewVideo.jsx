@@ -3,7 +3,7 @@ import { addToCollection } from "@/services/request";
 import { useState, useEffect } from "react";
 import FileBase64 from "react-file-base64";
 
-const AddNewVideo = ({ close, fetchData }) => {
+const AddNewVideo = ({ close, fetchData, isTeacher=false }) => {
   const [newVideoData, setNewVideoData] = useState({
     courseName: "",
     courseDetails: "",
@@ -90,7 +90,8 @@ const AddNewVideo = ({ close, fetchData }) => {
       newVideoData["category"],
       newVideoData["ages"],     
       newVideoData["courseDetails"],
-      null
+      null,
+      isTeacher
     );
     setLoading(false);
     close();

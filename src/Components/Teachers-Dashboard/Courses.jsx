@@ -23,6 +23,7 @@ import { getAllVideos } from "@/services/request";
 import { SpinnerCircular } from "spinners-react";
 import { getFilteredCourses } from "@/services/request";
 import BulkUpload from "./BulkUpload";
+import BulkVideoUpload from "../Schools-Dashboard/BulkVideoUpload";
 
 const Courses = () => {
   const [drop, setDrop] = useState(false);
@@ -120,22 +121,22 @@ const Courses = () => {
     {
       type: "Single Video",
       icon: <VideoCameraOutline size="16px" />,
-      element: <AddNewVideo close={close} fetchData={fetchData} />,
+      element: <AddNewVideo close={close} fetchData={fetchData} isTeacher={true}/>,
     },
     {
       type: "Create new collection",
       icon: <VideoCameraOutline size="16px" />,
-      element: <CreateNewCollection close={close} fetchData={fetchData} />,
+      element: <CreateNewCollection close={close} fetchData={fetchData} isTeacher={true}/>,
     },
     {
       type: "Add to collection",
       icon: <PlusCircle size="16px" />,
-      element: <AddToCollection close={close} fetchData={fetchData} />,
+      element: <AddToCollection close={close} fetchData={fetchData} isTeacher={true}/>,
     },
     {
       type: "Bulk Video Upload",
       icon: <VideoCameraOutline size="16px" />,
-      element: <BulkUpload close={close} fetchData={fetchData} />,
+      element: <BulkVideoUpload close={close} fetchData={fetchData} isTeacher={true}/>,
     },
   ];
 

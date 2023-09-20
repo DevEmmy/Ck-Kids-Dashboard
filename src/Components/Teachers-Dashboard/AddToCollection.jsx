@@ -95,7 +95,8 @@ const AddToCollection = ({ close, fetchData }) => {
         null,
         null,
         collections.courseDetails,
-        collections.collection
+        collections.collection,
+        isTeacher
       );
       setLoading(false);
       close();
