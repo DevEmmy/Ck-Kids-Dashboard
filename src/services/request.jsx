@@ -340,11 +340,9 @@ export const uploadData = async (formData) => {
       }
     )
     .then((response) => {
-      console.log(response);
-      notify(response.data.message);
+      console.log(response);      
     })
-    .catch((err) => {
-      // notifyError(err.response.data.message);
+    .catch((err) => {      
       console.log(err);
     });
 };
@@ -399,7 +397,7 @@ export const editVideo = async (
       notify(response.data.message);
     })
     .catch((err) => {
-      // notifyError(err.response.data.message);
+      notifyError(err.response.data.message);
       console.log(err);
     });
 };
@@ -421,12 +419,10 @@ export const getStudents = async ()=>{
   let students;
   await axios.get(`${api}/students/all`,  setConfig())
   .then((response) => {
-    console.log(response);
-    notify(response.data.message);
+    console.log(response);    
     students = response.data.payload;
   })
-  .catch((err) => {
-    // notifyError(err.response.data.message);
+  .catch((err) => {    
     console.log(err);
   });
 

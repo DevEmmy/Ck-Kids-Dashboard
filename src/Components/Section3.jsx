@@ -88,14 +88,15 @@ const Section3 = () => {
         <div className="grid grid-cols-4 md1:flex md1:flex-wrap w-full gap-[20px] overflow-x-auto">
           {loading ? (
             <>
-              {" "}
-              <SpinnerCircular
-                color="#00AC76"
-                className="mr-4"
-                secondaryColor={"#eeeeee"}
-                size={50}
-                thickness={150}
-              />{" "}
+              <div className="w-full flexmm">
+                <SpinnerCircular
+                  color="#00AC76"
+                  className="mr-4"
+                  secondaryColor={"#eeeeee"}
+                  size={50}
+                  thickness={150}
+                />
+              </div>
             </>
           ) : (
             <>

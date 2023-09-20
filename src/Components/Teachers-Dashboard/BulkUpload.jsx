@@ -1,7 +1,6 @@
 import Loader from "@/AtomicComponents/Loader";
 import { addToCollection, bulkUploadOfVideos } from "@/services/request";
 import { useState, useEffect } from "react";
-import FileBase64 from "react-file-base64";
 
 const BulkUpload = ({ close, fetchData }) => {
   const [bulkVideoData, setBulkVideoData] = useState({
@@ -11,21 +10,17 @@ const BulkUpload = ({ close, fetchData }) => {
     status: "",
   });
   const [changing, setChanging] = useState(false);
-  const [valid, setValid] = useState(false);
-  const [urlError, setUrlError] = useState(false);
-  const urlRegex = /^(https?|http|ftp):\/\/[^\s/$.?#].[^\s]*$/;
+  const [valid, setValid] = useState(false); 
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (
-      !urlError &&
+    if (      
       bulkVideoData["courseLink"].trim().length > 0 &&
       bulkVideoData["category"].trim().length > 0 &&
-      bulkVideoData["ages"].trim().length > 0 &&
+      bulkVideoData["ages"] &&
       bulkVideoData["status"]
     ) {
-      setValid(true);
-      setUrlError(false);
+      setValid(true);      
     }
 
     // if (
@@ -139,10 +134,7 @@ const BulkUpload = ({ close, fetchData }) => {
             value={bulkVideoData["courseLink"]}
             onChange={handleChange}
             className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px]"
-          />
-          {urlError && (
-            <p className="flexmm text-[12px] text-red-700">* invalid URL!</p>
-          )}
+          />          
         </div>
         <div className="w-full cflexss gap-[12px]">
           <p>Category</p>

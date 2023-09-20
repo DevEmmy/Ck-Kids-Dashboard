@@ -1,8 +1,5 @@
 import {
   SearchOutline,
-  ArrowLeft,
-  ArrowRight,
-  ChevronRight,
   EyeOutline,
   PencilAltOutline,
   TrashOutline,
@@ -12,6 +9,8 @@ import { useEffect, useState } from "react";
 import StudentProfile from "./StudentProfile";
 import ReactPaginate from "react-paginate";
 import { Paginated, GetPaginatedData } from "@/AtomicComponents/Pagination";
+import { getStudents } from "@/services/request";
+import { SpinnerCircular } from "spinners-react";
 
 const Students = () => {
   const [profile, setProfile] = useState(false);
@@ -19,116 +18,27 @@ const Students = () => {
   const [trash, setTrash] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const PAGINATION = 20;
+  const [students, setStudents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  var pageCount = 0;
+  const fetchStudents = async () => {
+    let data = await getStudents();
+    console.log(data);
+    setStudents(data);
+    pageCount = Paginated(data, PAGINATION);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchStudents();            
+  }, []);
 
   const handlePageClick = (data) => {
     const selectedPage = data.selected;
     setCurrentPage(selectedPage);
-    console.log(selectedPage)
-    console.log("clicked!")
+    console.log(selectedPage);
     // Fetch and display data for the selected page
   };
-  const StudentData = [
-    {
-      checked: true,
-      avatar: "teacherAvatar",
-      name: "Emeka Eze",
-      email: "emekaeze@gmail.com",
-      username: "emekaeze",
-      dateJoined: "20/10/2023",
-      class: "JSS 1D",
-    },
-    {
-      checked: false,
-      avatar: "teacherAvatar",
-      name: "Emeka Eze",
-      email: "emekaeze@gmail.com",
-      username: "emekaeze",
-      dateJoined: "20/10/2023",
-      class: "JSS 1D",
-    },
-    {
-      checked: false,
-      avatar: "teacherAvatar",
-      name: "Emeka Eze",
-      email: "emekaeze@gmail.com",
-      username: "emekaeze",
-      dateJoined: "20/10/2023",
-      class: "JSS 1D",
-    },
-    {
-      checked: false,
-      avatar: "teacherAvatar",
-      name: "Emeka Eze",
-      email: "emekaeze@gmail.com",
-      username: "emekaeze",
-      dateJoined: "20/10/2023",
-      class: "JSS 1D",
-    },
-    {
-      checked: false,
-      avatar: "teacherAvatar",
-      name: "Emeka Eze",
-      email: "emekaeze@gmail.com",
-      username: "emekaeze",
-      dateJoined: "20/10/2023",
-      class: "JSS 1D",
-    },
-    {
-      checked: true,
-      avatar: "teacherAvatar",
-      name: "Emeka Eze",
-      email: "emekaeze@gmail.com",
-      username: "emekaeze",
-      dateJoined: "20/10/2023",
-      class: "JSS 1D",
-    },
-    {
-      checked: false,
-      avatar: "teacherAvatar",
-      name: "Emeka Eze",
-      email: "emekaeze@gmail.com",
-      username: "emekaeze",
-      dateJoined: "20/10/2023",
-      class: "JSS 1D",
-    },
-    {
-      checked: false,
-      avatar: "teacherAvatar",
-      name: "Emeka Eze",
-      email: "emekaeze@gmail.com",
-      username: "emekaeze",
-      dateJoined: "20/10/2023",
-      class: "JSS 1D",
-    },
-    {
-      checked: false,
-      avatar: "teacherAvatar",
-      name: "Emeka Eze",
-      email: "emekaeze@gmail.com",
-      username: "emekaeze",
-      dateJoined: "20/10/2023",
-      class: "JSS 1D",
-    },
-    {
-      checked: false,
-      avatar: "teacherAvatar",
-      name: "Emeka Eze",
-      email: "emekaeze@gmail.com",
-      username: "emekaeze",
-      dateJoined: "20/10/2023",
-      class: "JSS 1D",
-    },
-    {
-      checked: false,
-      avatar: "teacherAvatar",
-      name: "Emeka Eze",
-      email: "emekaeze@gmail.com",
-      username: "emekaeze",
-      dateJoined: "20/10/2023",
-      class: "JSS 1D",
-    },
-  ];
-  const pageCount = Paginated(StudentData, PAGINATION);
 
   return (
     <>
@@ -182,46 +92,72 @@ const Students = () => {
             <div className="w-[14%] flexsm">Class</div>
             <div className="w-[14%] flexsm">Actions</div>
           </div>
-          {GetPaginatedData(currentPage, PAGINATION, StudentData).map(
-            (data, index) => {
-              return (
-                <>
-                  <div
-                    key={index}
-                    className={`w-full flexsm py-[10px] px-[20px] cursor-pointer ${
-                      (index + 1) % 2 === 0 ? "bg-[#F7F7F7]" : "bg-white"
-                    }`}
-                    onClick={() => {
-                      setProfile(true);
-                      setData(data);
-                    }}
-                  >
-                    <div className="w-[9%] flexsm gap-[15px]">
-                      <input type="checkbox" checked={data.checked} />
-                      <div className="flexmm w-[24px]">
-                        <img src={`/${data.avatar}.svg`} alt="avatar" />
-                      </div>
-                    </div>
-                    <div className="w-[14%] flexsm">{data.name}</div>
-                    <div className="w-[25%] flexsm">{data.email}</div>
-                    <div className="w-[18%] flexsm">@{data.username}</div>
-                    <div className="w-[14%] flexsm">{data.dateJoined}</div>
-                    <div className="w-[14%] flexsm">{data.class}</div>
-                    <div className="w-[14%] flexsm gap-[20px]">
-                      <EyeOutline size="16px" />
-                      <PencilAltOutline size="16px" />
-                      <TrashOutline
-                        size="16px"
+          {loading ? (
+            <>
+              <div className="w-full flexmm py-[10px]">
+                <SpinnerCircular
+                  color="#00AC76"
+                  className="mr-4"
+                  secondaryColor={"#eeeeee"}
+                  size={50}
+                  thickness={150}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              {GetPaginatedData(currentPage, PAGINATION, students).map(
+                (data, index) => {
+                  const inputDate = new Date(data.createdAt);
+
+                  // Extract the individual date components
+                  const year = inputDate.getFullYear() % 100; // Get the last two digits of the year
+                  const month = inputDate.getMonth() + 1; // Months are 0-based, so add 1
+                  const day = inputDate.getDate();
+
+                  // Create the formatted date string
+                  const formattedDate = `${day}/${
+                    month < 10 ? "0" : ""
+                  }${month}/${year}`;
+
+                  return (
+                    <>
+                      <div
+                        key={index}
+                        className={`w-full flexsm py-[10px] px-[20px] cursor-pointer ${
+                          (index + 1) % 2 === 0 ? "bg-[#F7F7F7]" : "bg-white"
+                        }`}
                         onClick={() => {
-                          setTrash(true);
+                          setProfile(true);
                           setData(data);
                         }}
-                      />
-                    </div>
-                  </div>
-                </>
-              );
-            }
+                      >
+                        <div className="w-[9%] flexsm gap-[15px]">
+                          <input type="checkbox" checked={data.checked} />
+                          <div className="flexmm w-[24px]">
+                            <img src={data.profilePicture} alt="avatar" />
+                          </div>
+                        </div>
+                        <div className="w-[30%] flexsm">{data.fullName}</div>
+                        <div className="w-[25%] flexsm">{data.email}</div>
+                        <div className="w-[14%] flexsm">{formattedDate}</div>
+                        <div className="w-[14%] flexsm gap-[20px]">
+                          <EyeOutline size="16px" />
+                          <PencilAltOutline size="16px" />
+                          <TrashOutline
+                            size="16px"
+                            onClick={() => {
+                              setTrash(true);
+                              setData(data);
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </>
+                  );
+                }
+              )}
+            </>
           )}
           <br />
           <ReactPaginate
@@ -237,17 +173,7 @@ const Students = () => {
               "w-full text-[14px] lg:text-[12px] px-[20px] pt-[20px] border-t-[1px] flexbm"
             }
             activeClassName={"active"}
-          />
-          {/* <div className="w-full text-[14px] lg:text-[12px] px-[20px] pt-[20px] border-t-[1px] flexbm">
-            <div className="flexmm gap-[8px] cursor-pointer">
-              <ArrowLeft size="16px" />
-              <p>Previous</p>
-            </div>
-            <div className="flexmm gap-[8px] cursor-pointer">
-              <p>Next</p>
-              <ArrowRight size="16px" />
-            </div>
-          </div> */}
+          />          
         </div>
       </div>
     </>
