@@ -160,7 +160,11 @@ export const studentRegister = async (
       }
     })
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -180,7 +184,11 @@ export const schoolRegister = async (schoolName, email, password) => {
       }
     })
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -197,7 +205,11 @@ export const getMyDetails = async () => {
       notify(response.data.message);
     })
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 
@@ -242,7 +254,11 @@ export const uploadCollection = async (
       notify(response.data.message);
     })
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -255,6 +271,11 @@ export const fetchCollection = async (setCollectionItems) => {
       setCollectionItems(response.data.payload);
     })
     .catch((err) => {
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -287,7 +308,11 @@ export const addToCollection = async (
       notify(response.data.message);
     })
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -300,7 +325,11 @@ export const getAllVideos = async () => {
       data = response.data.payload;
     }, setConfig())
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
       data = [];
     });
@@ -320,7 +349,11 @@ export const onBoardTeacher = async (firstName, lastName, email) => {
       notify(response.data.message);
     })
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -343,6 +376,11 @@ export const uploadData = async (formData) => {
       console.log(response);      
     })
     .catch((err) => {      
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -367,7 +405,11 @@ export const uploadVideoData = async (formData, isTeacher) => {
       notify(response.data.message);
     })
     .catch((err) => {
-      // notifyError(err.response.data.message);
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -398,7 +440,11 @@ export const editVideo = async (
       notify(response.data.message);
     })
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -411,7 +457,11 @@ export const deleteVideo = async (videoId) => {
       notify(response.data.message);
     })
     .catch((err) => {
-      // notifyError(err.response.data.message);
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -424,6 +474,11 @@ export const getStudents = async ()=>{
     students = response.data.payload;
   })
   .catch((err) => {    
+    if (err.response) {
+      notifyError(err.response.data.message);
+    } else {
+      notifyError("Network Error");
+    }
     console.log(err);
   });
 
@@ -439,7 +494,11 @@ export const getVideoById = async (id)=>{
     // notify(response.data.message);
   })
   .catch((err) => {
-    // notifyError(err.response.data.message);
+    if (err.response) {
+      notifyError(err.response.data.message);
+    } else {
+      notifyError("Network Error");
+    }
     console.log(err);
   });
 
@@ -453,10 +512,11 @@ export const bulkUploadOfVideos =async (videos, ageRange, category)=>{
     notify(response.data.message);
   })
   .catch((err) => {
-    if(err.response){
+    if (err.response) {
       notifyError(err.response.data.message);
+    } else {
+      notifyError("Network Error");
     }
-    
     console.log(err);
   });
 }
@@ -467,8 +527,10 @@ export const watchVideoRequest = async (id)=>{
     console.log(response.data);
   })
   .catch((err) => {
-    if(err.response){
-      
+    if (err.response) {
+      notifyError(err.response.data.message);
+    } else {
+      notifyError("Network Error");
     }
     console.log(err);
   });
@@ -480,7 +542,10 @@ export const viewVideoRequest = async (id)=>{
     console.log(response.data);
   })
   .catch((err) => {
-    if(err.response){
+    if (err.response) {
+      notifyError(err.response.data.message);
+    } else {
+      notifyError("Network Error");
     }
     console.log(err);
   });
@@ -497,7 +562,11 @@ export const getFilteredCourses = async (
       notify(response.data.message);
     })
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
