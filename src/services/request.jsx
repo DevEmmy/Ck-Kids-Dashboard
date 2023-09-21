@@ -299,10 +299,11 @@ export const addToCollection = async (
     ageRange,
     description,
   };
-  console.log(data);
+  
+  let url = isTeacher ? `${api}/video` : `${api}/video?teacher=true"}`
 
   await axios
-    .post(`${api}/video${isTeacher && "?teacher=true"}`, data, setConfig())
+    .post(url, data, setConfig())
     .then((response) => {
       console.log(response);
       notify(response.data.message);

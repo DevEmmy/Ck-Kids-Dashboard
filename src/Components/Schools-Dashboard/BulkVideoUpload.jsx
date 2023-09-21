@@ -45,7 +45,7 @@ const BulkVideoUpload = ({ close, isTeacher = false }) => {
     // if (file) {
     setLoading(true);
     // console.log(file)
-    await uploadVideoData(formData);
+    await uploadVideoData(formData, isTeacher);
     close();
     // }
   };
