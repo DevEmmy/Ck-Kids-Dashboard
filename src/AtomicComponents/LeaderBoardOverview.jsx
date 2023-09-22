@@ -17,7 +17,7 @@ const LeaderBoardOverview = () => {
                 </p>
             </div>
 
-            <Link href="/" className='text-gray-500'>
+            <Link href="/" className='text-gray-500 text-[14px]'>
                 View Board
             </Link>
         </div>

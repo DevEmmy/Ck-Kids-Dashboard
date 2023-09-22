@@ -14,7 +14,7 @@ const CourseCard = ({
     <>
       <a
         href={`/kids-dashboard/courses/${_id}`}
-        className="min-w-[340px] lg:min-w-[300px] ls:min-w-[280px] lf:w-full"
+        className="min-w-[300px] h-[400px]"
       >
         <div className="w-full hover:border-primary2 border-[1px] border-white cflexss gap-[20px] p-2 rounded-[24px] cursor-pointer shadow-lg">
           <div className="w-full flexmm h-[218px] lg:h-[190px]">

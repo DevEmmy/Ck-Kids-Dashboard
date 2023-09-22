@@ -556,11 +556,16 @@ export const getFilteredCourses = async (
   ageRange,
   category
 ) => {  
+  console.log({
+    ageRange, category
+  })
+  let data;
   await axios
-    .post(`${api}/videos/query`, {ageRange, category}, setConfig())
+    .post(`${api}/videos/query`, {ageRange, category},  setConfig())
     .then((response) => {
       console.log(response);
       notify(response.data.message);
+      data = response.data.payload
     })
     .catch((err) => {
       if (err.response) {
@@ -570,4 +575,6 @@ export const getFilteredCourses = async (
       }
       console.log(err);
     });
+
+    return data
 };

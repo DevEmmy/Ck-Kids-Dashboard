@@ -50,6 +50,10 @@ const Courses = ({isTeacher}) => {
   const filterBy = async (ageRange, category) => {
     setLoading(true);
     let data = await getFilteredCourses(ageRange, category);
+    console.log(data)
+
+    setAgeRange(null)
+    setCategory(null)
     setVideos(data)
     setLoading(false)
   };
