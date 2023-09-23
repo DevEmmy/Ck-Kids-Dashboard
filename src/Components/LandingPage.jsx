@@ -124,13 +124,13 @@ const LandingPage = () => {
             </div>
 
             <div className="relative cflexms gap-[24px] w-[50%] pt-[2em] flex-grow">
-              <div className="flexmm w-[62.579px] absolute top-[-100px] right-[70px]">
+              <div className="flexmm w-[62.579px] sm:w-[50px] absolute top-[-100px] sm:top-[-15px] right-[70px]">
                 <img src={"/cloudL.svg"} alt="cloud" />
               </div>
-              <div className="flexmm w-[40px] absolute bottom-[-120px] left-[-30px]">
+              <div className="flexmm w-[40px] sm:w-[30px] absolute bottom-[-120px] sm:bottom-[-80px] left-[-30px] sm:left-[10px]">
                 <img src={"/ls3.svg"} alt="star" />
               </div>
-              <div className="flexmm w-[100px] absolute bottom-[-70px] right-0">
+              <div className="flexmm w-[100px] sm:w-[60px] absolute bottom-[-70px] sm:bottom-[-80px] right-0">
                 <img src={"/jupyter.svg"} alt="jupyter" />
               </div>
               <h1 className="font-[800] text-[36px] ls:text-[32px] sm:text-[1.7rem] sm:w-[10em]">
@@ -187,11 +187,17 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <div className="bg-sec6 cflexss gap-[4em] md1:gap-[1.5em] px-xpadding pb-[6em] text-[20px] relative z-20 lg:text-[17px] lg:pb-[5em] sm:px-[1.5em] sm1:pb-[2em]">
+        <div className="bg-sec6 cflexss gap-[4em] md1:gap-[1.5em] px-xpadding pb-[6em] text-[20px] relative z-20 lg:text-[17px] lg:pb-[5em] sm:px-[1.5em] sm1:pb-[3.5em]">
           <h1 className="align-center sm:justify-start w-full flexmm font-[800] text-[36px] ls:text-[32px]">
             What We Offer:
           </h1>
           <div className="flexbm w-full md1:gap-[2em] md1:flex-wrap font-[600]">
+            <div className="flexmm absolute bottom-[40px] sm:bottom-0 w-[60px] sm:w-[40px] sm:left-[20px] left-[60px]">
+              <img src={"/paw.svg"} alt="paw" />
+            </div>
+            <div className="flexmm absolute bottom-[40px] sm:bottom-0 w-[50px] sm:w-[40px] sm:right-[20px] right-[80px]">
+              <img src={"/cloudL.svg"} alt="cloud" />
+            </div>
             <div className="border-r-2 cflexss gap-[22px] w-[33%] px-[2em] md1:w-full sm:px-0 md1:border-0">
               <div className="flexmm text-white bg-sec1 w-[35px] h-[35px] rounded-[10px] font-[800] text-[16px]">
                 1
@@ -242,10 +248,10 @@ const LandingPage = () => {
             </p>
           </div>
           <div className="flexmm w-full md1:grid md1:grid-cols-2 gap-[32px] relative z-20">
-            <div className="flexmm absolute bottom-[-50px] left-[-20px] w-[60px]">
+            <div className="flexmm absolute bottom-[-50px] left-[-20px] w-[60px] sm:w-[40px] sm:left-0">
               <img src={"/ls4.svg"} alt="star" />
             </div>
-            <div className="flexmm absolute bottom-[-50px] right-[-20px] w-[75px]">
+            <div className="flexmm absolute bottom-[-50px] right-[-20px] w-[75px] sm:w-[40px] sm:right-0">
               <img src={"/cloudL.svg"} alt="cloud" />
             </div>
             {CoursesD.map((course, i) => {
