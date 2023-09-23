@@ -374,7 +374,8 @@ export const uploadData = async (formData) => {
       }
     )
     .then((response) => {
-      console.log(response);      
+      console.log(response);   
+      notify(response.data.message)   
     })
     .catch((err) => {      
       if (err.response) {

@@ -17,7 +17,7 @@ const page = () => {
 
     if(!data){
       router.push("/signin")
-      notifyError("UnAuthorized")
+      // notifyError("UnAuthorized")
     }
   }, []);
 
