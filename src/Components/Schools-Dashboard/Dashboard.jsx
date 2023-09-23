@@ -189,7 +189,7 @@ const Dashboard = ({school}) => {
 
             {view === "Teachers" && <Teachers />}
 
-            {view === "Courses" && <Courses />}
+            {view === "Courses" && <Courses isTeacher={false}/>}
         </div>
       </div>
       }

@@ -300,7 +300,7 @@ export const addToCollection = async (
     description,
   };
   
-  let url = isTeacher ? `${api}/video` : `${api}/video?teacher=true"}`
+  let url = !isTeacher ? `${api}/video` : `${api}/video?teacher=true`
 
   await axios
     .post(url, data, setConfig())
