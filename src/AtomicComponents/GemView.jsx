@@ -31,6 +31,7 @@ const GemView = ({student}) => {
       value: 0,
     },
   ];
+  
   return (
     <div className="w-full">
       <div className="block balance flexmm border rounded-3xl gap-2 h-48 lf:hidden">

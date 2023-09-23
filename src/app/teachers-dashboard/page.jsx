@@ -18,7 +18,7 @@ export default function Home() {
 
     if(!data){
       router.push("/teachers-signin")
-      notifyError("UnAuthorized")
+      // notifyError("UnAuthorized")
     }
   }, []); 
  

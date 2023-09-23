@@ -46,7 +46,7 @@ const Recommended = ({ courses, loading }) => {
         <h1 className="font-[700] text-[#012B1D] text-[24px] lg:text-[18px] ls:text-[16px]">
           Recommended Courses
         </h1>
-        <div className="w-full flexss gap-[20px] py-[10px] sm:flex-wrap overflow-x-scroll">
+        <div className="w-full flexss gap-[20px] py-[10px] sm:flex-wrap overflow-x-scroll ss">
           {loading ? (
             <>
               <div className="w-full flexmm">
@@ -63,9 +63,9 @@ const Recommended = ({ courses, loading }) => {
             <>
               {courses.map((video, i) => {
                 return (
-                  <div key={i} className="w-1/3">
+                  // <div key={i} className="w-1/3">
                     <CourseCard key={i} {...video} />
-                  </div>
+                  // </div>
                 );
               })}
             </>

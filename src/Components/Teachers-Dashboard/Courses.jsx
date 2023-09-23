@@ -25,7 +25,7 @@ import { getFilteredCourses } from "@/services/request";
 import BulkUpload from "./BulkUpload";
 import BulkVideoUpload from "../Schools-Dashboard/BulkVideoUpload";
 
-const Courses = () => {
+const Courses = ({isTeacher}) => {
   const [drop, setDrop] = useState(false);
   const [cat, setCat] = useState(false);
   const [ageRange, setAgeRange] = useState(null);
@@ -50,6 +50,10 @@ const Courses = () => {
   const filterBy = async (ageRange, category) => {
     setLoading(true);
     let data = await getFilteredCourses(ageRange, category);
+    console.log(data)
+
+    setAgeRange(null)
+    setCategory(null)
     setVideos(data)
     setLoading(false)
   };
@@ -121,22 +125,22 @@ const Courses = () => {
     {
       type: "Single Video",
       icon: <VideoCameraOutline size="16px" />,
-      element: <AddNewVideo close={close} fetchData={fetchData} isTeacher={true}/>,
+      element: <AddNewVideo close={close} fetchData={fetchData} isTeacher={isTeacher}/>,
     },
     {
       type: "Create new collection",
       icon: <VideoCameraOutline size="16px" />,
-      element: <CreateNewCollection close={close} fetchData={fetchData} isTeacher={true}/>,
+      element: <CreateNewCollection close={close} fetchData={fetchData} isTeacher={isTeacher}/>,
     },
     {
       type: "Add to collection",
       icon: <PlusCircle size="16px" />,
-      element: <AddToCollection close={close} fetchData={fetchData} isTeacher={true}/>,
+      element: <AddToCollection close={close} fetchData={fetchData} isTeacher={isTeacher}/>,
     },
     {
       type: "Bulk Video Upload",
       icon: <VideoCameraOutline size="16px" />,
-      element: <BulkVideoUpload close={close} fetchData={fetchData} isTeacher={true}/>,
+      element: <BulkVideoUpload close={close} fetchData={fetchData} isTeacher={isTeacher}/>,
     },
   ];
 

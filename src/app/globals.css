@@ -133,6 +133,14 @@ input:checked+div svg {
     @apply block;
 } */
 
+body{
+  overflow-x: hidden;
+}
+
+.ss::-webkit-scrollbar{
+  width: 0;
+}
+
 
 .lds-ring {
   display: inline-block;

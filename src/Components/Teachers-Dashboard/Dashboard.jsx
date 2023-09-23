@@ -175,7 +175,7 @@ const Dashboard = ({teacher}) => {
 
           {view === "Student" && <Students />}
 
-          {view === "Courses" && <Courses />}
+          {view === "Courses" && <Courses isTeacher={true}/>}
 
           {view === "Chat" && <Messages />}
         </div>

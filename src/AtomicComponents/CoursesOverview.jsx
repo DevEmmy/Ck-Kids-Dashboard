@@ -28,7 +28,7 @@ const CoursesOverview = () => {
 
         <a
           href="/kids-dashboard/continue-course"
-          className="text-gray-500 font-[400] text-[20px] lg:text-[18px] lf:text-[12px] cursor-pointer"
+          className="text-gray-500 font-[400] text-[20px] lg:text-[14px] lf:text-[12px] cursor-pointer"
         >
           View all
         </a>

@@ -29,7 +29,7 @@ const MainPage = ({studentObject}) => {
               <MainContentOnOverview student={studentObject} />
             </div>
 
-            <div className="fixed lf:hidden top-[110px] z-0 right-[4%] w-[25%] cflexmm">
+            <div className="fixed lf:hidden top-[110px] z-0 right-[4%] w-[25%] cflexmm ">
               <GemView student={studentObject} />
             </div>
           </div>

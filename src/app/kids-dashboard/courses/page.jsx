@@ -17,7 +17,7 @@ export default function Home() {
 
     if(!data){
       router.push("/signin")
-      notifyError("UnAuthorized")
+      // notifyError("UnAuthorized")
     }
   }, []);
   return (

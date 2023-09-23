@@ -160,7 +160,11 @@ export const studentRegister = async (
       }
     })
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -180,7 +184,11 @@ export const schoolRegister = async (schoolName, email, password) => {
       }
     })
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -194,10 +202,14 @@ export const getMyDetails = async () => {
     .then((response) => {
       student = response.data.payload;
       localStorage.setItem("student", JSON.stringify(student));
-      notify(response.data.message);
+      // notify(response.data.message);
     })
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+        // notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 
@@ -242,7 +254,11 @@ export const uploadCollection = async (
       notify(response.data.message);
     })
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -255,6 +271,11 @@ export const fetchCollection = async (setCollectionItems) => {
       setCollectionItems(response.data.payload);
     })
     .catch((err) => {
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -278,16 +299,21 @@ export const addToCollection = async (
     ageRange,
     description,
   };
-  console.log(data);
+  
+  let url = !isTeacher ? `${api}/video` : `${api}/video?teacher=true`
 
   await axios
-    .post(`${api}/video${isTeacher && "?teacher=true"}`, data, setConfig())
+    .post(url, data, setConfig())
     .then((response) => {
       console.log(response);
       notify(response.data.message);
     })
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -300,7 +326,11 @@ export const getAllVideos = async () => {
       data = response.data.payload;
     }, setConfig())
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
       data = [];
     });
@@ -320,7 +350,11 @@ export const onBoardTeacher = async (firstName, lastName, email) => {
       notify(response.data.message);
     })
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -340,9 +374,15 @@ export const uploadData = async (formData) => {
       }
     )
     .then((response) => {
-      console.log(response);      
+      console.log(response);   
+      notify(response.data.message)   
     })
     .catch((err) => {      
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -364,10 +404,14 @@ export const uploadVideoData = async (formData, isTeacher) => {
     )
     .then((response) => {
       console.log(response);
-      notify(response.data.message);
+      // notify(response.data.message);
     })
     .catch((err) => {
-      // notifyError(err.response.data.message);
+      if (err.response) {
+        // notifyError(err.response.data.message);
+      } else {
+        // notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -395,10 +439,14 @@ export const editVideo = async (
     .patch(`${api}/video/update/${videoId}`, data, setConfig())
     .then((response) => {
       console.log(response);
-      notify(response.data.message);
+      // notify(response.data.message);
     })
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+        // notifyError(err.response.data.message);
+      } else {
+        // notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -411,7 +459,11 @@ export const deleteVideo = async (videoId) => {
       notify(response.data.message);
     })
     .catch((err) => {
-      // notifyError(err.response.data.message);
+      if (err.response) {
+        // notifyError(err.response.data.message);
+      } else {
+        // notifyError("Network Error");
+      }
       console.log(err);
     });
 };
@@ -424,6 +476,11 @@ export const getStudents = async ()=>{
     students = response.data.payload;
   })
   .catch((err) => {    
+    if (err.response) {
+      // notifyError(err.response.data.message);
+    } else {
+      // notifyError("Network Error");
+    }
     console.log(err);
   });
 
@@ -439,7 +496,11 @@ export const getVideoById = async (id)=>{
     // notify(response.data.message);
   })
   .catch((err) => {
-    // notifyError(err.response.data.message);
+    if (err.response) {
+      // notifyError(err.response.data.message);
+    } else {
+      // notifyError("Network Error");
+    }
     console.log(err);
   });
 
@@ -453,10 +514,11 @@ export const bulkUploadOfVideos =async (videos, ageRange, category)=>{
     notify(response.data.message);
   })
   .catch((err) => {
-    if(err.response){
+    if (err.response) {
       notifyError(err.response.data.message);
+    } else {
+      notifyError("Network Error");
     }
-    
     console.log(err);
   });
 }
@@ -467,8 +529,10 @@ export const watchVideoRequest = async (id)=>{
     console.log(response.data);
   })
   .catch((err) => {
-    if(err.response){
-      
+    if (err.response) {
+      // notifyError(err.response.data.message);
+    } else {
+      // notifyError("Network Error");
     }
     console.log(err);
   });
@@ -480,7 +544,10 @@ export const viewVideoRequest = async (id)=>{
     console.log(response.data);
   })
   .catch((err) => {
-    if(err.response){
+    if (err.response) {
+      
+    } else {
+      
     }
     console.log(err);
   });
@@ -490,14 +557,22 @@ export const getFilteredCourses = async (
   ageRange,
   category
 ) => {  
+  console.log({
+    ageRange, category
+  })
+  let data;
   await axios
-    .post(`${api}/videos/query`, {ageRange, category}, setConfig())
+    .post(`${api}/videos/query`, {ageRange, category},  setConfig())
     .then((response) => {
       console.log(response);
-      notify(response.data.message);
+      data = response.data.payload
     })
     .catch((err) => {
-      notifyError(err.response.data.message);
+      if (err.response) {
+      } else {
+      }
       console.log(err);
     });
+
+    return data
 };

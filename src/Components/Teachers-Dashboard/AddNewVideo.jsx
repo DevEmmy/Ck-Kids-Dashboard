@@ -3,7 +3,7 @@ import { addToCollection } from "@/services/request";
 import { useState, useEffect } from "react";
 import FileBase64 from "react-file-base64";
 
-const AddNewVideo = ({ close, fetchData, isTeacher=false }) => {
+const AddNewVideo = ({ close, fetchData, isTeacher }) => {
   const [newVideoData, setNewVideoData] = useState({
     courseName: "",
     courseDetails: "",

@@ -45,7 +45,7 @@ const BulkVideoUpload = ({ close, isTeacher = false }) => {
     // if (file) {
     setLoading(true);
     // console.log(file)
-    await uploadVideoData(formData);
+    await uploadVideoData(formData, isTeacher);
     close();
     // }
   };
@@ -63,7 +63,7 @@ const BulkVideoUpload = ({ close, isTeacher = false }) => {
           <p className="w-full py-[5px] font-[400]">
             Download a sample excel sheet{" "}
             <span className="font-[600] text-primary2 cursor-pointer underline">
-              <a href="/sample.xlsx" download={"sample-upload.xlsx"}>here</a>
+              <a href="/upload-video-sample.xlsx" download={"upload-videos-sample.xlsx"}>here</a>
             </span>
           </p>
           <div className="w-full flexmm text-[#808080] text-[16px] border-[2px] border-[#808080] border-dotted rounded-[12px] h-[125px] lg:text-[14px] font-[400] cursor-pointer">
