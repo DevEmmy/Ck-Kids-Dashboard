@@ -202,11 +202,11 @@ export const getMyDetails = async () => {
     .then((response) => {
       student = response.data.payload;
       localStorage.setItem("student", JSON.stringify(student));
-      notify(response.data.message);
+      // notify(response.data.message);
     })
     .catch((err) => {
       if (err.response) {
-        notifyError(err.response.data.message);
+        // notifyError(err.response.data.message);
       } else {
         notifyError("Network Error");
       }
@@ -403,13 +403,13 @@ export const uploadVideoData = async (formData, isTeacher) => {
     )
     .then((response) => {
       console.log(response);
-      notify(response.data.message);
+      // notify(response.data.message);
     })
     .catch((err) => {
       if (err.response) {
-        notifyError(err.response.data.message);
+        // notifyError(err.response.data.message);
       } else {
-        notifyError("Network Error");
+        // notifyError("Network Error");
       }
       console.log(err);
     });
@@ -438,13 +438,13 @@ export const editVideo = async (
     .patch(`${api}/video/update/${videoId}`, data, setConfig())
     .then((response) => {
       console.log(response);
-      notify(response.data.message);
+      // notify(response.data.message);
     })
     .catch((err) => {
       if (err.response) {
-        notifyError(err.response.data.message);
+        // notifyError(err.response.data.message);
       } else {
-        notifyError("Network Error");
+        // notifyError("Network Error");
       }
       console.log(err);
     });
@@ -459,9 +459,9 @@ export const deleteVideo = async (videoId) => {
     })
     .catch((err) => {
       if (err.response) {
-        notifyError(err.response.data.message);
+        // notifyError(err.response.data.message);
       } else {
-        notifyError("Network Error");
+        // notifyError("Network Error");
       }
       console.log(err);
     });
@@ -476,9 +476,9 @@ export const getStudents = async ()=>{
   })
   .catch((err) => {    
     if (err.response) {
-      notifyError(err.response.data.message);
+      // notifyError(err.response.data.message);
     } else {
-      notifyError("Network Error");
+      // notifyError("Network Error");
     }
     console.log(err);
   });
@@ -496,9 +496,9 @@ export const getVideoById = async (id)=>{
   })
   .catch((err) => {
     if (err.response) {
-      notifyError(err.response.data.message);
+      // notifyError(err.response.data.message);
     } else {
-      notifyError("Network Error");
+      // notifyError("Network Error");
     }
     console.log(err);
   });
@@ -529,9 +529,9 @@ export const watchVideoRequest = async (id)=>{
   })
   .catch((err) => {
     if (err.response) {
-      notifyError(err.response.data.message);
+      // notifyError(err.response.data.message);
     } else {
-      notifyError("Network Error");
+      // notifyError("Network Error");
     }
     console.log(err);
   });
@@ -544,9 +544,9 @@ export const viewVideoRequest = async (id)=>{
   })
   .catch((err) => {
     if (err.response) {
-      notifyError(err.response.data.message);
+      
     } else {
-      notifyError("Network Error");
+      
     }
     console.log(err);
   });
@@ -564,14 +564,11 @@ export const getFilteredCourses = async (
     .post(`${api}/videos/query`, {ageRange, category},  setConfig())
     .then((response) => {
       console.log(response);
-      notify(response.data.message);
       data = response.data.payload
     })
     .catch((err) => {
       if (err.response) {
-        notifyError(err.response.data.message);
       } else {
-        notifyError("Network Error");
       }
       console.log(err);
     });
