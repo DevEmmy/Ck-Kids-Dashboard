@@ -39,12 +39,12 @@ const LandingPage = () => {
     <>
       <NavBar active={0} background="#FFF9D2" />
       <div className="w-full bg-primary0">
-        <div className="flexss w-full px-xpadding bg-primary0 bg-[url('/Hero.svg')] bg-cover bg-no-repeat bg-center h-[45em] pt-[5em] text-[20px] gap-[20px] ls:text-[15px] lg:text-[17px] lg:py-[4em] sm1:pt-[0em] sm1:pb-[2em] sm:px-[1.5em] md1:flex-wrap">
-          <div className="cflexms font-[600] gap-[32px] pt-[1em] text-sec5 md:gap-[1em] flex-grow pb-[2em]">
+        <div className="flexss w-full px-xpadding bg-[url('/Hero.svg')] sm:bg-[url('/')] bg-cover bg-no-repeat bg-center h-[45em] pt-[5em] text-[20px] gap-[20px] ls:text-[15px] lg:text-[17px] lg:py-[4em] sm1:pt-[0em] sm1:pb-[2em] sm:px-[1.5em] md1:flex-wrap">
+          <div className="cflexms font-[600] gap-[32px] text-sec5 md:gap-[1em] flex-grow pb-[2em]">
             <h1 className="font-[1000] w-[50%] text-[52px] lg:text-[45px] ls:text-[28px] sm:w-full">
               <div className="w-full flexsm gap-[20px]">
                 Unlock Your Child's{" "}
-                <div className="w-[118px] flexmm">
+                <div className="w-[100px] flexmm">
                   <img src={"/jupyter.svg"} alt="jupyter" />
                 </div>
               </div>
@@ -95,6 +95,9 @@ const LandingPage = () => {
               </div>
             </div>
           </div>
+          {/* <div className="w-[100vw] flexmm">
+            <img src={"/Hero.svg"} alt="heroImg" />
+          </div> */}
         </div>
 
         <div className="w-full flexss  relative bg-primary0">
@@ -165,7 +168,7 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <div className="bg-white cflexss gap-[4em] md1:gap-[1.5em] px-xpadding py-[6em] text-[20px] relative z-20 lg:text-[17px] lg:py-[5em] sm:px-[1.5em] sm1:pb-[2em]">
+        <div className="bg-sec6 cflexss gap-[4em] md1:gap-[1.5em] px-xpadding pb-[6em] text-[20px] relative z-20 lg:text-[17px] lg:pb-[5em] sm:px-[1.5em] sm1:pb-[2em]">
           <h1 className="align-center sm:justify-start w-full flexmm font-[800] text-[36px] ls:text-[32px]">
             What We Offer:
           </h1>
@@ -204,41 +207,45 @@ const LandingPage = () => {
             </div>
           </div>
         </div>
-
-        <div className="bg-[#FAFAFA] cflexss gap-[4em] sm:gap-[1.5em] px-xpadding py-[6em] text-[20px] lg:text-[17px] lg:py-[5em] sm:px-[1.1em]">
-          <div className="w-full cflexmm gap-[1em] font-[400]">
-            <h1 className="w-full flexmm sm:justify-start font-[800] text-[30px] text-[#012B1D]">
-              Explore Our Programs:
-            </h1>
-            <p className="max-w-[40em] flex-shrink text-center sm:text-start">
-              Browse through our exciting range of courses designed to cater to
-              various age groups and interests. From 3D printing to astronomy,
-              there's something for every curious kid!
-            </p>
-          </div>
-          <div className="flexmm w-full md1:grid md1:grid-cols-2 gap-[32px]">
-            {CoursesD.map((course, i) => {
-              return (
-                <>
-                  <Courses
-                    background={course.background}
-                    image={course.image}
-                    text={course.text}
-                    key={i}
-                  />
-                </>
-              );
-            })}
-            <div className="md1:w-[100vw] flexmm">
-              <div className="cflexss sm1:flex-row gap-[0.5em] cursor-pointer">
-                <div className="bg-sec7 w-[1.5em] h-[1.5em] rounded-full flexmm">
-                  <ArrowRightOutline size="1em" color="white" />
+       
+        <div className="cflexss gap-[4em] sm:gap-[1.5em] relative px-xpadding py-[6em] text-[20px] lg:text-[17px] lg:py-[5em] sm:px-[1.1em]">
+            <div className="w-full cflexmm gap-[1em] font-[400] relative z-20">
+              <h1 className="w-full flexmm sm:justify-start font-[800] text-[30px] text-[#012B1D]">
+                Explore Our Programs
+              </h1>
+              <p className="max-w-[40em] flex-shrink text-center sm:text-start">
+                Browse through our exciting range of courses designed to cater
+                to various age groups and interests. From 3D printing to
+                astronomy, there's something for every curious kid!
+              </p>
+            </div>
+            <div className="flexmm w-full md1:grid md1:grid-cols-2 gap-[32px] relative z-20">
+              {CoursesD.map((course, i) => {
+                return (
+                  <>
+                    <Courses
+                      background={course.background}
+                      image={course.image}
+                      text={course.text}
+                      key={i}
+                    />
+                  </>
+                );
+              })}
+              <div className="md1:w-[100vw] flexmm">
+                <div className="cflexss sm1:flex-row gap-[0.5em] cursor-pointer">
+                  <div className="bg-sec7 w-[1.5em] h-[1.5em] rounded-full flexmm">
+                    <ArrowRightOutline size="1em" color="white" />
+                  </div>
+                  <p>See more</p>
                 </div>
-                <p>See more</p>
               </div>
             </div>
+            <div className="w-full absolute bottom-[-250px] sm:bottom-[-100px] left-0 flexss z-10">
+              <img src={"/cloud.svg"} alt="BaseCloud" />
+            </div>
           </div>
-        </div>
+
         <Section1 />
         <Section2 />
         <Section3 />
