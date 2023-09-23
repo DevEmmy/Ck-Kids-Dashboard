@@ -229,8 +229,11 @@ const LandingPage = () => {
 
         <div className="cflexss gap-[4em] sm:gap-[1.5em] relative px-xpadding py-[6em] text-[20px] lg:text-[17px] lg:py-[5em] sm:px-[1.1em]">
           <div className="w-full cflexmm gap-[1em] font-[400] relative z-20">
-            <h1 className="w-full flexmm sm:justify-start font-[800] text-[30px] text-[#012B1D]">
+            <h1 className="w-full flexmm gap-[20px] sm:justify-start font-[800] text-[30px] text-[#012B1D]">
               Explore Our Programs
+              <div className="flexmm w-[80px]">
+                <img src={"/jupyter.svg"} alt="jupyter" />
+              </div>
             </h1>
             <p className="max-w-[40em] flex-shrink text-center sm:text-start">
               Browse through our exciting range of courses designed to cater to
@@ -239,6 +242,12 @@ const LandingPage = () => {
             </p>
           </div>
           <div className="flexmm w-full md1:grid md1:grid-cols-2 gap-[32px] relative z-20">
+            <div className="flexmm absolute bottom-[-50px] left-[-20px] w-[60px]">
+              <img src={"/ls4.svg"} alt="star" />
+            </div>
+            <div className="flexmm absolute bottom-[-50px] right-[-20px] w-[75px]">
+              <img src={"/cloudL.svg"} alt="cloud" />
+            </div>
             {CoursesD.map((course, i) => {
               return (
                 <>

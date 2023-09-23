@@ -104,7 +104,9 @@ const Section2 = () => {
               {courses?.map((video, i) => {
                 return (
                   <>
-                    <VideoCard key={i} {...video} background="#CCEEE4"/>
+                    {i < 4 && (
+                      <VideoCard key={i} {...video} background="#CCEEE4" />
+                    )}
                   </>
                 );
               })}
