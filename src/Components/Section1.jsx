@@ -68,7 +68,10 @@ const Section1 = () => {
     <>
       <div className="cflexss bg-primary1 gap-[16px] py-[2em] pt-[15em] sm:pt-[10em] px-xpadding text-[20px] lg:text-[17px] sm:px-[1.5em] font-[400]">
         <div className="w-full flexbm sm:text-[1.1rem] gap-[16px] flex-wrap">
-          <div className="w-[40em] cflexss gap-[16px] text-[#FFF]">
+          <div className="w-[40em] relative cflexss gap-[16px] text-[#FFF]">
+            <div className="flexmm absolute top-[-40px] sm:top-[-60px] right-[-150px] w-[80px] sm:w-[40px] sm:right-[50px]">
+              <img src={"/bgSt.svg"} alt="bigStar" />
+            </div>           
             <h1 className="font-[800] text-[30px] lg:text-[28px] leading-[150%] sm:text-[1.6rem]">
               Recommended Videos for Kids Ages 6-9:
             </h1>

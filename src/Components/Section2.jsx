@@ -65,9 +65,15 @@ const Section2 = () => {
   ];
   return (
     <>
-      <div className="cflexss bg-primary2 gap-[16px] py-[2em] px-xpadding text-[20px] lg:text-[17px] sm:px-[1.5em] font-[400]">
+      <div className="cflexss relative bg-primary2 gap-[16px] py-[2em] px-xpadding text-[20px] lg:text-[17px] sm:px-[1.5em] font-[400]">
+        <div className="block flexmm absolute bottom-[250px] right-[20px] w-[60px] sm:hidden">
+          <img src={"/lst.svg"} alt="lastStar" />
+        </div>
         <div className="w-full flexbm sm:text-[1.1rem] gap-[1em] flex-wrap">
-          <div className="w-[40em] cflexss gap-[16px] text-[#FFF]">
+          <div className="w-[40em] relative cflexss gap-[16px] text-[#FFF]">
+            <div className="flexmm absolute bottom-[25px] sm:top-[-30px] sm:bottom-auto right-[-155px] w-[80px] sm:w-[40px] sm:right-[50px]">
+              <img src={"/crown.svg"} alt="crown" />
+            </div>
             <h1 className="font-[800] text-[30px] lg:text-[28px] leading-[150%] sm:text-[1.6rem]">
               Recommended Videos for Kids Ages 10-14:
             </h1>
