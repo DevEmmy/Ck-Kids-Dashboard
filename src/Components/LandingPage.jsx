@@ -71,7 +71,7 @@ const LandingPage = () => {
                 </Button>
               </a>
             </div>
-            <div className="flexsm gap-[1em] flex-wrap sm:font-[400] sm:text-[17px]">
+            <div className="flexsm relative gap-[1em] flex-wrap sm:font-[400] sm:text-[17px]">
               <div className="flexsm gap-[0.5em]">
                 <CheckCircle
                   className="flexmm w-[18px] h-[18px] rounded-full bg-sec1 "
@@ -93,6 +93,9 @@ const LandingPage = () => {
                 />
                 <p>Affordable prices</p>
               </div>
+              <div className="flexmm w-[150px] sm:w-[80px] absolute sm:bottom-[-100px] sm:right-[20px] bottom-[-120px] right-[-300px]">
+                <img src={"/shine.svg"} alt="shine" />
+              </div>
             </div>
           </div>
           {/* <div className="w-[100vw] flexmm">
@@ -107,13 +110,29 @@ const LandingPage = () => {
           <div className="w-full flexmm absolute top-[-140px] sm:top-[-45px] left-0 z-10">
             <img src="/inner1.svg" height="100%" alt="inner2" />
           </div>
-          <div className="flexbm px-xpadding py-[6em] gap-[20px] text-[20px] mt-[120px] sm:mt-[30px] lg:text-[17px] lg:py-[5em] ls:text-[15px] sm:px-[1.5em] sm1:pb-[2em] sm:pt-[0em] sm:gap-[2em] md1:flex-wrap z-20">
-            <div className="flexss w-[50%] md1:w-full md1:justify-center flex-shrink">
+          <div className="flexbm px-xpadding mb-[80px] gap-[20px] text-[20px] mt-[120px] sm:mt-[30px] lg:text-[17px] lg:py-[5em] ls:text-[15px] sm:px-[1.5em] sm1:pb-[2em] sm:pt-[0em] sm:gap-[2em] md1:flex-wrap z-20">
+            <div className="flexss relative w-[50%] md1:w-full md1:justify-center flex-shrink">
+              <div className="flexmm w-[45px] absolute top-[-40px] left-[-70px]">
+                <img src={"/lst1.svg"} alt="star" />
+              </div>
+              <div className="flexmm w-[25px] absolute top-[-60px] left-[-10px]">
+                <img src={"/lst2.svg"} alt="jupyter" />
+              </div>
               <div className="flexmm w-[82%] sm:w-[100%]">
                 <img src="/girlImage.svg" alt="girlImage" />
               </div>
             </div>
-            <div className="cflexms gap-[24px] w-[50%] pt-[2em] flex-grow">
+
+            <div className="relative cflexms gap-[24px] w-[50%] pt-[2em] flex-grow">
+              <div className="flexmm w-[62.579px] absolute top-[-100px] right-[70px]">
+                <img src={"/cloudL.svg"} alt="cloud" />
+              </div>
+              <div className="flexmm w-[40px] absolute bottom-[-120px] left-[-30px]">
+                <img src={"/ls3.svg"} alt="star" />
+              </div>
+              <div className="flexmm w-[100px] absolute bottom-[-70px] right-0">
+                <img src={"/jupyter.svg"} alt="jupyter" />
+              </div>
               <h1 className="font-[800] text-[36px] ls:text-[32px] sm:text-[1.7rem] sm:w-[10em]">
                 Why Choose CuriousKidz?
               </h1>
@@ -207,44 +226,44 @@ const LandingPage = () => {
             </div>
           </div>
         </div>
-       
+
         <div className="cflexss gap-[4em] sm:gap-[1.5em] relative px-xpadding py-[6em] text-[20px] lg:text-[17px] lg:py-[5em] sm:px-[1.1em]">
-            <div className="w-full cflexmm gap-[1em] font-[400] relative z-20">
-              <h1 className="w-full flexmm sm:justify-start font-[800] text-[30px] text-[#012B1D]">
-                Explore Our Programs
-              </h1>
-              <p className="max-w-[40em] flex-shrink text-center sm:text-start">
-                Browse through our exciting range of courses designed to cater
-                to various age groups and interests. From 3D printing to
-                astronomy, there's something for every curious kid!
-              </p>
-            </div>
-            <div className="flexmm w-full md1:grid md1:grid-cols-2 gap-[32px] relative z-20">
-              {CoursesD.map((course, i) => {
-                return (
-                  <>
-                    <Courses
-                      background={course.background}
-                      image={course.image}
-                      text={course.text}
-                      key={i}
-                    />
-                  </>
-                );
-              })}
-              <div className="md1:w-[100vw] flexmm">
-                <div className="cflexss sm1:flex-row gap-[0.5em] cursor-pointer">
-                  <div className="bg-sec7 w-[1.5em] h-[1.5em] rounded-full flexmm">
-                    <ArrowRightOutline size="1em" color="white" />
-                  </div>
-                  <p>See more</p>
+          <div className="w-full cflexmm gap-[1em] font-[400] relative z-20">
+            <h1 className="w-full flexmm sm:justify-start font-[800] text-[30px] text-[#012B1D]">
+              Explore Our Programs
+            </h1>
+            <p className="max-w-[40em] flex-shrink text-center sm:text-start">
+              Browse through our exciting range of courses designed to cater to
+              various age groups and interests. From 3D printing to astronomy,
+              there's something for every curious kid!
+            </p>
+          </div>
+          <div className="flexmm w-full md1:grid md1:grid-cols-2 gap-[32px] relative z-20">
+            {CoursesD.map((course, i) => {
+              return (
+                <>
+                  <Courses
+                    background={course.background}
+                    image={course.image}
+                    text={course.text}
+                    key={i}
+                  />
+                </>
+              );
+            })}
+            <div className="md1:w-[100vw] flexmm">
+              <div className="cflexss sm1:flex-row gap-[0.5em] cursor-pointer">
+                <div className="bg-sec7 w-[1.5em] h-[1.5em] rounded-full flexmm">
+                  <ArrowRightOutline size="1em" color="white" />
                 </div>
+                <p>See more</p>
               </div>
             </div>
-            <div className="w-full absolute bottom-[-250px] sm:bottom-[-100px] left-0 flexss z-10">
-              <img src={"/cloud.svg"} alt="BaseCloud" />
-            </div>
           </div>
+          <div className="w-full absolute bottom-[-250px] sm:bottom-[-100px] left-0 flexss z-10">
+            <img src={"/cloud.svg"} alt="BaseCloud" />
+          </div>
+        </div>
 
         <Section1 />
         <Section2 />
