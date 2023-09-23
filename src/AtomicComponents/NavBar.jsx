@@ -31,8 +31,8 @@ const NavBar = ({ active = 0, background }) => {
   return (
     <>
       <div
-        className={`bg-${
-          background ? background : "sec6"
+        className={`${
+          background ? `bg-[${background}]` : "bg-[#FFF9D2]"
         } w-full flex justify-between items-center py-[20px] px-xpadding ${
           showNav && "fixed"
         }`}
