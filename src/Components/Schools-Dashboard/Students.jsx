@@ -178,7 +178,7 @@ const Students = () => {
             </>
           ) : (
             <>
-              <p>fetched</p>
+              
               {GetPaginatedData(currentPage, PAGINATION, students).map(
                 (data, index) => {
                   const inputDate = new Date(data.createdAt);
@@ -248,6 +248,7 @@ const Students = () => {
             activeClassName={"active"}
           />
         </div>
+        
         <Modal
           opened={opened}
           onClose={close}

@@ -576,3 +576,21 @@ export const getFilteredCourses = async (
 
     return data
 };
+
+export const getTeachers = async ()=>{
+  let data = []
+
+  await axios.get(`${api}/teachers/all-by-admin`, setConfig())
+  .then((response) => {
+    console.log(response);
+    data = response.data.payload
+  })
+  .catch((err) => {
+    if (err.response) {
+    } else {
+    }
+    console.log(err);
+  });
+
+  return data
+}
