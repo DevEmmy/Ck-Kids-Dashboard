@@ -1,11 +1,11 @@
 import ImageStacked from "./ImageStacked";
 
-const VideoCard = ({ cover, description, category, name, link, _id }) => {
+const VideoCard = ({ cover, description, category, name, _id, background }) => {
   
   return (
     <>
       <a href={`/sample-video/${_id}`} className="w-full md1:w-[330px] sm:w-full md1:flex-grow">
-        <div className="w-full border-[1px] border-[#E6E6E6] cflexbs gap-[20px] lg:min-h-[26em] p-[10px] rounded-[24px] cursor-pointer">
+        <div className={`w-full bg-[${background}] border-[#E6E6E6] cflexbs gap-[20px] lg:min-h-[26em] p-[10px] rounded-[24px] cursor-pointer`}>
           <div className="w-full flexmm h-[13vw] md1:h-[218px] self-stretch">
             <img
               src={cover}

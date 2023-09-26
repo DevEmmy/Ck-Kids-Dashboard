@@ -65,10 +65,16 @@ const Section3 = () => {
   ];
   return (
     <>
-      <div className="cflexss gap-[16px] py-[2em] px-xpadding text-[20px] lg:text-[17px] sm:px-[1.5em] font-[400]">
+      <div className="cflexss gap-[16px] relative bg-primary3 py-[2em] px-xpadding text-[20px] lg:text-[17px] sm:px-[1.5em] font-[400]">
+        <div className="block flexmm absolute bottom-[250px] left-[20px] w-[60px] sm:hidden">
+          <img src={"/lst.svg"} alt="lastStar" />
+        </div>
         <div className="w-full flexbm sm:text-[1.1rem] gap-[1em] flex-wrap">
-          <div className="w-[40em] cflexss gap-[16px] text-[#333]">
-            <h1 className="font-[800] text-[#012B1D] text-[30px] lg:text-[28px] leading-[150%] sm:text-[1.6rem]">
+          <div className="w-[40em] relative cflexss gap-[16px] text-[#FFF]">
+            <div className="flexmm absolute bottom-[25px] sm:top-[-30px] sm:bottom-auto right-[-155px] w-[80px] sm:w-[40px] sm:right-[50px]">
+              <img src={"/crown.svg"} alt="crown" />
+            </div>
+            <h1 className="font-[800] text-[30px] lg:text-[28px] leading-[150%] sm:text-[1.6rem]">
               Recommended Videos for Kids Ages 15-18:
             </h1>
             <p>
@@ -79,7 +85,7 @@ const Section3 = () => {
           </div>
           <div className="flexss sm1:justify-center font-[600] text-[19px] lg:text-[15px] ls:text-[13px] flex-wrap sm1:w-full">
             <a href="/price" className="sm:flex flex-grow">
-              <Button className="border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
+              <Button className="border-[0.2em] bg-[#FFF] text-[#222] flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
                 <p>See more</p> <ArrowRightOutline size="1em" />
               </Button>
             </a>
@@ -103,7 +109,9 @@ const Section3 = () => {
               {courses?.map((video, i) => {
                 return (
                   <>
-                    <VideoCard key={i} {...video} />
+                    {i < 4 && (
+                      <VideoCard key={i} {...video} background="#E8E1F5" />
+                    )}
                   </>
                 );
               })}

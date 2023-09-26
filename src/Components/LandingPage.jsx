@@ -39,12 +39,12 @@ const LandingPage = () => {
     <>
       <NavBar active={0} background="#FFF9D2" />
       <div className="w-full bg-primary0">
-        <div className="flexss w-full px-xpadding bg-primary0 bg-[url('/Hero.svg')] bg-cover bg-no-repeat bg-center h-[45em] pt-[5em] text-[20px] gap-[20px] ls:text-[15px] lg:text-[17px] lg:py-[4em] sm1:pt-[0em] sm1:pb-[2em] sm:px-[1.5em] md1:flex-wrap">
-          <div className="cflexms font-[600] gap-[32px] pt-[1em] text-sec5 md:gap-[1em] flex-grow pb-[2em]">
+        <div className="flexss w-full px-xpadding bg-[url('/Hero.svg')] sm:bg-[url('/')] bg-cover bg-no-repeat bg-center h-[45em] pt-[5em] text-[20px] gap-[20px] ls:text-[15px] lg:text-[17px] lg:py-[4em] sm1:pt-[0em] sm1:pb-[2em] sm:px-[1.5em] md1:flex-wrap">
+          <div className="cflexms font-[600] gap-[32px] text-sec5 md:gap-[1em] flex-grow pb-[2em]">
             <h1 className="font-[1000] w-[50%] text-[52px] lg:text-[45px] ls:text-[28px] sm:w-full">
               <div className="w-full flexsm gap-[20px]">
                 Unlock Your Child's{" "}
-                <div className="w-[118px] flexmm">
+                <div className="w-[100px] flexmm">
                   <img src={"/jupyter.svg"} alt="jupyter" />
                 </div>
               </div>
@@ -71,7 +71,7 @@ const LandingPage = () => {
                 </Button>
               </a>
             </div>
-            <div className="flexsm gap-[1em] flex-wrap sm:font-[400] sm:text-[17px]">
+            <div className="flexsm relative gap-[1em] flex-wrap sm:font-[400] sm:text-[17px]">
               <div className="flexsm gap-[0.5em]">
                 <CheckCircle
                   className="flexmm w-[18px] h-[18px] rounded-full bg-sec1 "
@@ -93,8 +93,14 @@ const LandingPage = () => {
                 />
                 <p>Affordable prices</p>
               </div>
+              <div className="flexmm w-[150px] sm:w-[80px] absolute sm:bottom-[-100px] sm:right-[20px] bottom-[-120px] right-[-300px]">
+                <img src={"/shine.svg"} alt="shine" />
+              </div>
             </div>
           </div>
+          {/* <div className="w-[100vw] flexmm">
+            <img src={"/Hero.svg"} alt="heroImg" />
+          </div> */}
         </div>
 
         <div className="w-full flexss  relative bg-primary0">
@@ -104,13 +110,29 @@ const LandingPage = () => {
           <div className="w-full flexmm absolute top-[-140px] sm:top-[-45px] left-0 z-10">
             <img src="/inner1.svg" height="100%" alt="inner2" />
           </div>
-          <div className="flexbm px-xpadding py-[6em] gap-[20px] text-[20px] mt-[120px] sm:mt-[30px] lg:text-[17px] lg:py-[5em] ls:text-[15px] sm:px-[1.5em] sm1:pb-[2em] sm:pt-[0em] sm:gap-[2em] md1:flex-wrap z-20">
-            <div className="flexss w-[50%] md1:w-full md1:justify-center flex-shrink">
+          <div className="flexbm px-xpadding mb-[80px] gap-[20px] text-[20px] mt-[120px] sm:mt-[30px] lg:text-[17px] lg:py-[5em] ls:text-[15px] sm:px-[1.5em] sm1:pb-[2em] sm:pt-[0em] sm:gap-[2em] md1:flex-wrap z-20">
+            <div className="flexss relative w-[50%] md1:w-full md1:justify-center flex-shrink">
+              <div className="flexmm w-[45px] absolute top-[-40px] left-[-70px]">
+                <img src={"/lst1.svg"} alt="star" />
+              </div>
+              <div className="flexmm w-[25px] absolute top-[-60px] left-[-10px]">
+                <img src={"/lst2.svg"} alt="jupyter" />
+              </div>
               <div className="flexmm w-[82%] sm:w-[100%]">
                 <img src="/girlImage.svg" alt="girlImage" />
               </div>
             </div>
-            <div className="cflexms gap-[24px] w-[50%] pt-[2em] flex-grow">
+
+            <div className="relative cflexms gap-[24px] w-[50%] pt-[2em] flex-grow">
+              <div className="flexmm w-[62.579px] sm:w-[50px] absolute top-[-100px] sm:top-[-15px] right-[70px]">
+                <img src={"/cloudL.svg"} alt="cloud" />
+              </div>
+              <div className="flexmm w-[40px] sm:w-[30px] absolute bottom-[-120px] sm:bottom-[-80px] left-[-30px] sm:left-[10px]">
+                <img src={"/ls3.svg"} alt="star" />
+              </div>
+              <div className="flexmm w-[100px] sm:w-[60px] absolute bottom-[-70px] sm:bottom-[-80px] right-0">
+                <img src={"/jupyter.svg"} alt="jupyter" />
+              </div>
               <h1 className="font-[800] text-[36px] ls:text-[32px] sm:text-[1.7rem] sm:w-[10em]">
                 Why Choose CuriousKidz?
               </h1>
@@ -165,11 +187,17 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <div className="bg-white cflexss gap-[4em] md1:gap-[1.5em] px-xpadding py-[6em] text-[20px] relative z-20 lg:text-[17px] lg:py-[5em] sm:px-[1.5em] sm1:pb-[2em]">
+        <div className="bg-sec6 cflexss gap-[4em] md1:gap-[1.5em] px-xpadding pb-[6em] text-[20px] relative z-20 lg:text-[17px] lg:pb-[5em] sm:px-[1.5em] sm1:pb-[3.5em]">
           <h1 className="align-center sm:justify-start w-full flexmm font-[800] text-[36px] ls:text-[32px]">
             What We Offer:
           </h1>
           <div className="flexbm w-full md1:gap-[2em] md1:flex-wrap font-[600]">
+            <div className="flexmm absolute bottom-[40px] sm:bottom-0 w-[60px] sm:w-[40px] sm:left-[20px] left-[60px]">
+              <img src={"/paw.svg"} alt="paw" />
+            </div>
+            <div className="flexmm absolute bottom-[40px] sm:bottom-0 w-[50px] sm:w-[40px] sm:right-[20px] right-[80px]">
+              <img src={"/cloudL.svg"} alt="cloud" />
+            </div>
             <div className="border-r-2 cflexss gap-[22px] w-[33%] px-[2em] md1:w-full sm:px-0 md1:border-0">
               <div className="flexmm text-white bg-sec1 w-[35px] h-[35px] rounded-[10px] font-[800] text-[16px]">
                 1
@@ -205,10 +233,13 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <div className="bg-[#FAFAFA] cflexss gap-[4em] sm:gap-[1.5em] px-xpadding py-[6em] text-[20px] lg:text-[17px] lg:py-[5em] sm:px-[1.1em]">
-          <div className="w-full cflexmm gap-[1em] font-[400]">
-            <h1 className="w-full flexmm sm:justify-start font-[800] text-[30px] text-[#012B1D]">
-              Explore Our Programs:
+        <div className="cflexss gap-[4em] sm:gap-[1.5em] relative px-xpadding py-[6em] text-[20px] lg:text-[17px] lg:py-[5em] sm:px-[1.1em]">
+          <div className="w-full cflexmm gap-[1em] font-[400] relative z-20">
+            <h1 className="w-full flexmm gap-[20px] sm:justify-start font-[800] text-[30px] text-[#012B1D]">
+              Explore Our Programs
+              <div className="flexmm w-[80px]">
+                <img src={"/jupyter.svg"} alt="jupyter" />
+              </div>
             </h1>
             <p className="max-w-[40em] flex-shrink text-center sm:text-start">
               Browse through our exciting range of courses designed to cater to
@@ -216,7 +247,13 @@ const LandingPage = () => {
               there's something for every curious kid!
             </p>
           </div>
-          <div className="flexmm w-full md1:grid md1:grid-cols-2 gap-[32px]">
+          <div className="flexmm w-full md1:grid md1:grid-cols-2 gap-[32px] relative z-20">
+            <div className="flexmm absolute bottom-[-50px] left-[-20px] w-[60px] sm:w-[40px] sm:left-0">
+              <img src={"/ls4.svg"} alt="star" />
+            </div>
+            <div className="flexmm absolute bottom-[-50px] right-[-20px] w-[75px] sm:w-[40px] sm:right-0">
+              <img src={"/cloudL.svg"} alt="cloud" />
+            </div>
             {CoursesD.map((course, i) => {
               return (
                 <>
@@ -238,7 +275,11 @@ const LandingPage = () => {
               </div>
             </div>
           </div>
+          <div className="w-full absolute bottom-[-250px] sm:bottom-[-100px] left-0 flexss z-10">
+            <img src={"/cloud.svg"} alt="BaseCloud" />
+          </div>
         </div>
+
         <Section1 />
         <Section2 />
         <Section3 />

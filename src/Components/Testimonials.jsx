@@ -62,8 +62,14 @@ const Testimonials = () => {
   }, [id]);
   return (
     <>
-      <div className="bg-[#FAFAFA] w-full cflexsm gap-[3em] sm:gap-[2em] sm1:pb-[2em] sm:pt-[0em] flex-wrap px-xpadding py-[4em] sm:px-[1.5em] sm:py-[2em]">
-        <div className="w-[40em] md:w-full text-center cflexsm sm:items-start gap-[16px] font-[400] text-[20px] lg:text-[17px] ls:text-[15px] sm:text-[1.1rem]">
+      <div className="bg-sec6 w-full cflexsm gap-[3em] sm:gap-[2em] sm1:pb-[2em] flex-wrap px-xpadding py-[4em] sm:px-[1.5em] sm:py-[2em]">
+        <div className="relative w-[40em] md:w-full text-center cflexsm sm:items-start gap-[16px] font-[400] text-[20px] lg:text-[17px] ls:text-[15px] sm:text-[1.1rem]">
+          <div className="flexmm absolute top-[-40px] sm:top-[-30px] sm:bottom-auto right-[-130px] w-[60px] sm:w-[40px] sm:right-[50px]">
+            <img src={"/lst0.svg"} alt="lst0" />
+          </div>
+          <div className="block flexmm absolute bottom-0 left-[-150px] w-[60px] sm:hidden">
+            <img src={"/goldCr.svg"} alt="goldCrown" />
+          </div>
           <p className="font-[800] sm:text-[30px] text-[30px] lg:text-[28px] text-[#012B1D]">
             Parent Testimonials
           </p>
@@ -111,7 +117,10 @@ const Testimonials = () => {
             />
           </div>
         </div>
-        <div className="flexss sm1:justify-center gap-[1em] font-[600] text-[19px] lg:text-[15px] flex-wrap sm1:w-full">
+        <div className="relative flexss sm1:justify-center gap-[1em] font-[600] text-[19px] lg:text-[15px] flex-wrap sm1:w-full">
+          <div className="block flexmm absolute right-[-250px] top-[-10px] w-[80px] sm:hidden">
+            <img src={"/cloudL.svg"} alt="cloud" />
+          </div>
           <a href="/price" className="sm:flex flex-grow">
             <Button className="border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] rounded-full sm:w-full">
               <p>Enroll now</p> <ArrowRightOutline size="1em" />
@@ -158,10 +167,7 @@ const Reviews = (props) => {
         <p>{content2}"</p>
         <div className="flexsm gap-[0.5em] w-full">
           <div className="w-[44px]">
-            <img
-              src={`${image}.svg`}              
-              alt={`${image}`}
-            />
+            <img src={`${image}.svg`} alt={`${image}`} />
           </div>
           <p className="font-[800]">{name}</p>
         </div>

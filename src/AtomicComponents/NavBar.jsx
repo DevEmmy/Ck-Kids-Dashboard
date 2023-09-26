@@ -1,6 +1,4 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
 import Button from "./Button";
 import React, { useState } from "react";
 import { RiMenuFill } from "react-icons/ri";

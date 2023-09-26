@@ -3,7 +3,7 @@ import Image from "next/image";
 const ImageStacked = ({ images }) => {
   return (
     <>
-      <div className="relative flexmm z-[-1]">
+      <div className="relative flexmm z-[10]">
         <div className="absolute flexmm w-[1.5em] z-[100] left-0">
           <img
             src={`/${images[0]}.svg`}            
