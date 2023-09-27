@@ -14,8 +14,8 @@ const Price = () => {
   const [values, setValues] = useState([50]);
   return (
     <>
-      <NavBar active={3} background={"sec2"} />
-      <div className="cflexss w-full px-xpadding pt-[5em] sm:pt-[2em] pb-[3em] text-[24px] lg:text-[20px] ls:text-[18px] font-[400]">
+      <NavBar active={3} background={"#FFF"} />
+      <div className="cflexss w-full mt-[100px] px-xpadding pt-[5em] sm:pt-[2em] pb-[3em] text-[24px] lg:text-[20px] ls:text-[18px] font-[400]">
         <div className="w-full cflexsm gap-[24px] text-center pb-[6em]">
           <p>Pricing That Supports Learning Adventures</p>
           <p className="font-[700] text-[40px] lg:text-[35px] ls:text-[24px] max-w-[25em]">

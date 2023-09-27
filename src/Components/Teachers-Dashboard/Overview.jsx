@@ -191,7 +191,7 @@ const Overview = ({teacher}) => {
         <div className="w-full flexbs gap-[20px]">
           <div className="w-[639px] border-[1px] rounded-[24px] py-[40px] px-[25px] bg-white flex-shrink">
             <div className="flexsm p-[12px] gap-[10px] rounded-[8px]">
-              <p>Student Sdiveak</p>
+              <p>Student Streak</p>
               <ChevronDown size="16px" />
             </div>
           </div>

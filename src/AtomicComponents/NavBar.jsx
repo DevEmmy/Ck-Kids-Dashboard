@@ -29,11 +29,11 @@ const NavBar = ({ active = 0, background }) => {
   return (
     <>
       <div
-        className={`${
+        className={`fixed top-0 left-0 z-50 ${
           background ? `bg-[${background}]` : "bg-[#FFF9D2]"
         } w-full flex justify-between items-center py-[20px] px-xpadding ${
           showNav && "fixed"
-        }`}
+        } bg-opacity-75`}
       >
         <a href="/" className="w-[14em] sm:w-[11em]">
           <img src="/homeLogo.svg" alt="CSkidz" />
