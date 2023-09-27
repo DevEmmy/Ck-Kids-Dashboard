@@ -53,7 +53,7 @@ const Price = () => {
   return (
     <>
       <NavBar active={3} background={"#FFF9D2"} />
-      <div className="cflexss w-full bg-[#FFF9D2] mt-[100px] px-xpadding pt-[5em] sm:pt-[2em] pb-[3em] text-[24px] lg:text-[20px] ls:text-[18px] font-[400]">
+      <div className="cflexss w-full bg-[#FFF9D2] mt-[100px] sm:mt-[60px] px-xpadding pt-[5em] sm:pt-[2em] pb-[3em] text-[24px] lg:text-[20px] ls:text-[18px] font-[400]">
         <div className="w-full cflexsm gap-[24px] text-center pb-[6em]">
           <p>Pricing That Supports Learning Adventures</p>
           <p className="font-[700] text-[40px] lg:text-[35px] ls:text-[24px] max-w-[25em]">
@@ -114,7 +114,7 @@ const Price = () => {
                             <div className="w-full text-[#222] font-[700] cflexss">
                               <p>{card.label}</p>
                               <div className="w-full cflexmm">
-                                <p className="w-full text-[100px] lg:text-[80px] ls:tet-[60px]">
+                                <p className="w-full text-[100px] lg:text-[80px] ls:text-[40px]">
                                   {item.type === "month" ? card.amount : card.amount*12}
                                 </p>
                                 <p className="w-full flexss text-[#808080] font-[400]">
@@ -123,7 +123,7 @@ const Price = () => {
                               </div>
                             </div>
                             <div className="w-full cflexss gap-[15px]">
-                              <Button className="border-[1px] border-sec1 w-full font-[700] text-sec1 flexmm gap-[0.5em] px-[52px] py-[20px] rounded-full sm:w-full transition duration-500 ease-in-out">
+                              <Button className="border-[1px] border-sec1 w-full font-[700] text-sec1 flexmm gap-[0.5em] px-[52px] py-[20px] sm:py-[15px] rounded-full sm:w-full transition duration-500 ease-in-out">
                                 <p>Get Started</p>
                               </Button>
                               <p>{card.content}</p>

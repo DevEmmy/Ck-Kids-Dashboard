@@ -84,7 +84,7 @@ const Contact = () => {
   return (
     <>
       <NavBar active={2} />
-      <div className="flexbm mt-[100px] font-sans w-full lf:justify-center px-xpadding lf:gap-[50px] sm1:px-[1.5em] py-[4em] sm1:pb-[2em] font-[400] text-[20px] lg:text-[18px] ls:text-[16px] sm1:pt-[0em] bg-sec6 h-full lf:flex-wrap">
+      <div className="flexbm mt-[100px] sm:mt-[60px] font-sans w-full lf:justify-center px-xpadding lf:gap-[50px] sm1:px-[1.5em] py-[4em] sm1:pb-[2em] font-[400] text-[20px] lg:text-[18px] ls:text-[16px] sm1:pt-[0em] bg-sec6 h-full lf:flex-wrap">
         <div className="cflexbs h-full w-[50%] lf:w-full gap-[170px] lg:gap-[185px] ls:gap-[200px] lf:gap-0 flex-shrink sm1:pb-[2em] text-sec3 sm1:text-[20px]">
           <div className="w-full cflexss gap-[20px]">
             <h1 className="font-[700] text-[40px] lg:text-[37px] ls:text-[34px] sm:text-[30px]">Contact Us</h1>
