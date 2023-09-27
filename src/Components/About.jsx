@@ -88,7 +88,7 @@ const About = () => {
         >
           <div className="flex flex-col font-[400] gap-[32px] sm:gap-[0.5em] leading-[1.7em] pt-[2em] text-[20px] lg:text-[17px] ls:text-[16px] text-[#333]">
             <h3 className="text-[36px] lg:text-[32px] ls:text-[30px] sm:text-[28px] leading-[150%] font-[700] sm:font-[800] text-sec1 sm:leading-[1.5em]">
-              Overcoming Chalenges
+              Overcoming Challenges
             </h3>
 
             <p>
