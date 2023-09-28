@@ -60,6 +60,9 @@ const About = () => {
       <PictureTextDivider
         imageUrl={"/about-2.png"}
         bgColor={"bg-transparent"}
+        imageContainerClassNames={
+          "bg-primary2 p-[2px] pr-[20px] pb-[20px] sm:pr-[15px] sm:pb-[15px] sm:rounded-[30px] rounded-[40px]"
+        }
         imageFirst={false}
       >
         <div className="flex flex-col font-[400] gap-[32px] sm:gap-[0.5em] leading-[1.7em] text-[20px] lg:text-[17px] ls:text-[16px] text-[#333] sm:pt-[2em]">
@@ -84,10 +87,13 @@ const About = () => {
         <PictureTextDivider
           imageUrl={"/about-3.png"}
           bgColor={"bg-transparent"}
+          imageContainerClassNames={
+            "bg-primary1 p-[2px] pl-[20px] pb-[20px] sm:pl-[15px] sm:pb-[15px] sm:rounded-[30px] rounded-[40px]"
+          }
           imageFirst={true}
         >
           <div className="flex flex-col font-[400] gap-[32px] sm:gap-[0.5em] leading-[1.7em] pt-[2em] text-[20px] lg:text-[17px] ls:text-[16px] text-[#333]">
-            <h3 className="text-[36px] lg:text-[32px] ls:text-[30px] sm:text-[28px] leading-[150%] font-[700] sm:font-[800] text-sec1 sm:leading-[1.5em]">
+            <h3 className="text-[36px] lg:text-[32px] ls:text-[30px] sm:text-[28px] leading-[150%] font-[700] sm:font-[800] text-primary1 sm:leading-[1.5em]">
               Overcoming Challenges
             </h3>
 
@@ -108,7 +114,7 @@ const About = () => {
             <Link href="/price" className="flex-grow">
               <Button
                 className={
-                  "flex items-center w-fit gap-[10px] rounded-full px-[2.5em] py-[1em] text-white bg-sec1 sm:w-full sm:justify-center"
+                  "flex items-center w-fit gap-[10px] rounded-full px-[2.5em] py-[1em] text-white bg-primary1 sm:w-full sm:justify-center"
                 }
               >
                 <p>Enroll now</p> <FaArrowRight />
@@ -125,13 +131,13 @@ const About = () => {
           "w-[100%] rounded-[1.5em] margin-auto object-cover h-[100%]"
         }
         imageContainerClassNames={
-          "h-[680px] lg:h-[640px] ls:h-[600px] sm:h-[500px] p-[10px] bg-white rounded-[1.8em]"
-        }        
+          "h-[680px] lg:h-[640px] ls:h-[600px] sm:h-[500px] bg-primary3 p-[2px] pr-[20px] pb-[20px] sm:pr-[15px] sm:pb-[15px] sm:rounded-[30px] rounded-[40px]"
+        }
         imageFirst={false}
       >
         <div className="flex flex-col font-[400] gap-[32px] sm:gap-[0.5em] leading-[1.7em] text-[20px] lg:text-[17px] ls:text-[16px] text-[#333] pt-[2em]">
-          <h3 className="text-[36px] lg:text-[32px] ls:text-[30px] sm:text-[28px] leading-[150%] font-[700] sm:font-[800] text-sec1 sm:leading-[1.5em]">
-            Feeling Curiousity, Curbing Boredom
+          <h3 className="text-[36px] lg:text-[32px] ls:text-[30px] sm:text-[28px] leading-[150%] font-[700] sm:font-[800] text-primary3 sm:leading-[1.5em]">
+            Fostering Curiousity, Curbing Boredom
           </h3>
 
           <p>
@@ -150,9 +156,15 @@ const About = () => {
       </PictureTextDivider>
 
       <div className="bg-[#FAFAFA]">
-        <PictureTextDivider imageUrl={"/about-5.png"} imageFirst={true}>
+        <PictureTextDivider
+          imageUrl={"/about-5.png"}
+          imageFirst={true}
+          imageContainerClassNames={
+            "bg-primary4 p-[2px] pl-[20px] pb-[20px] sm:pl-[15px] sm:pb-[15px] sm:rounded-[30px] rounded-[40px]"
+          }
+        >
           <div className="flex flex-col font-[400] gap-[32px] sm:gap-[0.5em] leading-[1.7em] text-[20px] lg:text-[17px] ls:text-[16px] text-[#333] pt-[2em]">
-            <h3 className="text-[36px] lg:text-[32px] ls:text-[30px] sm:text-[28px] leading-[150%] font-[700] sm:font-[800] text-sec1 sm:leading-[1.5em]">
+            <h3 className="text-[36px] lg:text-[32px] ls:text-[30px] sm:text-[28px] leading-[150%] font-[700] sm:font-[800] text-primary4 sm:leading-[1.5em]">
               Nuturing a Passion for Knowledge
             </h3>
 
@@ -171,10 +183,16 @@ const About = () => {
           </div>
         </PictureTextDivider>
 
-        <PictureTextDivider imageUrl={"/about-6.png"} imageFirst={false}>
+        <PictureTextDivider
+          imageUrl={"/about-6.png"}
+          imageFirst={false}
+          imageContainerClassNames={
+            "bg-primary2 p-[2px] pr-[20px] pb-[20px] sm:pr-[15px] sm:pb-[15px] sm:rounded-[30px] rounded-[40px]"
+          }
+        >
           <div className="flex flex-col font-[400] gap-[32px] sm:gap-[0.5em] leading-[1.7em] text-[20px] lg:text-[17px] ls:text-[16px] text-[#333] pt-[2em]">
             <h3 className="text-[36px] lg:text-[32px] ls:text-[30px] sm:text-[28px] leading-[150%] font-[700] sm:font-[800] text-sec1 sm:leading-[1.5em]">
-              Our Committment
+              Our Commitment
             </h3>
 
             <p className="text-[1.0em]">
