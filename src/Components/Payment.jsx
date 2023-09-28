@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ArrowLeftOutline } from "heroicons-react";
 
-const Payment = ({ type, pay, setPay, body }) => {
+const Payment = ({ type, pay, setPay, amount, body }) => {
   return (
     <>
       <div className="flexmm w-full bg-[#FFF9D2] pt-[180px] sm:pt-[92px] px-xpadding text-[#808080] pb-[3em] text-[20px] lg:text-[18px] ls:text-[16px] font-[400]">
@@ -21,6 +21,11 @@ const Payment = ({ type, pay, setPay, body }) => {
             <p className="text-[28px] lg:text-[24px] text-[#090914] ls:text-[20px] font-[700]">
               Annette Black
             </p>
+          </div>
+          <div className="w-full flexbs">
+            <div className="cflexss gap-[10px]">
+
+            </div>
           </div>
         </div>
       </div>

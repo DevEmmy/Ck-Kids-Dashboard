@@ -7,6 +7,7 @@ import Payment from "./Payment";
 
 const Price = () => {
   const [pay, setPay] = useState(false);
+  const [amount, setAmount] = useState(0);
   const [body, setBody] = useState(0);
   const [type, setType] = useState("month");
 
@@ -55,7 +56,7 @@ const Price = () => {
       <NavBar active={3} background={"#FFF9D2"} />
       {pay ? (
         <>
-          <Payment type={type} pay={pay} setPay={setPay} body={body} />
+          <Payment type={type} pay={pay} setPay={setPay} amount={amount} body={body} />
         </>
       ) : (
         <>
@@ -137,6 +138,7 @@ const Price = () => {
                                     onClick={() => {
                                       setPay(true);
                                       setBody(i);
+                                      setAmount(amount);
                                       console.log("payment");
                                     }}
                                   >
