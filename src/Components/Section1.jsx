@@ -66,7 +66,7 @@ const Section1 = () => {
   ];
   return (
     <>
-      <div className="cflexss bg-primary1 gap-[16px] py-[2em] pt-[15em] sm:pt-[10em] px-xpadding text-[20px] lg:text-[17px] sm:px-[1.5em] font-[400]">
+      <div className="cflexss bg-primary1 gap-[16px] py-[70px] sm:py-[2em] pt-[15em] sm:pt-[10em] px-[130px] text-[20px] lg:text-[17px] sm:px-[1.5em] font-[400]">
         <div className="w-full flexbm sm:text-[1.1rem] gap-[16px] flex-wrap">
           <div className="w-[40em] relative cflexss gap-[16px] text-[#FFF]">
             <div className="flexmm absolute top-[-40px] sm:top-[-60px] right-[-150px] w-[80px] sm:w-[40px] sm:right-[50px]">

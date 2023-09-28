@@ -95,7 +95,7 @@ const Price = () => {
                     : "border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[0.5em] px-[2.5em] py-[1em] rounded-full sm:w-full transition duration-500 ease-in-out"
                 }
               >
-                <p>Cost per annum ₦</p>
+                <p>Cost per Annum ₦</p>
               </Button>
             </div>
           </div>
