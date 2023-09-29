@@ -56,13 +56,24 @@ const Price = () => {
       <NavBar active={3} background={"#FFF9D2"} />
       {pay ? (
         <>
-          <Payment type={type} pay={pay} setPay={setPay} amount={amount} body={body} />
+          <Payment
+            type={type}
+            pay={pay}
+            setPay={setPay}
+            amount={amount}
+            body={body}
+          />
         </>
       ) : (
         <>
           <div className="cflexss w-full bg-[#FFF9D2] pt-[180px] sm:pt-[92px] px-xpadding pb-[3em] text-[24px] lg:text-[20px] ls:text-[18px] font-[400]">
             <div className="w-full cflexsm gap-[24px] text-center pb-[6em]">
-              <p>Pricing That Supports Learning Adventures</p>
+              <div className="flexmm gap-[20px]">
+                <p>Pricing That Supports Learning Adventures</p>
+                <div className="flexmm w-[80px]">
+                  <img src={"/jupyter.svg"} alt="jupyter" />
+                </div>
+              </div>
               <p className="font-[700] text-[40px] lg:text-[35px] ls:text-[24px] max-w-[25em]">
                 Welcome to Curious Kids' Pricing Page! We believe in making
                 quality education and engaging content accessible to all young
@@ -138,7 +149,7 @@ const Price = () => {
                                     onClick={() => {
                                       setPay(true);
                                       setBody(i);
-                                      setAmount(amount);
+                                      setAmount(card.amount);
                                       console.log("payment");
                                     }}
                                   >
