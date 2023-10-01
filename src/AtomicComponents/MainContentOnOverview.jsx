@@ -44,7 +44,7 @@ const MainContentOnOverview = ({ student }) => {
                 <GiGraduateCap size="24px" />{" "}
               </span>
               <h1 className="text-[48px] lg:text-[44px] ls:text-[40px] lf:text-[28px] font-[800]">
-                {student?.courses.length}
+                {student?.completedCourses}
               </h1>
             </div>
             <p>Completed Courses</p>
