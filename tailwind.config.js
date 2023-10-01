@@ -30,7 +30,7 @@ module.exports = {
         primary2: "#00AC76",
         primary3: "#8D67CE",
         primary4: "#FE5972",
-        primary5: "#D8D8D8",
+        primary5: "#D8D8D8",        
         purplePrime: "#6941C6",
         secondary1: "rgba(0, 0, 0, 0.5)",
         secondary2: "rgba(0, 172, 118, 0.20)",

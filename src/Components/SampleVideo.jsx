@@ -63,7 +63,7 @@ const SampleVideo = ({ student, course, loading }) => {
         </>
       ) : (
         <>
-          <div className="w-full mt-[60px] flexss gap-[1em] px-[5%]">
+          <div className="w-full mt-[160px] flexss gap-[1em] px-[5%]">
             <div className="flexmm">
               <div
                 className="flexss bg-primary2 rounded-[0.5em] p-[0.4em] cursor-pointer"

@@ -1,6 +1,7 @@
 import Overview from "./Overview";
 import Messages from "./Messages";
 import Students from "./Students";
+import Gamification from "./Gamificationl";
 import Courses from "./Courses";
 import { useState, useEffect } from "react";
 import { FiGrid, FiBell, FiChevronDown } from "react-icons/fi";
@@ -178,6 +179,8 @@ const Dashboard = ({teacher}) => {
           {view === "Courses" && <Courses isTeacher={true}/>}
 
           {view === "Chat" && <Messages />}
+
+          {view === "Gamification " && <Gamification />}
         </div>
         
       </div>
