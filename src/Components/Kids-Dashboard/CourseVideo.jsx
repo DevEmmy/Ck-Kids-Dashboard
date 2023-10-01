@@ -7,7 +7,7 @@ import Recommended from "@/AtomicComponents/Recommended";
 import YouTube from "react-youtube";
 import { useState, useEffect } from "react";
 import { SpinnerCircular } from "spinners-react";
-import { viewVideoRequest, watchVideoRequest } from "@/services/request";
+import { completeVideoRequest, viewVideoRequest, watchVideoRequest } from "@/services/request";
 
 const CourseVideo = ({ student, course, loading }) => {
   const [size, setSize] = useState(window.innerWidth);
@@ -55,6 +55,7 @@ const CourseVideo = ({ student, course, loading }) => {
 
   const onPlay = () => {
     watchVideoRequest(course._id);
+    completeVideoRequest(course._id)
   };
 
   const Topic = [
