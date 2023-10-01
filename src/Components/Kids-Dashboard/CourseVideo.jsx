@@ -55,8 +55,11 @@ const CourseVideo = ({ student, course, loading }) => {
 
   const onPlay = () => {
     watchVideoRequest(course._id);
-    completeVideoRequest(course._id)
   };
+
+  const onComplete = ()=>{
+    completeVideoRequest(course._id)
+  }
 
   const Topic = [
     {
@@ -146,6 +149,7 @@ const CourseVideo = ({ student, course, loading }) => {
                   onReady={_onReady}
                   onPlay={onPlay}
                   className={"w-full rounded-[12px]"}
+                  onEnd={onComplete}
                 />
               </div>
             </div>
