@@ -93,7 +93,7 @@ export const teacherLogin = async (email, password, router) => {
       console.log(teacher);
       router.push("/teachers-dashboard");
 
-      notify(response.data.message);
+      // notify(response.data.message);
       // window.location.href = "/kids-dashboard"
     })
     .catch((err) => {
@@ -120,7 +120,7 @@ export const schoolLogin = async (email, password, router) => {
 
       router.push("/schools-dashboard");
 
-      notify(response.data.message);
+      // notify(response.data.message);
     })
     .catch((err) => {
       if (err.response) {
@@ -532,7 +532,7 @@ export const watchVideoRequest = async (id)=>{
     if (err.response) {
       // notifyError(err.response.data.message);
     } else {
-      // notifyError("Network Error");
+      notifyError("Network Error");
     }
     console.log(err);
   });
@@ -547,7 +547,25 @@ export const viewVideoRequest = async (id)=>{
     if (err.response) {
       
     } else {
+      notifyError("Network Error");
+    }
+    console.log(err);
+  });
+}
+
+export const completeVideoRequest = async (id)=>{
+  await axios.patch(`${api}/video/complete/${id}`, {},  setConfig())
+  .then(response => {
+    console.log(response.data);
+    let student = response.data.payload
+    localStorage.setItem("student", JSON.stringify(student));
+    console.log("Course Completed")
+  })
+  .catch((err) => {
+    if (err.response) {
       
+    } else {
+      notifyError("Network Error");
     }
     console.log(err);
   });

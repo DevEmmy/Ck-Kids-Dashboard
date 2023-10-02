@@ -20,7 +20,7 @@ const VideoCard = ({ cover, description, category, name, _id, background }) => {
             <p className="text-[20px] lg:text-[18px] sm:text-[25px] leading-[30px] font-[700] text-[#101828]">
               {name}
             </p>
-            <p className="text-[16px] leading=[22px] sm:text-[19px] font-[400] text-[#667085] line-clamp-2">
+            <p className="w-full text-[16px] leading=[22px] sm:text-[19px] font-[400] text-[#667085] line-clamp-2">
               {description}
             </p>
             <p className="text-[14px] sm:text-[16px] text-purplePrime font-[600]">
