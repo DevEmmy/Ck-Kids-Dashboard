@@ -25,7 +25,7 @@ import { getFilteredCourses } from "@/services/request";
 import BulkUpload from "./BulkUpload";
 import BulkVideoUpload from "../Schools-Dashboard/BulkVideoUpload";
 
-const Courses = ({isTeacher}) => {
+const Courses = ({ isTeacher }) => {
   const [drop, setDrop] = useState(false);
   const [cat, setCat] = useState(false);
   const [ageRange, setAgeRange] = useState(null);
@@ -35,6 +35,8 @@ const Courses = ({isTeacher}) => {
   const [edit, setEdit] = useState(false);
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState("");
+  const [changing, setChanging] = useState(false);
 
   const fetchData = async () => {
     setLoading(true);
@@ -43,19 +45,36 @@ const Courses = ({isTeacher}) => {
     setVideos(data);
     setLoading(false);
   };
+
   useEffect(() => {
     fetchData();
   }, []);
 
+  const handleSearch = () => {
+    if (search.length > 0) {
+      setVideos(
+        videos.filter((video) => {
+          return video.name.toLowerCase().includes(search.toLowerCase());
+        })
+      );
+    } else {
+      fetchData();
+    }
+  };
+
+  useEffect(() => {
+    handleSearch();
+  }, [changing]);
+
   const filterBy = async (ageRange, category) => {
     setLoading(true);
     let data = await getFilteredCourses(ageRange, category);
-    console.log(data)
+    console.log(data);
 
-    setAgeRange(null)
-    setCategory(null)
-    setVideos(data)
-    setLoading(false)
+    setAgeRange(null);
+    setCategory(null);
+    setVideos(data);
+    setLoading(false);
   };
 
   const [opened, { open, close }] = useDisclosure(false);
@@ -64,6 +83,11 @@ const Courses = ({isTeacher}) => {
   const Appear = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 0.2 } },
+  };
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+    setChanging(!changing);
   };
 
   const Categories = [
@@ -125,22 +149,46 @@ const Courses = ({isTeacher}) => {
     {
       type: "Single Video",
       icon: <VideoCameraOutline size="16px" />,
-      element: <AddNewVideo close={close} fetchData={fetchData} isTeacher={isTeacher}/>,
+      element: (
+        <AddNewVideo
+          close={close}
+          fetchData={fetchData}
+          isTeacher={isTeacher}
+        />
+      ),
     },
     {
       type: "Create new collection",
       icon: <VideoCameraOutline size="16px" />,
-      element: <CreateNewCollection close={close} fetchData={fetchData} isTeacher={isTeacher}/>,
+      element: (
+        <CreateNewCollection
+          close={close}
+          fetchData={fetchData}
+          isTeacher={isTeacher}
+        />
+      ),
     },
     {
       type: "Add to collection",
       icon: <PlusCircle size="16px" />,
-      element: <AddToCollection close={close} fetchData={fetchData} isTeacher={isTeacher}/>,
+      element: (
+        <AddToCollection
+          close={close}
+          fetchData={fetchData}
+          isTeacher={isTeacher}
+        />
+      ),
     },
     {
       type: "Bulk Video Upload",
       icon: <VideoCameraOutline size="16px" />,
-      element: <BulkVideoUpload close={close} fetchData={fetchData} isTeacher={isTeacher}/>,
+      element: (
+        <BulkVideoUpload
+          close={close}
+          fetchData={fetchData}
+          isTeacher={isTeacher}
+        />
+      ),
     },
   ];
 
@@ -189,6 +237,9 @@ const Courses = ({isTeacher}) => {
               <SearchOutline size="16px" className="cursor-pointer" />
               <input
                 type="text"
+                name="search"
+                onChange={handleChange}
+                value={search}
                 placeholder="Search for course"
                 className="w-full border-none text-[#222] outline-none"
               />
