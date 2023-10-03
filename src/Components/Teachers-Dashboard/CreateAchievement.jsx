@@ -10,7 +10,8 @@ const CreateAchievement = ({ close, fetchData }) => {
     collection: "",
     requirement: "",
     ages: "",
-    status: "",    
+    allocated: "",
+    status: "",
   });
   const [collectionItems, setCollectionItems] = useState([]);
   const [changing, setChanging] = useState(false);
@@ -21,86 +22,58 @@ const CreateAchievement = ({ close, fetchData }) => {
   const urlRegex = /^(https?|http|ftp):\/\/[^\s/$.?#].[^\s]*$/;
   const [loading, setLoading] = useState(false);
 
-//   useEffect(() => {
-//     if (
-//       achievementData["courseDetails"].trim().length > 0 &&
-//       achievementData["courseName"].trim().length > 0 &&
-//       !urlError &&
-//       achievementData["courseLink"].trim().length > 0 &&
-//       achievementData["category"].trim().length > 0 &&
-//       achievementData["ages"].trim().length > 0 &&
-//       achievementData["coursePhoto"]
-//     ) {
-//       setValid(true);
-//       setUrlError(false);
-//     }
-
-//     if (
-//       achievementData["courseLink"].trim().length > 0 &&
-//       urlRegex.test(achievementData["courseLink"])
-//     ) {
-//       setUrlError(false);
-//     }
-
-//     if (
-//       achievementData["courseLink"].trim().length > 0 &&
-//       !urlRegex.test(achievementData["courseLink"])
-//     ) {
-//       setUrlError(true);
-//       setValid(false);
-//     } else {
-//       setUrlError(false);
-//     }
-//   }, [changing]);
+  useEffect(() => {
+    if (
+      achievementData["title"].trim().length > 0 &&
+      achievementData["collection"].trim().length > 0 &&
+      achievementData["collection"] !== "None" &&
+      achievementData["requirement"].trim().length > 0 &&
+      achievementData["requirement"] !== "how many videos" &&
+      achievementData["ages"].trim().length > 0 &&
+      achievementData["ages"] !== "None" &&
+      achievementData["allocated"].trim().length > 0 &&
+      achievementData["status"] &&
+      achievementData["status"] !== "None"
+    ) {
+      setValid(true);
+    } else {
+      setValid(false);
+    }
+  }, [changing]);
 
   useEffect(() => {
     fetchCollection(setCollectionItems);
   }, []);
 
+  const acceptNumbersOnly = (name, value, max) => {
+    var numeric = /^[0-9]+$/;
+
+    if ((numeric.test(value) && value.length <= max) || value.length === 0) {
+      setAchievementData({ ...achievementData, [name]: value });
+      setChanging(!changing);
+    }
+  };
+
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setAchievementData({ ...achievementData, [name]: value });
-    setChanging(!changing);
-  };
 
-  const upload = (file) => {
-    if (
-      parseInt(file.size.substring(0, 4)) <= 10240 &&
-      (file.type === "image/png" ||
-        file.type === "image/jpg" ||
-        file.type === "image/jpeg" ||
-        file.type === "image/jfif" ||
-        file.type === "image/svg")
-    ) {
-      setAchievementData({ ...achievementData, coursePhoto: file });
-      setFileError(false);
-      setChanging(!changing);
+    if (name === "allocated") {
+      acceptNumbersOnly(name, value, 50);
     } else {
-      setFileError(true);
-      console.log(file.type);
-      console.log(file.size);
+      setAchievementData({ ...achievementData, [name]: value });
       setChanging(!changing);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    console.log(achievementData);
-    await addToCollection(
-      achievementData["courseName"],
-      achievementData["courseLink"],
-      achievementData["coursePhoto"],
-      achievementData["category"],
-      achievementData["ages"],
-      achievementData["courseDetails"],
-      null
-    );
-    setLoading(false);
-    close();
-    fetchData();
     if (valid) {
+      setLoading(true);
+      console.log(achievementData);
+      // setLoading(false);
+      // close();
+      //   fetchData();
     }
   };
 
@@ -171,7 +144,7 @@ const CreateAchievement = ({ close, fetchData }) => {
 
   return (
     <>
-      <form className="cflexss gap-[20px] text-[20px] px-[40px] lg:px-[30px] lg:pb-[30px] pb-[40px] lg:text-[18px] ls:text-[16px] font-[400] bg-[#FFF] overflow-y-auto">
+      <form className="w-full cflexss gap-[20px] text-[20px] px-[40px] lg:px-[30px] lg:pb-[30px] pb-[40px] lg:text-[18px] ls:text-[16px] font-[400] bg-[#FFF] overflow-y-auto">
         <p className="text-[24px] font-[800] lg:text-[22px] ls:text-[20px]">
           Create an achievement
         </p>
@@ -189,7 +162,7 @@ const CreateAchievement = ({ close, fetchData }) => {
         <div className="w-full cflexss gap-[12px]">
           <p>Select video/collection</p>
           <select
-            className="w-[526px] lg:w-[400px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+            className="w-[526px] lg:w-[400px] flex-shrink px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
             name="collection"
             onChange={handleChange}
           >
@@ -202,7 +175,7 @@ const CreateAchievement = ({ close, fetchData }) => {
         <div className="w-full cflexss gap-[12px]">
           <p>Requirement</p>
           <select
-            className="w-[526px] lg:w-[400px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+            className="w-[526px] lg:w-[400px] flex-shrink px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
             name="requirement"
             onChange={handleChange}
           >
@@ -222,7 +195,7 @@ const CreateAchievement = ({ close, fetchData }) => {
         <div className="w-full cflexss gap-[12px]">
           <p>Age group</p>
           <select
-            className="w-[526px] lg:w-[400px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+            className="w-[526px] lg:w-[400px] flex-shrink px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
             name="ages"
             onChange={handleChange}
           >
@@ -233,9 +206,20 @@ const CreateAchievement = ({ close, fetchData }) => {
           </select>
         </div>
         <div className="w-full cflexss gap-[12px]">
+          <p>Allocated Learning Gem</p>
+          <input
+            type="text"
+            name="allocated"
+            placeholder="per video"
+            value={achievementData["allocated"]}
+            onChange={handleChange}
+            className="w-[526px] lg:w-[400px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px]"
+          />
+        </div>
+        <div className="w-full cflexss gap-[12px]">
           <p>Status</p>
           <select
-            className="w-[526px] lg:w-[400px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+            className="w-[526px] lg:w-[400px] flex-shrink px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
             name="status"
             onChange={handleChange}
           >
@@ -255,7 +239,7 @@ const CreateAchievement = ({ close, fetchData }) => {
             className="py-[18px] px-[52px] rounded-full bg-primary2 text-[#FFF]"
             onClick={handleSubmit}
           >
-            {loading ? <Loader /> : <p>Submit</p>}
+            {loading ? <Loader /> : <p>Save Gamification</p>}
           </button>
           <button
             className="py-[18px] px-[52px] rounded-full bg-[#FFF] text-primary2 border-[1px] border-primary2"
