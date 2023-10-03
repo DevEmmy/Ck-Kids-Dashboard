@@ -11,6 +11,8 @@ import ReactPaginate from "react-paginate";
 import { Paginated, GetPaginatedData } from "@/AtomicComponents/Pagination";
 import { getStudents } from "@/services/request";
 import { SpinnerCircular } from "spinners-react";
+import { useDisclosure } from "@mantine/hooks";
+import { Modal, useMantineTheme } from "@mantine/core";
 
 const Students = () => {
   const [profile, setProfile] = useState(false);
@@ -21,6 +23,10 @@ const Students = () => {
   const [pageCount, setPageCount] = useState(0);
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [opened, { open, close }] = useDisclosure(false);
+  const theme = useMantineTheme();
+  const [modalElement, setModalElement] = useState();
 
   const fetchStudents = async () => {
     let data = await getStudents();
@@ -51,9 +57,6 @@ const Students = () => {
             data={data}
           />
         )}
-        {trash && (
-          <Trash setTrash={setTrash} data={data} setProfile={setProfile} />
-        )}
         <div className="w-full flexes">
           <div className="flexmm gap-[10px] rounded-[8px] border-[1px] p-[16px] w-[526px] bg-white">
             <SearchOutline size="16px" />
@@ -70,7 +73,7 @@ const Students = () => {
               <input type="checkbox" />
               <p>Avatar</p>
             </div>
-            <div className="w-[14%] flexsm gap-[10px]">
+            <div className="w-[30%] flexsm gap-[10px]">
               <p>Name</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -88,9 +91,8 @@ const Students = () => {
               </svg>
             </div>
             <div className="w-[25%] flexsm">Email</div>
-            <div className="w-[18%] flexsm">Username</div>
             <div className="w-[14%] flexsm">Date Joined</div>
-            <div className="w-[14%] flexsm">Class</div>
+            <div className="w-[14%] flexsm">Age Group</div>
             <div className="w-[14%] flexsm">Actions</div>
           </div>
           {loading ? (
@@ -142,14 +144,21 @@ const Students = () => {
                         <div className="w-[30%] flexsm">{data.fullName}</div>
                         <div className="w-[25%] flexsm">{data.email}</div>
                         <div className="w-[14%] flexsm">{formattedDate}</div>
+                        <div className="w-[14%] flexsm">{formattedDate}</div>
                         <div className="w-[14%] flexsm gap-[20px]">
                           <EyeOutline size="16px" />
                           <PencilAltOutline size="16px" />
                           <TrashOutline
                             size="16px"
                             onClick={() => {
-                              setTrash(true);
-                              setData(data);
+                              setModalElement(
+                                <Trash
+                                  close={close}
+                                  data={data}
+                                  setProfile={setProfile}
+                                />
+                              );
+                              open();
                             }}
                           />
                         </div>
@@ -176,6 +185,21 @@ const Students = () => {
             activeClassName={"active"}
           />
         </div>
+        <Modal
+          opened={opened}
+          onClose={close}
+          size={"auto"}
+          //   title="Add New Video"
+          overlayProps={{
+            color:
+              theme.colorScheme === "dark" ? theme.colors.dark[9] : "#00AC76",
+            opacity: 0.2,
+            blur: 3,
+          }}
+          radius={"12px"}
+        >
+          {modalElement}
+        </Modal>
       </div>
     </>
   );
@@ -183,58 +207,49 @@ const Students = () => {
 
 export default Students;
 
-const Trash = ({ setTrash, data, setProfile }) => {
-  const [remove, setRemove] = useState(false);
+const Trash = ({ close, data, setProfile }) => {
   return (
     <>
-      <div className="fixed w-full h-full z-50 top-0 left-0 bg-secondary1 flexmm">
-        <div className="relative cflexmm gap-[30px] w-[580px] h-[341px] bg-[#FAFAFA] border-[1px] rounded-[12px] flex-shrink m-[20px] shadow-md">
-          {remove ? (
-            <>
-              <div className="w-[286px] text-center font-[600] text-[24px]">
-                <p>Wait for approval from the principal</p>
-              </div>
-              <div
-                className="absolute top-[8%] right-[8%] flexmm cursor-pointer"
-                onClick={() => {
-                  setTrash(false);
-                  setProfile(false);
-                }}
-              >
-                <XCircleOutline size="16px" />
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="w-full cflexmm text-[24px] lg:text-[20px] font-[400]">
-                <p className="font-[800]">Are You Sure?</p>
-                <p>You are about to delete</p>
-                <p>
-                  <span className="text-primary2 font-[700]">{data.name}</span>{" "}
-                  profile
-                </p>
-              </div>
-              <div className="w-full flexmm gap-[20px] font-[600] text-[19px] lg:text-[17px]">
-                <button
-                  className="py-[18px] px-[60px] text-[white] bg-[#F00] rounded-full border-none"
-                  onClick={() => {
-                    setRemove(true);
-                  }}
-                >
-                  Delete
-                </button>
-                <button
-                  className="py-[18px] px-[60px] rounded-full text-[#808080] border-[1px]"
-                  onClick={() => {
-                    setTrash(false);
-                    setProfile(false);
-                  }}
-                >
-                  Cancel
-                </button>
-              </div>
-            </>
-          )}
+      <div className="w-[400px] cflexss gap-[20px] px-[14px] pb-[14px] rounded-[12px] flex-shrink">
+        <div className="w-[48px] h-[48px] rounded-full">
+          <img src="/alert.svg" alt="alert" />
+        </div>
+        <div className="w-full flexss text-[18px] text-[#222] lg:text-[16px] font-[400]">
+          <p>Savannah You are about to delete {data.fullName} profile</p>
+        </div>
+        <div className="flexss gap-[12px]">
+          <div className="w-[40px] h-[40px] rounded-full">
+            <img src="/avatar.svg" alt="teacher image" />
+          </div>
+          <div className="cflexss font-[400] text-[14px]">
+            <p className="font-[600] text-[#333]">Savannah Nguyen</p>
+            <p className="text-[#AAA]">savannah@gmail.com</p>
+          </div>
+        </div>
+        <div className="w-full flexbm sm:flex-wrap">
+          <div className="flexmm gap-[10px] font-[600] text-[14px]">
+            <input type="checkbox" />
+            <p>Don't ask again</p>
+          </div>
+          <div className="flexmm gap-[20px] font-[600] text-[16px] lg:text-[14px]">
+            <button
+              className="py-[10px] px-[18px] rounded-[8px] text-[#808080] border-[1px]"
+              onClick={() => {
+                close();
+                setProfile(false);
+              }}
+            >
+              Deny
+            </button>
+            <button
+              className="py-[10px] px-[18px] text-[white] bg-[#F00] rounded-[8px] border-none"
+              // onClick={() => {
+
+              // }}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </div>
     </>

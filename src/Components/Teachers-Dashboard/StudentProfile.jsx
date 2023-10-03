@@ -142,7 +142,7 @@ const StudentProfile = ({ profile, setProfile, data }) => {
               </div>
             </div>
           </div>
-        </div>
+        </div>        
       </div>
     </>
   );
