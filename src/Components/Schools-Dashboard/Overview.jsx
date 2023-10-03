@@ -164,7 +164,7 @@ const Overview = ({school}) => {
             </div>
             <div className="cflexss ">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
-                {data.allUploadedStudents || "0"}
+                {data?.allUploadedStudents || "0"}
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Students
@@ -178,7 +178,7 @@ const Overview = ({school}) => {
             </div>
             <div className="cflexss ">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
-              {data.totalStudents || "0"}
+              {data?.totalStudents || "0"}
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Students Visit
@@ -192,7 +192,7 @@ const Overview = ({school}) => {
             </div>
             <div className="cflexss ">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
-              {data.totalTeachers || "0"}
+              {data?.totalTeachers || "0"}
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Teachers
