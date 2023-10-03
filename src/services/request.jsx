@@ -612,3 +612,21 @@ export const getTeachers = async ()=>{
 
   return data
 }
+
+export const getSchoolDetails = async ()=>{
+  let data;
+
+  await axios.get(`${api}/schools/details`, setConfig())
+  .then((response) => {
+    console.log(response);
+    data = response.data.payload
+  })
+  .catch((err) => {
+    if (err.response) {
+    } else {
+    }
+    console.log(err);
+  });
+
+  return data
+}
