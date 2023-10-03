@@ -21,11 +21,11 @@ const EachCourse = ({ video, setCat, setType, setAdd, setDrop, fetchData }) => {
     <div className="w-full rounded-[12px] border-[1px] flex">
       <div className="w-3/5 border-r-[1px] p-[15px] flex gap-[20px] justify-between">
         <div className="w-full flex gap-5 ">
-          <div className="flexmm w-[100%] h-[230px] flex-shrink rounded-[12px]">
+          <div className="flexmm w-full h-[230px] flex-shrink rounded-[12px]">
             <img
               src={video.cover}
               alt="courseImage"
-              className="rounded-[12px] h-full object-cover"
+              className="rounded-[12px] w-full h-full object-cover"
             />
           </div>
 

@@ -38,36 +38,49 @@ const CreateNewCollection = ({ close, fetchData }) => {
 
   const Categories = [
     {
-      category: "History",
-      content: [],
+      category: "Film & Animation",
     },
     {
-      category: "Nursery Rhymes",
-      content: [],
+      category: "Autos & Vehicles",
     },
     {
-      category: "Music-Dance",
-      content: [],
+      category: "Music",
     },
     {
-      category: "Gardening",
-      content: [],
+      category: "Pets & Animals",
     },
     {
-      category: "Drawing and Painting",
-      content: [],
+      category: "Sports",
     },
     {
-      category: "Cooking",
-      content: [],
+      category: "Travel & Events",
     },
     {
-      category: "Arts and Craft",
-      content: [],
+      category: "Gaming",
     },
     {
-      category: "Globalization",
-      content: [],
+      category: "People & Blogs",
+    },
+    {
+      category: "Comedy",
+    },
+    {
+      category: "Entertainment",
+    },
+    {
+      category: "News & Politics",
+    },
+    {
+      category: "How to & Style",
+    },
+    {
+      category: "Education",
+    },
+    {
+      category: "Science & Technology",
+    },
+    {
+      category: "Nonprofits & Activism",
     },
   ];
 
@@ -122,7 +135,7 @@ const CreateNewCollection = ({ close, fetchData }) => {
       );
       setLoading(false);
       close();
-      fetchData()
+      fetchData();
     }
   };
 
@@ -202,7 +215,11 @@ const CreateNewCollection = ({ close, fetchData }) => {
           </div>
           {fileName && (
             <div className="flexmm w-[15em] rounded-[12px] flex-shrink">
-              <img src={fileName.base64} alt="image" className="rounded-[12px]"/>
+              <img
+                src={fileName.base64}
+                alt="image"
+                className="rounded-[12px]"
+              />
             </div>
           )}
           {fileError && (
