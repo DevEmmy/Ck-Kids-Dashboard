@@ -1,8 +1,6 @@
 import Loader from "@/AtomicComponents/Loader";
-import { addToCollection } from "@/services/request";
 import { useState, useEffect } from "react";
 import { fetchCollection } from "@/services/request";
-import FileBase64 from "react-file-base64";
 
 const CreateAchievement = ({ close, fetchData }) => {
   const [achievementData, setAchievementData] = useState({
@@ -14,12 +12,8 @@ const CreateAchievement = ({ close, fetchData }) => {
     status: "",
   });
   const [collectionItems, setCollectionItems] = useState([]);
-  const [changing, setChanging] = useState(false);
-  const [fileName, setFileName] = useState("");
-  const [fileError, setFileError] = useState(false);
-  const [valid, setValid] = useState(false);
-  const [urlError, setUrlError] = useState(false);
-  const urlRegex = /^(https?|http|ftp):\/\/[^\s/$.?#].[^\s]*$/;
+  const [changing, setChanging] = useState(false);  
+  const [valid, setValid] = useState(false);  
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -81,54 +75,6 @@ const CreateAchievement = ({ close, fetchData }) => {
     e.preventDefault();
     close();
   };
-
-  const Categories = [
-    {
-      category: "Film & Animation",
-    },
-    {
-      category: "Autos & Vehicles",
-    },
-    {
-      category: "Music",
-    },
-    {
-      category: "Pets & Animals",
-    },
-    {
-      category: "Sports",
-    },
-    {
-      category: "Travel & Events",
-    },
-    {
-      category: "Gaming",
-    },
-    {
-      category: "People & Blogs",
-    },
-    {
-      category: "Comedy",
-    },
-    {
-      category: "Entertainment",
-    },
-    {
-      category: "News & Politics",
-    },
-    {
-      category: "How to & Style",
-    },
-    {
-      category: "Education",
-    },
-    {
-      category: "Science & Technology",
-    },
-    {
-      category: "Nonprofits & Activism",
-    },
-  ];
 
   const Ages = [
     {
