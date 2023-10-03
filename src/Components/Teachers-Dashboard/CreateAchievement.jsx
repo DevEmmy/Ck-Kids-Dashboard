@@ -171,7 +171,7 @@ const CreateAchievement = ({ close, fetchData }) => {
 
   return (
     <>
-      <form className="w-full cflexss gap-[20px] text-[20px] px-[40px] pb-[40px] lg:text-[18px] ls:text-[16px] font-[400] bg-[#FFF] overflow-y-auto">
+      <form className="cflexss gap-[20px] text-[20px] px-[40px] lg:px-[30px] lg:pb-[30px] pb-[40px] lg:text-[18px] ls:text-[16px] font-[400] bg-[#FFF] overflow-y-auto">
         <p className="text-[24px] font-[800] lg:text-[22px] ls:text-[20px]">
           Create an achievement
         </p>
@@ -183,13 +183,13 @@ const CreateAchievement = ({ close, fetchData }) => {
             placeholder="Course name"
             value={achievementData["title"]}
             onChange={handleChange}
-            className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px]"
+            className="w-[526px] lg:w-[400px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px]"
           />
         </div>
         <div className="w-full cflexss gap-[12px]">
           <p>Select video/collection</p>
           <select
-            className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+            className="w-[526px] lg:w-[400px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
             name="collection"
             onChange={handleChange}
           >
@@ -202,27 +202,27 @@ const CreateAchievement = ({ close, fetchData }) => {
         <div className="w-full cflexss gap-[12px]">
           <p>Requirement</p>
           <select
-            className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+            className="w-[526px] lg:w-[400px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
             name="requirement"
             onChange={handleChange}
           >
             <option>how many videos</option>
-            <option value="1">10</option>
-            <option value="2">20</option>
-            <option value="3">30</option>
-            <option value="4">40</option>
-            <option value="5">50</option>
-            <option value="6">60</option>
-            <option value="7">70</option>
-            <option value="8">80</option>
-            <option value="9">90</option>
-            <option value="10">100</option>
+            <option value="1">5</option>
+            <option value="2">10</option>
+            <option value="3">15</option>
+            <option value="4">20</option>
+            <option value="5">25</option>
+            <option value="6">30</option>
+            <option value="7">35</option>
+            <option value="8">40</option>
+            <option value="9">45</option>
+            <option value="10">50</option>
           </select>
         </div>
         <div className="w-full cflexss gap-[12px]">
           <p>Age group</p>
           <select
-            className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+            className="w-[526px] lg:w-[400px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
             name="ages"
             onChange={handleChange}
           >
@@ -235,7 +235,7 @@ const CreateAchievement = ({ close, fetchData }) => {
         <div className="w-full cflexss gap-[12px]">
           <p>Status</p>
           <select
-            className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+            className="w-[526px] lg:w-[400px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
             name="status"
             onChange={handleChange}
           >
