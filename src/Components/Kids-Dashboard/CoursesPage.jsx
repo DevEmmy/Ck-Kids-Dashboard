@@ -149,7 +149,7 @@ const CoursesPage = ({ student }) => {
         </div>
 
         <div className="fixed lf:hidden z-25 top-[110px] lf:top-[90px] right-[5%] w-[25%] cflexmm gap-[1em]">
-          <GemView />
+          <GemView student={student} />
         </div>
       </div>
     </>
