@@ -140,19 +140,13 @@ const Courses = ({ isTeacher }) => {
 
   const Ages = [
     {
-      age: "3 - 5",
+      age: "6 - 9",
     },
     {
-      age: "6 - 8",
+      age: "10 - 14",
     },
     {
-      age: "9 - 10",
-    },
-    {
-      age: "11 - 13",
-    },
-    {
-      age: "14 - 16",
+      age: "15 - 18",
     },
   ];
 
@@ -280,7 +274,7 @@ const Courses = ({ isTeacher }) => {
                   animate="visible"
                   initial="hidden"
                   variants={Appear}
-                  className="absolute top-[70px] left-0 lf:left-0 text-[17px] bg-[#FFF] h-[350px] flexss p-[15px] w-[18em] rounded-[8px] shadow-md border-[1px]"
+                  className="absolute top-[70px] left-0 lf:left-0 text-[17px] bg-[#FFF] h-[350px] z-20 flexss p-[15px] w-[18em] rounded-[8px] shadow-md border-[1px]"
                 >
                   <div className="w-full h-full cflexss gap-[10px] overflow-y-scroll">
                     {Categories.map((item, i) => {

@@ -117,7 +117,7 @@ const CoursesPage = ({ student }) => {
                   animate="visible"
                   initial="hidden"
                   variants={Appear}
-                  className="absolute top-[210px] left-0 lf:left-[50px] h-[300px] overflow-y-scroll bg-white cflexss gap-[0.5em] p-[0.5em] w-[18em] rounded-xl shadow-md border-2"
+                  className="absolute top-[210px] left-0 lf:left-[50px] h-[350px] overflow-y-scroll bg-white cflexss gap-[0.5em] p-[0.5em] w-[18em] rounded-xl shadow-md border-2"
                 >
                   {Categories.map((item, i) => {
                     return (

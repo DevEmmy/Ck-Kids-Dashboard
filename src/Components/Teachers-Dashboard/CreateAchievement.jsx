@@ -1,17 +1,18 @@
 import Loader from "@/AtomicComponents/Loader";
 import { addToCollection } from "@/services/request";
 import { useState, useEffect } from "react";
+import { fetchCollection } from "@/services/request";
 import FileBase64 from "react-file-base64";
 
-const AddNewVideo = ({ close, fetchData, isTeacher }) => {
-  const [newVideoData, setNewVideoData] = useState({
-    courseName: "",
-    courseDetails: "",
-    courseLink: "",
-    category: "",
+const CreateAchievement = ({ close, fetchData }) => {
+  const [achievementData, setAchievementData] = useState({
+    title: "",
+    collection: "",
+    requirement: "",
     ages: "",
-    coursePhoto: "",
+    status: "",    
   });
+  const [collectionItems, setCollectionItems] = useState([]);
   const [changing, setChanging] = useState(false);
   const [fileName, setFileName] = useState("");
   const [fileError, setFileError] = useState(false);
@@ -20,44 +21,46 @@ const AddNewVideo = ({ close, fetchData, isTeacher }) => {
   const urlRegex = /^(https?|http|ftp):\/\/[^\s/$.?#].[^\s]*$/;
   const [loading, setLoading] = useState(false);
 
+//   useEffect(() => {
+//     if (
+//       achievementData["courseDetails"].trim().length > 0 &&
+//       achievementData["courseName"].trim().length > 0 &&
+//       !urlError &&
+//       achievementData["courseLink"].trim().length > 0 &&
+//       achievementData["category"].trim().length > 0 &&
+//       achievementData["ages"].trim().length > 0 &&
+//       achievementData["coursePhoto"]
+//     ) {
+//       setValid(true);
+//       setUrlError(false);
+//     }
+
+//     if (
+//       achievementData["courseLink"].trim().length > 0 &&
+//       urlRegex.test(achievementData["courseLink"])
+//     ) {
+//       setUrlError(false);
+//     }
+
+//     if (
+//       achievementData["courseLink"].trim().length > 0 &&
+//       !urlRegex.test(achievementData["courseLink"])
+//     ) {
+//       setUrlError(true);
+//       setValid(false);
+//     } else {
+//       setUrlError(false);
+//     }
+//   }, [changing]);
+
   useEffect(() => {
-    if (
-      newVideoData["courseDetails"].trim().length > 0 &&
-      newVideoData["courseName"].trim().length > 0 &&
-      !urlError &&
-      newVideoData["courseLink"].trim().length > 0 &&
-      newVideoData["category"].trim().length > 0 &&
-      newVideoData["category"].trim() !== "None" &&
-      newVideoData["ages"].trim().length > 0 &&
-      newVideoData["ages"].trim() !== "None" &&
-      newVideoData["coursePhoto"]
-    ) {
-      setValid(true);
-      setUrlError(false);
-    }
-
-    if (
-      newVideoData["courseLink"].trim().length > 0 &&
-      urlRegex.test(newVideoData["courseLink"])
-    ) {
-      setUrlError(false);
-    }
-
-    if (
-      newVideoData["courseLink"].trim().length > 0 &&
-      !urlRegex.test(newVideoData["courseLink"])
-    ) {
-      setUrlError(true);
-      setValid(false);
-    } else {
-      setUrlError(false);
-    }
-  }, [changing]);
+    fetchCollection(setCollectionItems);
+  }, []);
 
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setNewVideoData({ ...newVideoData, [name]: value });
+    setAchievementData({ ...achievementData, [name]: value });
     setChanging(!changing);
   };
 
@@ -70,7 +73,7 @@ const AddNewVideo = ({ close, fetchData, isTeacher }) => {
         file.type === "image/jfif" ||
         file.type === "image/svg")
     ) {
-      setNewVideoData({ ...newVideoData, coursePhoto: file });
+      setAchievementData({ ...achievementData, coursePhoto: file });
       setFileError(false);
       setChanging(!changing);
     } else {
@@ -84,16 +87,15 @@ const AddNewVideo = ({ close, fetchData, isTeacher }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log(newVideoData);
+    console.log(achievementData);
     await addToCollection(
-      newVideoData["courseName"],
-      newVideoData["courseLink"],
-      newVideoData["coursePhoto"],
-      newVideoData["category"],
-      newVideoData["ages"],
-      newVideoData["courseDetails"],
-      null,
-      isTeacher
+      achievementData["courseName"],
+      achievementData["courseLink"],
+      achievementData["coursePhoto"],
+      achievementData["category"],
+      achievementData["ages"],
+      achievementData["courseDetails"],
+      null
     );
     setLoading(false);
     close();
@@ -171,58 +173,54 @@ const AddNewVideo = ({ close, fetchData, isTeacher }) => {
     <>
       <form className="w-full cflexss gap-[20px] text-[20px] px-[40px] pb-[40px] lg:text-[18px] ls:text-[16px] font-[400] bg-[#FFF] overflow-y-auto">
         <p className="text-[24px] font-[800] lg:text-[22px] ls:text-[20px]">
-          Add New Video
+          Create an achievement
         </p>
         <div className="w-full cflexss gap-[12px]">
-          <p>Course name</p>
+          <p>Title</p>
           <input
             type="text"
-            name="courseName"
+            name="title"
             placeholder="Course name"
-            value={newVideoData["courseName"]}
+            value={achievementData["title"]}
             onChange={handleChange}
             className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px]"
           />
         </div>
         <div className="w-full cflexss gap-[12px]">
-          <p>Course details</p>
-          <textarea
-            type="text"
-            name="courseDetails"
-            value={newVideoData["courseDetails"]}
-            onChange={handleChange}
-            className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px] resize-none h-[187px]"
-          />
-        </div>
-        <div className="w-full cflexss gap-[12px]">
-          <p>Course link</p>
-          <input
-            type="text"
-            name="courseLink"
-            placeholder="Paste video link here"
-            value={newVideoData["courseLink"]}
-            onChange={handleChange}
-            className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px]"
-          />
-          {urlError && (
-            <p className="flexmm text-[12px] text-red-700">* invalid URL!</p>
-          )}
-        </div>
-        <div className="w-full cflexss gap-[12px]">
-          <p>Course Category</p>
+          <p>Select video/collection</p>
           <select
             className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
-            name="category"
+            name="collection"
             onChange={handleChange}
           >
             <option>None</option>
-            {Categories.map((category) => {
-              return <option>{category.category}</option>;
+            {collectionItems.map((item) => {
+              return <option value={item._id}>{item.title}</option>;
             })}
           </select>
         </div>
         <div className="w-full cflexss gap-[12px]">
-          <p>Ages</p>
+          <p>Requirement</p>
+          <select
+            className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+            name="requirement"
+            onChange={handleChange}
+          >
+            <option>how many videos</option>
+            <option value="1">10</option>
+            <option value="2">20</option>
+            <option value="3">30</option>
+            <option value="4">40</option>
+            <option value="5">50</option>
+            <option value="6">60</option>
+            <option value="7">70</option>
+            <option value="8">80</option>
+            <option value="9">90</option>
+            <option value="10">100</option>
+          </select>
+        </div>
+        <div className="w-full cflexss gap-[12px]">
+          <p>Age group</p>
           <select
             className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
             name="ages"
@@ -235,36 +233,16 @@ const AddNewVideo = ({ close, fetchData, isTeacher }) => {
           </select>
         </div>
         <div className="w-full cflexss gap-[12px]">
-          <p>Course photo</p>
-          <div className="w-full flexmm text-[#808080] text-[16px] border-[2px] border-[#808080] border-dotted rounded-[12px] h-[125px] lg:text-[14px] font-[400] cursor-pointer">
-            {fileName ? fileName.name : <p>Drop file to be uploaded here</p>}
-            <div className="absolute opacity-0">
-              <FileBase64
-                name="coursePhoto"
-                defaultValue={newVideoData["coursePhoto"]}
-                multiple={false}
-                onDone={(base64) => {
-                  upload(base64);
-                  setFileName(base64);
-                  console.log(base64);
-                }}
-              />
-            </div>
-          </div>
-          {fileName && (
-            <div className="flexmm w-[15em] rounded-[12px] flex-shrink">
-              <img
-                src={fileName.base64}
-                alt="image"
-                className="rounded-[12px]"
-              />
-            </div>
-          )}
-          {fileError && (
-            <p className="flexmm text-[12px] text-red-700">
-              make sure you uploaded an image not more that 10mb.
-            </p>
-          )}
+          <p>Status</p>
+          <select
+            className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+            name="status"
+            onChange={handleChange}
+          >
+            <option>None</option>
+            <option>Publish</option>
+            <option>Unpublish</option>
+          </select>
         </div>
         {!valid && (
           <p className="flexmm text-[12px] text-red-700">
@@ -291,4 +269,4 @@ const AddNewVideo = ({ close, fetchData, isTeacher }) => {
   );
 };
 
-export default AddNewVideo;
+export default CreateAchievement;

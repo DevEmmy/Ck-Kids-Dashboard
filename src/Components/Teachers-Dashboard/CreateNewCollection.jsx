@@ -22,7 +22,9 @@ const CreateNewCollection = ({ close, fetchData }) => {
       newCollection["title"].trim().length > 0 &&
       newCollection["description"].trim().length > 0 &&
       newCollection["category"].trim().length > 0 &&
-      newCollection["ages"].trim() &&
+      newCollection["category"].trim() !== "None" &&
+      newCollection["ages"].length > 0 &&
+      newCollection["ages"] !== "None" &&      
       newCollection["coursePhoto"]
     ) {
       setValid(true);
@@ -38,54 +40,61 @@ const CreateNewCollection = ({ close, fetchData }) => {
 
   const Categories = [
     {
-      category: "History",
-      content: [],
+      category: "Film & Animation",
     },
     {
-      category: "Nursery Rhymes",
-      content: [],
+      category: "Autos & Vehicles",
     },
     {
-      category: "Music-Dance",
-      content: [],
+      category: "Music",
     },
     {
-      category: "Gardening",
-      content: [],
+      category: "Pets & Animals",
     },
     {
-      category: "Drawing and Painting",
-      content: [],
+      category: "Sports",
     },
     {
-      category: "Cooking",
-      content: [],
+      category: "Travel & Events",
     },
     {
-      category: "Arts and Craft",
-      content: [],
+      category: "Gaming",
     },
     {
-      category: "Globalization",
-      content: [],
+      category: "People & Blogs",
+    },
+    {
+      category: "Comedy",
+    },
+    {
+      category: "Entertainment",
+    },
+    {
+      category: "News & Politics",
+    },
+    {
+      category: "How to & Style",
+    },
+    {
+      category: "Education",
+    },
+    {
+      category: "Science & Technology",
+    },
+    {
+      category: "Nonprofits & Activism",
     },
   ];
 
   const Ages = [
     {
-      age: "3 - 5",
+      age: "6 - 9",
     },
     {
-      age: "6 - 8",
+      age: "10 - 14",
     },
     {
-      age: "9 - 10",
-    },
-    {
-      age: "11 - 13",
-    },
-    {
-      age: "14 - 16",
+      age: "15 - 18",
     },
   ];
 
@@ -122,7 +131,7 @@ const CreateNewCollection = ({ close, fetchData }) => {
       );
       setLoading(false);
       close();
-      fetchData()
+      fetchData();
     }
   };
 
@@ -202,7 +211,11 @@ const CreateNewCollection = ({ close, fetchData }) => {
           </div>
           {fileName && (
             <div className="flexmm w-[15em] rounded-[12px] flex-shrink">
-              <img src={fileName.base64} alt="image" className="rounded-[12px]"/>
+              <img
+                src={fileName.base64}
+                alt="image"
+                className="rounded-[12px]"
+              />
             </div>
           )}
           {fileError && (
