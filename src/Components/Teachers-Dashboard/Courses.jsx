@@ -92,36 +92,49 @@ const Courses = ({ isTeacher }) => {
 
   const Categories = [
     {
-      category: "History",
-      content: [],
+      category: "Film & Animation",
     },
     {
-      category: "Nursery Rhymes",
-      content: [],
+      category: "Autos & Vehicles",
     },
     {
-      category: "Music-Dance",
-      content: [],
+      category: "Music",
     },
     {
-      category: "Gardening",
-      content: [],
+      category: "Pets & Animals",
     },
     {
-      category: "Drawing and Painting",
-      content: [],
+      category: "Sports",
     },
     {
-      category: "Cooking",
-      content: [],
+      category: "Travel & Events",
     },
     {
-      category: "Arts and Craft",
-      content: [],
+      category: "Gaming",
     },
     {
-      category: "Globalization",
-      content: [],
+      category: "People & Blogs",
+    },
+    {
+      category: "Comedy",
+    },
+    {
+      category: "Entertainment",
+    },
+    {
+      category: "News & Politics",
+    },
+    {
+      category: "How to & Style",
+    },
+    {
+      category: "Education",
+    },
+    {
+      category: "Science & Technology",
+    },
+    {
+      category: "Nonprofits & Activism",
     },
   ];
 
@@ -267,23 +280,25 @@ const Courses = ({ isTeacher }) => {
                   animate="visible"
                   initial="hidden"
                   variants={Appear}
-                  className="absolute top-[70px] left-0 lf:left-0 text-[17px] bg-[#FFF] cflexss gap-[10px] p-[15px] w-[18em] rounded-[8px] shadow-md border-[1px]"
+                  className="absolute top-[70px] left-0 lf:left-0 text-[17px] bg-[#FFF] h-[350px] flexss p-[15px] w-[18em] rounded-[8px] shadow-md border-[1px]"
                 >
-                  {Categories.map((item, i) => {
-                    return (
-                      <div
-                        key={i}
-                        className="flexbm w-full px-[16px] py-[12px] rounded-xl hover:bg-primary2 hover:text-white cursor-pointer transition-all duration-400"
-                        onClick={() => {
-                          setCategory(item.category);
-                          filterBy(ageRange, item.category);
-                        }}
-                      >
-                        <p>{item.category}</p>
-                        <ChevronRight />
-                      </div>
-                    );
-                  })}
+                  <div className="w-full h-full cflexss gap-[10px] overflow-y-scroll">
+                    {Categories.map((item, i) => {
+                      return (
+                        <div
+                          key={i}
+                          className="flexbm w-full px-[16px] py-[12px] rounded-xl hover:bg-primary2 hover:text-white cursor-pointer transition-all duration-400"
+                          onClick={() => {
+                            setCategory(item.category);
+                            filterBy(ageRange, item.category);
+                          }}
+                        >
+                          <p>{item.category}</p>
+                          <ChevronRight />
+                        </div>
+                      );
+                    })}
+                  </div>
                 </motion.div>
               )}
             </div>

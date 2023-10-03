@@ -107,36 +107,49 @@ const AddNewVideo = ({ close, fetchData, isTeacher }) => {
 
   const Categories = [
     {
-      category: "History",
-      content: [],
+      category: "Film & Animation",
     },
     {
-      category: "Nursery Rhymes",
-      content: [],
+      category: "Autos & Vehicles",
     },
     {
-      category: "Music-Dance",
-      content: [],
+      category: "Music",
     },
     {
-      category: "Gardening",
-      content: [],
+      category: "Pets & Animals",
     },
     {
-      category: "Drawing and Painting",
-      content: [],
+      category: "Sports",
     },
     {
-      category: "Cooking",
-      content: [],
+      category: "Travel & Events",
     },
     {
-      category: "Arts and Craft",
-      content: [],
+      category: "Gaming",
     },
     {
-      category: "Globalization",
-      content: [],
+      category: "People & Blogs",
+    },
+    {
+      category: "Comedy",
+    },
+    {
+      category: "Entertainment",
+    },
+    {
+      category: "News & Politics",
+    },
+    {
+      category: "How to & Style",
+    },
+    {
+      category: "Education",
+    },
+    {
+      category: "Science & Technology",
+    },
+    {
+      category: "Nonprofits & Activism",
     },
   ];
 
