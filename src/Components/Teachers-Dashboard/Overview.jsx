@@ -1,6 +1,7 @@
 import { ChevronUp, ChevronDown, Users, ChevronRight } from "heroicons-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BarChart from "@/AtomicComponents/BarChart";
+import { getSchoolDetails } from "@/services/request";
 
 const Overview = ({teacher}) => {
   const [drop, setDrop] = useState(false);
@@ -81,6 +82,18 @@ const Overview = ({teacher}) => {
       class: "JSS 1E",
     },
   ];
+
+   let [data, setData] = useState()
+
+  const fetchData = async ()=>{
+    let data = await getSchoolDetails()
+    setData(data)
+  }
+
+  useEffect(()=>{
+    fetchData()
+  }, [])
+
   return (
     <>
       <div className="w-full cflexss font-[700] gap-[37px] text-[24px] lg:text-[20px] ls:text-[18px] bg-[#F7F7F7] h-full p-[30px]">
@@ -141,7 +154,7 @@ const Overview = ({teacher}) => {
             </div>
             <div className="cflexss">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
-                25
+                0
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Classes
@@ -155,7 +168,7 @@ const Overview = ({teacher}) => {
             </div>
             <div className="cflexss">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
-                25
+              {data?.allUploadedStudents || "0"}
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Students
@@ -169,7 +182,7 @@ const Overview = ({teacher}) => {
             </div>
             <div className="cflexss">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
-                25
+              {data?.totalStudents || "0"}
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Students Visit
