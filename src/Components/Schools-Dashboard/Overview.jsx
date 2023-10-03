@@ -1,3 +1,4 @@
+import LoadScreen from "@/AtomicComponents/LoadScreen";
 import { getSchoolDetails } from "@/services/request";
 import { ChevronUp, ChevronDown, Users, ChevronRight } from "heroicons-react";
 import { useEffect, useState } from "react";
@@ -95,7 +96,9 @@ const Overview = ({school}) => {
 
   return (
     <>
-      <div className="w-full cflexss font-[700] gap-[37px] text-[24px] lg:text-[20px] ls:text-[18px] bg-[#F7F7F7] h-full p-[30px]">
+      {
+        data ?
+        <div className="w-full cflexss font-[700] gap-[37px] text-[24px] lg:text-[20px] ls:text-[18px] bg-[#F7F7F7] h-full p-[30px]">
         <div className="w-full flexbm">
           <p className="text-gray-400">Welcome, {school.schoolName}</p>
           <div className="flexmm gap-[28px]">
@@ -352,6 +355,9 @@ const Overview = ({school}) => {
           </div>
         </div>
       </div>
+      :
+      <LoadScreen />
+      }
     </>
   );
 };
