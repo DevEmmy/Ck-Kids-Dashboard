@@ -85,7 +85,7 @@ const Section2 = () => {
             </p>
           </div>
           <div className="flexss sm1:justify-center font-[600] text-[19px] lg:text-[15px] ls:text-[13px] flex-wrap sm1:w-full">
-            <a href="/price" className="sm:flex flex-grow">
+            <a href="/signin" className="sm:flex flex-grow">
               <Button className="border-[0.2em] bg-[#FFF] text-[#222] flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
                 <p>See more</p> <ArrowRightOutline size="1em" />
               </Button>
