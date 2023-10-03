@@ -25,7 +25,7 @@ import { getFilteredCourses } from "@/services/request";
 import BulkUpload from "./BulkUpload";
 import BulkVideoUpload from "../Schools-Dashboard/BulkVideoUpload";
 
-const Courses = ({isTeacher}) => {
+const Courses = ({ isTeacher }) => {
   const [drop, setDrop] = useState(false);
   const [cat, setCat] = useState(false);
   const [ageRange, setAgeRange] = useState(null);
@@ -35,6 +35,8 @@ const Courses = ({isTeacher}) => {
   const [edit, setEdit] = useState(false);
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState("");
+  const [changing, setChanging] = useState(false);
 
   const fetchData = async () => {
     setLoading(true);
@@ -43,19 +45,36 @@ const Courses = ({isTeacher}) => {
     setVideos(data);
     setLoading(false);
   };
+
   useEffect(() => {
     fetchData();
   }, []);
 
+  const handleSearch = () => {
+    if (search.length > 0) {
+      setVideos(
+        videos.filter((video) => {
+          return video.name.toLowerCase().includes(search.toLowerCase());
+        })
+      );
+    } else {
+      fetchData();
+    }
+  };
+
+  useEffect(() => {
+    handleSearch();
+  }, [changing]);
+
   const filterBy = async (ageRange, category) => {
     setLoading(true);
     let data = await getFilteredCourses(ageRange, category);
-    console.log(data)
+    console.log(data);
 
-    setAgeRange(null)
-    setCategory(null)
-    setVideos(data)
-    setLoading(false)
+    setAgeRange(null);
+    setCategory(null);
+    setVideos(data);
+    setLoading(false);
   };
 
   const [opened, { open, close }] = useDisclosure(false);
@@ -66,56 +85,68 @@ const Courses = ({isTeacher}) => {
     visible: { opacity: 1, transition: { duration: 0.2 } },
   };
 
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+    setChanging(!changing);
+  };
+
   const Categories = [
     {
-      category: "History",
-      content: [],
+      category: "Film & Animation",
     },
     {
-      category: "Nursery Rhymes",
-      content: [],
+      category: "Autos & Vehicles",
     },
     {
-      category: "Music-Dance",
-      content: [],
+      category: "Music",
     },
     {
-      category: "Gardening",
-      content: [],
+      category: "Pets & Animals",
     },
     {
-      category: "Drawing and Painting",
-      content: [],
+      category: "Sports",
     },
     {
-      category: "Cooking",
-      content: [],
+      category: "Travel & Events",
     },
     {
-      category: "Arts and Craft",
-      content: [],
+      category: "Gaming",
     },
     {
-      category: "Globalization",
-      content: [],
+      category: "People & Blogs",
+    },
+    {
+      category: "Comedy",
+    },
+    {
+      category: "Entertainment",
+    },
+    {
+      category: "News & Politics",
+    },
+    {
+      category: "How to & Style",
+    },
+    {
+      category: "Education",
+    },
+    {
+      category: "Science & Technology",
+    },
+    {
+      category: "Nonprofits & Activism",
     },
   ];
 
   const Ages = [
     {
-      age: "3 - 5",
+      age: "6 - 9",
     },
     {
-      age: "6 - 8",
+      age: "10 - 14",
     },
     {
-      age: "9 - 10",
-    },
-    {
-      age: "11 - 13",
-    },
-    {
-      age: "14 - 16",
+      age: "15 - 18",
     },
   ];
 
@@ -125,22 +156,46 @@ const Courses = ({isTeacher}) => {
     {
       type: "Single Video",
       icon: <VideoCameraOutline size="16px" />,
-      element: <AddNewVideo close={close} fetchData={fetchData} isTeacher={isTeacher}/>,
+      element: (
+        <AddNewVideo
+          close={close}
+          fetchData={fetchData}
+          isTeacher={isTeacher}
+        />
+      ),
     },
     {
       type: "Create new collection",
       icon: <VideoCameraOutline size="16px" />,
-      element: <CreateNewCollection close={close} fetchData={fetchData} isTeacher={isTeacher}/>,
+      element: (
+        <CreateNewCollection
+          close={close}
+          fetchData={fetchData}
+          isTeacher={isTeacher}
+        />
+      ),
     },
     {
       type: "Add to collection",
       icon: <PlusCircle size="16px" />,
-      element: <AddToCollection close={close} fetchData={fetchData} isTeacher={isTeacher}/>,
+      element: (
+        <AddToCollection
+          close={close}
+          fetchData={fetchData}
+          isTeacher={isTeacher}
+        />
+      ),
     },
     {
       type: "Bulk Video Upload",
       icon: <VideoCameraOutline size="16px" />,
-      element: <BulkVideoUpload close={close} fetchData={fetchData} isTeacher={isTeacher}/>,
+      element: (
+        <BulkVideoUpload
+          close={close}
+          fetchData={fetchData}
+          isTeacher={isTeacher}
+        />
+      ),
     },
   ];
 
@@ -189,6 +244,9 @@ const Courses = ({isTeacher}) => {
               <SearchOutline size="16px" className="cursor-pointer" />
               <input
                 type="text"
+                name="search"
+                onChange={handleChange}
+                value={search}
                 placeholder="Search for course"
                 className="w-full border-none text-[#222] outline-none"
               />
@@ -216,23 +274,25 @@ const Courses = ({isTeacher}) => {
                   animate="visible"
                   initial="hidden"
                   variants={Appear}
-                  className="absolute top-[70px] left-0 lf:left-0 text-[17px] bg-[#FFF] cflexss gap-[10px] p-[15px] w-[18em] rounded-[8px] shadow-md border-[1px]"
+                  className="absolute top-[70px] left-0 lf:left-0 text-[17px] bg-[#FFF] h-[350px] z-20 flexss p-[15px] w-[18em] rounded-[8px] shadow-md border-[1px]"
                 >
-                  {Categories.map((item, i) => {
-                    return (
-                      <div
-                        key={i}
-                        className="flexbm w-full px-[16px] py-[12px] rounded-xl hover:bg-primary2 hover:text-white cursor-pointer transition-all duration-400"
-                        onClick={() => {
-                          setCategory(item.category);
-                          filterBy(ageRange, item.category);
-                        }}
-                      >
-                        <p>{item.category}</p>
-                        <ChevronRight />
-                      </div>
-                    );
-                  })}
+                  <div className="w-full h-full cflexss gap-[10px] overflow-y-scroll">
+                    {Categories.map((item, i) => {
+                      return (
+                        <div
+                          key={i}
+                          className="flexbm w-full px-[16px] py-[12px] rounded-xl hover:bg-primary2 hover:text-white cursor-pointer transition-all duration-400"
+                          onClick={() => {
+                            setCategory(item.category);
+                            filterBy(ageRange, item.category);
+                          }}
+                        >
+                          <p>{item.category}</p>
+                          <ChevronRight />
+                        </div>
+                      );
+                    })}
+                  </div>
                 </motion.div>
               )}
             </div>

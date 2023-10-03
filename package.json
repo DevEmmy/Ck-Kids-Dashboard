@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
-    "@mantine/core": "^6.0.20",
-    "@mantine/hooks": "^6.0.20",
+    "@mantine/core": "^6.0.21",
+    "@mantine/hooks": "^6.0.21",
     "@tailwindcss/typography": "^0.5.9",
     "autoprefixer": "10.4.15",
     "axios": "^1.5.0",

@@ -22,15 +22,15 @@ const Footer = () => {
   const socials = [
     {
       icon: <FaTwitter />,
-      link: "/",
+      link: "https://twitter.com/curiouskidzN",
     },
     {
       icon: <FaFacebook />,
-      link: "/",
+      link: "https://www.facebook.com/profile.php?id=100084077277628&mibextid=LQQJ4d",
     },
     {
       icon: <FaInstagram />,
-      link: "/",
+      link: "https://instagram.com/curiouskidzng?igshid=NTc4MTIwNjQ2YQ==",
     },
     {
       icon: <FaGithub />,

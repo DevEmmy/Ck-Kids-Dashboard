@@ -26,6 +26,7 @@ const AddToCollection = ({ close, fetchData }) => {
       !urlError &&
       collections["courseLink"].trim().length > 0 &&
       collections["collection"] &&
+      collections["collection"] !== "None" &&
       collections["courseDetails"]
     ) {
       setValid(true);

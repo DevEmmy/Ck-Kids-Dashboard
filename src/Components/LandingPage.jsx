@@ -267,12 +267,12 @@ const LandingPage = () => {
               );
             })}
             <div className="md1:w-[100vw] flexmm">
-              <div className="cflexss sm1:flex-row gap-[0.5em] cursor-pointer">
+              <a href="/signin" className="cflexss sm1:flex-row gap-[0.5em] cursor-pointer">
                 <div className="bg-sec7 w-[1.5em] h-[1.5em] rounded-full flexmm">
                   <ArrowRightOutline size="1em" color="white" />
                 </div>
                 <p>See more</p>
-              </div>
+              </a>
             </div>
           </div>
           <div className="w-full absolute bottom-[-250px] sm:bottom-[-100px] left-0 flexss z-10">
