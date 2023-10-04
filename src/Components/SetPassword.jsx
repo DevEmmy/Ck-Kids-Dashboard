@@ -13,7 +13,7 @@ const SetPassword = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (newPassword.trim().length > 0 && !passError) {
+    if (newPassword.trim().length > 0) {
       setValid(true);
     } else {
       setValid(false);
@@ -34,8 +34,8 @@ const SetPassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (valid) {
-      // ENDPOINT FOR SUBMITTING USER DETAILS
+    if (valid && !passError) {
+      // ENDPOINT FOR UPDATING USER PASSWORD
       setLoading(true);
 
       //   setLoading(false);

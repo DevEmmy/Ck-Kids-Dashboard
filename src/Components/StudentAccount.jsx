@@ -37,8 +37,7 @@ const StudentAccount = ({ setAccountType }) => {
     if (
       userDetails["fullName"].trim().length > 0 &&
       !emailError &&
-      userDetails["productKey"].trim().length > 0 &&
-      !passError &&
+      userDetails["productKey"].trim().length > 0 &&      
       userDetails["password"].length >= 8
     ) {
       setValid(true);
@@ -96,7 +95,7 @@ const StudentAccount = ({ setAccountType }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (valid) {
+    if (valid && !passError) {
       // ENDPOINT FOR SUBMITTING USER DETAILS
       setLoading(true);
       await studentRegister(
