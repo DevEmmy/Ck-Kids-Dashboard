@@ -58,7 +58,7 @@ const SignUp = () => {
             </div>
           </div>
         </div>
-        <div className="w-[55%] h-full bg-white pb-[3em] pt-[6em] sm:py-[2em] px-[6em] sm:px-[1.5em] md1:w-full">
+        <div className="w-[55%] h-full bg-white pt-[6em] ls:pt-[3em] sm:py-[2em] px-[6em] sm:px-[1.5em] md1:w-full">
           {accountType === "none" && (
             <>
               <div className="cflexmm h-full gap-[2em] w-full py-[3em]">

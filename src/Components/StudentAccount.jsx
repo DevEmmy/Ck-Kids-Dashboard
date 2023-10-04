@@ -105,9 +105,9 @@ const StudentAccount = ({ setAccountType }) => {
         userDetails.productKey,
         userDetails.password
       );
-      setLoading(false); 
+      setLoading(false);
       console.log(userDetails);
-    }    
+    }
   };
   return (
     <>
@@ -122,14 +122,16 @@ const StudentAccount = ({ setAccountType }) => {
             <ArrowLeftOutline size="12px" color="#00AC76" />
           </div>
         </div>
-        <h1 className="text-[36px] lg:text-[30px] ls:text-[28px] font-[700] sm:font-[800] text-sec3">
-          Create an Account
-        </h1>
-        <p className="text-[18px] lg:text-[16px] ls:text-[14px] sm:text-[20px] font-400 text-[#52525B] leading-[1.5em]">
-          Join the CuriousKidz community and embark on an exciting journey of
-          discovery and learning! Sign up today to unlock a world of educational
-          adventures for your child.
-        </p>
+        <div className="cflexss gap-[12px]">
+          <h1 className="text-[36px] lg:text-[30px] ls:text-[28px] font-[700] sm:font-[800] text-sec3">
+            Create an Account
+          </h1>
+          <p className="text-[18px] lg:text-[16px] ls:text-[14px] sm:text-[20px] font-400 text-[#52525B] leading-[1.5em]">
+            Join the CuriousKidz community and embark on an exciting journey of
+            discovery and learning! Sign up today to unlock a world of
+            educational adventures for your child.
+          </p>
+        </div>
         <form className="cflexss gap-[1em] text-[18px] w-full">
           <div className="sect">
             <p>Full name</p>

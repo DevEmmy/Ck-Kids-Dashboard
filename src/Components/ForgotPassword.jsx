@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { ArrowRightOutline, ArrowLeftOutline } from "heroicons-react";
+import { ArrowLeftOutline } from "heroicons-react";
 import { studentLogin } from "@/services/request";
 import Loader from "@/AtomicComponents/Loader";
 import { useRouter } from "next/navigation";
@@ -31,12 +31,12 @@ const ForgotPassword = ({ loginType, setForgot }) => {
     e.preventDefault();
     if (valid && loginType === "student") {
       setLoading(true);
-      // ENDPOINT FOR SUBMITTING STUDENT LOGIN DETAILS
+      // ENDPOINT FOR SUBMITTING STUDENT PASSWORD RESET DETAILS
 
       //   setLoading(false);
     } else if (valid && loginType === "institution") {
       setLoading(true);
-      // ENDPOINT FOR SUBMITTING INSTITUTION LOGIN DETAILS
+      // ENDPOINT FOR SUBMITTING INSTITUTION PASSWORD RESET DETAILS
 
       //   setLoading(false);
     }
@@ -89,7 +89,7 @@ const ForgotPassword = ({ loginType, setForgot }) => {
 
           <button
             type="submit"
-            className={`w-full flexmm gap-[0.5em] rounded-[2em] ${
+            className={`w-full flexmm rounded-[2em] ${
               loginType === "student" ? "bg-primary2" : "bg-primary3"
             } px-[2.5em] py-[1em] text-white text-[18px] sm:text-[1rem] font-[600] sm:font-[400]`}
             onClick={handleSubmit}
@@ -99,8 +99,7 @@ const ForgotPassword = ({ loginType, setForgot }) => {
               <Loader />
             ) : (
               <>
-                <p>Send reset instruction</p>
-                <ArrowRightOutline size="12px" />
+                <p>Send reset instruction</p>                
               </>
             )}
           </button>

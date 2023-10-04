@@ -4,7 +4,7 @@ import StudentSignIn from "./StudentSignIn";
 import SchoolSignIn from "./SchoolSignIn";
 import ForgotPassword from "./ForgotPassword";
 
-const SignIn = () => {
+const SetPassword = () => {
   const [loginType, setLoginType] = useState("none");
   const [forgot, setForgot] = useState(false);
 
@@ -65,48 +65,20 @@ const SignIn = () => {
         </div>
 
         <div className="w-[50%] h-full bg-white pt-[6em] sm:py-[2em] pl-[6em] pr-[7em] sm:px-[1.5em] md1:w-full">
-          {loginType === "none" && (
-            <>
-              <div className="cflexmm h-full gap-[2em] w-full py-[3em]">
-                <div
-                  className="w-[90%] h-[332px] lg:h-[300px] sm:w-full p-[0.15em] pb-[0.5em] rounded-xl bg-sec1 cursor-pointer"
-                  onClick={() => {
-                    setLoginType("student");
-                  }}
-                >
-                  <div className="w-full h-full bg-white flexmm text-[28px] lg:text-[24px] ls:text-[20px] font-[700] rounded-xl">
-                    <p>Student</p>
-                  </div>
-                </div>
-                <div
-                  className="w-[90%] h-[332px] lg:h-[300px] sm:w-full p-[0.15em] pb-[0.5em] rounded-xl bg-purplePrime cursor-pointer"
-                  onClick={() => {
-                    setLoginType("institution");
-                  }}
-                >
-                  <div className="w-full h-full bg-white flexmm text-[28px] lg:text-[24px] ls:text-[20px] font-[700] rounded-xl">
-                    <p>Schools / Institutions</p>
-                  </div>
-                </div>
+          <div className="cflexss w-full gap-[28px]">
+            <a
+              href="/signin"
+              className="flexss bg-sec1 rounded-[0.5em] p-[0.4em] cursor-pointer"
+            >
+              <div className="w-[1.2em] h-[1.2em] rounded-full bg-white flexmm">
+                <ArrowLeftOutline size="12px" color="#00AC76" />
               </div>
-            </>
-          )}
-          {loginType === "student" && !forgot && (
-            <StudentSignIn setLoginType={setLoginType} setForgot={setForgot} />
-          )}
-          {loginType === "institution" && !forgot && (
-            <SchoolSignIn setLoginType={setLoginType} setForgot={setForgot} />
-          )}
-          {loginType === "student" && forgot && (
-            <ForgotPassword loginType={loginType} setForgot={setForgot} />
-          )}
-          {loginType === "institution" && forgot && (
-            <ForgotPassword loginType={loginType} setForgot={setForgot} />
-          )}
+            </a>
+          </div>
         </div>
       </div>
     </>
   );
 };
 
-export default SignIn;
+export default SetPassword;

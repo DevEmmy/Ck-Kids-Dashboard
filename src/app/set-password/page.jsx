@@ -1,10 +1,10 @@
 'use client'
-import LandingPage from '../Components/LandingPage'
+import SetPassword from "@/Components/SetPassword"
 
 export default function Home() {
   return (
     <>  
-        <LandingPage/>
+        <SetPassword/>
     </>
   )
 }

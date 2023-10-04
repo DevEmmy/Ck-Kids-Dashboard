@@ -11,7 +11,7 @@ import Cookies from "js-cookie";
 import Loader from "@/AtomicComponents/Loader";
 import { useRouter } from "next/navigation";
 
-const StudentSignIn = ({setLoginType, setForgot}) => {
+const StudentSignIn = ({ setLoginType, setForgot }) => {
   const eMail = useRef(null);
   const [valid, setValid] = useState(false);
   const [changing, setChanging] = useState(false);
@@ -66,20 +66,22 @@ const StudentSignIn = ({setLoginType, setForgot}) => {
         <div
           className="flexss bg-sec1 rounded-[0.5em] p-[0.4em] cursor-pointer"
           onClick={() => {
-            setLoginType("none")
+            setLoginType("none");
           }}
         >
           <div className="w-[1.2em] h-[1.2em] rounded-full bg-white flexmm">
             <ArrowLeftOutline size="12px" color="#00AC76" />
           </div>
         </div>
-        <h1 className="text-[1.7rem] font-[700] sm:font-[800] text-sec3">
-          Sign In
-        </h1>
-        <p className="text-[18px] lg:text-[16px] ls:text-[14px] sm:text-[20px] font-400 text-[#52525B] leading-[1.5em]">
-          Sign in to continue your learning journey and explore a world of
-          endless possibilities.
-        </p>
+        <div className="cflexss gap-[12px]">
+          <h1 className="text-[1.7rem] font-[700] sm:font-[800] text-sec3">
+            Sign In
+          </h1>
+          <p className="text-[18px] lg:text-[16px] ls:text-[14px] sm:text-[20px] font-400 text-[#52525B] leading-[1.5em]">
+            Sign in to continue your learning journey and explore a world of
+            endless possibilities.
+          </p>
+        </div>
         <form className="cflexss gap-[1em] w-full" method="POST">
           <div className="sect">
             <p>Email address</p>
@@ -137,9 +139,14 @@ const StudentSignIn = ({setLoginType, setForgot}) => {
               <input type="checkbox" />
               <p>Remember me</p>
             </div>
-            <p className="text-sec1 cursor-pointer" onClick={()=>{
-              setForgot(true)
-            }}>Forgot password?</p>
+            <p
+              className="text-sec1 cursor-pointer"
+              onClick={() => {
+                setForgot(true);
+              }}
+            >
+              Forgot password?
+            </p>
           </div>
 
           <button
