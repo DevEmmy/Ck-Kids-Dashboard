@@ -5,6 +5,7 @@ import Leadership from "@/Components/Kids-Dashboard/Leadership";
 import { notifyError } from "@/services/toastify";
 import { useEffect, useState } from "react";
 import { fetchFromLS } from "@/services/request";
+import LoadScreen from "@/AtomicComponents/LoadScreen";
 
 export default function Home() {
   const [student, setStudent] = useState();
@@ -22,7 +23,12 @@ export default function Home() {
 
   return (
     <>      
-        <Leadership studentObject={student}/>      
+        {
+          student ?
+          <Leadership student={student}/>      
+          :
+          <LoadScreen />
+        }
     </>
   );
 }

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import Board from './Board'
 
-const LeaderBoardOverview = () => {
+const LeaderBoardOverview = ({max}) => {
   return (
     <>
         <>
@@ -22,7 +22,7 @@ const LeaderBoardOverview = () => {
             </Link>
         </div>
 
-        <Board/>
+        <Board max={max}/>
         
     </>
     </>
