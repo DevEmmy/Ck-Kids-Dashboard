@@ -216,7 +216,7 @@ const Courses = ({ isTeacher }) => {
             <p>Add new course</p>
             <FaPlus size="10px" />
             {add && (
-              <div className="absolute top-[80px] z-50 font-[400] text-[17px] text-[#808080] cflexss p-[6px] border-[1px] rounded-[12px] bg-[#FFF] flex-shrink shadow-md">
+              <div className="absolute top-[80px] left-[-70px] z-50 font-[400] text-[17px] text-[#808080] cflexss p-[6px] border-[1px] rounded-[12px] bg-[#FFF] flex-shrink shadow-md">
                 {AddCourse.map((course) => {
                   return (
                     <>
