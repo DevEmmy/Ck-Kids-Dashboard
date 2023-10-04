@@ -1,12 +1,46 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import StudentSignIn from "./StudentSignIn";
-import SchoolSignIn from "./SchoolSignIn";
-import ForgotPassword from "./ForgotPassword";
+import { EyeOutline, EyeOffOutline, ArrowLeftOutline } from "heroicons-react";
+import Loader from "@/AtomicComponents/Loader";
 
 const SetPassword = () => {
   const [loginType, setLoginType] = useState("none");
-  const [forgot, setForgot] = useState(false);
+  const [newPassword, setNewPassword] = useState("");
+  const [valid, setValid] = useState(false);
+  const [changing, setChanging] = useState(false);
+  const [passError, setPassError] = useState(false);
+  const [hide, setHide] = useState(true);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (newPassword.trim().length > 0 && !passError) {
+      setValid(true);
+    } else {
+      setValid(false);
+    }
+
+    if (
+      (newPassword.length >= 8 && /[!@#$%^&*]/.test(newPassword)) ||
+      newPassword.length === 0
+    ) {
+      setPassError(false);
+    } else if (
+      (newPassword.length !== 0 && newPassword.length < 8) ||
+      !/[!@#$%^&*]/.test(newPassword)
+    ) {
+      setPassError(true);
+    }
+  }, [changing]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (valid) {
+      // ENDPOINT FOR SUBMITTING USER DETAILS
+      setLoading(true);
+
+      //   setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -74,6 +108,66 @@ const SetPassword = () => {
                 <ArrowLeftOutline size="12px" color="#00AC76" />
               </div>
             </a>
+
+            <div className="cflexss gap-[12px]">
+              <h1 className="text-[1.7rem] font-[700] sm:font-[800] text-sec3">
+                Set Password
+              </h1>
+            </div>
+            <form className="cflexss gap-[1em] w-full" method="POST">
+              <div className="sect">
+                <p>New Password</p>
+                <div className="inputCont">
+                  <input
+                    className="input"
+                    type={hide ? "password" : "text"}
+                    name="newPassword"
+                    placeholder="Password"
+                    value={newPassword}
+                    onChange={(e) => {
+                      setNewPassword(e.target.value);
+                      setChanging(!changing);
+                    }}
+                  />
+                  {hide ? (
+                    <EyeOutline
+                      className="w-5 h-5 text-gray-500 cursor-pointer"
+                      onClick={() => {
+                        setHide(!hide);
+                      }}
+                    />
+                  ) : (
+                    <EyeOffOutline
+                      className="w-5 h-5 text-gray-500 cursor-pointer"
+                      onClick={() => {
+                        setHide(!hide);
+                      }}
+                    />
+                  )}
+                </div>
+                {passError && (
+                  <p className="text-sec1 text-[14px] lg:text-[12px] font-[400] flex flex-wrap w-[30em] sm:w-full">
+                    * Password should be at least 8 characters long and must
+                    contain at least one special character
+                  </p>
+                )}
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-primary2 px-[2.5em] py-[1em] rounded-full text-white text-[18px] sm:text-[1rem] font-[600] sm:font-[400]"
+                onClick={handleSubmit}
+                disabled={loading && true}
+              >
+                {loading ? (
+                  <Loader />
+                ) : (
+                  <>
+                    <p>Reset Password</p>
+                  </>
+                )}
+              </button>
+            </form>
           </div>
         </div>
       </div>
