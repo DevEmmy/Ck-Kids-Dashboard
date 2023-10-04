@@ -2,9 +2,11 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import StudentSignIn from "./StudentSignIn";
 import SchoolSignIn from "./SchoolSignIn";
+import ForgotPassword from "./ForgotPassword";
 
 const SignIn = () => {
-  const [loginType, setLoginType] = useState("none")
+  const [loginType, setLoginType] = useState("none");
+  const [forgot, setForgot] = useState(false);
 
   return (
     <>
@@ -89,11 +91,17 @@ const SignIn = () => {
               </div>
             </>
           )}
-          {loginType === "student" && (
-            <StudentSignIn setLoginType={setLoginType} />
+          {loginType === "student" && !forgot && (
+            <StudentSignIn setLoginType={setLoginType} setForgot={setForgot} />
           )}
-          {loginType === "institution" && (
-            <SchoolSignIn setLoginType={setLoginType} />
+          {loginType === "institution" && !forgot && (
+            <SchoolSignIn setLoginType={setLoginType} setForgot={setForgot} />
+          )}
+          {loginType === "student" && forgot && (
+            <ForgotPassword loginType={loginType} setForgot={setForgot} />
+          )}
+          {loginType === "institution" && forgot && (
+            <ForgotPassword loginType={loginType} setForgot={setForgot} />
           )}
         </div>
       </div>

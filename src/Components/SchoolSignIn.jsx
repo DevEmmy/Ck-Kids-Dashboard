@@ -11,7 +11,7 @@ import Cookies from "js-cookie";
 import Loader from "@/AtomicComponents/Loader";
 import { useRouter } from "next/navigation";
 
-const SchoolSignIn = ({setLoginType}) => {
+const SchoolSignIn = ({ setLoginType, setForgot }) => {
   const eMail = useRef(null);
   const [valid, setValid] = useState(false);
   const [changing, setChanging] = useState(false);
@@ -50,11 +50,7 @@ const SchoolSignIn = ({setLoginType}) => {
     if (valid) {
       setLoading(true);
       // ENDPOINT FOR SUBMITTING LOGIN DETAILS
-      await schoolLogin(
-        loginDetails.email,
-        loginDetails.password,
-        router
-      )
+      await schoolLogin(loginDetails.email, loginDetails.password, router);
       setLoading(false);
     }
   };
@@ -64,7 +60,7 @@ const SchoolSignIn = ({setLoginType}) => {
         <div
           className="flexss bg-primary3 rounded-[0.5em] p-[0.4em] cursor-pointer"
           onClick={() => {
-            setLoginType("none")
+            setLoginType("none");
           }}
         >
           <div className="w-[1.2em] h-[1.2em] rounded-full bg-white flexmm">
@@ -135,7 +131,14 @@ const SchoolSignIn = ({setLoginType}) => {
               <input type="checkbox" />
               <p>Remember me</p>
             </div>
-            <p className="text-primary3 cursor-pointer">Forgot password?</p>
+            <p
+              className="text-primary3 cursor-pointer"
+              onClick={() => {
+                setForgot(true);
+              }}
+            >
+              Forgot password?
+            </p>
           </div>
 
           <button
