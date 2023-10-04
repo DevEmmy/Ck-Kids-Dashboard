@@ -630,3 +630,21 @@ export const getSchoolDetails = async ()=>{
 
   return data
 }
+
+export const getLB = async ()=>{
+  let data;
+
+  await axios.get(`${api}/students/leadership`, setConfig())
+  .then((response) => {
+    console.log(response);
+    data = response.data.payload
+  })
+  .catch((err) => {
+    if (err.response) {
+    } else {
+    }
+    console.log(err);
+  });
+
+  return data
+}
