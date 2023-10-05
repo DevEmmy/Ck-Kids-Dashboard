@@ -186,8 +186,8 @@ const Gamification = () => {
                 <div className="w-[14%] flexsm">Requirement</div>
                 <div className="w-[14%] flexsm">Learning Gem</div>
                 <div className="w-[14%] flexsm">Age group</div>
-                <div className="w-[14%] flexsm">Actions</div>
                 <div className="w-[14%] flexsm">Status</div>
+                <div className="w-[14%] flexsm">Actions</div>
               </div>
               {loading ? (
                 <>
@@ -208,7 +208,7 @@ const Gamification = () => {
                       <div className="w-[100px] h-[112px] rounded-[8px] pb-[8px] text-white bg-[#00734F]">
                         <div className="bg-primary2 w-full pt-[10px] rounded-t-[8px] h-full cflexmm gap-[15px]">
                           <div className="flexmm w-[50px]">
-                            <img src="/quizWhiz.svg" alt="quizwhiz" />
+                            <img src="/quizWhiz.svg" alt="quizwhiz"/>
                           </div>
                           <p>Quiz Whiz</p>
                         </div>

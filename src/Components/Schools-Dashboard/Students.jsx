@@ -31,24 +31,24 @@ const Students = () => {
   const [trash, setTrash] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const PAGINATION = 20;
-  const [pageCount, setPageCount] = useState(0)
+  const [pageCount, setPageCount] = useState(0);
   const [students, setStudents] = useState();
   const [loading, setLoading] = useState(true);
-  
+
   const fetchStudents = async () => {
-    let data = await getStudents();    
+    let data = await getStudents();
     setStudents(data);
     setPageCount(Paginated(data, PAGINATION));
     setLoading(false);
   };
 
   useEffect(() => {
-    fetchStudents();            
+    fetchStudents();
   }, []);
 
   const handlePageClick = (data) => {
     const selectedPage = data.selected;
-    setCurrentPage(selectedPage);    
+    setCurrentPage(selectedPage);
     // Fetch and display data for the selected page
   };
 
@@ -160,8 +160,8 @@ const Students = () => {
                 />
               </svg>
             </div>
-            <div className="w-[18%] flexsm">Email</div>            
-            <div className="w-[14%] flexsm">Date Joined</div>            
+            <div className="w-[18%] flexsm">Email</div>
+            <div className="w-[14%] flexsm">Date Joined</div>
             <div className="w-[14%] flexsm">Actions</div>
           </div>
           {loading ? (
@@ -178,7 +178,6 @@ const Students = () => {
             </>
           ) : (
             <>
-              
               {GetPaginatedData(currentPage, PAGINATION, students).map(
                 (data, index) => {
                   const inputDate = new Date(data.createdAt);
@@ -248,7 +247,7 @@ const Students = () => {
             activeClassName={"active"}
           />
         </div>
-        
+
         <Modal
           opened={opened}
           onClose={close}

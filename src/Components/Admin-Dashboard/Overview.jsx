@@ -2,7 +2,7 @@ import { ChevronUp, ChevronDown, Users, ChevronRight } from "heroicons-react";
 import { useState } from "react";
 
 const Overview = () => {
-  const [drop, sedivrop] = useState(false);
+  const [drop, sedivrop] = useState(false);  
   const TopStudents = [
     {
       avatar: "teacherAvatar",
