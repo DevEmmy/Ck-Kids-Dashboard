@@ -2,8 +2,9 @@ import { ChevronUp, ChevronDown, Users, ChevronRight } from "heroicons-react";
 import { useEffect, useState } from "react";
 import BarChart from "@/AtomicComponents/BarChart";
 import { getSchoolDetails } from "@/services/request";
+import Loader from "@/AtomicComponents/Loader";
 
-const Overview = ({teacher}) => {
+const Overview = ({ teacher }) => {
   const [drop, setDrop] = useState(false);
   const TopStudents = [
     {
@@ -83,22 +84,24 @@ const Overview = ({teacher}) => {
     },
   ];
 
-   let [data, setData] = useState()
+  let [data, setData] = useState();
 
-  const fetchData = async ()=>{
-    let data = await getSchoolDetails()
-    setData(data)
-  }
+  const fetchData = async () => {
+    let data = await getSchoolDetails();
+    setData(data);
+  };
 
-  useEffect(()=>{
-    fetchData()
-  }, [])
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
       <div className="w-full cflexss font-[700] gap-[37px] text-[24px] lg:text-[20px] ls:text-[18px] bg-[#F7F7F7] h-full p-[30px]">
         <div className="w-full flexbm">
-          <p className="text-gray-400">Welcome, {teacher?.firstName + " " + teacher?.lastName}</p>
+          <p className="text-gray-400">
+            Welcome, {teacher?.firstName + " " + teacher?.lastName}
+          </p>
           <div className="flexmm gap-[28px]">
             <div
               className="relative text-[#808080] font-[400] text-[20px] lg:text-[18px] ls:text-[14px] rounded-[10px] p-[12px] gap-[10px] flexmm bg-white cursor-pointer"
@@ -168,7 +171,11 @@ const Overview = ({teacher}) => {
             </div>
             <div className="cflexss">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
-              {data?.allUploadedStudents || "0"}
+                {data?.allUploadedStudents || (
+                  <div>
+                    <Loader />
+                  </div>
+                )}
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Students
@@ -182,7 +189,11 @@ const Overview = ({teacher}) => {
             </div>
             <div className="cflexss">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
-              {data?.totalStudents || "0"}
+                {data?.totalStudents || (
+                  <div>
+                    <Loader />
+                  </div>
+                )}
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Students Visit
