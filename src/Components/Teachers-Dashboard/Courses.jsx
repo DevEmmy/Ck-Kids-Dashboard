@@ -81,8 +81,8 @@ const Courses = ({ isTeacher }) => {
   const theme = useMantineTheme();
 
   const Appear = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.2 } },
+    hidden: { y: -100 },
+    visible: { y: 0, transition: { duration: 0.2 } },
   };
 
   const handleChange = (e) => {
@@ -252,9 +252,47 @@ const Courses = ({ isTeacher }) => {
               />
             </div>
 
-            <div className="flexmm gap-[10px] p-[15px] border-[1px] rounded-[8px] bg-[#FFF] cursor-pointer">
+            <div
+              className="flexmm gap-[10px] p-[15px] border-[1px] rounded-[8px] bg-[#FFF] cursor-pointer"
+              onClick={() => {
+                setType(!type);
+              }}
+            >
               <p>Type</p>
-              <ChevronUp />
+              {type ? <ChevronDown /> : <ChevronUp />}
+              {type && (
+                <motion.div
+                  animate="visible"
+                  initial="hidden"
+                  variants={Appear}
+                  className="absolute top-[70px] left-0 lf:left-0 text-[17px] bg-[#FFF] h-[350px] z-20 flexss p-[15px] w-[18em] rounded-[8px] shadow-md border-[1px]"
+                >
+                  <div className="w-full h-full cflexss gap-[10px] overflow-y-scroll">
+                    <div
+                      className="flexbm w-full px-[16px] py-[12px] rounded-xl hover:bg-primary2 hover:text-white cursor-pointer transition-all duration-400"
+                      onClick={() => {
+                        setTypeValue("Publish");
+                        // filterBy(ageRange, item.category);
+                      }}
+                    >
+                      <p>Publish</p>
+                      <ChevronRight />
+                    </div>
+
+                    <div
+                      className="flexbm w-full px-[16px] py-[12px] rounded-xl hover:bg-primary2 hover:text-white cursor-pointer transition-all duration-400"
+                      onClick={() => {
+                        setTypeValue("unPublish");
+                        // filterBy(ageRange, item.category);
+                      }}
+                    >
+                      <p>unPublish</p>
+                      <ChevronRight />
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+              F
             </div>
 
             <div

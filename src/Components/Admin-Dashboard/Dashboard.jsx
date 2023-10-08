@@ -15,11 +15,11 @@ import { GiGraduateCap } from "react-icons/gi";
 import Notification from "../Kids-Dashboard/Notification";
 
 import Messages from "../Kids-Dashboard/Messages";
-import Students from "./Students";
 import Overview from "./Overview";
 import Gamification from "../Teachers-Dashboard/Gamification";
 import Courses from "../Teachers-Dashboard/Courses";
 import Schools from "./Schools";
+import { getAdminDetails } from "@/services/request";
 
 const Dashboard = () => {
   const [viewSchool, setViewSchool] = useState(false);
@@ -27,6 +27,17 @@ const Dashboard = () => {
   const [schoolName, setSchoolName] = useState("");
   const [view, setView] = useState("Overview");
   const [mainView, setMainView] = useState("schools");
+  const [mainData, setMainData] = useState([]);
+
+  const getDetails = async () => {
+    let data = await getAdminDetails();
+    setMainData(data);  
+  };
+
+  useEffect(() => {
+    getDetails();
+  },[]);
+
   const Nav = [
     {
       name: "Overview",
@@ -202,7 +213,7 @@ const Dashboard = () => {
         </div>
 
         <div className="main__content absolute w-4/5 right-0 z-10 top-[70px]">
-          {view === "Overview" && <Overview />}
+          {view === "Overview" && <Overview mainData={mainData}/>}
 
           {view === "Chat" && <Messages />}
 

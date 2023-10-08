@@ -8,11 +8,11 @@ const api = "https://ck-onboarding.onrender.com";
 function getCookie(cookieName) {
   const name = cookieName + "=";
   const decodedCookie = decodeURIComponent(document.cookie);
-  const cookieArray = decodedCookie.split(';');
+  const cookieArray = decodedCookie.split(";");
 
   for (let i = 0; i < cookieArray.length; i++) {
     let cookie = cookieArray[i];
-    while (cookie.charAt(0) === ' ') {
+    while (cookie.charAt(0) === " ") {
       cookie = cookie.substring(1);
     }
     if (cookie.indexOf(name) === 0) {
@@ -22,16 +22,15 @@ function getCookie(cookieName) {
   return null; // Return null if the cookie is not found
 }
 
-
 const setConfig = () => {
-  const authToken = getCookie("token")
+  const authToken = getCookie("token");
 
   const config = {
     headers: {
       Authorization: `Bearer ${authToken}`,
       ContentType: "application/x-www-form-urlencoded",
     },
-    withCredentials: true
+    withCredentials: true,
   };
 
   return config;
@@ -299,8 +298,8 @@ export const addToCollection = async (
     ageRange,
     description,
   };
-  
-  let url = !isTeacher ? `${api}/video` : `${api}/video?teacher=true`
+
+  let url = !isTeacher ? `${api}/video` : `${api}/video?teacher=true`;
 
   await axios
     .post(url, data, setConfig())
@@ -340,11 +339,7 @@ export const getAllVideos = async () => {
 
 export const onBoardTeacher = async (firstName, lastName, email) => {
   await axios
-    .post(
-      `${api}/teacher/sign-up`,
-      { firstName, lastName, email },
-      setConfig()
-    )
+    .post(`${api}/teacher/sign-up`, { firstName, lastName, email }, setConfig())
     .then((response) => {
       console.log(response);
       notify(response.data.message);
@@ -360,24 +355,20 @@ export const onBoardTeacher = async (firstName, lastName, email) => {
 };
 
 export const uploadData = async (formData) => {
-  const authToken = getCookie("token")
+  const authToken = getCookie("token");
   await axios
-    .post(
-      `${api}/upload-student`,
-       formData ,
-      {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-          "Content-Type": "multipart/form-data",
-        },
-        withCredentials: true
-      }
-    )
-    .then((response) => {
-      console.log(response);   
-      notify(response.data.message)   
+    .post(`${api}/upload-student`, formData, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+        "Content-Type": "multipart/form-data",
+      },
+      withCredentials: true,
     })
-    .catch((err) => {      
+    .then((response) => {
+      console.log(response);
+      notify(response.data.message);
+    })
+    .catch((err) => {
       if (err.response) {
         notifyError(err.response.data.message);
       } else {
@@ -388,20 +379,18 @@ export const uploadData = async (formData) => {
 };
 
 export const uploadVideoData = async (formData, isTeacher) => {
-  const authToken = getCookie("token")
-  let url = isTeacher ?  `${api}/videos/bulk-upload-2?teacher=true` :  `${api}/videos/bulk-upload-2`
+  const authToken = getCookie("token");
+  let url = isTeacher
+    ? `${api}/videos/bulk-upload-2?teacher=true`
+    : `${api}/videos/bulk-upload-2`;
   await axios
-    .post(
-     url,
-       formData ,
-      {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-          "Content-Type": "multipart/form-data",
-        },
-        withCredentials: true
-      }
-    )
+    .post(url, formData, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+        "Content-Type": "multipart/form-data",
+      },
+      withCredentials: true,
+    })
     .then((response) => {
       console.log(response);
       // notify(response.data.message);
@@ -451,7 +440,7 @@ export const editVideo = async (
     });
 };
 
-export const deleteVideo = async (videoId) => {  
+export const deleteVideo = async (videoId) => {
   await axios
     .delete(`${api}/video/delete/${videoId}`, setConfig())
     .then((response) => {
@@ -468,122 +457,128 @@ export const deleteVideo = async (videoId) => {
     });
 };
 
-export const getStudents = async ()=>{
+export const getStudents = async () => {
   let students;
-  await axios.get(`${api}/students/all`,  setConfig())
-  .then((response) => {
-    console.log(response);    
-    students = response.data.payload;
-  })
-  .catch((err) => {    
-    if (err.response) {
-      // notifyError(err.response.data.message);
-    } else {
-      // notifyError("Network Error");
-    }
-    console.log(err);
-  });
-
-  return students
-}
-
-export const getVideoById = async (id)=>{
-  let video;
-  await axios.get(`${api}/video/${id}`,  setConfig())
-  .then(response => {
-    console.log(response.data);
-    video = response.data.payload;
-    // notify(response.data.message);
-  })
-  .catch((err) => {
-    if (err.response) {
-      // notifyError(err.response.data.message);
-    } else {
-      // notifyError("Network Error");
-    }
-    console.log(err);
-  });
-
-  return video
-}
-
-export const bulkUploadOfVideos =async (videos, ageRange, category)=>{
-  await axios.post(`${api}/videos/bulk-upload`, {videos, ageRange, category},  setConfig())
-  .then(response => {
-    console.log(response.data);
-    notify(response.data.message);
-  })
-  .catch((err) => {
-    if (err.response) {
-      notifyError(err.response.data.message);
-    } else {
-      notifyError("Network Error");
-    }
-    console.log(err);
-  });
-}
-
-export const watchVideoRequest = async (id)=>{
-  await axios.patch(`${api}/video/watch/${id}`, {},setConfig())
-  .then(response => {
-    console.log(response.data);
-  })
-  .catch((err) => {
-    if (err.response) {
-      // notifyError(err.response.data.message);
-    } else {
-      notifyError("Network Error");
-    }
-    console.log(err);
-  });
-}
-
-export const viewVideoRequest = async (id)=>{
-  await axios.patch(`${api}/video/view/${id}`, {},  setConfig())
-  .then(response => {
-    console.log(response.data);
-  })
-  .catch((err) => {
-    if (err.response) {
-      
-    } else {
-      notifyError("Network Error");
-    }
-    console.log(err);
-  });
-}
-
-export const completeVideoRequest = async (id)=>{
-  await axios.patch(`${api}/video/complete/${id}`, {},  setConfig())
-  .then(response => {
-    console.log(response.data);
-    let student = response.data.payload
-    localStorage.setItem("student", JSON.stringify(student));
-    console.log("Course Completed")
-  })
-  .catch((err) => {
-    if (err.response) {
-      
-    } else {
-      notifyError("Network Error");
-    }
-    console.log(err);
-  });
-}
-
-export const getFilteredCourses = async (
-  ageRange,
-  category
-) => {  
-  console.log({
-    ageRange, category
-  })
-  let data;
   await axios
-    .post(`${api}/videos/query`, {ageRange, category},  setConfig())
+    .get(`${api}/students/all`, setConfig())
     .then((response) => {
       console.log(response);
-      data = response.data.payload
+      students = response.data.payload;
+    })
+    .catch((err) => {
+      if (err.response) {
+        // notifyError(err.response.data.message);
+      } else {
+        // notifyError("Network Error");
+      }
+      console.log(err);
+    });
+
+  return students;
+};
+
+export const getVideoById = async (id) => {
+  let video;
+  await axios
+    .get(`${api}/video/${id}`, setConfig())
+    .then((response) => {
+      console.log(response.data);
+      video = response.data.payload;
+      // notify(response.data.message);
+    })
+    .catch((err) => {
+      if (err.response) {
+        // notifyError(err.response.data.message);
+      } else {
+        // notifyError("Network Error");
+      }
+      console.log(err);
+    });
+
+  return video;
+};
+
+export const bulkUploadOfVideos = async (videos, ageRange, category) => {
+  await axios
+    .post(
+      `${api}/videos/bulk-upload`,
+      { videos, ageRange, category },
+      setConfig()
+    )
+    .then((response) => {
+      console.log(response.data);
+      notify(response.data.message);
+    })
+    .catch((err) => {
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
+      console.log(err);
+    });
+};
+
+export const watchVideoRequest = async (id) => {
+  await axios
+    .patch(`${api}/video/watch/${id}`, {}, setConfig())
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((err) => {
+      if (err.response) {
+        // notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
+      console.log(err);
+    });
+};
+
+export const viewVideoRequest = async (id) => {
+  await axios
+    .patch(`${api}/video/view/${id}`, {}, setConfig())
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((err) => {
+      if (err.response) {
+      } else {
+        notifyError("Network Error");
+      }
+      console.log(err);
+    });
+};
+
+export const completeVideoRequest = async (id) => {
+  await axios
+    .patch(`${api}/video/complete/${id}`, {}, setConfig())
+    .then((response) => {
+      console.log(response.data);
+      let student = response.data.payload;
+      localStorage.setItem("student", JSON.stringify(student));
+      console.log("Course Completed");
+    })
+    .catch((err) => {
+      if (err.response) {
+      } else {
+        notifyError("Network Error");
+      }
+      console.log(err);
+    });
+};
+
+export const getFilteredCourses = async (ageRange, category) => {
+  console.log({
+    ageRange,
+    category,
+  });
+  let data;
+  await axios
+    .post(`${api}/videos/query`, { ageRange, category }, setConfig())
+    .then((response) => {
+      console.log(response);
+      data = response.data.payload;
     })
     .catch((err) => {
       if (err.response) {
@@ -592,59 +587,138 @@ export const getFilteredCourses = async (
       console.log(err);
     });
 
-    return data
+  return data;
 };
 
-export const getTeachers = async ()=>{
-  let data = []
+export const getTeachers = async () => {
+  let data = [];
 
-  await axios.get(`${api}/teachers/all-by-admin`, setConfig())
-  .then((response) => {
-    console.log(response);
-    data = response.data.payload
-  })
-  .catch((err) => {
-    if (err.response) {
-    } else {
-    }
-    console.log(err);
-  });
+  await axios
+    .get(`${api}/teachers/all-by-admin`, setConfig())
+    .then((response) => {
+      console.log(response);
+      data = response.data.payload;
+    })
+    .catch((err) => {
+      if (err.response) {
+      } else {
+      }
+      console.log(err);
+    });
 
-  return data
-}
+  return data;
+};
 
-export const getSchoolDetails = async ()=>{
+export const getSchoolDetails = async () => {
   let data;
 
-  await axios.get(`${api}/schools/details`, setConfig())
-  .then((response) => {
-    console.log(response);
-    data = response.data.payload
-  })
-  .catch((err) => {
-    if (err.response) {
-    } else {
-    }
-    console.log(err);
-  });
+  await axios
+    .get(`${api}/schools/details`, setConfig())
+    .then((response) => {
+      console.log(response);
+      data = response.data.payload;
+    })
+    .catch((err) => {
+      if (err.response) {
+      } else {
+      }
+      console.log(err);
+    });
 
-  return data
-}
+  return data;
+};
 
-export const getLB = async ()=>{
+export const getLB = async () => {
   let data;
 
-  await axios.get(`${api}/students/leadership`, setConfig())
-  .then((response) => {
-    console.log(response);
-    data = response.data.payload
-  })
-  .catch((err) => {
-    if (err.response) {
-    } else {
-    }
-    console.log(err);
-  });
+  await axios
+    .get(`${api}/students/leadership`, setConfig())
+    .then((response) => {
+      console.log(response);
+      data = response.data.payload;
+    })
+    .catch((err) => {
+      if (err.response) {
+      } else {
+      }
+      console.log(err);
+    });
 
-  return data
-}
+  return data;
+};
+
+export const getAdminDetails = async () => {
+  let data = [];
+
+  await axios
+    .get(`${api}/admin/details`, setConfig())
+    .then((response) => {
+      console.log(response);
+      data = response.data.payload;
+    })
+    .catch((err) => {
+      if (err.response) {
+      } else {
+      }
+      console.log(err);
+    });
+
+  return data;
+};
+
+export const getAllSchools = async () => {
+  let data = [];
+
+  await axios
+    .get(`${api}/schools/all`, setConfig())
+    .then((response) => {
+      console.log(response);
+      data = response.data.payload;
+    })
+    .catch((err) => {
+      if (err.response) {
+      } else {
+      }
+      console.log(err);
+    });
+
+  return data;
+};
+
+export const getTeachersBySchool = async ({id}) => {
+  let data = [];
+
+  await axios
+    .get(`${api}/admin/teachers/${id}`, setConfig())
+    .then((response) => {
+      console.log(response);
+      data = response.data.payload;
+    })
+    .catch((err) => {
+      if (err.response) {
+      } else {
+      }
+      console.log(err);
+    });
+
+  return data;
+};
+
+export const getStudentsBySchool = async ({id}) => {
+  let data = [];
+
+  await axios
+    .get(`${api}/admin/students/${id}`, setConfig())
+    .then((response) => {
+      console.log(response);
+      data = response.data.payload;
+    })
+    .catch((err) => {
+      if (err.response) {
+      } else {
+      }
+      console.log(err);
+    });
+
+  return data;
+};

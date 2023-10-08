@@ -13,10 +13,10 @@ import { Modal, useMantineTheme } from "@mantine/core";
 import AddTeacher from "./AddTeacher";
 import { SpinnerCircular } from "spinners-react";
 import { GetPaginatedData, Paginated } from "@/AtomicComponents/Pagination";
-import { getTeachers } from "@/services/request";
+import { getTeachers, getTeachersBySchool } from "@/services/request";
 import ReactPaginate from "react-paginate";
 
-const Teachers = ({ setViewStudents, setMainView }) => {
+const Teachers = ({ setViewStudents, setMainView, Sdata }) => {
   const [profile, setProfile] = useState(false);
   const [data, setData] = useState({});
   const [trash, setTrash] = useState(false);
@@ -30,8 +30,9 @@ const Teachers = ({ setViewStudents, setMainView }) => {
   const [teachers, setTeachers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchTeachers = async () => {
-    let data = await getTeachers();
+  const fetchTeachers = async () => {    
+    let data = await getTeachersBySchool(Sdata._id);
+    console.log(data);
     setTeachers(data);
     setPageCount(Paginated(data, PAGINATION));
     setLoading(false);

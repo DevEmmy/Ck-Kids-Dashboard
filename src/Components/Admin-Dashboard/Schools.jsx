@@ -1,21 +1,24 @@
 import {
   SearchOutline,
-  ArrowLeft,
-  ArrowRight,
-  ChevronRight,
   EyeOutline,
   PencilAltOutline,
   TrashOutline,
   XCircleOutline,
-  ChevronUp,
-  ChevronDown,
 } from "heroicons-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import StudentProfile from "./StudentProfile";
-import { HiUpload } from "react-icons/hi";
+import {
+  getAllSchools,
+  getTeachersBySchool,
+  getStudentsBySchool,
+} from "@/services/request";
 import { FaPlus, FaUpload } from "react-icons/fa";
 import { useDisclosure } from "@mantine/hooks";
 import { Modal, useMantineTheme } from "@mantine/core";
+import { SpinnerCircular } from "spinners-react";
+import ReactPaginate from "react-paginate";
+import { Paginated, GetPaginatedData } from "@/AtomicComponents/Pagination";
+
 import AddSchool from "./AddSchool";
 import Students from "./Students";
 import Teachers from "./Teachers";
@@ -28,18 +31,52 @@ const Schools = ({
   setSchoolName,
 }) => {
   const [profile, setProfile] = useState(false);
-  const [data, setData] = useState({});
+  const [Sdata, setSdata] = useState({});
+  const [currentPage, setCurrentPage] = useState(0);
+  const [pageCount, setPageCount] = useState(0);
+  const [schools, setSchools] = useState([]);
+  const [noTeachers, setNoOfTeachers] = useState(0);
+  const [noCourses, setNoCourses] = useState(0);
   const [trash, setTrash] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const PAGINATION = 20;
+  const [loading, setLoading] = useState(true);
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
 
-  const [drop, sedivrop] = useState(false);
+  const getSchoolDetails = async () => {
+    let data = await getAllSchools();
+    console.log(data);
+    setSchools(data);
+    setPageCount(Paginated(data, PAGINATION));
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getSchoolDetails();
+  }, []);
+
+  const handlePageClick = (data) => {
+    const selectedPage = data.selected;
+    setCurrentPage(selectedPage);
+    // Fetch and display data for the selected page
+  };
+
+  const getDetails = async (id, type) => {
+    let data = 0;
+    if (type === "teachers") {
+      data = await getTeachersBySchool(id);
+    } else if (type === "students") {
+      data = await getStudentsBySchool(id);
+    }
+
+    return data.length;
+  };
+
   return (
     <>
       {mainView === "schools" && (
         <div className="relative w-full p-[30px] cflexss gap-[28px]">
-          {profile && trash !== true && (
+          {/* {profile && trash !== true && (
             <StudentProfile
               profile={profile}
               setProfile={setProfile}
@@ -48,7 +85,7 @@ const Schools = ({
           )}
           {trash && (
             <Trash setTrash={setTrash} data={data} setProfile={setProfile} />
-          )}
+          )} */}
 
           <div className="w-full flex justify-between">
             <div className="flex gap-3 items-center">
@@ -72,7 +109,7 @@ const Schools = ({
               <div className="w-full font-[400] text-[17px] lg:text-[15px] pb-[20px] ls:text-[13px] rounded-[24px] text-[#808080]">
                 <div className="w-full flexsm py-[10px] px-[20px] border-b-[1px]">
                   <div className="w-[30%] flexsm gap-[15px]">
-                    <input type="checkbox" />
+                    <input type="checkbox" checked={false} />
                     <p>School Name</p>
                   </div>
                   <div className="w-[27%] flexsm">Official Email</div>
@@ -96,105 +133,92 @@ const Schools = ({
                   </>
                 ) : (
                   <>
-                    <div
-                      className="w-full flexsm py-[10px] px-[20px] cursor-pointer"
-                      onClick={() => {
-                        setViewSchool(true);
-                        setMainView("teachers");
-                        setSchoolName("Harmony High School");
-                      }}
-                    >
-                      <div className="w-[30%] flexsm gap-[15px]">
-                        <input type="checkbox" />
-                        <p>Harmony High School</p>
-                      </div>
-                      <div className="w-[27%] flexsm">
-                        info@harmonyhighschool.edu
-                      </div>
-                      <div className="w-[14%] flexsm">20</div>
-                      <div className="w-[14%] flexsm">500</div>
-                      <div className="w-[14%] flexsm">20</div>
-                      <div className="w-[14%] flexsm">8</div>
-                      <div className="w-[14%] flexsm gap-[15px]">
-                        <EyeOutline size="16px" />
-                        <PencilAltOutline size="16px" />
-                        <TrashOutline
-                          size="16px"
-                          // onClick={() => {
-                          //   setModalElement(
-                          //     <Trash
-                          //       close={close}
-                          //       data={data}
-                          //       setProfile={setProfile}
-                          //     />
-                          //   );
-                          //   open();
-                          // }}
-                        />
-                      </div>
-                    </div>
+                    {GetPaginatedData(currentPage, PAGINATION, schools)?.map(
+                      (data, index) => {
+                        // const inputDate = new Date(data.createdAt);
 
-                    <div
-                      className="w-full flexsm py-[10px] px-[20px] cursor-pointer"
-                      onClick={() => {
-                        setViewSchool(true);
-                        setMainView("teachers");
-                        setSchoolName("Crestview Secondary Academy");
-                      }}
-                    >
-                      <div className="w-[30%] flexsm gap-[15px]">
-                        <input type="checkbox" />
-                        <p>Crestview Secondary Academy</p>
-                      </div>
-                      <div className="w-[27%] flexsm">
-                        contact@creatviewsecondary.edu
-                      </div>
-                      <div className="w-[14%] flexsm">15</div>
-                      <div className="w-[14%] flexsm">350</div>
-                      <div className="w-[14%] flexsm">8</div>
-                      <div className="w-[14%] flexsm">5</div>
-                      <div className="w-[14%] flexsm gap-[15px]">
-                        <EyeOutline size="16px" />
-                        <PencilAltOutline size="16px" />
-                        <TrashOutline
-                          size="16px"
-                          // onClick={() => {
-                          //   setModalElement(
-                          //     <Trash
-                          //       close={close}
-                          //       data={data}
-                          //       setProfile={setProfile}
-                          //     />
-                          //   );
-                          //   open();
-                          // }}
-                        />
-                      </div>
-                    </div>
+                        // // Extract the individual date components
+                        // const year = inputDate.getFullYear() % 100; // Get the last two digits of the year
+                        // const month = inputDate.getMonth() + 1; // Months are 0-based, so add 1
+                        // const day = inputDate.getDate();
+
+                        // // Create the formatted date string
+                        // const formattedDate = `${day}/${
+                        //   month < 10 ? "0" : ""
+                        // }${month}/${year}`;
+
+                        return (
+                          <>
+                            <div
+                              key={index}
+                              className={`w-full flexsm py-[10px] px-[20px] cursor-pointer ${
+                                (index + 1) % 2 === 0
+                                  ? "bg-[#F7F7F7]"
+                                  : "bg-white"
+                              }`}
+                              onClick={() => {
+                                setSdata(data);
+                                setMainView("teachers");
+                                setViewSchool(true);
+                              }}
+                            >
+                              <div className="w-[30%] gap-[15px] flexsm">
+                                <input type="checkbox" />
+                                {data.schoolName}
+                              </div>
+                              <div className="w-[27%] flexm">{data.email}</div>
+                              <div className="w-[25%] flexsm">
+                                {
+                                  
+                                }
+                              </div>
+                              {/* <div className="w-[14%] flexsm">
+                                {formattedDate}
+                              </div>
+                              <div className="w-[14%] flexsm gap-[20px]">
+                                <EyeOutline size="16px" />
+                                <PencilAltOutline size="16px" />
+                                <TrashOutline
+                                  size="16px"
+                                  onClick={() => {
+                                    setTrash(true);
+                                    setData(data);
+                                  }}
+                                />
+                              </div> */}
+                            </div>
+                          </>
+                        );
+                      }
+                    )}
                   </>
                 )}
                 <br />
-                {/* <ReactPaginate
-                previousLabel={"< Previous"}
-                nextLabel={"Next >"}
-                breakLabel={"..."}
-                breakClassName={"break-me"}
-                pageCount={pageCount}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={5}
-                onPageChange={handlePageClick}
-                containerClassName={
-                  "w-full text-[14px] lg:text-[12px] px-[20px] pt-[20px] border-t-[1px] flexbm"
-                }
-                activeClassName={"active"}
-              /> */}
+                <ReactPaginate
+                  previousLabel={"< Previous"}
+                  nextLabel={"Next >"}
+                  breakLabel={"..."}
+                  breakClassName={"break-me"}
+                  pageCount={pageCount}
+                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={5}
+                  onPageChange={handlePageClick}
+                  containerClassName={
+                    "w-full text-[14px] lg:text-[12px] px-[20px] pt-[20px] border-t-[1px] flexbm"
+                  }
+                  activeClassName={"active"}
+                />
               </div>
             </div>
           </div>
         </div>
       )}
       {mainView === "teachers" && (
-        <Teachers setViewStudents={setViewStudents} setMainView={setMainView}/>
+        <Teachers
+          setViewStudents={setViewStudents}
+          setMainView={setMainView}
+          Sdata={Sdata}
+        />
       )}
       {mainView === "students" && <Students />}
 
