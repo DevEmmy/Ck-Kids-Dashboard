@@ -157,6 +157,7 @@ const Schools = ({
                                   : "bg-white"
                               }`}
                               onClick={() => {
+                                setSchoolName(data.schoolName)
                                 setSdata(data);
                                 setMainView("teachers");
                                 setViewSchool(true);
@@ -167,25 +168,21 @@ const Schools = ({
                                 {data.schoolName}
                               </div>
                               <div className="w-[27%] flexm">{data.email}</div>
-                              <div className="w-[25%] flexsm">
-                                {
-                                  
-                                }
-                              </div>
-                              {/* <div className="w-[14%] flexsm">
-                                {formattedDate}
-                              </div>
+                              <div className="w-[14%] flexsm">0</div>                              
+                              <div className="w-[14%] flexsm">0</div>       
+                              <div className="w-[14%] flexsm">0</div>       
+                              <div className="w-[14%] flexsm">0</div>       
                               <div className="w-[14%] flexsm gap-[20px]">
                                 <EyeOutline size="16px" />
                                 <PencilAltOutline size="16px" />
                                 <TrashOutline
                                   size="16px"
-                                  onClick={() => {
-                                    setTrash(true);
-                                    setData(data);
-                                  }}
+                                  // onClick={() => {
+                                  //   setTrash(true);
+                                  //   setData(data);
+                                  // }}
                                 />
-                              </div> */}
+                              </div>
                             </div>
                           </>
                         );

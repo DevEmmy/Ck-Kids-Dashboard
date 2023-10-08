@@ -30,6 +30,7 @@ const Courses = ({ isTeacher }) => {
   const [cat, setCat] = useState(false);
   const [ageRange, setAgeRange] = useState(null);
   const [category, setCategory] = useState(null);
+  const [typeValue, setTypeValue] = useState("");
   const [type, setType] = useState(false);
   const [add, setAdd] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -253,21 +254,21 @@ const Courses = ({ isTeacher }) => {
             </div>
 
             <div
-              className="flexmm gap-[10px] p-[15px] border-[1px] rounded-[8px] bg-[#FFF] cursor-pointer"
+              className="flexmm relative gap-[10px] p-[15px] border-[1px] rounded-[8px] bg-[#FFF] cursor-pointer"
               onClick={() => {
                 setType(!type);
               }}
             >
-              <p>Type</p>
+              <p>{typeValue ? typeValue : "Type"}</p>
               {type ? <ChevronDown /> : <ChevronUp />}
               {type && (
                 <motion.div
                   animate="visible"
                   initial="hidden"
                   variants={Appear}
-                  className="absolute top-[70px] left-0 lf:left-0 text-[17px] bg-[#FFF] h-[350px] z-20 flexss p-[15px] w-[18em] rounded-[8px] shadow-md border-[1px]"
+                  className="absolute top-[70px] left-0 lf:left-0 text-[17px] bg-[#FFF] z-20 flexss p-[15px] w-[10em] rounded-[8px] shadow-md border-[1px]"
                 >
-                  <div className="w-full h-full cflexss gap-[10px] overflow-y-scroll">
+                  <div className="w-full h-full cflexss gap-[10px]">
                     <div
                       className="flexbm w-full px-[16px] py-[12px] rounded-xl hover:bg-primary2 hover:text-white cursor-pointer transition-all duration-400"
                       onClick={() => {
@@ -292,7 +293,6 @@ const Courses = ({ isTeacher }) => {
                   </div>
                 </motion.div>
               )}
-              F
             </div>
 
             <div
@@ -305,7 +305,7 @@ const Courses = ({ isTeacher }) => {
                 setEdit(false);
               }}
             >
-              <p>Categories</p>
+              <p>{category ? category : "Categories"}</p>
               {cat ? <ChevronDown /> : <ChevronUp />}
               {cat && (
                 <motion.div
@@ -336,7 +336,7 @@ const Courses = ({ isTeacher }) => {
             </div>
 
             <div
-              className="relative font-[400] text-[20px] lg:text-[18px] ls:text-[16px] border-[1px] rounded-[8px] p-[15px] gap-[10px] flexmm bg-white cursor-pointer"
+              className="relative w-[200px] font-[400] text-[20px] lg:text-[18px] ls:text-[16px] border-[1px] rounded-[8px] p-[15px] gap-[10px] flexmm bg-white cursor-pointer"
               onClick={() => {
                 setDrop(!drop);
                 setCat(false);
@@ -345,10 +345,10 @@ const Courses = ({ isTeacher }) => {
                 setEdit(false);
               }}
             >
-              <p>Ages</p>
+              <p>{ageRange ? ageRange : "Ages"}</p>
               {drop ? <ChevronDown /> : <ChevronUp />}
               {drop && (
-                <div className="absolute top-[70px] w-[150px] text-[17px] font-[400] left-0 z-25 border-[1px] shadow-md py-[8px] px-[4px] rounded-[12px] bg-white cflexss">
+                <div className="absolute w-[150px] top-[70px] text-[17px] font-[400] left-0 z-25 border-[1px] shadow-md py-[8px] px-[4px] rounded-[12px] bg-white cflexss">
                   {Ages.map((items, i) => {
                     return (
                       <>
