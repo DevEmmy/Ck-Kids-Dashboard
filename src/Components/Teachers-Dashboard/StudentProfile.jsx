@@ -27,7 +27,7 @@ const StudentProfile = ({ profile, setProfile, data }) => {
           <div className="cflexmm gap-[1.25em]">
             <div className="relative w-[9.375em] h-[9.375em] rounded-full">
               <img
-                src={`/${data.avatar}.svg`}
+                src={`/${data.ProfilePicture}.svg`}
                 className="rounded-full"
                 alt="profileAvatar"
               />
@@ -35,7 +35,7 @@ const StudentProfile = ({ profile, setProfile, data }) => {
             </div>
             <div className="cflexmm gap-[0.25em]">
               <p className="font-[700] text-[1.25rem] lg:text-[1.1rem]">
-                {data.name}
+                {data.fullName}
               </p>
               <p>@{data.username}</p>
               <p>{data.email}</p>
@@ -142,7 +142,7 @@ const StudentProfile = ({ profile, setProfile, data }) => {
               </div>
             </div>
           </div>
-        </div>
+        </div>        
       </div>
     </>
   );

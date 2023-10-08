@@ -10,17 +10,20 @@ const BulkUpload = ({ close, fetchData }) => {
     status: "",
   });
   const [changing, setChanging] = useState(false);
-  const [valid, setValid] = useState(false); 
+  const [valid, setValid] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (      
+    if (
       bulkVideoData["courseLink"].trim().length > 0 &&
       bulkVideoData["category"].trim().length > 0 &&
-      bulkVideoData["ages"] &&
-      bulkVideoData["status"]
+      bulkVideoData["category"].trim() !== "None" &&
+      bulkVideoData["ages"].length > 0 &&
+      bulkVideoData["ages"] !== "None" &&
+      bulkVideoData["status"] &&
+      bulkVideoData["status"] !== "None"
     ) {
-      setValid(true);      
+      setValid(true);
     }
 
     // if (
@@ -54,7 +57,11 @@ const BulkUpload = ({ close, fetchData }) => {
     if (valid) {
       setLoading(true);
       console.log(bulkVideoData);
-      await bulkUploadOfVideos(bulkVideoData.courseLink, bulkVideoData.ages, bulkVideoData.category)
+      await bulkUploadOfVideos(
+        bulkVideoData.courseLink,
+        bulkVideoData.ages,
+        bulkVideoData.category
+      );
       setLoading(false);
       close();
       fetchData();
@@ -134,7 +141,7 @@ const BulkUpload = ({ close, fetchData }) => {
             value={bulkVideoData["courseLink"]}
             onChange={handleChange}
             className="w-[526px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px]"
-          />          
+          />
         </div>
         <div className="w-full cflexss gap-[12px]">
           <p>Category</p>

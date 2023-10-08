@@ -1,37 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoDiamondOutline } from "react-icons/io5";
 import Line from "./Line";
+import { getLB } from "@/services/request";
 
-const Board = () => {
-  const ld = [
-    {
-      rank: 1,
-      avatar:
-        "https://www.looper.com/img/gallery/inosukes-powers-from-demon-slayer-explained/intro-1620465501.jpg",
-      name: "Chinwe Eze Ogoluwa",
-      courses: 180,
-      hours: 340,
-      gem: 70000,
-    },
-    {
-      rank: 2,
-      avatar:
-        "https://www.looper.com/img/gallery/inosukes-powers-from-demon-slayer-explained/intro-1620465501.jpg",
-      name: "Chinwe Eze",
-      courses: 180,
-      hours: 340,
-      gem: 70000,
-    },
-    {
-      rank: 3,
-      avatar:
-        "https://www.looper.com/img/gallery/inosukes-powers-from-demon-slayer-explained/intro-1620465501.jpg",
-      name: "Chinwe Eze",
-      courses: 180,
-      hours: 340,
-      gem: 70000,
-    },
-  ];
+const Board = ({max = 3}) => {
+  // const ld = [
+  //   {
+  //     rank: 1,
+  //     avatar:
+  //       "https://www.looper.com/img/gallery/inosukes-powers-from-demon-slayer-explained/intro-1620465501.jpg",
+  //     name: "Chinwe Eze Ogoluwa",
+  //     courses: 180,
+  //     hours: 340,
+  //     gem: 70000,
+  //   },
+  //   {
+  //     rank: 2,
+  //     avatar:
+  //       "https://www.looper.com/img/gallery/inosukes-powers-from-demon-slayer-explained/intro-1620465501.jpg",
+  //     name: "Chinwe Eze",
+  //     courses: 180,
+  //     hours: 340,
+  //     gem: 70000,
+  //   },
+  //   {
+  //     rank: 3,
+  //     avatar:
+  //       "https://www.looper.com/img/gallery/inosukes-powers-from-demon-slayer-explained/intro-1620465501.jpg",
+  //     name: "Chinwe Eze",
+  //     courses: 180,
+  //     hours: 340,
+  //     gem: 70000,
+  //   },
+  // ];
+
+  let [ld, setLd] = useState()
+
+  const fetchData = async ()=>{
+    let data = await getLB()
+    console.log(data);
+    setLd(data)
+  }
+
+  useEffect(()=>{
+    fetchData()
+  }, [])
+  
   return (
     <div className="text-black w-full flex flex-col border rounded-3xl p-6">
       <div>
@@ -50,7 +64,7 @@ const Board = () => {
 
       <Line />
       <div className="flex flex-col gap-3 text-gray-500">
-        {ld.map((data, i) => {
+        {ld?.slice(0,max).map((data, i) => {
           return (
             // <TableData key={i} values={Object.values(data)}/>
             <div
@@ -59,13 +73,13 @@ const Board = () => {
               }`}
               key={i}
             >
-              <div className="w-[10%]">{data.rank}</div>
+              <div className="w-[10%]">{i+1}</div>
               <div className="flex gap-3 w-[50%]">
-                <img src={data.avatar} alt="" className="w-6 h-6 rounded-lg" />
-                {data.name}
+                <img src={data.profilePicture} alt="" className="w-6 h-6 rounded-lg" />
+                {data.fullName}
               </div>
-              <div className="text-center w-[10%]">{data.courses}</div>
-              <div className="w-[10%] text-center">{data.hours}</div>
+              <div className="text-center w-[10%]">{data.completedCourses}</div>
+              <div className="w-[10%] text-center">0</div>
               <div
                 className={`w-[20%] text-[600] text-end  ${
                   i === 0 ? "text-primary1" : "text-primary2"

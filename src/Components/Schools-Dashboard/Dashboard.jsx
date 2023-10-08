@@ -22,6 +22,7 @@ import Students from "./Students";
 import Overview from "./Overview";
 import Teachers from "./Teachers";
 import Courses from "../Teachers-Dashboard/Courses";
+import Gamification from "../Teachers-Dashboard/Gamification";
 
 const Dashboard = ({school}) => {  
   const [view, setView] = useState("Overview");
@@ -190,6 +191,8 @@ const Dashboard = ({school}) => {
             {view === "Teachers" && <Teachers />}
 
             {view === "Courses" && <Courses isTeacher={false}/>}
+
+            {view === "Gamification" && <Gamification />}
         </div>
       </div>
       }

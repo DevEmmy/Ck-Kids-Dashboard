@@ -27,7 +27,9 @@ const AddNewVideo = ({ close, fetchData, isTeacher }) => {
       !urlError &&
       newVideoData["courseLink"].trim().length > 0 &&
       newVideoData["category"].trim().length > 0 &&
+      newVideoData["category"].trim() !== "None" &&
       newVideoData["ages"].trim().length > 0 &&
+      newVideoData["ages"].trim() !== "None" &&
       newVideoData["coursePhoto"]
     ) {
       setValid(true);
@@ -88,7 +90,7 @@ const AddNewVideo = ({ close, fetchData, isTeacher }) => {
       newVideoData["courseLink"],
       newVideoData["coursePhoto"],
       newVideoData["category"],
-      newVideoData["ages"],     
+      newVideoData["ages"],
       newVideoData["courseDetails"],
       null,
       isTeacher
@@ -155,19 +157,13 @@ const AddNewVideo = ({ close, fetchData, isTeacher }) => {
 
   const Ages = [
     {
-      age: "3 - 5",
+      age: "6 - 9",
     },
     {
-      age: "6 - 8",
+      age: "10 - 14",
     },
     {
-      age: "9 - 10",
-    },
-    {
-      age: "11 - 13",
-    },
-    {
-      age: "14 - 16",
+      age: "15 - 18",
     },
   ];
 

@@ -22,7 +22,9 @@ const CreateNewCollection = ({ close, fetchData }) => {
       newCollection["title"].trim().length > 0 &&
       newCollection["description"].trim().length > 0 &&
       newCollection["category"].trim().length > 0 &&
-      newCollection["ages"].trim() &&
+      newCollection["category"].trim() !== "None" &&
+      newCollection["ages"].length > 0 &&
+      newCollection["ages"] !== "None" &&      
       newCollection["coursePhoto"]
     ) {
       setValid(true);
@@ -86,19 +88,13 @@ const CreateNewCollection = ({ close, fetchData }) => {
 
   const Ages = [
     {
-      age: "3 - 5",
+      age: "6 - 9",
     },
     {
-      age: "6 - 8",
+      age: "10 - 14",
     },
     {
-      age: "9 - 10",
-    },
-    {
-      age: "11 - 13",
-    },
-    {
-      age: "14 - 16",
+      age: "15 - 18",
     },
   ];
 

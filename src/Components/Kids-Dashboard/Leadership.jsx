@@ -4,15 +4,10 @@ import Image from "next/image";
 import LeaderBoardOverview from "@/AtomicComponents/LeaderBoardOverview";
 import Achievement from "@/AtomicComponents/Achievement";
 import { Mission1, Mission2, Mission3 } from "./AchievementData";
-import { getMyDetails } from "@/services/request";
+import { fetchFromLS, getMyDetails } from "@/services/request";
 
-const Leadership = () => {
+const Leadership = ({student}) => {
   const [level, setLevel] = useState(3);
-  const [student, setStudent] = useState("");
-  useEffect(() => {
-    let student = getMyDetails("");
-    setStudent(student);
-  }, []);
   const MasteryLevel = [
     {
       img1: "/masteryLevel/fmst1.png",
@@ -96,7 +91,7 @@ const Leadership = () => {
           </div>
         </div>
 
-        <LeaderBoardOverview />
+        <LeaderBoardOverview max={10} />
 
         <div className="w-full font-[400] text-[24px] font-[Permanent Marker] lg:text-[20px] ls:text-[18px] cflexss gap-[1em]">
           <p>ALL ACHIEVEMENTS</p>

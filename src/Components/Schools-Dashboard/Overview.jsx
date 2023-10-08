@@ -1,5 +1,7 @@
+import LoadScreen from "@/AtomicComponents/LoadScreen";
+import { getSchoolDetails } from "@/services/request";
 import { ChevronUp, ChevronDown, Users, ChevronRight } from "heroicons-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Overview = ({school}) => {
   const [drop, sedivrop] = useState(false);
@@ -80,9 +82,23 @@ const Overview = ({school}) => {
       class: "JSS 1E",
     },
   ];
+
+  let [data, setData] = useState()
+
+  const fetchData = async ()=>{
+    let data = await getSchoolDetails()
+    setData(data)
+  }
+
+  useEffect(()=>{
+    fetchData()
+  }, [])
+
   return (
     <>
-      <div className="w-full cflexss font-[700] gap-[37px] text-[24px] lg:text-[20px] ls:text-[18px] bg-[#F7F7F7] h-full p-[30px]">
+      {
+        data ?
+        <div className="w-full cflexss font-[700] gap-[37px] text-[24px] lg:text-[20px] ls:text-[18px] bg-[#F7F7F7] h-full p-[30px]">
         <div className="w-full flexbm">
           <p className="text-gray-400">Welcome, {school.schoolName}</p>
           <div className="flexmm gap-[28px]">
@@ -137,7 +153,7 @@ const Overview = ({school}) => {
             </div>
             <div className="cflexss ">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
-                25
+                0
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Classes
@@ -151,7 +167,7 @@ const Overview = ({school}) => {
             </div>
             <div className="cflexss ">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
-                25
+                {data?.allUploadedStudents || "0"}
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Students
@@ -165,7 +181,7 @@ const Overview = ({school}) => {
             </div>
             <div className="cflexss ">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
-                25
+              {data?.totalStudents || "0"}
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Students Visit
@@ -179,7 +195,7 @@ const Overview = ({school}) => {
             </div>
             <div className="cflexss ">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
-                25
+              {data?.totalTeachers || "0"}
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Teachers
@@ -193,7 +209,7 @@ const Overview = ({school}) => {
             </div>
             <div className="cflexss ">
               <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
-                25
+                0
               </p>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Students Online
@@ -339,6 +355,9 @@ const Overview = ({school}) => {
           </div>
         </div>
       </div>
+      :
+      <LoadScreen />
+      }
     </>
   );
 };
