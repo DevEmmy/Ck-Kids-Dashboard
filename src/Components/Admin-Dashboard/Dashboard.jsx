@@ -16,7 +16,7 @@ import Notification from "../Kids-Dashboard/Notification";
 
 import Messages from "../Kids-Dashboard/Messages";
 import Overview from "./Overview";
-import Gamification from "../Teachers-Dashboard/Gamification";
+import Gamification from "./Gamification";
 import Courses from "../Teachers-Dashboard/Courses";
 import Schools from "./Schools";
 import { getAdminDetails } from "@/services/request";
