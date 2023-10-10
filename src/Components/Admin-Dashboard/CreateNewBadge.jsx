@@ -11,7 +11,7 @@ const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
     title: "",
     description: "",
     requirement: "",
-    allocated: parseInt(gemPoint),
+    allocated: parseInt(collectionGemPoint),
     status: true,
     minAge: "None",
     maxAge: "",
@@ -202,12 +202,12 @@ const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
                       className="rounded-[0.75rem] w-[60%] h-auto object-cover"
                     />
                   )}
-                  {(badge.title === "" || badge.title === "None") && (
-                    <FaUserAlt />
-                  )}
                 </>
               );
             })}
+            {(gemDetails.title === "" || gemDetails.title === "None") && (
+              <FaUserAlt />
+            )}
             {/* <div className="absolute left-0 top-[46%] opacity-0">
               <FileBase64
                 name="coursePhoto"

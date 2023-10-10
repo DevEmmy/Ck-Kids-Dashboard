@@ -1,12 +1,6 @@
-import {
-  ChevronUp,
-  ChevronDown,
-  ChevronRight,
-  TrashOutline,
-  PencilAltOutline,
-} from "heroicons-react";
+import { TrashOutline, PencilAltOutline } from "heroicons-react";
 import { useEffect, useState } from "react";
-import CreateNewBadge from "./CreateNewBadge";
+import CreateNewStage from "./CreateNewStage";
 import { useDisclosure } from "@mantine/hooks";
 import { Modal, useMantineTheme } from "@mantine/core";
 import { FaPlus } from "react-icons/fa";
@@ -14,27 +8,21 @@ import { GetAllBadges } from "@/services/request";
 import { SpinnerCircular } from "spinners-react";
 import { getFilteredCourses } from "@/services/request";
 import ReactPaginate from "react-paginate";
-import MasteryStage from "./MasteryStage";
 import { Paginated, GetPaginatedData } from "@/AtomicComponents/Pagination";
 
-const Gamification = () => {
+const MasteryStage = ({gemPoint, collectionGemPoint}) => {
   const [drop, setDrop] = useState(false);
-  const [ageRange, setAgeRange] = useState(null);
-  const [category, setCategory] = useState(null);
-  const [badges, setBadges] = useState([]);
-  const [gemPoint, setGemPoint] = useState(20);
-  const [collectionGemPoint, setCollectionGemPoint] = useState(20);
+  const [stages, setStages] = useState([]);  
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const PAGINATION = 20;
   const [pageCount, setPageCount] = useState(0);
-  const [students, setStudents] = useState([]);
 
   const fetchData = async () => {
     setLoading(true);
     let data = await GetAllBadges();
     console.log(data);
-    setBadges(data);
+    setStages(data);
     setPageCount(Paginated(data, PAGINATION));
     setLoading(false);
   };
@@ -67,66 +55,6 @@ const Gamification = () => {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 0.2 } },
   };
-
-  const Categories = [
-    {
-      category: "Film & Animation",
-    },
-    {
-      category: "Autos & Vehicles",
-    },
-    {
-      category: "Music",
-    },
-    {
-      category: "Pets & Animals",
-    },
-    {
-      category: "Sports",
-    },
-    {
-      category: "Travel & Events",
-    },
-    {
-      category: "Gaming",
-    },
-    {
-      category: "People & Blogs",
-    },
-    {
-      category: "Comedy",
-    },
-    {
-      category: "Entertainment",
-    },
-    {
-      category: "News & Politics",
-    },
-    {
-      category: "How to & Style",
-    },
-    {
-      category: "Education",
-    },
-    {
-      category: "Science & Technology",
-    },
-    {
-      category: "Nonprofits & Activism",
-    },
-  ];
-
-  const Ages = [
-    {
-      age: "6 - 9",
-    },
-    {
-      age: "10 - 14",
-    },
-    {
-      age: "15 - 18",
-    },
-  ];
 
   const Badges = [
     {
@@ -188,69 +116,16 @@ const Gamification = () => {
   return (
     <>
       <div className="w-full p-[30px] cflexss gap-[25px] font-[400] text-[20px] lg:text-[18px] ls:text-[16px]">
-        <div className="w-full flexsm">
-          <p className="font-[600] text-[24px] lg:text-[22px] ls:text-[20px]">
-            Learning Gem Settings
-          </p>
-        </div>
-        <div className="w-full h-full flexbs gap-[30px] border-[1px] sm:flex-wrap rounded-[24px] bg-[#FFF] shadow-md py-[30px] px-[20px]">
-          <div className="w-[526px] flex-grow flex-shrink cflexss gap-[12px]">
-            <p>Maximum Gem for a video</p>
-            <select
-              className="w-full px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
-              name="requirement"
-              onChange={(e) => {
-                setGemPoint(e.target.value);
-              }}
-            >
-              <option>{gemPoint}</option>
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-              <option value="20">20</option>
-              <option value="25">25</option>
-              <option value="30">30</option>
-              <option value="35">35</option>
-              <option value="40">40</option>
-              <option value="45">45</option>
-              <option value="50">50</option>
-            </select>
-          </div>
-
-          <div className="w-[526px] flex-grow flex-shrink cflexss gap-[12px]">
-            <p>Maximum Gem for a video collection</p>
-            <select
-              className="w-full px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
-              name="requirement"
-              onChange={(e) => {
-                setCollectionGemPoint(e.target.value);
-              }}
-            >
-              <option>{collectionGemPoint}</option>
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-              <option value="20">20</option>
-              <option value="25">25</option>
-              <option value="30">30</option>
-              <option value="35">35</option>
-              <option value="40">40</option>
-              <option value="45">45</option>
-              <option value="50">50</option>
-            </select>
-          </div>
-        </div>
-
         <div className="w-full flexbm">
           <p className="font-[600] text-[24px] lg:text-[22px] ls:text-[20px]">
-            Victory Badge Settings
+            Mastery Stage Settings
           </p>
           <button
             className="relative btn px-[52px] flexmm font-[600] gap-[10px] py-[22px] lg:py-[18px] ls:py-[15px] rounded-full bg-primary2 cursor-pointer text-[#FFF] border-none"
             onClick={() => {
               setDrop(false);
               setModalElement(
-                <CreateNewBadge
+                <CreateNewStage
                   close={close}
                   fetchData={fetchData}
                   gemPoint={gemPoint}
@@ -260,61 +135,23 @@ const Gamification = () => {
               open();
             }}
           >
-            <p>Create new badge</p>
+            <p>Create new stages</p>
             <FaPlus size="10px" />
           </button>
         </div>
 
         <div className="w-full h-full cflexss gap-[30px] border-[1px] rounded-[24px] bg-[#FFF] shadow-md py-[30px] px-[20px]">
-          <div className="w-full flexsm gap-[25px] text-[#AAA]">
-            <div
-              className="relative font-[400] text-[20px] lg:text-[18px] ls:text-[16px] border-[1px] rounded-[8px] p-[15px] gap-[10px] flexmm bg-white cursor-pointer"
-              onClick={() => {
-                setDrop(!drop);
-              }}
-            >
-              <p>Ages</p>
-              {drop ? <ChevronDown /> : <ChevronUp />}
-              {drop && (
-                <div className="absolute top-[70px] w-[150px] text-[17px] font-[400] left-0 z-25 border-[1px] shadow-md py-[8px] px-[4px] rounded-[12px] bg-white cflexss">
-                  {Ages.map((items, i) => {
-                    return (
-                      <>
-                        <div
-                          key={i}
-                          className="flexbm w-full px-[16px] py-[12px] rounded-xl hover:bg-primary2 hover:text-white transition-all cursor-pointer duration-400"
-                          onClick={() => {
-                            setAgeRange(items.age);
-                            filterBy(items.age, category);
-                          }}
-                        >
-                          <p>{items.age}</p>
-                          <ChevronRight />
-                        </div>
-                      </>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-
-            <div className="flexmm gap-[10px] p-[15px] border-[1px] rounded-[8px] bg-[#FFF] cursor-pointer">
-              <p>Status</p>
-              <ChevronUp />
-            </div>
-          </div>
-
           <div className="w-full cflexss gap-[20px] bg-[#FFF]">
             <div className="w-full font-[400] text-[17px] lg:text-[15px] pb-[20px] ls:text-[13px] rounded-[24px] text-[#808080]">
               <div className="w-full flexsm py-[10px] px-[20px] border-b-[1px]">
-                <div className="w-[18%] flexsm gap-[15px]">Badge Image</div>
-                <div className="w-[14%] flexsm gap-[10px]">Badge Title</div>
+                <div className="w-[18%] flexsm gap-[15px]">Trophy</div>
+                <div className="w-[17%] flexsm gap-[10px]">Stage Name</div>
                 <div className="w-[25%] flexsm">Description</div>
-                <div className="w-[14%] flexsm">Requirement</div>
-                <div className="w-[14%] flexsm">Learning Gem</div>
-                <div className="w-[14%] flexsm">Age group</div>
-                <div className="w-[14%] flexsm">Status</div>
-                <div className="w-[14%] flexsm">Actions</div>
+                <div className="w-[17%] flexsm">Requirement</div>
+                <div className="w-[17%] flexsm">Learning Gem</div>
+                <div className="w-[17%] flexsm">Badges</div>
+                <div className="w-[17%] flexsm">Status</div>
+                <div className="w-[17%] flexsm">Actions</div>
               </div>
               {loading ? (
                 <>
@@ -330,7 +167,35 @@ const Gamification = () => {
                 </>
               ) : (
                 <>
-                  {GetPaginatedData(currentPage, PAGINATION, badges)?.map(
+                  <div className="w-full flexsm py-[10px] px-[20px]">
+                    <div className="w-[18%] text-[12px] font-[600] flexsm gap-[15px]">
+                      <img
+                        src="/masteryLevel/mst1.png"
+                        className="w-[70%]"
+                        alt="trophy"
+                      />
+                    </div>
+                    <div className="w-[17%] flexsm gap-[10px]">
+                      Explorer Stage
+                    </div>
+                    <div className="w-[25%] flexsm">
+                      This is the starting level for all kids when they join the
+                      platform.
+                    </div>
+                    <div className="w-[17%] flexsm">15 Videos</div>
+                    <div className="w-[17%] flexsm">60</div>
+                    <div className="w-[17%] flexsm">5</div>
+                    <div className="w-[17%] flexsm">
+                      <select className="px-[8px] py-[4px] border-[1px] rounded-[4px] outline-none">
+                        <option>Publish</option>
+                      </select>
+                    </div>
+                    <div className="w-[17%] flexsm gap-[15px]">
+                      <PencilAltOutline size="16px" />
+                      <TrashOutline size="16px" />
+                    </div>
+                  </div>
+                  {/* {GetPaginatedData(currentPage, PAGINATION, badges)?.map(
                     (badge, i) => {
                       return (
                         <>
@@ -378,7 +243,7 @@ const Gamification = () => {
                         </>
                       );
                     }
-                  )}
+                  )} */}
                   <br />
                   <ReactPaginate
                     previousLabel={"< Previous"}
@@ -399,12 +264,6 @@ const Gamification = () => {
             </div>
           </div>
         </div>
-
-        <MasteryStage
-          gemPoint={gemPoint}
-          collectionGemPoint={collectionGemPoint}
-        />
-
         <Modal
           opened={opened}
           onClose={close}
@@ -425,4 +284,4 @@ const Gamification = () => {
   );
 };
 
-export default Gamification;
+export default MasteryStage;
