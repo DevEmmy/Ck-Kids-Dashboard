@@ -132,12 +132,42 @@ const Gamification = () => {
     },
     {
       title: "Subject Hero",
+      format: (
+        <div className="w-[100px] h-[112px] rounded-[8px] pb-[8px] text-white bg-[#A37414]">
+          <div className="bg-primary1 w-full pt-[10px] rounded-t-[8px] h-full cflexmm gap-[15px]">
+            <div className="flexmm w-[50px]">
+              <img src="/subjectHero.svg" alt="subjecthero" />
+            </div>
+            <p>Subject Hero</p>
+          </div>
+        </div>
+      ),
     },
     {
       title: "Course Champion",
+      format: (
+        <div className="w-[100px] h-[112px] rounded-[8px] pb-[8px] text-white bg-[#5E4589]">
+          <div className="bg-primary3 w-full pt-[10px] rounded-t-[8px] h-full cflexmm gap-[15px]">
+            <div className="flexmm w-[50px]">
+              <img src="/champion.svg" alt="quizwhiz" />
+            </div>
+            <p>Champion</p>
+          </div>
+        </div>
+      ),
     },
     {
       title: "Helping Hand",
+      format: (
+        <div className="w-[100px] h-[112px] rounded-[8px] pb-[8px] text-white bg-[#00734F]">
+          <div className="bg-primary2 w-full pt-[10px] rounded-t-[8px] h-full cflexmm gap-[15px]">
+            <div className="flexmm w-[50px]">
+              <img src="/helpingHand.svg" alt="quizwhiz" />
+            </div>
+            <p>Helping Hand</p>
+          </div>
+        </div>
+      ),
     },
   ];
 
@@ -301,14 +331,6 @@ const Gamification = () => {
                                 <>{type.title === badge.title && type.format}</>
                               );
                             })}
-                            <div className="w-[100px] h-[112px] rounded-[8px] pb-[8px] text-white bg-[#00734F]">
-                              <div className="bg-primary2 w-full pt-[10px] rounded-t-[8px] h-full cflexmm gap-[15px]">
-                                <div className="flexmm w-[50px]">
-                                  <img src="/quizWhiz.svg" alt="quizwhiz" />
-                                </div>
-                                <p>Quiz Whiz</p>
-                              </div>
-                            </div>
                           </div>
                           <div className="w-[14%] flexsm gap-[10px]">
                             {badge.title}
@@ -355,51 +377,6 @@ const Gamification = () => {
                     );
                   })}
 
-                  {/* <div className="w-full flexsm py-[10px] px-[20px]">
-                    <div className="w-[18%] text-[12px] font-[600] flexsm gap-[15px]">
-                      <div className="w-[100px] h-[112px] rounded-[8px] pb-[8px] text-white bg-[#A37414]">
-                        <div className="bg-primary1 w-full pt-[10px] rounded-t-[8px] h-full cflexmm gap-[15px]">
-                          <div className="flexmm w-[50px]">
-                            <img src="/subjectHero.svg" alt="subjecthero" />
-                          </div>
-                          <p>Subject Hero</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="w-[14%] flexsm gap-[10px]">
-                      Subject Hero
-                    </div>
-                    <div className="w-[25%] flexsm">
-                      You're a true hero in a specific subject! Collect the
-                      Subject Hero badge by acing multiple courses in one
-                      amazing field
-                    </div>
-                    <div className="w-[14%] flexsm">5 Videos</div>
-                    <div className="w-[14%] flexsm">60</div>
-                    <div className="w-[14%] flexsm">Age 10-14</div>
-                    <div className="w-[14%] flexsm">
-                      <select className="px-[8px] py-[4px] border-[1px] rounded-[4px] outline-none">
-                        <option>Publish</option>
-                      </select>
-                    </div>
-                    <div className="w-[14%] flexsm gap-[15px]">
-                      <EyeOutline size="16px" />
-                      <PencilAltOutline size="16px" />
-                      <TrashOutline
-                        size="16px"
-                        // onClick={() => {
-                        //   setModalElement(
-                        //     <Trash
-                        //       close={close}
-                        //       data={data}
-                        //       setProfile={setProfile}
-                        //     />
-                        //   );
-                        //   open();
-                        // }}
-                      />
-                    </div>
-                  </div> */}
                   {/* {GetPaginatedData(currentPage, PAGINATION, students).map(
                     (data, index) => {
                       const inputDate = new Date(data.createdAt);

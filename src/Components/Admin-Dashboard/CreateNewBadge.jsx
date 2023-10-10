@@ -77,7 +77,7 @@ const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
         minAge: parseInt(list[0]),
         maxAge: parseInt(list[1]),
       });
-      setChanging(!changing)
+      setChanging(!changing);
     } else if (name === "requirement") {
       acceptNumbersOnly(name, value, 3);
     } else {
@@ -127,15 +127,55 @@ const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
   const Badges = [
     {
       title: "Quiz Whiz",
+      format: (
+        <div className="w-[100px] h-[112px] rounded-[8px] pb-[8px] text-white bg-[#00734F]">
+          <div className="bg-primary2 w-full pt-[10px] rounded-t-[8px] h-full cflexmm gap-[15px]">
+            <div className="flexmm w-[50px]">
+              <img src="/quizWhiz.svg" alt="quizwhiz" />
+            </div>
+            <p>Quiz Whiz</p>
+          </div>
+        </div>
+      ),
     },
     {
       title: "Subject Hero",
+      format: (
+        <div className="w-[100px] h-[112px] rounded-[8px] pb-[8px] text-white bg-[#A37414]">
+          <div className="bg-primary1 w-full pt-[10px] rounded-t-[8px] h-full cflexmm gap-[15px]">
+            <div className="flexmm w-[50px]">
+              <img src="/subjectHero.svg" alt="subjecthero" />
+            </div>
+            <p>Subject Hero</p>
+          </div>
+        </div>
+      ),
     },
     {
       title: "Course Champion",
+      format: (
+        <div className="w-[100px] h-[112px] rounded-[8px] pb-[8px] text-white bg-[#5E4589]">
+          <div className="bg-primary3 w-full pt-[10px] rounded-t-[8px] h-full cflexmm gap-[15px]">
+            <div className="flexmm w-[50px]">
+              <img src="/champion.svg" alt="quizwhiz" />
+            </div>
+            <p>Champion</p>
+          </div>
+        </div>
+      ),
     },
     {
       title: "Helping Hand",
+      format: (
+        <div className="w-[100px] h-[112px] rounded-[8px] pb-[8px] text-white bg-[#00734F]">
+          <div className="bg-primary2 w-full pt-[10px] rounded-t-[8px] h-full cflexmm gap-[15px]">
+            <div className="flexmm w-[50px]">
+              <img src="/helpingHand.svg" alt="quizwhiz" />
+            </div>
+            <p>Helping Hand</p>
+          </div>
+        </div>
+      ),
     },
   ];
 
