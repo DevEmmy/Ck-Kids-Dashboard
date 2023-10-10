@@ -685,7 +685,7 @@ export const getAllSchools = async () => {
   return data;
 };
 
-export const getTeachersBySchool = async ({id}) => {
+export const getTeachersBySchool = async ({ id }) => {
   let data = [];
 
   await axios
@@ -704,7 +704,7 @@ export const getTeachersBySchool = async ({id}) => {
   return data;
 };
 
-export const getStudentsBySchool = async ({id}) => {
+export const getStudentsBySchool = async ({ id }) => {
   let data = [];
 
   await axios
