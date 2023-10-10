@@ -404,13 +404,13 @@ export const uploadVideoData = async (formData, isTeacher) => {
     )
     .then((response) => {
       console.log(response);
-      // notify(response.data.message);
+      notify(response.data.message);
     })
     .catch((err) => {
       if (err.response) {
-        // notifyError(err.response.data.message);
+        notifyError(err.response.data.message);
       } else {
-        // notifyError("Network Error");
+        notifyError("Network Error");
       }
       console.log(err);
     });
