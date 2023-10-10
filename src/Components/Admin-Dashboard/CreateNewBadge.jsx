@@ -195,11 +195,16 @@ const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
             {Badges.map((badge, i) => {
               return (
                 <>
-                  <img
-                    src={gemDetails.cover}
-                    alt="profilePicture"
-                    className="rounded-[0.75rem] w-full h-[4.5rem] object-cover"
-                  />
+                  {badge.title === gemDetails["title"] && (
+                    <img
+                      src={badge.image}
+                      alt="profilePicture"
+                      className="rounded-[0.75rem] w-[60%] h-auto object-cover"
+                    />
+                  )}
+                  {(badge.title === "" || badge.title === "None") && (
+                    <FaUserAlt />
+                  )}
                 </>
               );
             })}
