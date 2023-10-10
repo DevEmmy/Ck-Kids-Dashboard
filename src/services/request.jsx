@@ -546,7 +546,7 @@ export const editVideo = async (
   courseName,
   courseLink,
   courseCover,
-  category,  
+  category,
   ageRange,
   description,
   videoId
@@ -974,6 +974,28 @@ export const deleteBadge = async (id) => {
 
   await axios
     .delete(`${api}/badge/${id}`, setConfig())
+    .then((response) => {
+      console.log(response);
+      data = response.data.payload;
+      notify(response.data.message);
+    })
+    .catch((err) => {
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
+      console.log(err);
+    });
+
+  return data;
+};
+
+export const deleteStudent = async (id) => {
+  let data = [];
+
+  await axios
+    .delete(`${api}/student/${id}`, setConfig())
     .then((response) => {
       console.log(response);
       data = response.data.payload;

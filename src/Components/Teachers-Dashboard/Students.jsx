@@ -9,12 +9,12 @@ import { useEffect, useState } from "react";
 import StudentProfile from "./StudentProfile";
 import ReactPaginate from "react-paginate";
 import { Paginated, GetPaginatedData } from "@/AtomicComponents/Pagination";
-import { getStudents } from "@/services/request";
+import { getStudents, deleteStudent } from "@/services/request";
 import { SpinnerCircular } from "spinners-react";
 import { useDisclosure } from "@mantine/hooks";
 import { Modal, useMantineTheme } from "@mantine/core";
 
-const Students = () => {
+const Students = ({ teacher, isTeacher }) => {
   const [profile, setProfile] = useState(false);
   const [data, setData] = useState({});
   const [trash, setTrash] = useState(false);
@@ -130,10 +130,6 @@ const Students = () => {
                         className={`w-full flexsm py-[10px] px-[20px] cursor-pointer ${
                           (index + 1) % 2 === 0 ? "bg-[#F7F7F7]" : "bg-white"
                         }`}
-                        onClick={() => {
-                          setProfile(true);
-                          setData(data);
-                        }}
                       >
                         <div className="w-[9%] flexsm gap-[15px]">
                           <input type="checkbox" checked={data.checked} />
@@ -141,12 +137,41 @@ const Students = () => {
                             <img src={data.profilePicture} alt="avatar" />
                           </div>
                         </div>
-                        <div className="w-[30%] flexsm">{data.fullName}</div>
-                        <div className="w-[25%] flexsm">{data.email}</div>
-                        <div className="w-[14%] flexsm">{formattedDate}</div>
-                        <div className="w-[14%] flexsm">{formattedDate}</div>
-                        <div className="w-[14%] flexsm gap-[20px]">
-                          <EyeOutline size="16px" />
+                        <div
+                          className="w-[30%] flexsm"
+                          onClick={() => {
+                            setProfile(true);
+                            setData(data);
+                          }}
+                        >
+                          {data.fullName}
+                        </div>
+                        <div
+                          className="w-[25%] flexsm"
+                          onClick={() => {
+                            setProfile(true);
+                            setData(data);
+                          }}
+                        >
+                          {data.email}
+                        </div>
+                        <div
+                          className="w-[14%] flexsm"
+                          onClick={() => {
+                            setProfile(true);
+                            setData(data);
+                          }}
+                        >
+                          {formattedDate}
+                        </div>
+                        <div
+                          className="w-[14%] flexsm"
+                          onClick={() => {
+                            setProfile(true);
+                            setData(data);
+                          }}
+                        >{`${data.minAge} - ${data.maxAge}`}</div>
+                        <div className="w-[14%] flexsm gap-[20px]">                          
                           <PencilAltOutline size="16px" />
                           <TrashOutline
                             size="16px"
@@ -155,7 +180,9 @@ const Students = () => {
                                 <Trash
                                   close={close}
                                   data={data}
-                                  setProfile={setProfile}
+                                  fetchStudents={fetchStudents}
+                                  teacher={teacher}
+                                  isTeacher={isTeacher}
                                 />
                               );
                               open();
@@ -207,7 +234,16 @@ const Students = () => {
 
 export default Students;
 
-const Trash = ({ close, data, setProfile }) => {
+const Trash = ({ close, data, teacher, fetchStudents, isTeacher }) => {
+  const deleteAStudent = async () => {
+    if (isTeacher) {
+      close();
+    } else {
+      await deleteStudent(data._id);
+      close();
+      fetchStudents();
+    }
+  };
   return (
     <>
       <div className="w-[400px] cflexss gap-[20px] px-[14px] pb-[14px] rounded-[12px] flex-shrink">
@@ -215,7 +251,9 @@ const Trash = ({ close, data, setProfile }) => {
           <img src="/alert.svg" alt="alert" />
         </div>
         <div className="w-full flexss text-[18px] text-[#222] lg:text-[16px] font-[400]">
-          <p>Savannah You are about to delete {data.fullName} profile</p>
+          <p>
+            {teacher?.fullName} You are about to delete {data.fullName} profile
+          </p>
         </div>
         <div className="flexss gap-[12px]">
           <div className="w-[40px] h-[40px] rounded-full">
@@ -236,16 +274,13 @@ const Trash = ({ close, data, setProfile }) => {
               className="py-[10px] px-[18px] rounded-[8px] text-[#808080] border-[1px]"
               onClick={() => {
                 close();
-                setProfile(false);
               }}
             >
               Deny
             </button>
             <button
               className="py-[10px] px-[18px] text-[white] bg-[#F00] rounded-[8px] border-none"
-              // onClick={() => {
-
-              // }}
+              onClick={deleteAStudent}
             >
               Delete
             </button>

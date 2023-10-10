@@ -184,7 +184,9 @@ const Dashboard = ({ school }) => {
 
             {view === "Chat" && <Messages />}
 
-            {view === "Student" && <Students />}
+            {view === "Student" && (
+              <Students school={school} isTeacher={false} />
+            )}
 
             {view === "Teachers" && <Teachers />}
 

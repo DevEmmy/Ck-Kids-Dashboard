@@ -157,7 +157,7 @@ const Schools = ({
                                   : "bg-white"
                               }`}
                               onClick={() => {
-                                setSchoolName(data.schoolName)
+                                setSchoolName(data.schoolName);
                                 setSdata(data);
                                 setMainView("teachers");
                                 setViewSchool(true);
@@ -168,10 +168,10 @@ const Schools = ({
                                 {data.schoolName}
                               </div>
                               <div className="w-[27%] flexm">{data.email}</div>
-                              <div className="w-[14%] flexsm">0</div>                              
-                              <div className="w-[14%] flexsm">0</div>       
-                              <div className="w-[14%] flexsm">0</div>       
-                              <div className="w-[14%] flexsm">0</div>       
+                              <div className="w-[14%] flexsm">0</div>
+                              <div className="w-[14%] flexsm">0</div>
+                              <div className="w-[14%] flexsm">0</div>
+                              <div className="w-[14%] flexsm">0</div>
                               <div className="w-[14%] flexsm gap-[20px]">
                                 <EyeOutline size="16px" />
                                 <PencilAltOutline size="16px" />
@@ -217,7 +217,9 @@ const Schools = ({
           Sdata={Sdata}
         />
       )}
-      {mainView === "students" && <Students />}
+      {mainView === "students" && (
+        <Students school={school} isTeacher={false} />
+      )}
 
       <Modal
         opened={opened}

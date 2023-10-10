@@ -172,7 +172,7 @@ const Dashboard = ({ teacher }) => {
           <div className="main__content absolute w-4/5 right-0 z-10 top-[70px]">
             {view === "Overview" && <Overview teacher={teacher} />}
 
-            {view === "Student" && <Students />}
+            {view === "Student" && <Students teacher={teacher} isTeacher={true}/>}
 
             {view === "Courses" && <Courses isTeacher={true} />}
 
