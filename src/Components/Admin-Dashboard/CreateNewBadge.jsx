@@ -1,33 +1,36 @@
 import Loader from "@/AtomicComponents/Loader";
 import { useState, useEffect } from "react";
-import { fetchCollection } from "@/services/request";
+import { CreateBadge } from "@/services/request";
+import FileBase64 from "react-file-base64";
+import { FaUserAlt } from "react-icons/fa";
 
-const CreateNewBadge = ({ close, fetchData }) => {
-  const [achievementData, setAchievementData] = useState({
+const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
+  const [gemDetails, setGemDetails] = useState({
+    cover: "",
     title: "",
-    collection: "",
+    description: "",
     requirement: "",
-    ages: "",
-    allocated: "",
-    status: "",
+    allocated: parseInt(gemPoint),
+    status: true,
+    minAge: "None",
+    maxAge: "",
   });
-  const [collectionItems, setCollectionItems] = useState([]);
+  // const [collectionItems, setCollectionItems] = useState([]);
   const [changing, setChanging] = useState(false);
   const [valid, setValid] = useState(false);
+  const [fileError, setFileError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (
-      achievementData["title"].trim().length > 0 &&
-      achievementData["collection"].trim().length > 0 &&
-      achievementData["collection"] !== "None" &&
-      achievementData["requirement"].trim().length > 0 &&
-      achievementData["requirement"] !== "how many videos" &&
-      achievementData["ages"].trim().length > 0 &&
-      achievementData["ages"] !== "None" &&
-      achievementData["allocated"].trim().length > 0 &&
-      achievementData["status"] &&
-      achievementData["status"] !== "None"
+      gemDetails["cover"] &&
+      gemDetails["title"] &&
+      gemDetails["title"] !== "None" &&
+      gemDetails["description"] &&
+      gemDetails["requirement"] &&
+      gemDetails["minAge"] !== "None" &&
+      gemDetails["maxAge"] &&
+      gemDetails["allocated"]
     ) {
       setValid(true);
     } else {
@@ -35,16 +38,31 @@ const CreateNewBadge = ({ close, fetchData }) => {
     }
   }, [changing]);
 
-  useEffect(() => {
-    fetchCollection(setCollectionItems);
-  }, []);
+  // useEffect(() => {
+  //   fetchCollection(setCollectionItems);
+  // }, []);
 
   const acceptNumbersOnly = (name, value, max) => {
     var numeric = /^[0-9]+$/;
 
     if ((numeric.test(value) && value.length <= max) || value.length === 0) {
-      setAchievementData({ ...achievementData, [name]: value });
+      setGemDetails({ ...gemDetails, [name]: value });
       setChanging(!changing);
+    }
+  };
+
+  const upload = (file) => {
+    if (
+      file.type === "image/png" ||
+      file.type === "image/svg" ||
+      file.type === "image/jpg" ||
+      file.type === "image/jpeg" ||
+      file.type === "image/jfif"
+    ) {
+      setGemDetails({ ...gemDetails, cover: file.base64 });
+      setFileError(false);
+    } else {
+      setFileError(true);
     }
   };
 
@@ -52,10 +70,18 @@ const CreateNewBadge = ({ close, fetchData }) => {
     const name = e.target.name;
     const value = e.target.value;
 
-    if (name === "allocated") {
-      acceptNumbersOnly(name, value, 50);
+    if (name === "ages") {
+      var list = value.split(" - ");
+      setGemDetails({
+        ...gemDetails,
+        minAge: parseInt(list[0]),
+        maxAge: parseInt(list[1]),
+      });
+      setChanging(!changing)
+    } else if (name === "requirement") {
+      acceptNumbersOnly(name, value, 3);
     } else {
-      setAchievementData({ ...achievementData, [name]: value });
+      setGemDetails({ ...gemDetails, [name]: value });
       setChanging(!changing);
     }
   };
@@ -64,10 +90,20 @@ const CreateNewBadge = ({ close, fetchData }) => {
     e.preventDefault();
     if (valid) {
       setLoading(true);
-      console.log(achievementData);
-      // setLoading(false);
-      // close();
-      //   fetchData();
+      console.log(gemDetails);
+      await CreateBadge(
+        gemDetails.cover,
+        gemDetails.title,
+        gemDetails.description,
+        parseInt(gemDetails.requirement),
+        gemDetails.allocated,
+        gemDetails.status,
+        gemDetails.minAge,
+        gemDetails.maxAge
+      );
+      setLoading(false);
+      close();
+      fetchData();
     }
   };
 
@@ -88,55 +124,109 @@ const CreateNewBadge = ({ close, fetchData }) => {
     },
   ];
 
+  const Badges = [
+    {
+      title: "Quiz Whiz",
+    },
+    {
+      title: "Subject Hero",
+    },
+    {
+      title: "Course Champion",
+    },
+    {
+      title: "Helping Hand",
+    },
+  ];
+
   return (
     <>
       <form className="w-full cflexss gap-[20px] text-[20px] px-[40px] lg:px-[30px] lg:pb-[30px] pb-[40px] lg:text-[18px] ls:text-[16px] font-[400] bg-[#FFF] overflow-y-auto">
         <p className="text-[24px] font-[800] lg:text-[22px] ls:text-[20px]">
-          Create an achievement
+          Create a badge
         </p>
+        <div className="flex gap-3 items-center">
+          <div className="relative profile w-[4.5rem] h-[4.5rem] object-contain flexmm bg-primary2 rounded-[0.75rem] text-white cursor-pointer">
+            {gemDetails.cover ? (
+              <>
+                <img
+                  src={gemDetails.cover}
+                  alt="profilePicture"
+                  className="rounded-[0.75rem] w-full h-[4.5rem] object-cover"
+                />
+              </>
+            ) : (
+              <>
+                <FaUserAlt />
+              </>
+            )}
+            <div className="absolute left-0 top-[46%] opacity-0">
+              <FileBase64
+                name="coursePhoto"
+                defaultValue={gemDetails["cover"]}
+                multiple={false}
+                onDone={(base64) => {
+                  upload(base64);
+                }}
+              />
+            </div>
+          </div>
+
+          <div>
+            <p className="text-[1em] font-[600]">Badge Image</p>
+            <p className="text-[0.8em] text-gray-500">
+              Maximum of 1MB. JPG, GIF, or PNG
+            </p>
+          </div>
+        </div>
+        {fileError && (
+          <p className="flexmm text-[12px] text-red-700">
+            ensure you uploaded an image of size not more than 1MB
+          </p>
+        )}
         <div className="w-full cflexss gap-[12px]">
-          <p>Title</p>
+          <p>BadgeTitle</p>
+          <select
+            className="w-[526px] lg:w-[400px] flex-shrink px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+            name="title"
+            onChange={handleChange}
+          >
+            <option>None</option>
+            {Badges.map((badge, i) => {
+              return <option key={i}>{badge.title}</option>;
+            })}
+          </select>
+        </div>
+        <div className="w-full cflexss gap-[12px]">
+          <p>Description</p>
+          <textarea
+            type="text"
+            name="description"
+            value={gemDetails["description"]}
+            onChange={handleChange}
+            className="w-[526px] resize-none h-[11.5rem] lg:w-[400px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px]"
+          />
+        </div>
+        <div className="w-full cflexss gap-[12px]">
+          <p>Requirement</p>
           <input
             type="text"
-            name="title"
-            placeholder="Course name"
-            value={achievementData["title"]}
+            name="requirement"
+            placeholder="how many videos"
+            value={gemDetails["requirement"]}
             onChange={handleChange}
             className="w-[526px] lg:w-[400px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px]"
           />
         </div>
         <div className="w-full cflexss gap-[12px]">
-          <p>Select video/collection</p>
-          <select
-            className="w-[526px] lg:w-[400px] flex-shrink px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
-            name="collection"
-            onChange={handleChange}
-          >
-            <option>None</option>
-            {collectionItems.map((item) => {
-              return <option value={item._id}>{item.title}</option>;
-            })}
-          </select>
-        </div>
-        <div className="w-full cflexss gap-[12px]">
-          <p>Requirement</p>
-          <select
-            className="w-[526px] lg:w-[400px] flex-shrink px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
-            name="requirement"
-            onChange={handleChange}
-          >
-            <option>how many videos</option>
-            <option value="1">5</option>
-            <option value="2">10</option>
-            <option value="3">15</option>
-            <option value="4">20</option>
-            <option value="5">25</option>
-            <option value="6">30</option>
-            <option value="7">35</option>
-            <option value="8">40</option>
-            <option value="9">45</option>
-            <option value="10">50</option>
-          </select>
+          <p>Allocated Learning Gem</p>
+          <input
+            type="text"
+            name="allocated"
+            placeholder="per video"
+            value={gemDetails["allocated"]}
+            className="w-[526px] lg:w-[400px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px]"
+          />
         </div>
         <div className="w-full cflexss gap-[12px]">
           <p>Age group</p>
@@ -152,24 +242,18 @@ const CreateNewBadge = ({ close, fetchData }) => {
           </select>
         </div>
         <div className="w-full cflexss gap-[12px]">
-          <p>Allocated Learning Gem</p>
-          <input
-            type="text"
-            name="allocated"
-            placeholder="per video"
-            value={achievementData["allocated"]}
-            onChange={handleChange}
-            className="w-[526px] lg:w-[400px] flex-shrink p-[16px] rounded-[8px] outline-none border-[1px]"
-          />
-        </div>
-        <div className="w-full cflexss gap-[12px]">
           <p>Status</p>
           <select
             className="w-[526px] lg:w-[400px] flex-shrink px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
             name="status"
-            onChange={handleChange}
+            onChange={(e) => {
+              if (e.target.value === "Publish") {
+                setGemDetails({ ...gemDetails, status: true });
+              } else {
+                setGemDetails({ ...gemDetails, status: false });
+              }
+            }}
           >
-            <option>None</option>
             <option>Publish</option>
             <option>Unpublish</option>
           </select>

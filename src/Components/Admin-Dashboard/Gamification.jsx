@@ -21,6 +21,8 @@ const Gamification = () => {
   const [ageRange, setAgeRange] = useState(null);
   const [category, setCategory] = useState(null);
   const [badges, setBadges] = useState([]);
+  const [gemPoint, setGemPoint] = useState(20);
+  const [collectionGemPoint, setCollectionGemPoint] = useState(20);
   const [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
@@ -125,26 +127,51 @@ const Gamification = () => {
           </p>
         </div>
         <div className="w-full h-full flexbs gap-[30px] border-[1px] rounded-[24px] bg-[#FFF] shadow-md py-[30px] px-[20px]">
-        <div className="w-[526px] flex-grow flex-shrink cflexss gap-[12px]">
-          <p>Maximum Gem for a video</p>
-          <select
-            className="w-[526px] lg:w-[400px] flex-shrink px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
-            name="requirement"
-            onChange={handleChange}
-          >
-            <option>how many videos</option>
-            <option value="1">5</option>
-            <option value="2">10</option>
-            <option value="3">15</option>
-            <option value="4">20</option>
-            <option value="5">25</option>
-            <option value="6">30</option>
-            <option value="7">35</option>
-            <option value="8">40</option>
-            <option value="9">45</option>
-            <option value="10">50</option>
-          </select>
-        </div>
+          <div className="w-[526px] flex-grow flex-shrink cflexss gap-[12px]">
+            <p>Maximum Gem for a video</p>
+            <select
+              className="w-[526px] lg:w-[400px] flex-shrink px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+              name="requirement"
+              onChange={(e) => {
+                setGemPoint(e.target.value);
+              }}
+            >
+              <option>{gemPoint}</option>
+              <option value="1">5</option>
+              <option value="2">10</option>
+              <option value="3">15</option>
+              <option value="4">20</option>
+              <option value="5">25</option>
+              <option value="6">30</option>
+              <option value="7">35</option>
+              <option value="8">40</option>
+              <option value="9">45</option>
+              <option value="10">50</option>
+            </select>
+          </div>
+
+          <div className="w-[526px] flex-grow flex-shrink cflexss gap-[12px]">
+            <p>Maximum Gem for a video collection</p>
+            <select
+              className="w-[526px] lg:w-[400px] flex-shrink px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+              name="requirement"
+              onChange={(e) => {
+                setCollectionGemPoint(e.target.value);
+              }}
+            >
+              <option>{collectionGemPoint}</option>
+              <option value="1">5</option>
+              <option value="2">10</option>
+              <option value="3">15</option>
+              <option value="4">20</option>
+              <option value="5">25</option>
+              <option value="6">30</option>
+              <option value="7">35</option>
+              <option value="8">40</option>
+              <option value="9">45</option>
+              <option value="10">50</option>
+            </select>
+          </div>
         </div>
 
         <div className="w-full flexbm">
@@ -156,12 +183,17 @@ const Gamification = () => {
             onClick={() => {
               setDrop(false);
               setModalElement(
-                <CreateNewBadge close={close} fetchData={fetchData} />
+                <CreateNewBadge
+                  close={close}
+                  fetchData={fetchData}
+                  gemPoint={gemPoint}
+                  collectionGemPoint={collectionGemPoint}
+                />
               );
               open();
             }}
           >
-            <p>Add new badge</p>
+            <p>Create new badge</p>
             <FaPlus size="10px" />
           </button>
         </div>

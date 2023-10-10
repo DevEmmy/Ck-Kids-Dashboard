@@ -762,6 +762,7 @@ export const getABadge = async (id) => {
 };
 
 export const CreateBadge = async (
+  cover,
   title,
   description,
   numberOfVideos,
@@ -770,14 +771,15 @@ export const CreateBadge = async (
   minAge,
   maxAge
 ) => {
-  let data = {
+  let data = {    
+    cover,
     title,
     description,
     numberOfVideos,
     numberOfGems,
     public: publish,
     minAge,
-    maxAge,
+    maxAge
   };
 
   await axios
