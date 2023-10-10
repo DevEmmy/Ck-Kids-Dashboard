@@ -546,7 +546,7 @@ export const editVideo = async (
   courseName,
   courseLink,
   courseCover,
-  category,
+  category,  
   ageRange,
   description,
   videoId

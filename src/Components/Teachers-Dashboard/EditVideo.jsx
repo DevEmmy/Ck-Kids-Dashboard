@@ -4,13 +4,14 @@ import FileBase64 from "react-file-base64";
 import Loader from "@/AtomicComponents/Loader";
 
 const EditVideo = ({ close, video, fetchData }) => {
+  console.log(video);
   const [editCourse, setEditCourse] = useState({
     courseName: video?.name,
     courseDetails: video?.description,
     courseLink: video?.link,
     courseCategory: video?.category,
-    courseAge: video?.age,
     courseCover: video?.cover,
+    ageRange: `${video?.minAge} - ${video?.maxAge}`,
   });
   const [changing, setChanging] = useState(false);
   const [fileName, setFileName] = useState("");
@@ -27,7 +28,7 @@ const EditVideo = ({ close, video, fetchData }) => {
       !urlError &&
       editCourse["courseLink"].trim().length > 0 &&
       editCourse["courseCategory"] &&
-      editCourse["courseAge"] &&
+      editCourse["ageRange"] &&
       editCourse["courseCover"]
     ) {
       setValid(true);
@@ -55,60 +56,68 @@ const EditVideo = ({ close, video, fetchData }) => {
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
+
     setEditCourse({ ...editCourse, [name]: value });
     setChanging(!changing);
   };
 
   const Categories = [
     {
-      category: "History",
-      content: [],
+      category: "Film & Animation",
     },
     {
-      category: "Nursery Rhymes",
-      content: [],
+      category: "Autos & Vehicles",
     },
     {
-      category: "Music-Dance",
-      content: [],
+      category: "Music",
     },
     {
-      category: "Gardening",
-      content: [],
+      category: "Pets & Animals",
     },
     {
-      category: "Drawing and Painting",
-      content: [],
+      category: "Sports",
     },
     {
-      category: "Cooking",
-      content: [],
+      category: "Travel & Events",
     },
     {
-      category: "Arts and Craft",
-      content: [],
+      category: "Gaming",
     },
     {
-      category: "Globalization",
-      content: [],
+      category: "People & Blogs",
+    },
+    {
+      category: "Comedy",
+    },
+    {
+      category: "Entertainment",
+    },
+    {
+      category: "News & Politics",
+    },
+    {
+      category: "How to & Style",
+    },
+    {
+      category: "Education",
+    },
+    {
+      category: "Science & Technology",
+    },
+    {
+      category: "Nonprofits & Activism",
     },
   ];
 
   const Ages = [
     {
-      age: "3 - 5",
+      age: "6 - 9",
     },
     {
-      age: "6 - 8",
+      age: "10 - 14",
     },
     {
-      age: "9 - 10",
-    },
-    {
-      age: "11 - 13",
-    },
-    {
-      age: "14 - 16",
+      age: "15 - 18",
     },
   ];
 
@@ -125,9 +134,7 @@ const EditVideo = ({ close, video, fetchData }) => {
       setFileError(false);
       setChanging(!changing);
     } else {
-      setFileError(true);
-      console.log(file.type);
-      console.log(file.size);
+      setFileError(true);     
       setChanging(!changing);
     }
   };
@@ -136,12 +143,13 @@ const EditVideo = ({ close, video, fetchData }) => {
     e.preventDefault();
     if (valid) {
       setLoading(true);
+      console.log(editCourse)
       await editVideo(
         editCourse["courseName"],
         editCourse["courseLink"],
         editCourse["courseCover"],
-        editCourse["category"],
-        editCourse["courseAge"],
+        editCourse["courseCategory"],        
+        editCourse["ageRange"],
         editCourse["courseDetails"],
         video._id
       );
@@ -214,13 +222,13 @@ const EditVideo = ({ close, video, fetchData }) => {
           <p>Ages</p>
           <select
             className="w-[526px] px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
-            name="courseAge"
-            value={editCourse["courseAge"]}
+            name="ageRange"
+            value={editCourse["ageRange"]}
             onChange={handleChange}
           >
             <option>None</option>
             {Ages.map((ages) => {
-              return <option>{ages.age}</option>;
+              return <option value={ages.age}>{ages.age}</option>;
             })}
           </select>
         </div>
