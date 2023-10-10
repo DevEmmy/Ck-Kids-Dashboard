@@ -19,7 +19,7 @@ const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
   // const [collectionItems, setCollectionItems] = useState([]);
   const [changing, setChanging] = useState(false);
   const [valid, setValid] = useState(false);
-  const [fileError, setFileError] = useState(false);
+  // const [fileError, setFileError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -52,20 +52,20 @@ const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
     }
   };
 
-  const upload = (file) => {
-    if (
-      file.type === "image/png" ||
-      file.type === "image/svg" ||
-      file.type === "image/jpg" ||
-      file.type === "image/jpeg" ||
-      file.type === "image/jfif"
-    ) {
-      setGemDetails({ ...gemDetails, cover: file.base64 });
-      setFileError(false);
-    } else {
-      setFileError(true);
-    }
-  };
+  // const upload = (file) => {
+  //   if (
+  //     file.type === "image/png" ||
+  //     file.type === "image/svg" ||
+  //     file.type === "image/jpg" ||
+  //     file.type === "image/jpeg" ||
+  //     file.type === "image/jfif"
+  //   ) {
+  //     setGemDetails({ ...gemDetails, cover: file.base64 });
+  //     setFileError(false);
+  //   } else {
+  //     setFileError(true);
+  //   }
+  // };
 
   const handleChange = (e) => {
     const name = e.target.name;

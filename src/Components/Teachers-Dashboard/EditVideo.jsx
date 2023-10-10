@@ -3,8 +3,7 @@ import { useState, useEffect } from "react";
 import FileBase64 from "react-file-base64";
 import Loader from "@/AtomicComponents/Loader";
 
-const EditVideo = ({ close, video, fetchData }) => {
-  console.log(video);
+const EditVideo = ({ close, video, fetchData }) => {  
   const [editCourse, setEditCourse] = useState({
     courseName: video?.name,
     courseDetails: video?.description,
