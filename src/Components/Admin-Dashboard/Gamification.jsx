@@ -17,7 +17,7 @@ import ReactPaginate from "react-paginate";
 import MasteryStage from "./MasteryStage";
 import { Paginated, GetPaginatedData } from "@/AtomicComponents/Pagination";
 
-const Gamification = () => {
+const Gamification = ({ type = "admin" }) => {
   const [drop, setDrop] = useState(false);
   const [ageRange, setAgeRange] = useState(null);
   const [category, setCategory] = useState(null);
@@ -188,58 +188,62 @@ const Gamification = () => {
   return (
     <>
       <div className="w-full p-[30px] cflexss gap-[25px] font-[400] text-[20px] lg:text-[18px] ls:text-[16px]">
-        <div className="w-full flexsm">
-          <p className="font-[600] text-[24px] lg:text-[22px] ls:text-[20px]">
-            Learning Gem Settings
-          </p>
-        </div>
-        <div className="w-full h-full flexbs gap-[30px] border-[1px] sm:flex-wrap rounded-[24px] bg-[#FFF] shadow-md py-[30px] px-[20px]">
-          <div className="w-[526px] flex-grow flex-shrink cflexss gap-[12px]">
-            <p>Maximum Gem for a video</p>
-            <select
-              className="w-full px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
-              name="requirement"
-              onChange={(e) => {
-                setGemPoint(e.target.value);
-              }}
-            >
-              <option>{gemPoint}</option>
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-              <option value="20">20</option>
-              <option value="25">25</option>
-              <option value="30">30</option>
-              <option value="35">35</option>
-              <option value="40">40</option>
-              <option value="45">45</option>
-              <option value="50">50</option>
-            </select>
-          </div>
+        {type === "admin" && (
+          <>
+            <div className="w-full flexsm">
+              <p className="font-[600] text-[24px] lg:text-[22px] ls:text-[20px]">
+                Learning Gem Settings
+              </p>
+            </div>
+            <div className="w-full h-full flexbs gap-[30px] border-[1px] sm:flex-wrap rounded-[24px] bg-[#FFF] shadow-md py-[30px] px-[20px]">
+              <div className="w-[526px] flex-grow flex-shrink cflexss gap-[12px]">
+                <p>Maximum Gem for a video</p>
+                <select
+                  className="w-full px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+                  name="requirement"
+                  onChange={(e) => {
+                    setGemPoint(e.target.value);
+                  }}
+                >
+                  <option>{gemPoint}</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="30">30</option>
+                  <option value="35">35</option>
+                  <option value="40">40</option>
+                  <option value="45">45</option>
+                  <option value="50">50</option>
+                </select>
+              </div>
 
-          <div className="w-[526px] flex-grow flex-shrink cflexss gap-[12px]">
-            <p>Maximum Gem for a video collection</p>
-            <select
-              className="w-full px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
-              name="requirement"
-              onChange={(e) => {
-                setCollectionGemPoint(e.target.value);
-              }}
-            >
-              <option>{collectionGemPoint}</option>
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-              <option value="20">20</option>
-              <option value="25">25</option>
-              <option value="30">30</option>
-              <option value="35">35</option>
-              <option value="40">40</option>
-              <option value="45">45</option>
-              <option value="50">50</option>
-            </select>
-          </div>
-        </div>
+              <div className="w-[526px] flex-grow flex-shrink cflexss gap-[12px]">
+                <p>Maximum Gem for a video collection</p>
+                <select
+                  className="w-full px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+                  name="requirement"
+                  onChange={(e) => {
+                    setCollectionGemPoint(e.target.value);
+                  }}
+                >
+                  <option>{collectionGemPoint}</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="30">30</option>
+                  <option value="35">35</option>
+                  <option value="40">40</option>
+                  <option value="45">45</option>
+                  <option value="50">50</option>
+                </select>
+              </div>
+            </div>
+          </>
+        )}
 
         <div className="w-full flexbm">
           <p className="font-[600] text-[24px] lg:text-[22px] ls:text-[20px]">
@@ -400,10 +404,14 @@ const Gamification = () => {
           </div>
         </div>
 
-        <MasteryStage
-          gemPoint={gemPoint}
-          collectionGemPoint={collectionGemPoint}
-        />
+        {type === "admin" && (
+          <>
+            <MasteryStage
+              gemPoint={gemPoint}
+              collectionGemPoint={collectionGemPoint}
+            />
+          </>
+        )}
 
         <Modal
           opened={opened}
