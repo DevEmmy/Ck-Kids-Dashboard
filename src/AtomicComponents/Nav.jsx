@@ -10,7 +10,7 @@ import {
   QuestionMarkCircleOutline,
   LogoutOutline,
   X,
-  SearchOutline
+  SearchOutline,
 } from "heroicons-react";
 import Profile from "./Profile";
 import Notification from "@/Components/Notification";
@@ -72,7 +72,7 @@ const Nav = ({ active = 0, student }) => {
       name: "Log Out",
       link: "/signin",
       icon: <LogoutOutline color="black" size={20} />,
-      action: logOut
+      action: logOut,
     },
   ];
   return (
@@ -124,13 +124,11 @@ const Nav = ({ active = 0, student }) => {
       </div>
 
       <div className="flex items-center gap-[20px]">
-        {          
-          active === 1 && (
-            <div className="hidden lf:block">
-              <SearchOutline size="16px"/>
-            </div>
-          )
-        }
+        {active === 1 && (
+          <div className="hidden lf:block">
+            <SearchOutline size="16px" />
+          </div>
+        )}
         <div
           className="cursor-pointer border lf:border-none rounded-[8px] p-[8px]"
           onClick={() => {
@@ -209,7 +207,7 @@ const Nav = ({ active = 0, student }) => {
           {notification && <Notification setNotification={setNotification} />}
         </div>
       </div>
-      {profile && <Profile setProfile={setProfile} />}
+      {profile && <Profile setProfile={setProfile} student={student} />}
     </div>
   );
 };

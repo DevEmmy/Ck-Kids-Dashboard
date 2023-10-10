@@ -2,9 +2,11 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import StudentSignIn from "./StudentSignIn";
 import SchoolSignIn from "./SchoolSignIn";
+import ForgotPassword from "./ForgotPassword";
 
 const SignIn = () => {
-  const [loginType, setLoginType] = useState("none")
+  const [loginType, setLoginType] = useState("none");
+  const [forgot, setForgot] = useState(false);
 
   return (
     <>
@@ -23,13 +25,13 @@ const SignIn = () => {
             </a>
             <div>
               <h1 className="text-[60px] lg:text-[55px] ls:text-[32px] font-[800]">
-                Welcome to CuriousKidz!
+                Welcome back to CuriousKidz!
               </h1>
               <p className="text-[18px] lg:text-[17px] ls:text-[16px] sm:text-[20px] font-[400] pt-[0.5em] leading-[1.7em]">
-                By creating an account, you gain access to a diverse range of
-                engaging courses, interactive lessons, and hands-on projects
-                designed to inspire young minds. Let's nurture curiosity and
-                ignite a passion for learning together!
+                We're thrilled to have you back with CuriousKidz! Rediscover the
+                joy of learning with our innovative courses and foster
+                creativity, critical thinking, and problem-solving skills. Let's
+                make learning an exciting adventure
               </p>
             </div>
             <div className="cflexss gap-[20px] text-[18px] lg:text-[17px] ls:text-[16px] sm:text-[20px] font[600] pt-[160px] leading-[1.7em]">
@@ -89,11 +91,17 @@ const SignIn = () => {
               </div>
             </>
           )}
-          {loginType === "student" && (
-            <StudentSignIn setLoginType={setLoginType} />
+          {loginType === "student" && !forgot && (
+            <StudentSignIn setLoginType={setLoginType} setForgot={setForgot} />
           )}
-          {loginType === "institution" && (
-            <SchoolSignIn setLoginType={setLoginType} />
+          {loginType === "institution" && !forgot && (
+            <SchoolSignIn setLoginType={setLoginType} setForgot={setForgot} />
+          )}
+          {loginType === "student" && forgot && (
+            <ForgotPassword loginType={loginType} setForgot={setForgot} />
+          )}
+          {loginType === "institution" && forgot && (
+            <ForgotPassword loginType={loginType} setForgot={setForgot} />
           )}
         </div>
       </div>

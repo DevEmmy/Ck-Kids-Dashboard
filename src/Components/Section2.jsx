@@ -65,7 +65,7 @@ const Section2 = () => {
   ];
   return (
     <>
-      <div className="cflexss relative bg-primary2 gap-[16px] py-[70px] px-[130px] sm:py-[2em] text-[20px] lg:text-[17px] sm:px-[1.5em] font-[400]">
+      <div className="cflexss relative bg-primary2 gap-[16px] py-[70px] px-[7%] sm:py-[2em] text-[20px] lg:text-[17px] sm:px-[1.5em] font-[400]">
         <div className="block flexmm absolute bottom-[250px] right-[20px] w-[60px] sm:hidden">
           <img src={"/lst.svg"} alt="lastStar" />
         </div>

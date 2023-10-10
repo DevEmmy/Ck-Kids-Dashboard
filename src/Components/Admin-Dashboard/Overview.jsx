@@ -1,7 +1,8 @@
 import { ChevronUp, ChevronDown, Users, ChevronRight } from "heroicons-react";
 import { useState } from "react";
+import Loader from "@/AtomicComponents/Loader";
 
-const Overview = () => {
+const Overview = ({ mainData }) => {
   const [drop, sedivrop] = useState(false);
   const TopStudents = [
     {
@@ -83,7 +84,6 @@ const Overview = () => {
   return (
     <>
       <div className="w-full cflexss font-[700] gap-[37px] text-[24px] lg:text-[20px] ls:text-[18px] bg-[#F7F7F7] h-full p-[30px]">
-
         <div className="w-full flexbm">
           <p className="text-gray-400">Welcome, Savannah Nguyen</p>
           <div className="flexmm gap-[28px]">
@@ -94,7 +94,11 @@ const Overview = () => {
               }}
             >
               <p>Class</p>
-              {drop ? <ChevronUp size={"18px"}/> : <ChevronDown size={"18px"}/>}
+              {drop ? (
+                <ChevronUp size={"18px"} />
+              ) : (
+                <ChevronDown size={"18px"} />
+              )}
               {drop && (
                 <div className="absolute top-[60px] text-[14px] font-[400] left-0 z-25 border-[1px] shadow-md py-[8px] px-[4px] rounded-[12px] bg-white cflexss">
                   {Class.map((items) => {
@@ -128,15 +132,20 @@ const Overview = () => {
         </div>
 
         <div className="grid grid-cols-3 w-full gap-[16px]">
-
           <div className="w-full pl-[32px] py-[40px] lg:py-[35px] items-center ls:py-[30px] bg-primary1 text-white flexsm gap-4 rounded-[24px] shadow-md">
             <div className="flexmm bg-white rounded-[8px] p-4">
               <Users size="26px" color="#F5AE1E" />
             </div>
             <div className="cflexss ">
-              <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
-                25
-              </p>
+              <div className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
+                {mainData.schools ? (
+                  mainData.schools
+                ) : (
+                  <div>
+                    <Loader />
+                  </div>
+                )}
+              </div>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Schools
               </p>
@@ -148,9 +157,15 @@ const Overview = () => {
               <Users size="26px" color="#00AC76" />
             </div>
             <div className="cflexss ">
-              <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
-                25
-              </p>
+              <div className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
+                {mainData.teachers ? (
+                  mainData.teachers
+                ) : (
+                  <div>
+                    <Loader />
+                  </div>
+                )}
+              </div>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Teachers
               </p>
@@ -162,9 +177,15 @@ const Overview = () => {
               <Users size="26px" color="#8D67CE" />
             </div>
             <div className="cflexss ">
-              <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
-                25
-              </p>
+              <div className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
+                {mainData.students ? (
+                  mainData.students
+                ) : (
+                  <div>
+                    <Loader />
+                  </div>
+                )}
+              </div>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Students
               </p>
@@ -176,9 +197,15 @@ const Overview = () => {
               <Users size="26px" color="#FE5972" />
             </div>
             <div className="cflexss ">
-              <p className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
-                25
-              </p>
+              <div className="text-[64px] lg:text-[58px] ls:text-[48px] font-[800]">
+                {mainData.courses ? (
+                  mainData.courses
+                ) : (
+                  <div>
+                    <Loader />
+                  </div>
+                )}
+              </div>
               <p className="text-[24px] lg:text-[20px] ls:text-[19px] font-[400]">
                 Total Courses
               </p>
@@ -212,8 +239,6 @@ const Overview = () => {
               </p>
             </div>
           </div>
-
-
         </div>
 
         <div className="w-full flexbs gap-[20px]">

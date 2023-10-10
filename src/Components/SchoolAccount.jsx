@@ -35,8 +35,7 @@ const SchoolAccount = ({ setAccountType }) => {
   useEffect(() => {
     if (
       userDetails["schoolName"].trim().length > 0 &&
-      !emailError &&
-      !passError &&
+      !emailError &&      
       userDetails["password"].length >= 8
     ) {
       setValid(true);
@@ -94,7 +93,7 @@ const SchoolAccount = ({ setAccountType }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (valid) {
+    if (valid && !passError) {
       // ENDPOINT FOR SUBMITTING USER DETAILS
       setLoading(true);
       await schoolRegister(
@@ -191,7 +190,7 @@ const SchoolAccount = ({ setAccountType }) => {
             {passError && (
               <p className="text-sec1 text-[14px] lg:text-[12px] font-[400] flex flex-wrap w-[30em] sm:w-full">
                 * Password should be at least 8 characters long and must contain
-                at least one character
+                at least one special character
               </p>
             )}
           </div>

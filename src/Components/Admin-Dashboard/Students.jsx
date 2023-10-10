@@ -1,7 +1,5 @@
 import {
-  SearchOutline,
-  ArrowLeft,
-  ArrowRight,
+  SearchOutline, 
   ChevronRight,
   EyeOutline,
   PencilAltOutline,
@@ -14,14 +12,12 @@ import { useEffect, useState } from "react";
 import StudentProfile from "./StudentProfile";
 import { useDisclosure } from "@mantine/hooks";
 import { Modal, useMantineTheme } from "@mantine/core";
-import { HiUpload } from "react-icons/hi";
 import { FaUpload } from "react-icons/fa";
-
+import UploadStudentData from "./UploadStudentData";
 import { getStudents } from "@/services/request";
 import { SpinnerCircular } from "spinners-react";
 import ReactPaginate from "react-paginate";
 import { Paginated, GetPaginatedData } from "@/AtomicComponents/Pagination";
-import UploadStudentData from "../Schools-Dashboard/UploadStudentData";
 
 const Students = () => {
   const [modalElement, setModalElement] = useState();
@@ -33,11 +29,11 @@ const Students = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const PAGINATION = 20;
   const [pageCount, setPageCount] = useState(0);
-  const [students, setStudents] = useState();
+  const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchStudents = async () => {
-    let data = await getStudents();    
+    let data = await getStudents();
     setStudents(data);
     setPageCount(Paginated(data, PAGINATION));
     setLoading(false);
@@ -179,8 +175,7 @@ const Students = () => {
             </>
           ) : (
             <>
-              <p>fetched</p>
-              {GetPaginatedData(currentPage, PAGINATION, students).map(
+              {GetPaginatedData(currentPage, PAGINATION, students)?.map(
                 (data, index) => {
                   const inputDate = new Date(data.createdAt);
 
@@ -249,6 +244,7 @@ const Students = () => {
             activeClassName={"active"}
           />
         </div>
+
         <Modal
           opened={opened}
           onClose={close}

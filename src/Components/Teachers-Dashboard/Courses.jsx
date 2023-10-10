@@ -30,6 +30,7 @@ const Courses = ({ isTeacher }) => {
   const [cat, setCat] = useState(false);
   const [ageRange, setAgeRange] = useState(null);
   const [category, setCategory] = useState(null);
+  const [typeValue, setTypeValue] = useState("");
   const [type, setType] = useState(false);
   const [add, setAdd] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -81,8 +82,8 @@ const Courses = ({ isTeacher }) => {
   const theme = useMantineTheme();
 
   const Appear = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.2 } },
+    hidden: { y: -100 },
+    visible: { y: 0, transition: { duration: 0.2 } },
   };
 
   const handleChange = (e) => {
@@ -216,7 +217,7 @@ const Courses = ({ isTeacher }) => {
             <p>Add new course</p>
             <FaPlus size="10px" />
             {add && (
-              <div className="absolute top-[80px] z-50 font-[400] text-[17px] text-[#808080] cflexss p-[6px] border-[1px] rounded-[12px] bg-[#FFF] flex-shrink shadow-md">
+              <div className="absolute top-[80px] left-[-70px] z-50 font-[400] text-[17px] text-[#808080] cflexss p-[6px] border-[1px] rounded-[12px] bg-[#FFF] flex-shrink shadow-md">
                 {AddCourse.map((course) => {
                   return (
                     <>
@@ -252,9 +253,46 @@ const Courses = ({ isTeacher }) => {
               />
             </div>
 
-            <div className="flexmm gap-[10px] p-[15px] border-[1px] rounded-[8px] bg-[#FFF] cursor-pointer">
-              <p>Type</p>
-              <ChevronUp />
+            <div
+              className="flexmm relative gap-[10px] p-[15px] border-[1px] rounded-[8px] bg-[#FFF] cursor-pointer"
+              onClick={() => {
+                setType(!type);
+              }}
+            >
+              <p>{typeValue ? typeValue : "Type"}</p>
+              {type ? <ChevronDown /> : <ChevronUp />}
+              {type && (
+                <motion.div
+                  animate="visible"
+                  initial="hidden"
+                  variants={Appear}
+                  className="absolute top-[70px] left-0 lf:left-0 text-[17px] bg-[#FFF] z-20 flexss p-[15px] w-[10em] rounded-[8px] shadow-md border-[1px]"
+                >
+                  <div className="w-full h-full cflexss gap-[10px]">
+                    <div
+                      className="flexbm w-full px-[16px] py-[12px] rounded-xl hover:bg-primary2 hover:text-white cursor-pointer transition-all duration-400"
+                      onClick={() => {
+                        setTypeValue("Publish");
+                        // filterBy(ageRange, item.category);
+                      }}
+                    >
+                      <p>Publish</p>
+                      <ChevronRight />
+                    </div>
+
+                    <div
+                      className="flexbm w-full px-[16px] py-[12px] rounded-xl hover:bg-primary2 hover:text-white cursor-pointer transition-all duration-400"
+                      onClick={() => {
+                        setTypeValue("unPublish");
+                        // filterBy(ageRange, item.category);
+                      }}
+                    >
+                      <p>unPublish</p>
+                      <ChevronRight />
+                    </div>
+                  </div>
+                </motion.div>
+              )}
             </div>
 
             <div
@@ -267,7 +305,7 @@ const Courses = ({ isTeacher }) => {
                 setEdit(false);
               }}
             >
-              <p>Categories</p>
+              <p>{category ? category : "Categories"}</p>
               {cat ? <ChevronDown /> : <ChevronUp />}
               {cat && (
                 <motion.div
@@ -298,7 +336,7 @@ const Courses = ({ isTeacher }) => {
             </div>
 
             <div
-              className="relative font-[400] text-[20px] lg:text-[18px] ls:text-[16px] border-[1px] rounded-[8px] p-[15px] gap-[10px] flexmm bg-white cursor-pointer"
+              className="relative w-[200px] font-[400] text-[20px] lg:text-[18px] ls:text-[16px] border-[1px] rounded-[8px] p-[15px] gap-[10px] flexmm bg-white cursor-pointer"
               onClick={() => {
                 setDrop(!drop);
                 setCat(false);
@@ -307,10 +345,10 @@ const Courses = ({ isTeacher }) => {
                 setEdit(false);
               }}
             >
-              <p>Ages</p>
+              <p>{ageRange ? ageRange : "Ages"}</p>
               {drop ? <ChevronDown /> : <ChevronUp />}
               {drop && (
-                <div className="absolute top-[70px] w-[150px] text-[17px] font-[400] left-0 z-25 border-[1px] shadow-md py-[8px] px-[4px] rounded-[12px] bg-white cflexss">
+                <div className="absolute w-[150px] top-[70px] text-[17px] font-[400] left-0 z-25 border-[1px] shadow-md py-[8px] px-[4px] rounded-[12px] bg-white cflexss">
                   {Ages.map((items, i) => {
                     return (
                       <>

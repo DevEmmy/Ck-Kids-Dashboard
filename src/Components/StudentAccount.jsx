@@ -37,8 +37,7 @@ const StudentAccount = ({ setAccountType }) => {
     if (
       userDetails["fullName"].trim().length > 0 &&
       !emailError &&
-      userDetails["productKey"].trim().length > 0 &&
-      !passError &&
+      userDetails["productKey"].trim().length > 0 &&      
       userDetails["password"].length >= 8
     ) {
       setValid(true);
@@ -96,7 +95,7 @@ const StudentAccount = ({ setAccountType }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (valid) {
+    if (valid && !passError) {
       // ENDPOINT FOR SUBMITTING USER DETAILS
       setLoading(true);
       await studentRegister(
@@ -105,9 +104,9 @@ const StudentAccount = ({ setAccountType }) => {
         userDetails.productKey,
         userDetails.password
       );
-      setLoading(false); 
+      setLoading(false);
       console.log(userDetails);
-    }    
+    }
   };
   return (
     <>
@@ -122,14 +121,16 @@ const StudentAccount = ({ setAccountType }) => {
             <ArrowLeftOutline size="12px" color="#00AC76" />
           </div>
         </div>
-        <h1 className="text-[36px] lg:text-[30px] ls:text-[28px] font-[700] sm:font-[800] text-sec3">
-          Create an Account
-        </h1>
-        <p className="text-[18px] lg:text-[16px] ls:text-[14px] sm:text-[20px] font-400 text-[#52525B] leading-[1.5em]">
-          Join the CuriousKidz community and embark on an exciting journey of
-          discovery and learning! Sign up today to unlock a world of educational
-          adventures for your child.
-        </p>
+        <div className="cflexss gap-[12px]">
+          <h1 className="text-[36px] lg:text-[30px] ls:text-[28px] font-[700] sm:font-[800] text-sec3">
+            Create an Account
+          </h1>
+          <p className="text-[18px] lg:text-[16px] ls:text-[14px] sm:text-[20px] font-400 text-[#52525B] leading-[1.5em]">
+            Join the CuriousKidz community and embark on an exciting journey of
+            discovery and learning! Sign up today to unlock a world of
+            educational adventures for your child.
+          </p>
+        </div>
         <form className="cflexss gap-[1em] text-[18px] w-full">
           <div className="sect">
             <p>Full name</p>
@@ -212,7 +213,7 @@ const StudentAccount = ({ setAccountType }) => {
             {passError && (
               <p className="text-sec1 text-[14px] lg:text-[12px] font-[400] flex flex-wrap w-[30em] sm:w-full">
                 * Password should be at least 8 characters long and must contain
-                at least one character
+                at least one special character
               </p>
             )}
           </div>
