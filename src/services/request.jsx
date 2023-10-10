@@ -71,9 +71,44 @@ export const studentLogin = async (email, password, router) => {
     });
 };
 
+export const adminLogin = async (email, password, router) => {
+  await axios
+    .post(
+      `${api}/admin/sign-in`,
+      {
+        email,
+        password,
+      },
+      {
+        withCredentials: true,
+        credentials: "include",
+      }
+    )
+    .then((response) => {
+      console.log(response);
+      const { admin } = response.data.payload;
+      console.log(response.data.payload.token);
+      document.cookie = "token=" + response.data.payload.token;
+      localStorage.setItem("admin", JSON.stringify(admin));
+      console.log(admin);
+      router.push("/admin-dashboard");
+
+      notify(response.data.message);
+      // window.location.href = "/kids-dashboard"
+    })
+    .catch((err) => {
+      if (err.response.data.message) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
+      console.log(err);
+    });
+};
+
 export const studentForgotPassword = async (email) => {
   await axios
-    .post(`${api}/student/forgot-password`, {email}, setConfig())
+    .post(`${api}/student/forgot-password`, { email }, setConfig())
     .then((response) => {
       console.log(response);
       notify(response.data.message);
@@ -90,7 +125,7 @@ export const studentForgotPassword = async (email) => {
 
 export const schoolForgotPassword = async (email) => {
   await axios
-    .post(`${api}/school/forgot-password`, {email}, setConfig())
+    .post(`${api}/school/forgot-password`, { email }, setConfig())
     .then((response) => {
       console.log(response);
       notify(response.data.message);
@@ -107,7 +142,58 @@ export const schoolForgotPassword = async (email) => {
 
 export const teacherForgotPassword = async (email) => {
   await axios
-    .post(`${api}/teacher/forgot-password`, {email}, setConfig())
+    .post(`${api}/teacher/forgot-password`, { email }, setConfig())
+    .then((response) => {
+      console.log(response);
+      notify(response.data.message);
+    })
+    .catch((err) => {
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
+      console.log(err);
+    });
+};
+
+export const updateStudentPassword = async (token, password) => {
+  await axios
+    .post(`${api}/student/reset-password`, { token, password }, setConfig())
+    .then((response) => {
+      console.log(response);
+      notify(response.data.message);
+    })
+    .catch((err) => {
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
+      console.log(err);
+    });
+};
+
+export const updateSchoolPassword = async (token, password) => {
+  await axios
+    .post(`${api}/school/reset-password`, { token, password }, setConfig())
+    .then((response) => {
+      console.log(response);
+      notify(response.data.message);
+    })
+    .catch((err) => {
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
+      console.log(err);
+    });
+};
+
+export const updateTeacherPassword = async (token, password) => {
+  await axios
+    .post(`${api}/teacher/reset-password`, { token, password }, setConfig())
     .then((response) => {
       console.log(response);
       notify(response.data.message);

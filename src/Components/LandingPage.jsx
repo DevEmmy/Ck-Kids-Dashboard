@@ -38,7 +38,7 @@ const LandingPage = () => {
   return (
     <>
       <NavBar active={0} background="#FFF9D2" />
-      <div className="w-full bg-primary0 mt-[100px] sm:mt-[60px]">
+      <div className="w-full bg-primary0 pt-[100px] sm:pt-[60px]">
         <div className="flexss w-full px-xpadding bg-[url('/Hero.svg')] sm:bg-[url('/')] bg-cover bg-no-repeat bg-center h-[45em] pt-[5em] text-[20px] gap-[20px] ls:text-[15px] lg:text-[17px] lg:py-[4em] sm1:pt-[0em] sm1:pb-[2em] sm:px-[1.5em] md1:flex-wrap">
           <div className="cflexms font-[600] gap-[32px] text-sec5 md:gap-[1em] flex-grow pb-[2em]">
             <h1 className="font-[1000] w-[50%] text-[52px] lg:text-[45px] ls:text-[28px] sm:w-full">

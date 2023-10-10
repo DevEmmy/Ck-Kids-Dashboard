@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { EyeOutline, EyeOffOutline, ArrowLeftOutline } from "heroicons-react";
+import {
+  updateSchoolPassword,
+  updateStudentPassword,
+  updateTeacherPassword,
+} from "@/services/request";
 import Loader from "@/AtomicComponents/Loader";
+import { useRouter } from "next/navigation";
 
-const SetPassword = () => {
+const SetPassword = ({ token, type }) => {
   const [loginType, setLoginType] = useState("none");
   const [newPassword, setNewPassword] = useState("");
   const [valid, setValid] = useState(false);
@@ -11,6 +17,7 @@ const SetPassword = () => {
   const [passError, setPassError] = useState(false);
   const [hide, setHide] = useState(true);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (newPassword.trim().length > 0) {
@@ -35,10 +42,23 @@ const SetPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (valid && !passError) {
-      // ENDPOINT FOR UPDATING USER PASSWORD
-      setLoading(true);
-
-      //   setLoading(false);
+      if (type === 1) {
+        setLoading(true);
+        console.log("updating")
+        await updateStudentPassword(token, newPassword);
+        setLoading(false);
+        router.push("/signin");
+      } else if (type === 2) {
+        setLoading(true);
+        await updateTeacherPassword(token, newPassword);
+        setLoading(false);
+        router.push("/teachers-signin");
+      } else if (type === 3) {
+        setLoading(true);
+        await updateSchoolPassword(token, newPassword);
+        setLoading(false);
+        router.push("/signin");
+      }
     }
   };
 
@@ -46,8 +66,10 @@ const SetPassword = () => {
     <>
       <div className="h-full w-full flexss flex-wrap">
         <div
-          className={`w-[45%] h-full ${
-            loginType === "institution" ? "bg-purplePrime" : "bg-sec1"
+          className={`w-[45%] h-full ${type === 1 && "bg-primary2"} ${
+            type === 3 && "bg-purplePrime"
+          } ${
+            type === 2 && "bg-primary1"
           } py-[4em] sm:py-[2em] px-[5em] text-sec2 sm:px-[1.5em] md1:w-full`}
         >
           <div className="cflexss gap-[1.5em]">
@@ -55,7 +77,10 @@ const SetPassword = () => {
               href="/"
               className="w-[320px] lg:w-[300px] ls:w-[280px] sm:w-[280px]"
             >
-              <img src="logo.svg" alt="CSkidz" />
+              <img
+                src={type === 2 ? "whitelogo.svg" : "logo.svg"}
+                alt="CSkidz"
+              />
             </a>
             <div>
               <h1 className="text-[60px] lg:text-[55px] ls:text-[32px] font-[800]">
@@ -102,10 +127,16 @@ const SetPassword = () => {
           <div className="cflexss w-full gap-[28px]">
             <a
               href="/signin"
-              className="flexss bg-sec1 rounded-[0.5em] p-[0.4em] cursor-pointer"
+              className={`flexss ${type === 1 && "bg-sec1"} ${
+                type === 2 && "bg-primary1"
+              } ${
+                type === 3 && "bg-primary3"
+              } rounded-[0.5em] p-[0.4em] cursor-pointer`}
             >
               <div className="w-[1.2em] h-[1.2em] rounded-full bg-white flexmm">
-                <ArrowLeftOutline size="12px" color="#00AC76" />
+                {type === 1 && <ArrowLeftOutline size="12px" color="#00AC76" />}
+                {type === 2 && <ArrowLeftOutline size="12px" color="#F5AE1E" />}
+                {type === 3 && <ArrowLeftOutline size="12px" color="#8D67CE" />}
               </div>
             </a>
 
@@ -146,7 +177,13 @@ const SetPassword = () => {
                   )}
                 </div>
                 {passError && (
-                  <p className="text-sec1 text-[14px] lg:text-[12px] font-[400] flex flex-wrap w-[30em] sm:w-full">
+                  <p
+                    className={`${type === 1 && "text-sec1"} ${
+                      type === 2 && "text-primary1"
+                    } ${
+                      type === 3 && "text-primary3"
+                    } text-[14px] lg:text-[12px] font-[400] flex flex-wrap w-[30em] sm:w-full`}
+                  >
                     * Password should be at least 8 characters long and must
                     contain at least one special character
                   </p>
@@ -155,9 +192,12 @@ const SetPassword = () => {
 
               <button
                 type="submit"
-                className="w-full bg-primary2 px-[2.5em] py-[1em] rounded-full text-white text-[18px] sm:text-[1rem] font-[600] sm:font-[400]"
+                className={`w-full ${type === 1 && "bg-sec1"} ${
+                  type === 2 && "bg-primary1"
+                } ${
+                  type === 3 && "bg-primary3"
+                } px-[2.5em] py-[1em] rounded-full text-white text-[18px] sm:text-[1rem] font-[600] sm:font-[400]`}
                 onClick={handleSubmit}
-                disabled={loading && true}
               >
                 {loading ? (
                   <Loader />
