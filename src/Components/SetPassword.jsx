@@ -26,6 +26,9 @@ const SetPassword = ({ token, type }) => {
       setValid(false);
     }
 
+    console.log(type);
+    console.log(token);
+
     if (
       (newPassword.length >= 8 && /[!@#$%^&*]/.test(newPassword)) ||
       newPassword.length === 0
@@ -44,7 +47,7 @@ const SetPassword = ({ token, type }) => {
     if (valid && !passError) {
       if (type === 1) {
         setLoading(true);
-        console.log("updating")
+        console.log("updating");
         await updateStudentPassword(token, newPassword);
         setLoading(false);
         router.push("/signin");
