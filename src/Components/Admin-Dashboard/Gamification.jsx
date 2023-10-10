@@ -116,6 +116,31 @@ const Gamification = () => {
     },
   ];
 
+  const Badges = [
+    {
+      title: "Quiz Whiz",
+      format: (
+        <div className="w-[100px] h-[112px] rounded-[8px] pb-[8px] text-white bg-[#00734F]">
+          <div className="bg-primary2 w-full pt-[10px] rounded-t-[8px] h-full cflexmm gap-[15px]">
+            <div className="flexmm w-[50px]">
+              <img src="/quizWhiz.svg" alt="quizwhiz" />
+            </div>
+            <p>Quiz Whiz</p>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "Subject Hero",
+    },
+    {
+      title: "Course Champion",
+    },
+    {
+      title: "Helping Hand",
+    },
+  ];
+
   const [modalElement, setModalElement] = useState();
 
   return (
@@ -126,50 +151,50 @@ const Gamification = () => {
             Learning Gem Settings
           </p>
         </div>
-        <div className="w-full h-full flexbs gap-[30px] border-[1px] rounded-[24px] bg-[#FFF] shadow-md py-[30px] px-[20px]">
+        <div className="w-full h-full flexbs gap-[30px] border-[1px] sm:flex-wrap rounded-[24px] bg-[#FFF] shadow-md py-[30px] px-[20px]">
           <div className="w-[526px] flex-grow flex-shrink cflexss gap-[12px]">
             <p>Maximum Gem for a video</p>
             <select
-              className="w-[526px] lg:w-[400px] flex-shrink px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+              className="w-full px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
               name="requirement"
               onChange={(e) => {
                 setGemPoint(e.target.value);
               }}
             >
               <option>{gemPoint}</option>
-              <option value="1">5</option>
-              <option value="2">10</option>
-              <option value="3">15</option>
-              <option value="4">20</option>
-              <option value="5">25</option>
-              <option value="6">30</option>
-              <option value="7">35</option>
-              <option value="8">40</option>
-              <option value="9">45</option>
-              <option value="10">50</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="25">25</option>
+              <option value="30">30</option>
+              <option value="35">35</option>
+              <option value="40">40</option>
+              <option value="45">45</option>
+              <option value="50">50</option>
             </select>
           </div>
 
           <div className="w-[526px] flex-grow flex-shrink cflexss gap-[12px]">
             <p>Maximum Gem for a video collection</p>
             <select
-              className="w-[526px] lg:w-[400px] flex-shrink px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
+              className="w-full px-[10px] py-[20px] border-[1px] rounded-[8px] outline-none cursor-pointer"
               name="requirement"
               onChange={(e) => {
                 setCollectionGemPoint(e.target.value);
               }}
             >
               <option>{collectionGemPoint}</option>
-              <option value="1">5</option>
-              <option value="2">10</option>
-              <option value="3">15</option>
-              <option value="4">20</option>
-              <option value="5">25</option>
-              <option value="6">30</option>
-              <option value="7">35</option>
-              <option value="8">40</option>
-              <option value="9">45</option>
-              <option value="10">50</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="25">25</option>
+              <option value="30">30</option>
+              <option value="35">35</option>
+              <option value="40">40</option>
+              <option value="45">45</option>
+              <option value="50">50</option>
             </select>
           </div>
         </div>
@@ -263,50 +288,74 @@ const Gamification = () => {
                 </>
               ) : (
                 <>
-                  <div className="w-full flexsm py-[10px] px-[20px]">
-                    <div className="w-[18%] text-[12px] font-[600] flexsm gap-[15px]">
-                      <div className="w-[100px] h-[112px] rounded-[8px] pb-[8px] text-white bg-[#00734F]">
-                        <div className="bg-primary2 w-full pt-[10px] rounded-t-[8px] h-full cflexmm gap-[15px]">
-                          <div className="flexmm w-[50px]">
-                            <img src="/quizWhiz.svg" alt="quizwhiz" />
+                  {badges.map((badge, i) => {
+                    return (
+                      <>
+                        <div
+                          key={i}
+                          className="w-full flexsm py-[10px] px-[20px]"
+                        >
+                          <div className="w-[18%] text-[12px] font-[600] flexsm gap-[15px]">
+                            {Badges.map((type, i) => {
+                              return (
+                                <>{type.title === badge.title && type.format}</>
+                              );
+                            })}
+                            <div className="w-[100px] h-[112px] rounded-[8px] pb-[8px] text-white bg-[#00734F]">
+                              <div className="bg-primary2 w-full pt-[10px] rounded-t-[8px] h-full cflexmm gap-[15px]">
+                                <div className="flexmm w-[50px]">
+                                  <img src="/quizWhiz.svg" alt="quizwhiz" />
+                                </div>
+                                <p>Quiz Whiz</p>
+                              </div>
+                            </div>
                           </div>
-                          <p>Quiz Whiz</p>
+                          <div className="w-[14%] flexsm gap-[10px]">
+                            {badge.title}
+                          </div>
+                          <div className="w-[25%] flexsm">
+                            {badge.description}
+                          </div>
+                          <div className="w-[14%] flexsm">
+                            {badge.numberOfVideos} Videos
+                          </div>
+                          <div className="w-[14%] flexsm">
+                            {parseInt(badge.numberOfVideos) *
+                              parseInt(badge.numberOfGems)}
+                          </div>
+                          <div className="w-[14%] flexsm">
+                            Age {badge.minAge} - {badge.maxAge}
+                          </div>
+                          <div className="w-[14%] flexsm">
+                            <select className="px-[8px] py-[4px] border-[1px] rounded-[4px] outline-none">
+                              <option>
+                                {badge.public ? "Publish" : "Unpublish"}
+                              </option>
+                            </select>
+                          </div>
+                          <div className="w-[14%] flexsm gap-[15px]">
+                            <EyeOutline size="16px" />
+                            <PencilAltOutline size="16px" />
+                            <TrashOutline
+                              size="16px"
+                              // onClick={() => {
+                              //   setModalElement(
+                              //     <Trash
+                              //       close={close}
+                              //       data={data}
+                              //       setProfile={setProfile}
+                              //     />
+                              //   );
+                              //   open();
+                              // }}
+                            />
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div className="w-[14%] flexsm gap-[10px]">Quiz Whiz</div>
-                    <div className="w-[25%] flexsm">
-                      You're on fire! Earn the Quiz Whiz badge by acing 5
-                      quizzes. You're a true mastermind!
-                    </div>
-                    <div className="w-[14%] flexsm">5 Videos</div>
-                    <div className="w-[14%] flexsm">60</div>
-                    <div className="w-[14%] flexsm">Age 6-9</div>
-                    <div className="w-[14%] flexsm">
-                      <select className="px-[8px] py-[4px] border-[1px] rounded-[4px] outline-none">
-                        <option>Publish</option>
-                      </select>
-                    </div>
-                    <div className="w-[14%] flexsm gap-[15px]">
-                      <EyeOutline size="16px" />
-                      <PencilAltOutline size="16px" />
-                      <TrashOutline
-                        size="16px"
-                        // onClick={() => {
-                        //   setModalElement(
-                        //     <Trash
-                        //       close={close}
-                        //       data={data}
-                        //       setProfile={setProfile}
-                        //     />
-                        //   );
-                        //   open();
-                        // }}
-                      />
-                    </div>
-                  </div>
+                      </>
+                    );
+                  })}
 
-                  <div className="w-full flexsm py-[10px] px-[20px]">
+                  {/* <div className="w-full flexsm py-[10px] px-[20px]">
                     <div className="w-[18%] text-[12px] font-[600] flexsm gap-[15px]">
                       <div className="w-[100px] h-[112px] rounded-[8px] pb-[8px] text-white bg-[#A37414]">
                         <div className="bg-primary1 w-full pt-[10px] rounded-t-[8px] h-full cflexmm gap-[15px]">
@@ -350,7 +399,7 @@ const Gamification = () => {
                         // }}
                       />
                     </div>
-                  </div>
+                  </div> */}
                   {/* {GetPaginatedData(currentPage, PAGINATION, students).map(
                     (data, index) => {
                       const inputDate = new Date(data.createdAt);
