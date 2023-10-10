@@ -6,8 +6,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { Badge } from "@mantine/core";
 
 const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
-  const [gemDetails, setGemDetails] = useState({
-    cover: "something",
+  const [gemDetails, setGemDetails] = useState({    
     title: "",
     description: "",
     requirement: "",
@@ -23,8 +22,7 @@ const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (
-      gemDetails["cover"] &&
+    if (      
       gemDetails["title"] &&
       gemDetails["title"] !== "None" &&
       gemDetails["description"] &&
@@ -92,8 +90,7 @@ const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
     if (valid) {
       setLoading(true);
       console.log(gemDetails);
-      await CreateBadge(
-        gemDetails.cover,
+      await CreateBadge(        
         gemDetails.title,
         gemDetails.description,
         parseInt(gemDetails.requirement),

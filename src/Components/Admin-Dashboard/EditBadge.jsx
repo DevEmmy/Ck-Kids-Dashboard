@@ -13,7 +13,6 @@ const EditBadge = ({
   collectionGemPoint,
 }) => {
   const [gemDetails, setGemDetails] = useState({
-    cover: "something",
     title: data.title,
     description: data.description,
     requirement: data.numberOfVideos,
@@ -30,7 +29,6 @@ const EditBadge = ({
 
   useEffect(() => {
     if (
-      gemDetails["cover"] &&
       gemDetails["title"] &&
       gemDetails["title"] !== "None" &&
       gemDetails["description"] &&
@@ -99,8 +97,7 @@ const EditBadge = ({
       setLoading(true);
       console.log(gemDetails);
       await updateBadge(
-        data._id,
-        gemDetails.cover,
+        data._id,       
         gemDetails.title,
         gemDetails.description,
         parseInt(gemDetails.requirement),

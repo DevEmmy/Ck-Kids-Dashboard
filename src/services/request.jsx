@@ -899,7 +899,6 @@ export const getABadge = async (id) => {
 };
 
 export const CreateBadge = async (
-  cover,
   title,
   description,
   numberOfVideos,
@@ -909,7 +908,6 @@ export const CreateBadge = async (
   maxAge
 ) => {
   let data = {
-    cover,
     title,
     description,
     numberOfVideos,
@@ -937,7 +935,6 @@ export const CreateBadge = async (
 
 export const updateBadge = async (
   id,
-  cover,
   title,
   description,
   numberOfVideos,
@@ -947,7 +944,6 @@ export const updateBadge = async (
   maxAge
 ) => {
   let data = {
-    cover,
     title,
     description,
     numberOfVideos,
