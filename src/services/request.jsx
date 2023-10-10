@@ -722,3 +722,76 @@ export const getStudentsBySchool = async ({ id }) => {
 
   return data;
 };
+
+export const GetAllBadges = async () => {
+  let data = [];
+
+  await axios
+    .get(`${api}/badges/all`, setConfig())
+    .then((response) => {
+      console.log(response);
+      data = response.data.payload;
+    })
+    .catch((err) => {
+      if (err.response) {
+      } else {
+      }
+      console.log(err);
+    });
+
+  return data;
+};
+
+export const getABadge = async (id) => {
+  let data = [];
+
+  await axios
+    .get(`${api}/badge/${id}`, setConfig())
+    .then((response) => {
+      console.log(response);
+      data = response.data.payload;
+    })
+    .catch((err) => {
+      if (err.response) {
+      } else {
+      }
+      console.log(err);
+    });
+
+  return data;
+};
+
+export const CreateBadge = async (
+  title,
+  description,
+  numberOfVideos,
+  numberOfGems,
+  publish,
+  minAge,
+  maxAge
+) => {
+  let data = {
+    title,
+    description,
+    numberOfVideos,
+    numberOfGems,
+    public: publish,
+    minAge,
+    maxAge,
+  };
+
+  await axios
+    .post(`${api}/badge`, data, setConfig())
+    .then((response) => {
+      console.log(response);
+      notify(response.data.message);
+    })
+    .catch((err) => {
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
+      console.log(err);
+    });
+};
