@@ -3,7 +3,7 @@ import FileBase64 from "react-file-base64";
 import Loader from "@/AtomicComponents/Loader";
 import { uploadData, uploadVideoData } from "@/services/request";
 
-const BulkVideoUpload = ({ close, isTeacher = false }) => {
+const BulkVideoUpload = ({ close, isTeacher = false, fetchData }) => {
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
   const [fileError, setFileError] = useState(false);
@@ -46,6 +46,7 @@ const BulkVideoUpload = ({ close, isTeacher = false }) => {
     setLoading(true);
     // console.log(file)
     await uploadVideoData(formData, isTeacher);
+    fetchData()
     close();
     // }
   };
