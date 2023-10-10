@@ -7,7 +7,7 @@ import { Badge } from "@mantine/core";
 
 const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
   const [gemDetails, setGemDetails] = useState({
-    cover: "",
+    cover: "something",
     title: "",
     description: "",
     requirement: "",
