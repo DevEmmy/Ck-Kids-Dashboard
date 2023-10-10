@@ -771,7 +771,7 @@ export const CreateBadge = async (
   minAge,
   maxAge
 ) => {
-  let data = {    
+  let data = {
     cover,
     title,
     description,
@@ -779,11 +779,49 @@ export const CreateBadge = async (
     numberOfGems,
     public: publish,
     minAge,
-    maxAge
+    maxAge,
   };
 
   await axios
     .post(`${api}/badge`, data, setConfig())
+    .then((response) => {
+      console.log(response);
+      notify(response.data.message);
+    })
+    .catch((err) => {
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
+      console.log(err);
+    });
+};
+
+export const updateBadge = async (
+  id,
+  cover,
+  title,
+  description,
+  numberOfVideos,
+  numberOfGems,
+  publish,
+  minAge,
+  maxAge
+) => {
+  let data = {
+    cover,
+    title,
+    description,
+    numberOfVideos,
+    numberOfGems,
+    public: publish,
+    minAge,
+    maxAge,
+  };
+
+  await axios
+    .patch(`${api}/badge/${id}`, data, setConfig())
     .then((response) => {
       console.log(response);
       notify(response.data.message);

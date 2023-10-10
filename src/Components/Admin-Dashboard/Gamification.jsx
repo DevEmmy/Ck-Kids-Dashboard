@@ -16,6 +16,7 @@ import { getFilteredCourses } from "@/services/request";
 import ReactPaginate from "react-paginate";
 import MasteryStage from "./MasteryStage";
 import { Paginated, GetPaginatedData } from "@/AtomicComponents/Pagination";
+import EditBadge from "./EditBadge";
 
 const Gamification = ({ type = "admin" }) => {
   const [drop, setDrop] = useState(false);
@@ -313,7 +314,7 @@ const Gamification = ({ type = "admin" }) => {
               <div className="w-full flexsm py-[10px] px-[20px] border-b-[1px]">
                 <div className="w-[18%] flexsm gap-[15px]">Badge Image</div>
                 <div className="w-[14%] flexsm gap-[10px]">Badge Title</div>
-                <div className="w-[25%] flexsm">Description</div>
+                <div className="w-[28%] flexsm">Description</div>
                 <div className="w-[14%] flexsm">Requirement</div>
                 <div className="w-[14%] flexsm">Learning Gem</div>
                 <div className="w-[14%] flexsm">Age group</div>
@@ -354,7 +355,7 @@ const Gamification = ({ type = "admin" }) => {
                             <div className="w-[14%] flexsm gap-[10px]">
                               {badge.title}
                             </div>
-                            <div className="w-[25%] flexsm">
+                            <div className="w-[28%] flexsm">
                               {badge.description}
                             </div>
                             <div className="w-[14%] flexsm">
@@ -375,8 +376,32 @@ const Gamification = ({ type = "admin" }) => {
                               </select>
                             </div>
                             <div className="w-[14%] flexsm gap-[15px]">
-                              <PencilAltOutline size="16px" />
-                              <TrashOutline size="16px" />
+                              <PencilAltOutline
+                                size="16px"
+                                className="cursor-pointer"
+                                onClick={() => {
+                                  setModalElement(
+                                    <EditBadge
+                                      close={close}
+                                      data={badge}
+                                      fetchData={fetchData}
+                                      gemPoint={gemPoint}
+                                      collectionGemPoint={collectionGemPoint}
+                                    />
+                                  );
+                                  open();
+                                }}
+                              />
+                              <TrashOutline
+                                size="16px"
+                                className="cursor-pointer"
+                                onClick={() => {
+                                  setModalElement(
+                                    <Trash close={close} data={badge} />
+                                  );
+                                  open();
+                                }}
+                              />
                             </div>
                           </div>
                         </>
@@ -434,3 +459,51 @@ const Gamification = ({ type = "admin" }) => {
 };
 
 export default Gamification;
+
+const Trash = ({ close, data }) => {
+  return (
+    <>
+      <div className="w-[400px] cflexss gap-[20px] px-[14px] pb-[14px] rounded-[12px] flex-shrink">
+        <div className="w-[48px] h-[48px] rounded-full">
+          <img src="/alert.svg" alt="alert" />
+        </div>
+        <div className="w-full flexss text-[18px] text-[#222] lg:text-[16px] font-[400]">
+          <p>Savannah You are about to delete the {data.title} badge</p>
+        </div>
+        <div className="flexss gap-[12px]">
+          <div className="w-[40px] h-[40px] rounded-full">
+            <img src="/avatar.svg" alt="teacher image" />
+          </div>
+          <div className="cflexss font-[400] text-[14px]">
+            <p className="font-[600] text-[#333]">Savannah Nguyen</p>
+            <p className="text-[#AAA]">savannah@gmail.com</p>
+          </div>
+        </div>
+        <div className="w-full flexbm sm:flex-wrap">
+          <div className="flexmm gap-[10px] font-[600] text-[14px]">
+            <input type="checkbox" />
+            <p>Don't ask again</p>
+          </div>
+          <div className="flexmm gap-[20px] font-[600] text-[16px] lg:text-[14px]">
+            <button
+              className="py-[10px] px-[18px] rounded-[8px] text-[#808080] border-[1px]"
+              onClick={() => {
+                close();
+              }}
+            >
+              Deny
+            </button>
+            <button
+              className="py-[10px] px-[18px] text-[white] bg-[#F00] rounded-[8px] border-none"
+              // onClick={() => {
+
+              // }}
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
