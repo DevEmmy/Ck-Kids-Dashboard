@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { CreateBadge } from "@/services/request";
 import FileBase64 from "react-file-base64";
 import { FaUserAlt } from "react-icons/fa";
+import { Badge } from "@mantine/core";
 
 const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
   const [gemDetails, setGemDetails] = useState({
@@ -137,6 +138,7 @@ const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
           </div>
         </div>
       ),
+      image: "/quizWhiz.svg",
     },
     {
       title: "Subject Hero",
@@ -150,6 +152,7 @@ const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
           </div>
         </div>
       ),
+      image: "/subjectHero.svg",
     },
     {
       title: "Course Champion",
@@ -163,6 +166,7 @@ const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
           </div>
         </div>
       ),
+      image: "/champion.svg",
     },
     {
       title: "Helping Hand",
@@ -176,6 +180,7 @@ const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
           </div>
         </div>
       ),
+      image: "/helpingHand.svg",
     },
   ];
 
@@ -187,20 +192,18 @@ const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
         </p>
         <div className="flex gap-3 items-center">
           <div className="relative profile w-[4.5rem] h-[4.5rem] object-contain flexmm bg-primary2 rounded-[0.75rem] text-white cursor-pointer">
-            {gemDetails.cover ? (
-              <>
-                <img
-                  src={gemDetails.cover}
-                  alt="profilePicture"
-                  className="rounded-[0.75rem] w-full h-[4.5rem] object-cover"
-                />
-              </>
-            ) : (
-              <>
-                <FaUserAlt />
-              </>
-            )}
-            <div className="absolute left-0 top-[46%] opacity-0">
+            {Badges.map((badge, i) => {
+              return (
+                <>
+                  <img
+                    src={gemDetails.cover}
+                    alt="profilePicture"
+                    className="rounded-[0.75rem] w-full h-[4.5rem] object-cover"
+                  />
+                </>
+              );
+            })}
+            {/* <div className="absolute left-0 top-[46%] opacity-0">
               <FileBase64
                 name="coursePhoto"
                 defaultValue={gemDetails["cover"]}
@@ -209,21 +212,21 @@ const CreateNewBadge = ({ close, fetchData, gemPoint, collectionGemPoint }) => {
                   upload(base64);
                 }}
               />
-            </div>
+            </div> */}
           </div>
 
-          <div>
+          {/* <div>
             <p className="text-[1em] font-[600]">Badge Image</p>
             <p className="text-[0.8em] text-gray-500">
               Maximum of 1MB. JPG, GIF, or PNG
             </p>
-          </div>
+          </div> */}
         </div>
-        {fileError && (
+        {/* {fileError && (
           <p className="flexmm text-[12px] text-red-700">
             ensure you uploaded an image of size not more than 1MB
           </p>
-        )}
+        )} */}
         <div className="w-full cflexss gap-[12px]">
           <p>BadgeTitle</p>
           <select
