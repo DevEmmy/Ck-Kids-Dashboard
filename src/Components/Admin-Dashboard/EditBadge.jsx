@@ -334,7 +334,7 @@ const EditBadge = ({
             className="py-[18px] px-[52px] rounded-full bg-primary2 text-[#FFF]"
             onClick={handleSubmit}
           >
-            {loading ? <Loader /> : <p>Save Gamification</p>}
+            {loading ? <Loader /> : <p>Update Gamification</p>}
           </button>
           <button
             className="py-[18px] px-[52px] rounded-full bg-[#FFF] text-primary2 border-[1px] border-primary2"

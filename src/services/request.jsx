@@ -835,3 +835,25 @@ export const updateBadge = async (
       console.log(err);
     });
 };
+
+export const deleteBadge = async (id) => {
+  let data = [];
+
+  await axios
+    .delete(`${api}/badge/${id}`, setConfig())
+    .then((response) => {
+      console.log(response);
+      data = response.data.payload;
+      notify(response.data.message);
+    })
+    .catch((err) => {
+      if (err.response) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
+      console.log(err);
+    });
+
+  return data;
+};

@@ -12,7 +12,7 @@ import { Modal, useMantineTheme } from "@mantine/core";
 import { FaPlus } from "react-icons/fa";
 import { GetAllBadges } from "@/services/request";
 import { SpinnerCircular } from "spinners-react";
-import { getFilteredCourses } from "@/services/request";
+import { getFilteredCourses, deleteBadge } from "@/services/request";
 import ReactPaginate from "react-paginate";
 import MasteryStage from "./MasteryStage";
 import { Paginated, GetPaginatedData } from "@/AtomicComponents/Pagination";
@@ -28,8 +28,7 @@ const Gamification = ({ type = "admin" }) => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const PAGINATION = 20;
-  const [pageCount, setPageCount] = useState(0);
-  const [students, setStudents] = useState([]);
+  const [pageCount, setPageCount] = useState(0);  
 
   const fetchData = async () => {
     setLoading(true);
@@ -397,7 +396,11 @@ const Gamification = ({ type = "admin" }) => {
                                 className="cursor-pointer"
                                 onClick={() => {
                                   setModalElement(
-                                    <Trash close={close} data={badge} />
+                                    <Trash
+                                      close={close}
+                                      data={badge}
+                                      fetchData={fetchData}
+                                    />
                                   );
                                   open();
                                 }}
@@ -460,7 +463,12 @@ const Gamification = ({ type = "admin" }) => {
 
 export default Gamification;
 
-const Trash = ({ close, data }) => {
+const Trash = ({ close, data, fetchData }) => {
+  const deleteABadge = async () => {
+    await deleteBadge(data._id);
+    close();
+    fetchData();
+  };
   return (
     <>
       <div className="w-[400px] cflexss gap-[20px] px-[14px] pb-[14px] rounded-[12px] flex-shrink">
@@ -495,9 +503,9 @@ const Trash = ({ close, data }) => {
             </button>
             <button
               className="py-[10px] px-[18px] text-[white] bg-[#F00] rounded-[8px] border-none"
-              // onClick={() => {
-
-              // }}
+              onClick={() => {
+                deleteABadge();
+              }}
             >
               Delete
             </button>
