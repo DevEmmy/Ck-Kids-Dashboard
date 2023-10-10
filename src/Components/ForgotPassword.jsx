@@ -18,6 +18,7 @@ const ForgotPassword = ({ loginType, setForgot }) => {
 
   useEffect(() => {
     if (email.trim().length > 0 && !emailError) {
+      console.log("valid");
       setValid(true);
     } else {
       setValid(false);
@@ -38,7 +39,7 @@ const ForgotPassword = ({ loginType, setForgot }) => {
       setLoading(false);
     } else if (valid && loginType === "institution") {
       setLoading(true);
-      await studentForgotPassword(email);
+      await schoolForgotPassword(email);
       setLoading(false);
     }
   };
@@ -94,7 +95,6 @@ const ForgotPassword = ({ loginType, setForgot }) => {
               loginType === "student" ? "bg-primary2" : "bg-primary3"
             } px-[2.5em] py-[1em] text-white text-[18px] sm:text-[1rem] font-[600] sm:font-[400]`}
             onClick={handleSubmit}
-            disabled={loading && true}
           >
             {loading ? (
               <Loader />
