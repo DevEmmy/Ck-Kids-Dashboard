@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { ArrowLeftOutline } from "heroicons-react";
-import { studentLogin } from "@/services/request";
+import {
+  studentForgotPassword,
+  schoolForgotPassword,
+} from "@/services/request";
 import Loader from "@/AtomicComponents/Loader";
 import { useRouter } from "next/navigation";
 
@@ -31,14 +34,12 @@ const ForgotPassword = ({ loginType, setForgot }) => {
     e.preventDefault();
     if (valid && loginType === "student") {
       setLoading(true);
-      // ENDPOINT FOR SUBMITTING STUDENT PASSWORD RESET DETAILS
-
-      //   setLoading(false);
+      await studentForgotPassword(email);
+      setLoading(false);
     } else if (valid && loginType === "institution") {
       setLoading(true);
-      // ENDPOINT FOR SUBMITTING INSTITUTION PASSWORD RESET DETAILS
-
-      //   setLoading(false);
+      await studentForgotPassword(email);
+      setLoading(false);
     }
   };
   return (
@@ -99,7 +100,7 @@ const ForgotPassword = ({ loginType, setForgot }) => {
               <Loader />
             ) : (
               <>
-                <p>Send reset instruction</p>                
+                <p>Send reset instruction</p>
               </>
             )}
           </button>
