@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { ArrowLeftOutline, ChevronUpOutline } from "heroicons-react";
 import Loader from "@/AtomicComponents/Loader";
 import { setLazyProp } from "next/dist/server/api-utils";
+import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
+import { useRouter } from "next/navigation";
 
 const Payment = ({ type, pay, setPay, amount, body }) => {
   const [paymentDetails, setPaymentDetails] = useState({
@@ -14,40 +16,54 @@ const Payment = ({ type, pay, setPay, amount, body }) => {
   });
 
   const nStd = useRef(null);
-  const [cardValid, setCardValid] = useState(false);
   const [changing, setChanging] = useState(false);
   const [error, setError] = useState(true);
   const [exceedChar, setExceedChar] = useState(false);
-  const [numbValid, setNumbValid] = useState(false);
+  const [cardValid, setCardValid] = useState(false);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const PUBLIC_key = process.env.PUBLIC_KEY;
 
   useEffect(() => {
     if (type === "annum" && body === 1) {
       nStd.current.focus();
     }
+    // console.log(process.env.PUBLIC_KEY);
   }, []);
+
+  const config = {
+    public_key: "FLWPUBK_TEST-99c55ff89b42b17c2c603bce471d308e-X",
+    tx_ref: Date.now(),
+    amount: parseInt(paymentDetails["totalAmount"]),
+    currency: "NGN",
+    payment_options: "card,mobilemoney,ussd",
+    customer: {
+      email: "ridwanfolayimi@gmail.com",
+      phone_number: "08124086854",
+      name: paymentDetails["cardName"],
+    },
+    customizations: {
+      title: "Course Payment",
+      description: "payment",
+      logo: "https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg",
+    },
+  };
+
+  const handleFlutterPayment = useFlutterwave(config);
 
   useEffect(() => {
     if (
-      paymentDetails["cardName"].trim().length > 0 &&
-      paymentDetails["cardNumber"] &&
-      paymentDetails["expDate"] &&
-      paymentDetails["cvv"].length >= 3 &&
-      numbValid
+      paymentDetails["cardName"].trim().length > 0
+      // paymentDetails["cardNumber"] &&
+      // paymentDetails["expDate"] &&
+      // paymentDetails["cvv"].length >= 3 &&
+      // numbValid
     ) {
       setCardValid(true);
       setError(false);
     } else {
       setCardValid(false);
       setError(true);
-    }
-    if (
-      paymentDetails["cardNumber"].length >= 12 &&
-      paymentDetails["cardNumber"].length <= 16
-    ) {
-      setNumbValid(true);
-    } else {
-      setNumbValid(false);
     }
     if (type === "annum") {
       body === 0
@@ -66,22 +82,6 @@ const Payment = ({ type, pay, setPay, amount, body }) => {
           });
     }
   }, [changing]);
-
-  // const restrictCharacters = (name, value, length) => {
-  //   var dummyText = value.split("");
-  //   for (var i = 0; i < value.length; i++) {
-  //     if (value[i] === " ") {
-  //       dummyText.pop();
-  //     }
-  //   }
-  //   if (dummyText.length <= length) {
-  //     setPaymentDetails({ ...paymentDetails, [name]: value });
-  //     setChanging(!changing);
-  //     setExceedChar("");
-  //   } else {
-  //     setExceedChar(name);
-  //   }
-  // };
 
   const acceptNumbersOnly = (name, value, max) => {
     var numeric = /^[0-9]+$/;
@@ -106,17 +106,6 @@ const Payment = ({ type, pay, setPay, amount, body }) => {
       setExceedChar(name);
     }
   };
-
-  const currentDate = new Date();
-  const currentMonth = currentDate.getMonth() + 1; // getMonth() returns 0-11, so add 1 to get 1-12
-  const currentYear = currentDate.getFullYear();
-
-  // format the date as "YYYY-MM"
-  const formattedDate = `${currentYear}-${currentMonth
-    .toString()
-    .padStart(2, "0")}`;
-
-  console.log(formattedDate); // e.g. "2023-04"
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -143,14 +132,26 @@ const Payment = ({ type, pay, setPay, amount, body }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (body === 0) {
-      cardValid && numbValid && setLoading(true);
-      // IMPLEMENT PAYMENT ENDPOINT
-    } else if (body === 1) {
-      cardValid &&
-        numbValid &&
-        paymentDetails["numberOfStudents"] &&
-        setLoading(true);
-      // IMPLEMENT PAYMENT ENDPOINT
+      setLoading(true);
+      handleFlutterPayment({
+        callback: (response) => {
+          console.log(response);
+          closePaymentModal(); // this will close the modal programmatically
+        },
+        onClose: () => {},
+      });
+      setLoading(false);
+      router.push("/signin");
+    } else if (body === 1 && paymentDetails["numberOfStudents"]) {
+      setLoading(true);
+      handleFlutterPayment({
+        callback: (response) => {
+          console.log(response);
+          closePaymentModal(); // this will close the modal programmatically
+        },
+        onClose: () => {},
+      });
+      router.push("/signin");
     }
   };
 
@@ -171,18 +172,18 @@ const Payment = ({ type, pay, setPay, amount, body }) => {
           {type === "month" ? (
             <>
               <div className="cflexss gap-[11px]">
-                <p>Student Name</p>
+                {/* <p>Student Name</p> */}
                 <p className="text-[28px] lg:text-[24px] text-[#090914] ls:text-[20px] font-[700]">
-                  Annette Black
+                  Student Payment
                 </p>
               </div>
             </>
           ) : (
             <>
               <div className="cflexss gap-[11px]">
-                <p>School Name</p>
+                {/* <p>School Name</p> */}
                 <p className="text-[28px] lg:text-[24px] text-[#090914] ls:text-[20px] font-[700]">
-                  Solon High School
+                  School Payment
                 </p>
               </div>
             </>
@@ -224,16 +225,8 @@ const Payment = ({ type, pay, setPay, amount, body }) => {
                   onChange={handleChange}
                 />
               </div>
-              {/* {emailError && (
-                <p className="err">* Fill in a valid email address</p>
-              )} */}
             </div>
           )}
-
-          <div className="font-[700] text-[#090914] w-full flexsm gap-[20px]">
-            <p>Do you have a promo code? </p>
-            <ChevronUpOutline size="16px" />
-          </div>
 
           {type === "annum" && (
             <div className="w-full cflexss gap-[11px]">
@@ -304,64 +297,9 @@ const Payment = ({ type, pay, setPay, amount, body }) => {
                 </p>
               )}
             </div>
-            <div className="cflexss gap-[11px] w-[30%]">
-              <p>Expiry</p>
-              <div className="inputCont2">
-                <input
-                  className="input"
-                  type="month"
-                  name="expDate"
-                  placeholder="MM/YY"
-                  value={paymentDetails["expDate"]}
-                  onChange={handleChange}
-                />
-              </div>
-              {exceedChar === "expDate" && (
-                <p className="text-red-800 text-[12px]">
-                  *can't accept expired card
-                </p>
-              )}
-            </div>
           </div>
 
-          <div className="w-full flexbs gap-[20px] flex-wrap">
-            <div className="cflexss gap-[11px] w-[60%]">
-              <p>Card number</p>
-              <div className="inputCont2">
-                <input
-                  className="input"
-                  type="text"
-                  name="cardNumber"
-                  placeholder="1234 1234 1234 1234"
-                  value={paymentDetails["cardNumber"]}
-                  onChange={handleChange}
-                />
-              </div>
-              {!numbValid && (
-                <p className="text-red-800 text-[12px]">
-                  *Credit Card digits must be within the range of 12 and 16.
-                </p>
-              )}
-            </div>
-            <div className="cflexss gap-[11px] w-[30%]">
-              <p>CVV</p>
-              <div className="inputCont2">
-                <input
-                  className="input"
-                  type="password"
-                  name="cvv"
-                  value={paymentDetails["cvv"]}
-                  onChange={handleChange}
-                  minLength="12"
-                />
-              </div>
-              {exceedChar === "cvv" && (
-                <p className="text-red-800 text-[12px]">
-                  *can't exceed 7 characters
-                </p>
-              )}
-            </div>
-          </div>
+          <div className="w-full flexbs gap-[20px] flex-wrap"></div>
           {body === 0 ? (
             <>
               {error && (
