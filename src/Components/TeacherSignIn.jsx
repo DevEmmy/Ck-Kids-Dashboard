@@ -10,8 +10,10 @@ import { studentLogin, teacherLogin } from "@/services/request";
 import Cookies from "js-cookie";
 import Loader from "@/AtomicComponents/Loader";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
 
 const TeacherSignIn = ({ setLoginType }) => {
+  const dispatch = useDispatch();
   const eMail = useRef(null);
   const [valid, setValid] = useState(false);
   const [changing, setChanging] = useState(false);
@@ -51,14 +53,15 @@ const TeacherSignIn = ({ setLoginType }) => {
     if (valid) {
       setLoading(true);
       // ENDPOINT FOR SUBMITTING LOGIN DETAILS
-        await teacherLogin(
-          loginDetails.email,
-          loginDetails.password,
-          router
-        ).then((resp) => {
-          console.log(resp);
-        });
-        setLoading(false);
+      await teacherLogin(
+        dispatch,
+        loginDetails.email,
+        loginDetails.password,
+        router
+      ).then((resp) => {
+        console.log(resp);
+      });
+      setLoading(false);
     }
   };
   return (
@@ -199,7 +202,7 @@ const TeacherSignIn = ({ setLoginType }) => {
                   </>
                 )}
               </button>
-            </form>            
+            </form>
             <div className="flexsm flex-wrap gap-[12px] font-[400] text-[16px] sm:text-[1rem] text-[#344054] w-full">
               <div className="box">
                 <div className="w-[1.5em] sm:w-[1.2em]">

@@ -1,6 +1,11 @@
 import axios from "axios";
 import { notify, notifyError } from "./toastify";
 import { parse } from "cookie";
+import {
+  updateStudentDetails,
+  updateTeacherDetails,
+  updateSchoolDetails,
+} from "@/redux/features/register/registerSlice";
 //"http://localhost:4030";
 
 const api = "https://ck-onboarding.onrender.com";
@@ -36,7 +41,7 @@ const setConfig = () => {
   return config;
 };
 
-export const studentLogin = async (email, password, router) => {
+export const studentLogin = async (dispatch, email, password) => {
   await axios
     .post(
       `${api}/student/sign-in`,
@@ -50,13 +55,11 @@ export const studentLogin = async (email, password, router) => {
       }
     )
     .then((response) => {
-      console.log(response);
-      const { student } = response.data.payload;
-      console.log(response.data.payload.token);
       document.cookie = "token=" + response.data.payload.token;
-      localStorage.setItem("student", JSON.stringify(student));
-      console.log(student);
-      router.push("/kids-dashboard");
+      if (response.data.payload) {
+        console.log("dispatching-student-login");
+        dispatch(updateStudentDetails(response.data.payload));
+      }      
 
       notify(response.data.message);
       // window.location.href = "/kids-dashboard"
@@ -242,19 +245,18 @@ export const teacherLogin = async (email, password, router) => {
     });
 };
 
-export const schoolLogin = async (email, password, router) => {
+export const schoolLogin = async (dispatch, email, password) => {
   await axios
     .post(`${api}/school/sign-in`, {
       email,
       password,
     })
-    .then((response) => {
-      console.log(response);
-      const { school } = response.data.payload;
-      document.cookie = "token=" + response.data.payload.token;
-      localStorage.setItem("school", JSON.stringify(school));
-
-      router.push("/schools-dashboard");
+    .then((response) => {      
+      if (response.data.payload) {
+        console.log("dispatching-school-login")
+        dispatch(updateSchoolDetails(response.data.payload));        
+      }      
+      document.cookie = "token=" + response.data.payload.token;            
 
       // notify(response.data.message);
     })
@@ -269,12 +271,12 @@ export const schoolLogin = async (email, password, router) => {
 };
 
 export const studentRegister = async (
+  dispatch,
   fullName,
   email,
   productKey,
   password
 ) => {
-  console.log(fullName);
   await axios
     .post(
       `${api}/student/sign-up`,
@@ -292,7 +294,8 @@ export const studentRegister = async (
       console.log(response.data);
       notify(response.data.message);
       if (response.data.payload) {
-        window.location.href = "/signin";
+        console.log("dispatching-student");
+        dispatch(updateStudentDetails(response.data.payload));
       }
     })
     .catch((err) => {
@@ -305,7 +308,7 @@ export const studentRegister = async (
     });
 };
 
-export const schoolRegister = async (schoolName, email, password) => {
+export const schoolRegister = async (dispatch, schoolName, email, password) => {
   await axios
     .post(`${api}/school/sign-up`, {
       email,
@@ -316,7 +319,8 @@ export const schoolRegister = async (schoolName, email, password) => {
       console.log(response.data);
       notify(response.data.message);
       if (response.data.payload) {
-        window.location.href = "/signin";
+        console.log("dispatching-school");
+        dispatch(updateSchoolDetails(response.data.payload));
       }
     })
     .catch((err) => {
@@ -474,11 +478,14 @@ export const getAllVideos = async () => {
   return data;
 };
 
-export const onBoardTeacher = async (firstName, lastName, email) => {
+export const onBoardTeacher = async (dispatch, firstName, lastName, email) => {
   await axios
     .post(`${api}/teacher/sign-up`, { firstName, lastName, email }, setConfig())
     .then((response) => {
-      console.log(response);
+      if (response.data.payload) {
+        console.log("dispatching-teacher-login");
+        dispatch(updateTeacherDetails(response.data.payload));
+      }
       notify(response.data.message);
     })
     .catch((err) => {

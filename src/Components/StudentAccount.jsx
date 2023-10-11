@@ -11,8 +11,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { studentRegister } from "@/services/request";
 import Loader from "@/AtomicComponents/Loader";
+import { useDispatch } from "react-redux";
 
 const StudentAccount = ({ setAccountType }) => {
+  const dispatch = useDispatch()
   const EMAIL_REGEX = /^(\w+)([\.\-]?\w+)*\@(\w+)([\.\-]?\w+)*(\.[a-z|A-Z]+)$/;
   const fName = useRef(null);
   const [valid, setValid] = useState(false);
@@ -98,12 +100,13 @@ const StudentAccount = ({ setAccountType }) => {
     if (valid && !passError) {
       // ENDPOINT FOR SUBMITTING USER DETAILS
       setLoading(true);
-      await studentRegister(
+      await studentRegister(  
+        dispatch,      
         userDetails.fullName,
         userDetails.email,
         userDetails.productKey,
         userDetails.password
-      );
+      );      
       setLoading(false);
       console.log(userDetails);
     }

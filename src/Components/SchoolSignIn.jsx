@@ -10,8 +10,10 @@ import { schoolLogin, studentLogin } from "@/services/request";
 import Cookies from "js-cookie";
 import Loader from "@/AtomicComponents/Loader";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
 
 const SchoolSignIn = ({ setLoginType, setForgot }) => {
+  const dispatch = useDispatch();
   const eMail = useRef(null);
   const [valid, setValid] = useState(false);
   const [changing, setChanging] = useState(false);
@@ -50,7 +52,7 @@ const SchoolSignIn = ({ setLoginType, setForgot }) => {
     if (valid) {
       setLoading(true);
       // ENDPOINT FOR SUBMITTING LOGIN DETAILS
-      await schoolLogin(loginDetails.email, loginDetails.password, router);
+      await schoolLogin(dispatch, loginDetails.email, loginDetails.password);
       setLoading(false);
     }
   };
