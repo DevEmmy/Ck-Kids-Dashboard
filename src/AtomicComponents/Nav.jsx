@@ -14,9 +14,11 @@ import {
 } from "heroicons-react";
 import Profile from "./Profile";
 import Notification from "@/Components/Notification";
-import { logOut } from "@/services/request";
+import { logOutStudents } from "@/redux/features/register/registerSlice";
+import { useDispatch } from "react-redux";
 
 const Nav = ({ active = 0, student }) => {
+  const dispatch = useDispatch();
   const [profMenu, setProfMenu] = useState(false);
   const [profile, setProfile] = useState(false);
   const [notification, setNotification] = useState(false);
@@ -72,7 +74,9 @@ const Nav = ({ active = 0, student }) => {
       name: "Log Out",
       link: "/signin",
       icon: <LogoutOutline color="black" size={20} />,
-      action: logOut,
+      action: () => {
+        dispatch(logOutStudents());
+      },
     },
   ];
   return (
