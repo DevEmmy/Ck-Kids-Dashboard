@@ -10,28 +10,20 @@ import { useSelector } from "react-redux";
 const page = () => {
   const router = useRouter();
 
-  // const [school, setSchool] = useState();
-
-  useSelector((state) => {
-    if (!state.schoolDetails) {
+  const [school, setSchool] = useState();
+  const isAuthorized = useSelector(state => state.schoolDetails); 
+  useEffect(() => {       
+    console.log(isAuthorized)
+    if (!isAuthorized) {
       router.push("/signin");
-      notifyError("UnAuthorized you are being redirected");
+      notifyError("unAuthorized you are being redirected");
     }
+    setSchool(isAuthorized.school);
   }, []);
-
-  // useEffect(() => {
-  //   let data = fetchFromLS("school")
-  //   setSchool(data);
-
-  //   if(!data){
-  //     router.push("/signin")
-  //     // notifyError("UnAuthorized")
-  //   }
-  // }, []);
 
   return (
     <>
-      <Dashboard school={school} />          
+      <Dashboard school={school} />
     </>
   );
 };

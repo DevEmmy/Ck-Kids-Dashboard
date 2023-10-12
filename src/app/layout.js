@@ -1,7 +1,11 @@
+"use client"
+
 import { ToastContainer } from "react-toastify";
 import "./globals.css";
 import { Open_Sans } from "next/font/google";
 import { ReduxProvider } from "@/redux/provider";
+import { Provider } from "react-redux";
+import { store } from "@/redux/store";
 
 const inter = Open_Sans({ subsets: ["latin"] });
 
@@ -15,7 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <ReduxProvider>{children}</ReduxProvider>
+        <Provider store={store}>{children}</Provider>
         <ToastContainer />
       </body>
     </html>

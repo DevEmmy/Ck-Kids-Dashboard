@@ -59,7 +59,7 @@ export const studentLogin = async (dispatch, email, password) => {
       if (response.data.payload) {
         console.log("dispatching-student-login");
         dispatch(updateStudentDetails(response.data.payload));
-      }      
+      }
 
       notify(response.data.message);
       // window.location.href = "/kids-dashboard"
@@ -251,12 +251,12 @@ export const schoolLogin = async (dispatch, email, password) => {
       email,
       password,
     })
-    .then((response) => {      
+    .then((response) => {
       if (response.data.payload) {
-        console.log("dispatching-school-login")
-        dispatch(updateSchoolDetails(response.data.payload));        
-      }      
-      document.cookie = "token=" + response.data.payload.token;            
+        console.log("dispatching-school-login");
+        dispatch(updateSchoolDetails(response.data.payload));
+      }
+      document.cookie = "token=" + response.data.payload.token;
 
       // notify(response.data.message);
     })
@@ -365,9 +365,14 @@ export const logOut = async () => {
 };
 
 export const fetchFromLS = (user) => {
-  let student = JSON.parse(localStorage.getItem(user));
-  console.log(student);
-  return student;
+  let data;
+  if (localStorage.getItem(user)) {
+    data = JSON.parse(localStorage.getItem(user));
+    console.log(data);
+  } else {
+    data = "";
+  }
+  return data;
 };
 
 export const uploadCollection = async (

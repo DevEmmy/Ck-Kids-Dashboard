@@ -7,26 +7,18 @@ import { notifyError } from "@/services/toastify";
 import { useSelector } from "react-redux";
 
 export default function Home() {
-  // const [teacher, setTeacher] = useState({});
+  const [teacher, setTeacher] = useState();
   const router = useRouter();
 
-  useSelector((state) => {
-    if (!state.teacherDetails) {
+  const isAuthorized = useSelector((state) => state.teacherDetails);
+  useEffect(() => {
+    console.log(isAuthorized);
+    if (!isAuthorized) {
       router.push("/teachers-signin");
-      notifyError("UnAuthorized you are being redirected");
+      notifyError("unAuthorized you are being redirected");
     }
+    setTeacher(isAuthorized.teacher);
   }, []);
-
-  // useEffect(() => {
-  //   let data = fetchFromLS("teacher");
-  //   setTeacher(data);
-  //   console.log(data);
-
-  //   if (!data) {
-  //     router.push("/teachers-signin");
-  //     // notifyError("UnAuthorized")
-  //   }
-  // }, []);
 
   return (
     <>

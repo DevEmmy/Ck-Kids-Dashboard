@@ -1,9 +1,10 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { fetchFromLS } from "@/services/request";
 
 const initialState = {
-  studentDetails: {},
-  teacherDetails: {},
-  schoolDetails: {},
+  studentDetails: fetchFromLS("student"),
+  teacherDetails: fetchFromLS("teacher"),
+  schoolDetails: fetchFromLS("school"),
 };
 
 export const registerSlice = createSlice({
@@ -13,22 +14,25 @@ export const registerSlice = createSlice({
     updateStudentDetails: (state, action) => {
       const update = action.payload;
       state.studentDetails = update;
+      localStorage.setItem("student", JSON.stringify(update));
       console.log(update);
       window.location.href = "/kids-dashboard";
     },
     resetStudentDetails: (state, action) => {
-      state.studentDetails = initialState.studentDetails;
+      state.studentDetails = "";
       window.location.href = "/signin";
     },
     updateTeacherDetails: (state, action) => {
       const update = action.payload;
       state.teacherDetails = update;
+      localStorage.setItem("teacher", JSON.stringify(update));
       console.log(update);
       window.location.href = "/teachers-dashboard";
     },
     updateSchoolDetails: (state, action) => {
       const update = action.payload;
       state.schoolDetails = update;
+      localStorage.setItem("school", JSON.stringify(update));
       console.log(update);
       window.location.href = "/schools-dashboard";
     },

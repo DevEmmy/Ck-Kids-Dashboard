@@ -89,8 +89,8 @@ const Support = () => {
 
   return (
     <>
-      <Nav student={student}/>
-      <div className="flexbm w-full lf:justify-center px-xpadding lf:gap-[50px] sm1:px-[1.5em] py-[4em] sm1:pb-[2em] font-[400] text-[20px] lg:text-[18px] ls:text-[16px] sm1:pt-[0em] bg-white h-full lf:flex-wrap">
+      <Nav student={student} />
+      <div className="flexbm w-full lf:justify-center pt-[100px] sm:pt-[60px] px-xpadding lf:gap-[50px] sm1:px-[1.5em] py-[4em] sm1:pb-[2em] font-[400] text-[20px] lg:text-[18px] ls:text-[16px] sm1:pt-[0em] bg-white h-full lf:flex-wrap">
         <div className="cflexbs h-full w-[50%] lf:w-full gap-[170px] lg:gap-[185px] ls:gap-[200px] lf:gap-0 flex-shrink sm1:pb-[2em] text-sec3 sm1:text-[20px]">
           <div className="w-full cflexss gap-[20px]">
             <div
