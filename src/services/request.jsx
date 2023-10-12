@@ -365,14 +365,15 @@ export const logOut = async () => {
 };
 
 export const fetchFromLS = (user) => {
-  let data;
-  if (localStorage.getItem(user)) {
-    data = JSON.parse(localStorage.getItem(user));
-    console.log(data);
-  } else {
-    data = "";
+  try {
+    const data = localStorage.getItem(user);
+    if (data !== null) {
+      return JSON.parse(data);
+    }
+  } catch (error) {
+    console.error("Error fetching data from localStorage:", error);
   }
-  return data;
+  return "";
 };
 
 export const uploadCollection = async (
