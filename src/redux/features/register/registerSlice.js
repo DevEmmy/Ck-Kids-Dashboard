@@ -18,8 +18,9 @@ export const registerSlice = createSlice({
       console.log(update);
       window.location.href = "/kids-dashboard";
     },
-    resetStudentDetails: (state, action) => {
+    logOutStudents: (state, action) => {
       state.studentDetails = "";
+      localStorage.clear();
       window.location.href = "/signin";
     },
     updateTeacherDetails: (state, action) => {
@@ -29,6 +30,11 @@ export const registerSlice = createSlice({
       console.log(update);
       window.location.href = "/teachers-dashboard";
     },
+    logOutTeachers: (state, action) => {
+      state.teacherDetails = "";
+      localStorage.clear();
+      window.location.href = "/teachers-signin";
+    },
     updateSchoolDetails: (state, action) => {
       const update = action.payload;
       state.schoolDetails = update;
@@ -36,14 +42,21 @@ export const registerSlice = createSlice({
       console.log(update);
       window.location.href = "/schools-dashboard";
     },
+    logOutSchools: (state, action) => {
+      state.schoolDetails = "";
+      localStorage.clear();
+      window.location.href = "/signin";
+    },
   },
 });
 
 export const {
   updateStudentDetails,
-  resetStudentDetails,
   updateTeacherDetails,
   updateSchoolDetails,
+  logOutSchools,
+  logOutStudents,
+  logOutTeachers,
 } = registerSlice.actions;
 
 export default registerSlice.reducer;

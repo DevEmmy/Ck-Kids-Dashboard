@@ -23,8 +23,11 @@ import Overview from "./Overview";
 import Teachers from "./Teachers";
 import Courses from "../Teachers-Dashboard/Courses";
 import Gamification from "../Admin-Dashboard/Gamification";
+import { logOutSchools } from "@/redux/features/register/registerSlice";
+import { useDispatch } from "react-redux";
 
 const Dashboard = ({ school }) => {
+  const dispatch = useDispatch();
   const [view, setView] = useState("Overview");
   const Nav = [
     {
@@ -73,7 +76,7 @@ const Dashboard = ({ school }) => {
       link: "/signin",
       icon: <LogoutOutline color="black" size={20} />,
       action: () => {
-        localStorage.clear();
+        dispatch(logOutSchools());
       },
     },
   ];
