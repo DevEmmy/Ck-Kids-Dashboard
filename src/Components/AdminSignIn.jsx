@@ -10,7 +10,7 @@ import Cookies from "js-cookie";
 import Loader from "@/AtomicComponents/Loader";
 import { useRouter } from "next/navigation";
 
-const AdminSignIn = ({ setForgot }) => {
+const AdminSignIn = () => {
   const eMail = useRef(null);
   const [valid, setValid] = useState(false);
   const [changing, setChanging] = useState(false);
@@ -124,15 +124,7 @@ const AdminSignIn = ({ setForgot }) => {
             <div className="flexmm gap-[12px]">
               <input type="checkbox" />
               <p>Remember me</p>
-            </div>
-            <p
-              className="text-sec1 cursor-pointer"
-              onClick={() => {
-                setForgot(true);
-              }}
-            >
-              Forgot password?
-            </p>
+            </div>            
           </div>
 
           <button
