@@ -1,27 +1,30 @@
 "use client";
 import SetPassword from "@/Components/SetPassword";
+import { useRouter } from "next/router";
 
-export default function Home() {
-  // const params = new Proxy(new URLSearchParams(window.location.search), {
-  //   get: (searchParams, prop) => searchParams.get(prop),
-  // });
-
-  // let token = params.token;
-  // let type = params.type;
+export default function Home() { 
+  const router = useRouter()
+  function parseURLParameters(url) {
+    const params = {};
+    const searchParams = url.split('?')[1];
+    if (searchParams) {
+      searchParams.split('&').forEach(param => {
+        const [key, value] = param.split('=');
+        params[key] = value;
+      });
+    }
+    return params;
+  }
+  
+  const currentURL = router.asPath;
+  const parameters = parseURLParameters(currentURL);
+  
+  const token = parameters['token'];
+  const type = parameters['type'];
+  
   return (
     <>
-      {/* <SetPassword token={token} type={parseInt(type)} /> */}
-      <SetPassword token={"hjghjfh"} type={2} />
+      <SetPassword token={token} type={parseInt(type)} />      
     </>
   );
 }
-
-// "use client";
-// import Price from "@/Components/Price";
-// export default function Home() {
-//   return (
-//     <>
-//       <Price />
-//     </>
-//   );
-// }
