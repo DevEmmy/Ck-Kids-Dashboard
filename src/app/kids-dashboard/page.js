@@ -3,7 +3,6 @@ import { useRouter } from "next/navigation";
 import MainPage from "@/Components/Kids-Dashboard/MainPage";
 import { notifyError } from "@/services/toastify";
 import { useEffect, useState } from "react";
-import { fetchFromLS } from "@/services/request";
 
 import { useSelector } from "react-redux";
 
@@ -12,8 +11,7 @@ export default function Home() {
   const router = useRouter();
 
   const isAuthorized = useSelector((state) => state.studentDetails);
-  useEffect(() => {
-    console.log(isAuthorized);
+  useEffect(() => {    
     if (!isAuthorized) {
       router.push("/signin");
       notifyError("unAuthorized you are being redirected");

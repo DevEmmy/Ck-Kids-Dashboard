@@ -60,9 +60,7 @@ export const studentLogin = async (dispatch, email, password) => {
         console.log("dispatching-student-login");
         dispatch(updateStudentDetails(response.data.payload));
       }
-
       notify(response.data.message);
-      // window.location.href = "/kids-dashboard"
     })
     .catch((err) => {
       if (err.response.data.message) {
@@ -224,16 +222,12 @@ export const teacherLogin = async (email, password, router) => {
       }
     )
     .then((response) => {
-      console.log(response);
-      const { teacher } = response.data.payload;
-      console.log(response.data.payload.token);
-      document.cookie = "token=" + response.data.payload.token;
-      localStorage.setItem("teacher", JSON.stringify(teacher));
-      console.log(teacher);
-      router.push("/teachers-dashboard");
-
-      // notify(response.data.message);
-      // window.location.href = "/kids-dashboard"
+      console.log(response);      
+      if (response.data.payload) {
+        console.log("dispatching-teacher-login");
+        dispatch(updateTeacherDetails(response.data.payload));
+      }      
+      document.cookie = "token=" + response.data.payload.token;                  
     })
     .catch((err) => {
       if (err.response.data.message) {
