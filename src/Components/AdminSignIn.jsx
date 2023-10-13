@@ -6,7 +6,6 @@ import {
 } from "heroicons-react";
 import Image from "next/image";
 import { adminLogin } from "@/services/request";
-import Cookies from "js-cookie";
 import Loader from "@/AtomicComponents/Loader";
 import { useRouter } from "next/navigation";
 

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import NavBar from "@/AtomicComponents/NavBar";
 import Footer from "@/AtomicComponents/Footer";
-import { ArrowRightOutline } from "heroicons-react";
 import Button from "@/AtomicComponents/Button";
 import Payment from "./Payment";
 
