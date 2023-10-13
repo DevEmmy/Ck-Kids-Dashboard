@@ -43,7 +43,7 @@ const About = () => {
           </p>
 
           <div className="flexss sm1:justify-center gap-[10px] font-[600] text-[19px] lg:text-[15px] ls:text-[14px] flex-wrap sm:pt-[1em] sm1:w-full">
-            <a href="/pricing" className="sm:flex-grow">
+            <a href="/signup" className="sm:flex-grow">
               <Button className="w-full border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
                 <p>Enroll now</p> <FaArrowRight size="1em" />
               </Button>
@@ -111,7 +111,7 @@ const About = () => {
               explore fields like aerospace, astronomy, robotics, computer
               programming, and systems theory.
             </p>
-            <Link href="/pricing" className="flex-grow">
+            <Link href="/signup" className="flex-grow">
               <Button
                 className={
                   "flex items-center w-fit gap-[10px] rounded-full px-[2.5em] py-[1em] text-white bg-primary1 sm:w-full sm:justify-center"
@@ -209,7 +209,7 @@ const About = () => {
               nurturing curious minds that will shape the future of our world.
             </p>
             <div className=" block flexsm gap-3 text-[0.8em] font-[700] sm:items-start pt-[1em] sm:w-full flex-wrap sm:hidden">
-              <a href="/pricing" className="flex-grow">
+              <a href="/signup" className="flex-grow">
                 <Button className="w-full border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
                   <p>Enroll now</p> <FaArrowRight size="1em" />
                 </Button>
@@ -224,7 +224,7 @@ const About = () => {
         </PictureTextDivider>
         <div className="hidden sm:block w-full sm:px-xpadding">
           <div className="flexss sm1:justify-center gap-[10px] font-[600] text-[19px] lg:text-[15px] ls:text-[14px] flex-wrap bg-[#FAFAFA] pb-[5em] sm1:w-full">
-            <a href="/pricing" className="flex-grow">
+            <a href="/signup" className="flex-grow">
               <Button className="w-full border-[0.2em] border-sec1 bg-sec1 text-white flexmm gap-[10px] px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
                 <p>Enroll now</p> <FaArrowRight size="1em" />
               </Button>
