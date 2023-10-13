@@ -5,53 +5,52 @@ import Loader from "@/AtomicComponents/Loader";
 import { useRouter } from "next/navigation";
 
 const SigninAdmin = () => {
-    const eMail = useRef(null);
-    const [valid, setValid] = useState(false);
-    const [changing, setChanging] = useState(false);
-    const [emailError, setEmailError] = useState(false);
-    const [hide, setHide] = useState(true);
-    const [loading, setLoading] = useState(false);
-    const [loginDetails, setLoginDetails] = useState({
-      email: "",
-      password: "",
-    });
-    const router = useRouter();
+    // const eMail = useRef(null);
+    // const [valid, setValid] = useState(false);
+    // const [changing, setChanging] = useState(false);    
+    // const [hide, setHide] = useState(true);
+    // const [loading, setLoading] = useState(false);
+    // const [loginDetails, setLoginDetails] = useState({
+    //   email: "",
+    //   password: "",
+    // });
+    // const router = useRouter();
   
-    useEffect(() => {
-      eMail.current.focus();
-    }, []);
+    // useEffect(() => {
+    //   eMail.current.focus();
+    // }, []);
   
-    useEffect(() => {
-      if (
-        loginDetails["email"].trim().length > 0 &&
-        loginDetails["password"].trim().length > 0
-      ) {
-        setValid(true);
-      } else {
-        setValid(false);
-      }
-    }, [changing]);
+    // useEffect(() => {
+    //   if (
+    //     loginDetails["email"].trim().length > 0 &&
+    //     loginDetails["password"].trim().length > 0
+    //   ) {
+    //     setValid(true);
+    //   } else {
+    //     setValid(false);
+    //   }
+    // }, [changing]);
   
-    const handleChange = (e) => {
-      var name = e.target.name;
-      var value = e.target.value;
-      setLoginDetails({ ...loginDetails, [name]: value });
-      setChanging(!changing);
-    };
+    // const handleChange = (e) => {
+    //   var name = e.target.name;
+    //   var value = e.target.value;
+    //   setLoginDetails({ ...loginDetails, [name]: value });
+    //   setChanging(!changing);
+    // };
   
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      if (valid) {
-        setLoading(true);
-        // ENDPOINT FOR SUBMITTING LOGIN DETAILS
-        // await adminLogin(loginDetails.email, loginDetails.password, router);
-        // setLoading(false);
-      }
-    };
+    // const handleSubmit = async (e) => {
+    //   e.preventDefault();
+    //   if (valid) {
+    //     setLoading(true);
+    //     // ENDPOINT FOR SUBMITTING LOGIN DETAILS
+    //     // await adminLogin(loginDetails.email, loginDetails.password, router);
+    //     // setLoading(false);
+    //   }
+    // };
     return (
       <>
         <h1>Admin Signin</h1>
-        <div className="cflexss w-full px-[30%] py-[5%] sm:py-[10%] sm:px-[7%] h-full gap-[28px]">
+        {/* <div className="cflexss w-full px-[30%] py-[5%] sm:py-[10%] sm:px-[7%] h-full gap-[28px]">
           <h1>ADMIN SIGNIN</h1>
           <div className="w-full flexmm gap-[12px]">
             <h1 className="text-[1.7rem] font-[700] sm:font-[800] text-sec3">
@@ -71,8 +70,7 @@ const SigninAdmin = () => {
                   ref={eMail}
                   onChange={handleChange}
                 />
-              </div>
-              {emailError && <p className="err">* Fill in a valid email</p>}
+              </div>              
             </div>
   
             <div className="sect">
@@ -147,7 +145,7 @@ const SigninAdmin = () => {
               <p>Sign in with Outlook</p>
             </div>
           </div>
-        </div>
+        </div> */}
       </>
     );
   };

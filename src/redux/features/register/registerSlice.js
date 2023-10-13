@@ -1,5 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchFromLS } from "@/services/request";
+// import { fetchFromLS } from "@/services/request";
+
+const fetchFromLS = (user) => {
+  try {
+    const data = localStorage.getItem(user);
+    if (data !== null) {
+      return JSON.parse(data);
+    }
+  } catch (error) {
+    console.error("Error fetching data from localStorage:", error);
+  }
+  return "";
+};
 
 const initialState = {
   studentDetails: fetchFromLS("student"),

@@ -10,18 +10,6 @@ import {
 
 const api = "https://ck-onboarding.onrender.com";
 
-export const fetchFromLS = (user) => {
-  try {
-    const data = localStorage.getItem(user);
-    if (data !== null) {
-      return JSON.parse(data);
-    }
-  } catch (error) {
-    console.error("Error fetching data from localStorage:", error);
-  }
-  return "";
-};
-
 function getCookie(cookieName) {
   const name = cookieName + "=";
   const decodedCookie = decodeURIComponent(document.cookie);
