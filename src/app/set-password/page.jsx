@@ -1,5 +1,5 @@
 "use client";
-import SetPassword from "@/Components/SetPassword";
+// import SetPassword from "@/Components/SetPassword";
 
 // export default function Home() {
 //   const params = new Proxy(new URLSearchParams(window.location.search), {
