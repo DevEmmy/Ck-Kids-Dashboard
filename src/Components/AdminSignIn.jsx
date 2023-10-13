@@ -1,9 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import {
-  EyeOutline,
-  EyeOffOutline,
-  ArrowRightOutline,  
-} from "heroicons-react";
+import { EyeOutline, EyeOffOutline, ArrowRightOutline } from "heroicons-react";
 import Image from "next/image";
 import { adminLogin } from "@/services/request";
 import Loader from "@/AtomicComponents/Loader";
@@ -23,7 +19,7 @@ const AdminSignIn = () => {
   const router = useRouter();
 
   useEffect(() => {
-    eMail.current.focus();
+    // eMail.current.focus();
   }, []);
 
   useEffect(() => {
@@ -49,17 +45,8 @@ const AdminSignIn = () => {
     if (valid) {
       setLoading(true);
       // ENDPOINT FOR SUBMITTING LOGIN DETAILS
-      await adminLogin(
-        loginDetails.email,
-        loginDetails.password,
-        router
-      ).then((resp) => {
-        console.log(resp);
-      });
+      await adminLogin(loginDetails.email, loginDetails.password, router);
       setLoading(false);
-    }
-    else{
-      router.push("/admin-signin")
     }
   };
   return (
@@ -80,7 +67,7 @@ const AdminSignIn = () => {
                 name="email"
                 placeholder="E.g annette.black@example.com"
                 value={loginDetails["email"]}
-                ref={eMail}
+                // ref={eMail}
                 onChange={handleChange}
               />
             </div>
@@ -126,7 +113,7 @@ const AdminSignIn = () => {
             <div className="flexmm gap-[12px]">
               <input type="checkbox" />
               <p>Remember me</p>
-            </div>            
+            </div>
           </div>
 
           <button
@@ -144,7 +131,7 @@ const AdminSignIn = () => {
               </>
             )}
           </button>
-        </form>        
+        </form>
         <div className="flexsm flex-wrap gap-[12px] font-[400] text-[16px] sm:text-[1rem] text-[#344054] w-full">
           <div className="box">
             <div className="w-[1.5em] sm:w-[1.2em]">
