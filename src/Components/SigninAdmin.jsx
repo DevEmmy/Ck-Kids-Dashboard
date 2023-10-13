@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { EyeOutline, EyeOffOutline, ArrowRightOutline } from "heroicons-react";
 import { adminLogin } from "@/services/request";
 import Loader from "@/AtomicComponents/Loader";
@@ -18,7 +18,7 @@ const SigninAdmin = () => {
     const router = useRouter();
   
     useEffect(() => {
-      // eMail.current.focus();
+      eMail.current.focus();
     }, []);
   
     useEffect(() => {
@@ -68,7 +68,7 @@ const SigninAdmin = () => {
                   name="email"
                   placeholder="E.g annette.black@example.com"
                   value={loginDetails["email"]}
-                  // ref={eMail}
+                  ref={eMail}
                   onChange={handleChange}
                 />
               </div>

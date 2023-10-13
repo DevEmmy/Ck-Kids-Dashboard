@@ -10,6 +10,18 @@ import {
 
 const api = "https://ck-onboarding.onrender.com";
 
+export const fetchFromLS = (user) => {
+  try {
+    const data = localStorage.getItem(user);
+    if (data !== null) {
+      return JSON.parse(data);
+    }
+  } catch (error) {
+    console.error("Error fetching data from localStorage:", error);
+  }
+  return "";
+};
+
 function getCookie(cookieName) {
   const name = cookieName + "=";
   const decodedCookie = decodeURIComponent(document.cookie);
@@ -222,12 +234,12 @@ export const teacherLogin = async (email, password, router) => {
       }
     )
     .then((response) => {
-      console.log(response);      
+      console.log(response);
       if (response.data.payload) {
         console.log("dispatching-teacher-login");
         dispatch(updateTeacherDetails(response.data.payload));
-      }      
-      document.cookie = "token=" + response.data.payload.token;                  
+      }
+      document.cookie = "token=" + response.data.payload.token;
     })
     .catch((err) => {
       if (err.response.data.message) {
@@ -356,18 +368,6 @@ export const logOut = async () => {
   });
   localStorage.clear();
   document.cookie = "token=" + "";
-};
-
-export const fetchFromLS = (user) => {
-  try {
-    const data = localStorage.getItem(user);
-    if (data !== null) {
-      return JSON.parse(data);
-    }
-  } catch (error) {
-    console.error("Error fetching data from localStorage:", error);
-  }
-  return "";
 };
 
 export const uploadCollection = async (
