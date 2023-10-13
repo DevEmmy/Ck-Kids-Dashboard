@@ -21,11 +21,7 @@ const NavBar = ({ active = 0, background }) => {
     {
       title: "Price",
       link: "/pricing",
-    },
-    {
-      title: "Reset",
-      link: "/reset-password",
-    },
+    },    
   ];
 
   const [showNav, setShowNav] = useState(false);
