@@ -1,10 +1,13 @@
 "use client";
+
 import AdminSignIn from "@/Components/AdminSignIn";
 
-export default function Home() {
+const adminLogin = () => {
   return (
     <>
       <AdminSignIn />
     </>
   );
-}
+};
+
+export default adminLogin;
