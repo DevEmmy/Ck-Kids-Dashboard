@@ -2,15 +2,16 @@
 import SetPassword from "@/Components/SetPassword";
 
 export default function Home() {
-  const params = new Proxy(new URLSearchParams(window.location.search), {
-    get: (searchParams, prop) => searchParams.get(prop),
-  });
+  // const params = new Proxy(new URLSearchParams(window.location.search), {
+  //   get: (searchParams, prop) => searchParams.get(prop),
+  // });
 
-  let token = params.token;
-  let type = params.type;
+  // let token = params.token;
+  // let type = params.type;
   return (
     <>
-      <SetPassword token={token} type={parseInt(type)} />
+      {/* <SetPassword token={token} type={parseInt(type)} /> */}
+      <SetPassword token={"hjghjfh"} type={2} />
     </>
   );
 }
