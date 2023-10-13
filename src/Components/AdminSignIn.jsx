@@ -59,6 +59,9 @@ const AdminSignIn = () => {
       });
       setLoading(false);
     }
+    else{
+      router.push("/admin-signin")
+    }
   };
   return (
     <>
