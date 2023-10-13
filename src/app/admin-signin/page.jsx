@@ -1,11 +1,12 @@
 "use client";
 
-import AdminSignIn from "@/Components/AdminSignIn";
+import AdminSignin from "@/Components/AdminSignin";
+import Price from "@/Components/Price";
 
 export default function Home() {
   return (
     <>
-      <AdminSignIn />
+      <Price />
     </>
   );
 };
