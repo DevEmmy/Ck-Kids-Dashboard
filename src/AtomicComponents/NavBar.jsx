@@ -20,7 +20,7 @@ const NavBar = ({ active = 0, background }) => {
     },
     {
       title: "Price",
-      link: "/price",
+      link: "/pricing",
     },    
   ];
 
