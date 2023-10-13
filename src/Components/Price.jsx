@@ -56,13 +56,13 @@ const Price = () => {
       <NavBar active={3} background={"#FFF9D2"} />
       {pay ? (
         <>
-          {/* <Payment
+          <Payment
             type={type}
             pay={pay}
             setPay={setPay}
             amount={amount}
             body={body}
-          /> */}
+          />
         </>
       ) : (
         <>
