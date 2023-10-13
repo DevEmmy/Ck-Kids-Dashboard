@@ -16,9 +16,9 @@ const SigninAdmin = () => {
     });
     const router = useRouter();
   
-    // useEffect(() => {
-    //   eMail.current.focus();
-    // }, []);
+    useEffect(() => {
+      eMail.current.focus();
+    }, []);
   
     useEffect(() => {
       if (
@@ -50,7 +50,7 @@ const SigninAdmin = () => {
     return (
       <>
         <h1>Admin SigninLa</h1>
-        {/* <div className="cflexss w-full px-[30%] py-[5%] sm:py-[10%] sm:px-[7%] h-full gap-[28px]">
+        <div className="cflexss w-full px-[30%] py-[5%] sm:py-[10%] sm:px-[7%] h-full gap-[28px]">
           <h1>ADMIN SIGNIN</h1>
           <div className="w-full flexmm gap-[12px]">
             <h1 className="text-[1.7rem] font-[700] sm:font-[800] text-sec3">
@@ -145,7 +145,7 @@ const SigninAdmin = () => {
               <p>Sign in with Outlook</p>
             </div>
           </div>
-        </div> */}
+        </div>
       </>
     );
   };
