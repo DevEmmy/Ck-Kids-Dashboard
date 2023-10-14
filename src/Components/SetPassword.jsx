@@ -26,9 +26,6 @@ const SetPassword = ({ token, type }) => {
       setValid(false);
     }
 
-    console.log(type);
-    console.log(token);
-
     if (
       (newPassword.length >= 8 && /[!@#$%^&*]/.test(newPassword)) ||
       newPassword.length === 0

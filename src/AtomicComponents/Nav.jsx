@@ -133,13 +133,18 @@ const Nav = ({ active = 0, student }) => {
             <SearchOutline size="16px" />
           </div>
         )}
-        <div
-          className="cursor-pointer border lf:border-none rounded-[8px] p-[8px]"
-          onClick={() => {
-            setNotification(true);
-          }}
-        >
-          <FiBell />
+
+        <div className="block lf:hidden relative flexsm gap-[7px] font-[600] text-[12px]">
+          <div
+            className="cursor-pointer border lf:border-none rounded-[8px] p-[8px]"
+            onClick={() => {
+              setNotification(true);
+            }}
+          >
+            <FiBell />
+          </div>
+
+          {notification && <Notification setNotification={setNotification} />}
         </div>
 
         <div
@@ -208,7 +213,6 @@ const Nav = ({ active = 0, student }) => {
               </div>
             </>
           )}
-          {notification && <Notification setNotification={setNotification} />}
         </div>
       </div>
       {profile && <Profile setProfile={setProfile} student={student} />}
