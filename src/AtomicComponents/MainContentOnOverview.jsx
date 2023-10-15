@@ -6,12 +6,16 @@ import CoursesOverview from "./CoursesOverview";
 import LeaderBoardOverview from "./LeaderBoardOverview";
 import RecommendedCourses from "./RecommendedCourses";
 import GemView from "./GemView";
+import { useSelector } from "react-redux";
 
 const MainContentOnOverview = ({ student }) => {
+  const loginType = useSelector((state) => state.loginType);
   return (
     <>
       <div className=" text-white w-full text-[20px] lg:text-[18px] ls:text-[16px]">
-        <p className="text-black py-[10px] font-[600] sm:text-[12px]">Overview</p>
+        <p className="text-black py-[10px] font-[600] sm:text-[12px]">
+          Overview
+        </p>
 
         <div className="grid grid-cols-4 lf:flex lf:items-center font-[400] gap-[20px] lf:overflow-x-scroll">
           <div className="hidden lf:block min-w-[154px]">
@@ -24,7 +28,7 @@ const MainContentOnOverview = ({ student }) => {
                   {student?.gem || 0} LG
                 </h2>
               </div>
-            </div>  
+            </div>
           </div>
           <div className="cflexms gap-[5px] bg-primary1 text-[20px] lf:min-w-[154px] lg:text-[18px] ls:text-[16px] lf:text-[12px] px-[30px] lg:px-[25px] ls:px-[22px] py-[20px] lg:py-[16px] rounded-[24px] lf:rounded-[12px] w-full">
             <div className="flex gap-[1em] items-center">
@@ -32,7 +36,7 @@ const MainContentOnOverview = ({ student }) => {
                 <BsFire size="24px" />{" "}
               </span>
               <h1 className="text-[48px] lg:text-[44px] ls:text-[40px] lf:text-[28px] font-[800]">
-                {student?.streak}
+                {student?.streak || 30}
               </h1>
             </div>
             <p>Your Streak</p>
@@ -44,7 +48,7 @@ const MainContentOnOverview = ({ student }) => {
                 <GiGraduateCap size="24px" />{" "}
               </span>
               <h1 className="text-[48px] lg:text-[44px] ls:text-[40px] lf:text-[28px] font-[800]">
-                {student?.completedCourses}
+                {student?.completedCourses || 25}
               </h1>
             </div>
             <p>Completed Courses</p>
@@ -79,7 +83,7 @@ const MainContentOnOverview = ({ student }) => {
 
         <CoursesOverview />
         <div className="w-full hidden lf:block">
-          <GemView student={student}/>
+          <GemView student={student} />
         </div>
 
         <LeaderBoardOverview />

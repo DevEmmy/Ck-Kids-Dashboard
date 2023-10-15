@@ -11,30 +11,22 @@ export default function Home() {
   const router = useRouter();
 
   const isAuthorized = useSelector((state) => state.studentDetails);
-  useEffect(() => {    
-    if (!isAuthorized) {
+  const loginType = useSelector((state) => state.loginType);
+  useEffect(() => {
+    console.log(loginType);
+    if (!isAuthorized && loginType === "user") {
       router.push("/signin");
       notifyError("unAuthorized you are being redirected");
+    } else if (isAuthorized && loginType === "user") {
+      setStudent(isAuthorized.student);
+    } else if (!isAuthorized && loginType === "guest") {
+      setStudent("guest");
     }
-    setStudent(isAuthorized.student);
   }, []);
 
   return (
     <>
-      <MainPage studentObject={student} />
+      <MainPage studentObject={student} loginType={loginType} />
     </>
   );
 }
-
-export const PrivateRoute = ({ children, studentObject }) => {
-  // const router = useRouter();
-  // const isAuthenticated = studentObject;
-
-  // if (!isAuthenticated) {
-  //   router.push("/signin");
-  //   notifyError("UnAuthorized");
-  //   return null;
-  // }
-
-  return children;
-};

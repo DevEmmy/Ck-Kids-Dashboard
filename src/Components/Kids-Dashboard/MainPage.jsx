@@ -23,7 +23,7 @@ const MainPage = ({studentObject}) => {
     <>
       {studentObject ? (
         <div>
-          <Nav student={studentObject} />
+          <Nav student={studentObject}/>
           <div className="flexbs lf:flex-wrap font-sans px-xPadding mt-[120px] lf:mt-[90px]">
             <div className="w-[72%] lf:w-full cflexss">
               <MainContentOnOverview student={studentObject} />

@@ -17,6 +17,7 @@ const initialState = {
   studentDetails: fetchFromLS("student"),
   teacherDetails: fetchFromLS("teacher"),
   schoolDetails: fetchFromLS("school"),
+  loginType: fetchFromLS("loginType"),
 };
 
 export const registerSlice = createSlice({
@@ -59,6 +60,12 @@ export const registerSlice = createSlice({
       localStorage.clear();
       window.location.href = "/signin";
     },
+    setLoginType: (state, action) => {
+      const update = action.payload;
+      state.loginType = update;
+      localStorage.setItem("loginType", JSON.stringify(update));
+      console.log(update);
+    },
   },
 });
 
@@ -69,6 +76,7 @@ export const {
   logOutSchools,
   logOutStudents,
   logOutTeachers,
+  setLoginType,
 } = registerSlice.actions;
 
 export default registerSlice.reducer;

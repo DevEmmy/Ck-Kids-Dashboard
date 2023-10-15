@@ -59,12 +59,7 @@ const Nav = ({ active = 0, student }) => {
       name: "Profile",
       // link: "/profile",
       icon: <UserCircleOutline color="black" size={20} />,
-    },
-    {
-      name: "Settings",
-      link: "/kids-dashboard-settings",
-      icon: <CogOutline color="black" size={20} />,
-    },
+    },    
     {
       name: "Support",
       link: "/kids-dashboard/support",

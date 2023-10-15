@@ -5,6 +5,7 @@ import {
   updateStudentDetails,
   updateTeacherDetails,
   updateSchoolDetails,
+  setLoginType
 } from "@/redux/features/register/registerSlice";
 //"http://localhost:4030";
 
@@ -59,6 +60,7 @@ export const studentLogin = async (dispatch, email, password) => {
       if (response.data.payload) {
         console.log("dispatching-student-login");
         dispatch(updateStudentDetails(response.data.payload));
+        dispatch(setLoginType("user"))
       }
       notify(response.data.message);
     })
@@ -290,6 +292,7 @@ export const studentRegister = async (
       if (response.data.payload) {
         console.log("dispatching-student");
         dispatch(updateStudentDetails(response.data.payload));
+        dispatch(setLoginType("user"))
       }
     })
     .catch((err) => {

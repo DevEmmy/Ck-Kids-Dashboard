@@ -1,32 +1,34 @@
-import Link from 'next/link'
-import React from 'react'
-import Board from './Board'
+import Link from "next/link";
+import React from "react";
+import Board from "./Board";
 
-const LeaderBoardOverview = ({max}) => {
+const LeaderBoardOverview = ({ max }) => {
   return (
     <>
-        <>
-        <div className='flex justify-between mt-10 mb-3 lf:overflow-x-scroll'>
-            <div className='flex gap-5'>
-                <p className='text-primary2 font-[600]'>
-                    Class Leadership Board
-                </p>
+      <>
+        <div className="flex justify-between mt-10 mb-3 lf:overflow-x-scroll">
+          <div className="flex gap-5">
+            <p className="text-primary2 font-[600] cursor-pointer">
+              Class Leadership Board
+            </p>
 
-                <p className='text-gray-500'>
-                    School Leadership Board
-                </p>
-            </div>
+            <p className="text-gray-500 cursor-pointer">
+              School Leadership Board
+            </p>
+          </div>
 
-            <Link href="/" className='text-gray-500 text-[14px]'>
-                View Board
-            </Link>
+          <a
+            href="/kids-dashboard/leadership-board"
+            className="text-gray-500 text-[14px cursor-pointer"
+          >
+            View Board
+          </a>
         </div>
 
-        <Board max={max}/>
-        
+        <Board max={max} />
+      </>
     </>
-    </>
-  )
-}
+  );
+};
 
-export default LeaderBoardOverview
+export default LeaderBoardOverview;

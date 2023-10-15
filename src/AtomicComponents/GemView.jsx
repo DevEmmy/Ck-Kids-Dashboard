@@ -45,7 +45,7 @@ const GemView = ({student}) => {
 
       <div className="mt-10 h-[45vh]">
         <div className="flex justify-between mb-2 text-[24px] lg:text-[20px] text-[#222] ls:text-[18px] font-[400]">
-          <p className="font-marker font-[800]">CURIOUSITY MISSION</p>
+          <p className="font-marker font-[800]">VICTORY BADGE</p>
           <p className="text-gray-500 text-[20px] lg:text-[18px] ls:text-[16px]">View all</p>
         </div>
 

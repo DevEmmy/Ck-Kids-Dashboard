@@ -61,7 +61,7 @@ const Leadership = ({student}) => {
   return (
     <>
       <Nav active={3} student={student}/>
-      <div className="w-full cflexss px-[5%] py-[2em] gap-[2em]">
+      <div className="w-full cflexss px-[5%] pt-[100px] py-[2em] gap-[2em]">
         <div className="w-full cflexss gap-[20px] text-[20px] lg:text-[18px] ls:text-[16px] font-[600]">
           <p>Mastery Stage</p>
           <div className="flexmm pt-[0.1em] pr-[0.1em] pl-[0.1em] pb-[0.4em] w-full h-[15em] bg-primary2 rounded-xl">

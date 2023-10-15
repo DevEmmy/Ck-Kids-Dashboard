@@ -11,6 +11,8 @@ import { ArrowRightOutline } from "heroicons-react";
 import Link from "next/link";
 import Testimonials from "./Testimonials";
 import Footer from "@/AtomicComponents/Footer";
+import { setLoginType } from "@/redux/features/register/registerSlice";
+import { useDispatch } from "react-redux";
 
 const LandingPage = () => {
   const CoursesD = [
@@ -35,6 +37,7 @@ const LandingPage = () => {
       text: "Travel & Events",
     },
   ];
+  const dispatch = useDispatch()
   return (
     <>
       <NavBar active={0} background="#FFF9D2" />
@@ -65,7 +68,9 @@ const LandingPage = () => {
                   <p>Enroll now</p> <ArrowRightOutline size="1em" />
                 </Button>
               </a>
-              <a href="/" className="sm:flex flex-grow">
+              <a href="/kids-dashboard" className="sm:flex flex-grow" onClick={()=>{
+                dispatch(setLoginType("guest"))
+              }}>
                 <Button className="border-[1px] border-sec1 text-sec1 flexmm px-[52px] py-[20px] lg:px-[42px] ls:px-[30px] rounded-full sm:w-full">
                   <p>Login as a guest</p>
                 </Button>

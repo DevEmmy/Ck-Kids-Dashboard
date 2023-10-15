@@ -56,9 +56,7 @@ const StudentSignIn = ({ setLoginType, setForgot }) => {
         dispatch,
         loginDetails.email,
         loginDetails.password
-      ).then((resp) => {
-        console.log(resp);
-      });
+      )
       setLoading(false);
     }
   };
