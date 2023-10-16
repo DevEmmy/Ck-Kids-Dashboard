@@ -3,7 +3,7 @@ import Nav from "@/AtomicComponents/Nav";
 import { ArrowLeftOutline } from "heroicons-react";
 import { getMyDetails } from "@/services/request";
 
-const Support = () => {
+const Support = ({student}) => {
   const EMAIL_REGEX = /^(\w+)([\.\-]?\w+)*\@(\w+)([\.\-]?\w+)*(\.[a-z|A-Z]+)$/;
   const [changing, setChanging] = useState(false);
   const [emailError, setEmailError] = useState(false);
@@ -16,11 +16,6 @@ const Support = () => {
     email: "",
     message: "",
   });
-  const [student, setStudent] = useState("");
-  useEffect(() => {
-    let student = getMyDetails();
-    setStudent(student);
-  }, []);
 
   useEffect(() => {
     if (

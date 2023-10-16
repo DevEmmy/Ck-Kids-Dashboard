@@ -19,7 +19,7 @@ export default function Home() {
       router.push("/signin");
       notifyError("unAuthorized you are being redirected");
     }
-    setStudent(isAuthorized.student);
+    setStudent(isAuthorized.student || isAuthorized);
   }, []);
   return <>{student ? <Leadership student={student} /> : <LoadScreen />}</>;
 }

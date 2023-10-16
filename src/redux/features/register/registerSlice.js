@@ -29,7 +29,9 @@ export const registerSlice = createSlice({
       state.studentDetails = update;
       localStorage.setItem("student", JSON.stringify(update));
       console.log(update);
-      window.location.href = "/kids-dashboard";
+      if (update.token) {
+        window.location.href = "/kids-dashboard";
+      }
     },
     logOutStudents: (state, action) => {
       state.studentDetails = "";

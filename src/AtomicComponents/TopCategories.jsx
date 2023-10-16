@@ -3,64 +3,79 @@ import Link from "next/link";
 const TopCategories = () => {
   const Categories = [
     {
-      category: "History",
+      category: "Film & Animation",
       background: "#F5AE1E",
       color: "black",
       link: "",
     },
     {
-      category: "Nursery Rhymes",
+      category: "Autos & Vehicles",
       background: "#00AC76",
       color: "white",
       link: "",
     },
     {
-      category: "Music-Dance",
+      category: "Music",
       background: "#8D67CE",
       color: "white",
       link: "",
     },
     {
-      category: "Gardening",
+      category: "Pets & Animals",
       background: "#FE5972",
       color: "white",
       link: "",
     },
     {
-      category: "Cooking",
+      category: "Sports",
       background: "#00AC76",
       color: "white",
       link: "",
     },
     {
-      category: "Sign Language",
+      category: "Travel & Events",
       background: "#00AC76",
       color: "white",
       link: "",
     },
     {
-      category: "Arts and Craft",
+      category: "Gaming",
       background: "#F5AE1E",
       color: "black",
       link: "",
     },
     {
-      category: "Baking",
+      category: "People & Blogs",
       background: "#FE5972",
       color: "white",
       link: "",
     },
     {
-      category: "Leadership",
+      category: "Comedy",
       background: "#8D67CE",
       color: "white",
       link: "",
     },
     {
-      category: "Law Enterprise",
+      category: "Entertainment",
       background: "#F5AE1E",
       color: "black",
       link: "",
+    },
+    {
+      category: "News & Politics",
+    },
+    {
+      category: "How to & Style",
+    },
+    {
+      category: "Education",
+    },
+    {
+      category: "Science & Technology",
+    },
+    {
+      category: "Nonprofits & Activism",
     },
   ];
   return (
@@ -70,16 +85,18 @@ const TopCategories = () => {
           Top categories recommended for you
         </h1>
         <div className="w-full grid grid-cols-5 lf:flexsm lf:overflow-x-auto gap-[20px]">
-          {Categories.map((category) => {
+          {Categories.map((category, i) => {
             return (
               <>
-                <Link href={category.link} className="w-full md1:w-[212px]">
-                  <div
-                    className={`py-[24px] lg:py-[20px] ls:py-[18px] font-[400] text-[20px] lg:text-[18px] ls:text-[16px] w-full rounded-[8px] flexmm bg-[${category.background}] text-${category.color}`}
-                  >
-                    <p>{category.category}</p>
-                  </div>
-                </Link>
+                {i < 10 && (
+                  <Link href={category.link} key={i} className="w-full md1:w-[212px]">
+                    <div
+                      className={`py-[24px] lg:py-[20px] ls:py-[18px] font-[400] text-[20px] lg:text-[18px] ls:text-[16px] w-full rounded-[8px] flexmm bg-[${category.background}] text-${category.color}`}
+                    >
+                      <p>{category.category}</p>
+                    </div>
+                  </Link>
+                )}
               </>
             );
           })}

@@ -3,13 +3,7 @@ import { getMyDetails } from "@/services/request";
 import { useState, useEffect } from "react";
 import { Search, DotsVertical } from "heroicons-react";
 
-const Messages = () => {
-  const [student, setStudent] = useState("");
-
-  useEffect(() => {
-    let student = getMyDetails();
-    setStudent(student);
-  }, []);
+const Messages = ({student}) => {  
 
   const MessageNotification = [
     {

@@ -18,12 +18,12 @@ export default function Home() {
       router.push("/signin");
       notifyError("unAuthorized you are being redirected");
     }
-    setStudent(isAuthorized.student);
+    setStudent(isAuthorized.student || isAuthorized);
   }, []);
 
   return (
     <>
-      <Contact studentObject={student} />
+      <Contact student={student} />
     </>
   );
 }

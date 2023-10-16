@@ -21,7 +21,7 @@ const CourseCard = ({ cover, description, category, name, link, _id }) => {
           </div>
 
           <div className="px-2 w-full">
-            <div className="py-[2px] px-[10px] bg-[#F9F5FF] text-purplePrime text-[14px] rounded-full font-[400] w-auto">
+            <div className="py-[2px] px-[10px] bg-[#F9F5FF] text-purplePrime text-[14px] flexsm rounded-full font-[400] max-w-max">
               {category}
             </div>
             <div className=" cflexss my-2">

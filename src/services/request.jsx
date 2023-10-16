@@ -5,7 +5,7 @@ import {
   updateStudentDetails,
   updateTeacherDetails,
   updateSchoolDetails,
-  setLoginType
+  setLoginType,
 } from "@/redux/features/register/registerSlice";
 //"http://localhost:4030";
 
@@ -60,7 +60,7 @@ export const studentLogin = async (dispatch, email, password) => {
       if (response.data.payload) {
         console.log("dispatching-student-login");
         dispatch(updateStudentDetails(response.data.payload));
-        dispatch(setLoginType("user"))
+        dispatch(setLoginType("user"));
       }
       notify(response.data.message);
     })
@@ -101,6 +101,28 @@ export const adminLogin = async (email, password, router) => {
     })
     .catch((err) => {
       if (err.response.data.message) {
+        notifyError(err.response.data.message);
+      } else {
+        notifyError("Network Error");
+      }
+      console.log(err);
+    });
+};
+
+export const updateStudentData = async (dispatch, profilePicture, fullName, userName) => {
+  await axios
+    .patch(
+      `${api}/student/update`,
+      { profilePicture, fullName, userName },
+      setConfig()
+    )
+    .then((response) => {
+      console.log(response);
+      dispatch(updateStudentDetails(response.data.payload))
+      notify(response.data.message);
+    })
+    .catch((err) => {
+      if (err.response) {
         notifyError(err.response.data.message);
       } else {
         notifyError("Network Error");
@@ -292,7 +314,7 @@ export const studentRegister = async (
       if (response.data.payload) {
         console.log("dispatching-student");
         dispatch(updateStudentDetails(response.data.payload));
-        dispatch(setLoginType("user"))
+        dispatch(setLoginType("user"));
       }
     })
     .catch((err) => {

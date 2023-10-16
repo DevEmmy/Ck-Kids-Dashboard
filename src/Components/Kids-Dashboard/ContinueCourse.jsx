@@ -4,7 +4,7 @@ import GemView from "@/AtomicComponents/GemView";
 import { getMyDetails } from "@/services/request";
 import { useState, useEffect } from "react";
 
-const ContinueCourse = () => {
+const ContinueCourse = ({student}) => {
   const [student, setStudent] = useState("");
   
   useEffect(() => {

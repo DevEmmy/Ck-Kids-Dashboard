@@ -3,9 +3,12 @@ import { XCircleOutline } from "heroicons-react";
 import FileBase64 from "react-file-base64";
 import Loader from "./Loader";
 import { FaUser } from "react-icons/fa";
+import { updateStudentData } from "@/services/request";
+import { useDispatch } from "react-redux";
 import { setRevalidateHeaders } from "next/dist/server/send-payload";
 
 const Profile = ({ setProfile, student }) => {
+  const dispatch = useDispatch();
   const [changing, setChanging] = useState(false);
   const [valid, setValid] = useState(false);
   const [fileError, setFileError] = useState(false);
@@ -25,7 +28,7 @@ const Profile = ({ setProfile, student }) => {
     } else {
       setValid(false);
     }
-  }, [changing]);  
+  }, [changing]);
 
   const upload = (file) => {
     if (
@@ -49,17 +52,25 @@ const Profile = ({ setProfile, student }) => {
     setChanging(!changing);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (valid) {
       setLoading(true);
+      await updateStudentData(
+        dispatch,
+        studentDetails["profilePicture"],
+        studentDetails["fullName"],
+        studentDetails["userName"]
+      );
+      setLoading(false);
+      setProfile(false);
     }
     // ENDPOINT TO UPDATE STUDENT DATA
   };
   return (
     <>
       <div className="fixed top-0 left-0 w-full h-full flexmm bg-secondary1">
-        <div className="bg-white shadow-md cflexss gap-[1em] w-[30em] flex-shrink p-[2em] rounded-xl text-[0.9rem]">
+        <div className="bg-white shadow-md cflexss gap-[1em] w-[30em] flex-shrink p-[2em] sm:m-[10px] rounded-xl text-[0.9rem]">
           <div className="w-full flexbm">
             <h2 className="font-[900] text-[1.1rem]">Edit basic info</h2>
             <XCircleOutline

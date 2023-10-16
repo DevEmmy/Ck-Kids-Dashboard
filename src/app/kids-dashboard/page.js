@@ -12,13 +12,12 @@ export default function Home() {
 
   const isAuthorized = useSelector((state) => state.studentDetails);
   const loginType = useSelector((state) => state.loginType);
-  useEffect(() => {
-    console.log(loginType);
+  useEffect(() => {    
     if (!isAuthorized && loginType === "user") {
       router.push("/signin");
       notifyError("unAuthorized you are being redirected");
     } else if (isAuthorized && loginType === "user") {
-      setStudent(isAuthorized.student);
+      setStudent(isAuthorized.student || isAuthorized);      
     } else if (!isAuthorized && loginType === "guest") {
       setStudent("guest");
     }
